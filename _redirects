@@ -1,0 +1,3 @@
+# Syntax: [Source Path] [Destination Path] [Status Code]
+https://lifepera.pages.dev/* https://lifepera.com/:splat 301
+https://www.lifepera.com/* https://lifepera.com/:splat 301
