@@ -1,0 +1,12 @@
+{
+  "name": "lifepera-auto-blog",
+  "version": "1.0.0",
+  "description": "Automated blog post generator using Gemini API and GitHub Actions",
+  "main": "generate.js",
+  "scripts": {
+    "start": "node generate.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0"
+  }
+}
