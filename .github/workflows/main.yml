@@ -5,7 +5,7 @@ on:
     - cron: '0 6 * * *'   # 6 AM UTC daily post 1
     - cron: '0 14 * * *'  # 2 PM UTC daily post 2
     - cron: '0 20 * * *'  # 8 PM UTC daily post 3
-  workflow_dispatch:       # Manual trigger anytime
+  workflow_dispatch:       # Manual trigger button in GitHub Actions
 
 jobs:
   generate-post:
@@ -30,7 +30,6 @@ jobs:
         run: |
           node << 'SCRIPT'
           const fs = require('fs');
-          const path = require('path');
 
           const apiKey = process.env.GEMINI_API_KEY;
           if (!apiKey) {
@@ -38,7 +37,6 @@ jobs:
             process.exit(1);
           }
 
-          // Topic rotation list
           const TOPICS = [
             { title: "10 Cultural Mistakes Tourists Make in Thailand", cat: "Culture • Travel", emoji: "🇹🇭", keywords: "thailand culture travel mistakes tourists" },
             { title: "How to Know if You're Being Underpaid in 2026", cat: "Career • Finance", emoji: "💰", keywords: "underpaid salary negotiation career" },
@@ -67,29 +65,45 @@ jobs:
             { title: "Travel Budget Reality Check: What Things Actually Cost", cat: "Travel • Finance", emoji: "💳", keywords: "travel budget real costs destinations finance" }
           ];
 
-          async function getAvailableModel() {
-            try {
-              const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
-              const data = await res.json();
-              if (data.models) {
-                const validModels = data.models.filter(m => m.supportedGenerationMethods?.includes('generateContent'));
-                const selected = validModels.find(m => m.name.includes('flash')) || validModels[0];
-                if (selected) {
-                  return selected.name.replace('models/', '');
+          const MODEL_CANDIDATES = [
+            'gemini-2.0-flash',
+            'gemini-1.5-flash',
+            'gemini-1.5-flash-8b',
+            'gemini-1.5-pro'
+          ];
+
+          async function generateWithFallback(prompt) {
+            for (const modelId of MODEL_CANDIDATES) {
+              console.log(`🔄 Attempting generation with model: ${modelId}...`);
+              try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { temperature: 0.7, maxOutputTokens: 2000 }
+                  })
+                });
+
+                const data = await response.json();
+                const content = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (response.ok && content) {
+                  console.log(`✅ Success! Generated post using model: ${modelId}`);
+                  return content;
+                } else {
+                  console.warn(`⚠️ Model ${modelId} notice:`, data.error?.message || 'No content returned');
                 }
+              } catch (err) {
+                console.warn(`⚠️ Request error for ${modelId}:`, err.message);
               }
-            } catch (err) {
-              console.warn('⚠️ Dynamic model lookup fallback:', err.message);
             }
-            return 'gemini-1.5-flash';
+            throw new Error('All Gemini model candidates failed.');
           }
 
           async function run() {
             const topicIndex = Math.floor(Date.now() / (8 * 3600 * 1000)) % TOPICS.length;
             const topic = TOPICS[topicIndex];
-
-            const modelId = await getAvailableModel();
-            console.log(`🚀 Using Gemini model: ${modelId}`);
 
             const prompt = `Write a high-quality, SEO-optimized blog post for a website called LifePera (lifepera.com) – a free tools website.
 
@@ -115,22 +129,7 @@ jobs:
 
           Do NOT include: html, head, body, header tags, or any CSS. Just the content HTML fragments.`;
 
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: { temperature: 0.7, maxOutputTokens: 2000 }
-              })
-            });
-
-            const data = await response.json();
-            const content = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-
-            if (!content) {
-              console.error('❌ API returned no content:', JSON.stringify(data));
-              process.exit(1);
-            }
+            const content = await generateWithFallback(prompt);
 
             const now = new Date();
             const dateStr = now.toISOString().split('T')[0];
@@ -269,5 +268,3 @@ jobs:
           git add .
           git diff --staged --quiet || git commit -m "Auto blog post: $(date +'%Y-%m-%d %H:%M')"
           git push
-
-```
