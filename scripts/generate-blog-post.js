@@ -72,7 +72,6 @@ async function run() {
   const nextTopic = TOPICS.find(t => !publishedTitles.has(t.title));
 
   if (nextTopic) {
-    // Publish from the given manual list
     topic = nextTopic;
     console.log(`Publishing from fixed topic list: "${topic.title}"`);
 
@@ -82,7 +81,7 @@ Title: "${topic.title}"
 Category: ${topic.cat}
 Keywords: ${topic.keywords}
 
-- 900-1200 words, conversational tone
+- 1500-1600 words, conversational tone
 - Practical takeaways, H2 subheadings
 - Hook intro, end with CTA to a LifePera tool
 - Global audience, no fluff
@@ -95,7 +94,7 @@ Keywords: ${topic.keywords}
     });
 
   } else {
-    // 2. Fixed list is finished! Switch to automatic Google Trending mode.
+    // 2. Fixed list finished -> switch to Google Trending mode
     console.log('Fixed topic list completed. Switching to automatic Google Trending mode...');
 
     const existingTitles = posts.map(p => p.title).join('\n- ');
@@ -218,9 +217,9 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <body>
 <header>
 <div class="nav">
-<a href="index.html" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
+<a href="/index.html" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
 <div class="nav-links">
-<a href="tools.html">Tools</a><a href="blog.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+<a href="/tools.html">Tools</a><a href="/blog.html">Blog</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
 </div>
 </div>
 </header>
@@ -233,38 +232,38 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="cta">
 <h3>Try Our Free Tools</h3>
 <p>36 free tools covering travel, relationships, career, culture, psychology and finance. No signup required.</p>
-<a class="cta-btn" href="tools.html">Explore All Free Tools &rarr;</a>
+<a class="cta-btn" href="/tools.html">Explore All Free Tools &rarr;</a>
 </div>
 </main>
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="/index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free · Privacy Protected · Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Tools</h4>
 <ul>
-<li><a href="tool-how-rich.html">Global Wealth Comparator</a></li>
-<li><a href="tool-visa.html">Visa-Free Travel Checker</a></li>
-<li><a href="tool-attachment.html">Attachment Style Quiz</a></li>
+<li><a href="/tool-how-rich.html">Global Wealth Comparator</a></li>
+<li><a href="/tool-visa.html">Visa-Free Travel Checker</a></li>
+<li><a href="/tool-attachment.html">Attachment Style Quiz</a></li>
 </ul>
 </div>
 <div class="f-col">
 <h4>Company</h4>
 <ul>
-<li><a href="about.html">About Us</a></li>
-<li><a href="blog.html">Editorial Blog</a></li>
-<li><a href="contact.html">Contact & Support</a></li>
+<li><a href="/about.html">About Us</a></li>
+<li><a href="/blog.html">Editorial Blog</a></li>
+<li><a href="/contact.html">Contact & Support</a></li>
 </ul>
 </div>
 <div class="f-col">
 <h4>Legal</h4>
 <ul>
-<li><a href="privacy.html">Privacy Policy</a></li>
-<li><a href="terms.html">Terms of Service</a></li>
-<li><a href="sitemap.xml">Sitemap</a></li>
+<li><a href="/privacy.html">Privacy Policy</a></li>
+<li><a href="/terms.html">Terms of Service</a></li>
+<li><a href="/sitemap.xml">Sitemap</a></li>
 </ul>
 </div>
 </div>
@@ -273,7 +272,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </footer>
 <div class="cookie-bar" id="cookieBar">
 <div class="cookie-inner">
-<p>🍪 LifePera uses cookies to improve your experience and serve personalized ads. By continuing, you agree to our <a href="privacy.html" style="color:#8ab4f8">Privacy Policy</a>.</p>
+<p>🍪 LifePera uses cookies to improve your experience and serve personalized ads. By continuing, you agree to our <a href="/privacy.html" style="color:#8ab4f8">Privacy Policy</a>.</p>
 <button class="cookie-btn" onclick="acceptCookies()">Accept All</button>
 </div>
 </div>
