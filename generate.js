@@ -101,6 +101,7 @@ const req = https.request(options, (res) => {
 
       const niceDate = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
+      // Perfect Light-Theme Page HTML
       const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -189,7 +190,7 @@ header {
 }
 .btn-nav:hover { background: var(--primary-hover); }
 
-/* Article Layout */
+/* Article Container */
 .wrap { max-width: var(--article-width); margin: 2.5rem auto; padding: 0 1.5rem; }
 .breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
 .post-cat {
@@ -216,7 +217,7 @@ h1 {
   margin-bottom: 2rem;
 }
 .hero-icon-box {
-  background: linear-gradient(135deg, #e8f0fe 0%, #f1f5f9 100%);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   height: 180px;
@@ -237,9 +238,9 @@ h1 {
   margin: 2rem 0;
 }
 
-/* Article Content Body */
+/* Article Body Content */
 .body p { font-size: 1.05rem; color: var(--text-main); line-height: 1.8; margin-bottom: 1.4rem; }
-.body p:first-child { font-size: 1.12rem; color: #1a1d20; font-weight: 400; }
+.body p:first-child { font-size: 1.12rem; color: #1a1d20; }
 .body h2 { font-size: 1.5rem; font-weight: 800; margin: 2.5rem 0 1rem; color: var(--text-main); letter-spacing: -0.3px; }
 .body strong { color: #1a1d20; font-weight: 700; }
 .body ul, .body ol { margin: 1rem 0 1.5rem 1.5rem; color: var(--text-main); }
@@ -262,7 +263,7 @@ h1 {
 .tc-title { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem; }
 .tc-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
 
-/* Share Row */
+/* Share Buttons */
 .share-row { border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; }
 .sr-label { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 1rem; }
 .share-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
