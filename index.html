@@ -84,7 +84,7 @@ header {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 5rem 1.5rem 3rem;
+  padding: 4rem 1.5rem 2rem;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -99,31 +99,40 @@ header {
   margin-bottom: 1.5rem;
 }
 .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 1.15;
   margin-bottom: 1.2rem;
 }
 .hero p {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
   line-height: 1.6;
 }
 
-/* Tools Section */
-.container { max-width: var(--max-width); margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-.section-title { font-size: 1.75rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.5px; }
+/* Two-Column Layout */
+.main-layout {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2.5rem;
+}
+
+/* Tools Content Area */
+.section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px; }
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
 }
 .tool-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.75rem;
+  padding: 1.5rem;
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
@@ -132,10 +141,67 @@ header {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
-.tool-icon { font-size: 2.2rem; margin-bottom: 1rem; }
-.tool-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-.tool-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
-.tool-link { font-size: 0.9rem; font-weight: 700; color: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px; }
+.tool-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.tool-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+.tool-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem; flex-grow: 1; }
+.tool-link { font-size: 0.88rem; font-weight: 700; color: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px; }
+
+/* Right Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+.sidebar-widget {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.widget-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e8f0fe;
+  color: var(--text-main);
+}
+.widget-about p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.widget-about a {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* Recent Posts Widget */
+.recent-posts-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.recent-post-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.recent-post-item a {
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+.recent-post-item a:hover {
+  color: var(--primary-blue);
+}
+.recent-post-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
 
 /* Footer */
 footer {
@@ -196,7 +262,9 @@ footer {
   line-height: 1.5;
   text-align: center;
 }
-@media (max-width: 900px) {
+
+@media (max-width: 960px) {
+  .main-layout { grid-template-columns: 1fr; }
   .footer-container { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
 }
@@ -225,52 +293,91 @@ footer {
   <p>Explore free calculators, analytical frameworks, and research-backed guides covering career advancement, personal finance, travel logistics, and relationships.</p>
 </section>
 
-<main class="container">
-  <h2 class="section-title">Popular Tools</h2>
-  <div class="tools-grid">
-    <div class="tool-card">
-      <div class="tool-icon">💰</div>
-      <h3>"How Rich Am I?" Global Comparator</h3>
-      <p>Compare your personal income against global percentile benchmarks and cost-of-living metrics.</p>
-      <a href="/tool-how-rich.html" class="tool-link">Use Calculator →</a>
+<div class="main-layout">
+  <!-- Left Side: Main Content -->
+  <main class="content-area">
+    <h2 class="section-title">Popular Tools</h2>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">💰</div>
+        <h3>"How Rich Am I?" Global Comparator</h3>
+        <p>Compare your personal income against global percentile benchmarks and cost-of-living metrics.</p>
+        <a href="/tool-how-rich.html" class="tool-link">Use Calculator →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">✈️</div>
+        <h3>Visa-Free Travel Explorer</h3>
+        <p>Instant passport mobility tool showing visa requirements and border rules for worldwide destinations.</p>
+        <a href="/tool-visa.html" class="tool-link">Check Passports →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">💼</div>
+        <h3>"Should I Quit My Job?" Matrix</h3>
+        <p>A structured 10-point evaluation engine analyzing burnout, compensation, and growth potential.</p>
+        <a href="/tool-quit-job.html" class="tool-link">Evaluate Career →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">📈</div>
+        <h3>Am I Underpaid? Compensation Analyzer</h3>
+        <p>Benchmark your salary against remote, regional, and industry compensation distributions.</p>
+        <a href="/tool-underpaid.html" class="tool-link">Analyze Salary →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">💕</div>
+        <h3>Attachment Style Diagnostic</h3>
+        <p>Identify your primary attachment patterns to improve relationship dynamics and communication.</p>
+        <a href="/tool-attachment.html" class="tool-link">Take Quiz →</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">📱</div>
+        <h3>Mobile Banking Fee Calculator</h3>
+        <p>Calculate exact transaction charges and cash-out tariffs across popular mobile banking platforms.</p>
+        <a href="/tool-mfs.html" class="tool-link">Calculate Fees →</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Right Side: Sidebar -->
+  <aside class="sidebar">
+    <!-- Widget 1: About Us -->
+    <div class="sidebar-widget widget-about">
+      <h3 class="widget-title">About LifePera</h3>
+      <p>LifePera provides free, data-backed tools and analytical decision frameworks designed to remove guesswork from personal finance, travel, career moves, and personal growth.</p>
+      <a href="/about.html">Learn more about our mission →</a>
     </div>
 
-    <div class="tool-card">
-      <div class="tool-icon">✈️</div>
-      <h3>Visa-Free Travel Explorer</h3>
-      <p>Instant passport mobility tool showing visa requirements and border rules for worldwide destinations.</p>
-      <a href="/tool-visa.html" class="tool-link">Check Passports →</a>
+    <!-- Widget 2: 5 Recent Blog Posts -->
+    <div class="sidebar-widget">
+      <h3 class="widget-title">Recent Articles</h3>
+      <ul id="sidebar-recent-posts" class="recent-posts-list">
+        <!-- Dynamically populated from blog-index.json -->
+      </ul>
     </div>
+  </aside>
+</div>
 
-    <div class="tool-card">
-      <div class="tool-icon">💼</div>
-      <h3>"Should I Quit My Job?" Matrix</h3>
-      <p>A structured 10-point evaluation engine analyzing burnout, compensation, and growth potential.</p>
-      <a href="/tool-quit-job.html" class="tool-link">Evaluate Career →</a>
-    </div>
-
-    <div class="tool-card">
-      <div class="tool-icon">📈</div>
-      <h3>Am I Underpaid? Compensation Analyzer</h3>
-      <p>Benchmark your salary against remote, regional, and industry compensation distributions.</p>
-      <a href="/tool-underpaid.html" class="tool-link">Analyze Salary →</a>
-    </div>
-
-    <div class="tool-card">
-      <div class="tool-icon">💕</div>
-      <h3>Attachment Style Diagnostic</h3>
-      <p>Identify your primary attachment patterns to improve relationship dynamics and communication.</p>
-      <a href="/tool-attachment.html" class="tool-link">Take Quiz →</a>
-    </div>
-
-    <div class="tool-card">
-      <div class="tool-icon">📱</div>
-      <h3>Mobile Banking Fee Calculator</h3>
-      <p>Calculate exact transaction charges and cash-out tariffs across popular mobile banking platforms.</p>
-      <a href="/tool-mfs.html" class="tool-link">Calculate Fees →</a>
-    </div>
-  </div>
-</main>
+<script>
+  // Fetch top 5 blog posts for sidebar
+  fetch('/blog-index.json')
+    .then(res => res.json())
+    .then(posts => {
+      const container = document.getElementById('sidebar-recent-posts');
+      if (!posts || posts.length === 0) return;
+      const recent = posts.slice(0, 5);
+      container.innerHTML = recent.map(post => `
+        <li class="recent-post-item">
+          <a href="${post.file}">${post.title}</a>
+          <span class="recent-post-meta">${post.cat} • ${post.date}</span>
+        </li>
+      `).join('');
+    })
+    .catch(err => console.log('Sidebar post loading waiting...'));
+</script>
 
 <footer>
   <div class="footer-container">
