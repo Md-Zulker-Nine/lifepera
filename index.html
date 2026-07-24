@@ -10,425 +10,478 @@
 
   gtag('config', 'G-EYST6H5RWZ');
 </script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="LifePera — Free data-driven tools and practical guides for career, finance, travel, relationships, and global culture."/>
-<title>LifePera — Free Tools for Real Life Decisions</title>
-<style>
-:root {
-  --bg: #f8f9fa;
-  --surface: #ffffff;
-  --text-main: #202124;
-  --text-muted: #5f6368;
-  --primary-blue: #1a73e8;
-  --primary-hover: #1557b0;
-  --border: #dadce0;
-  --radius: 12px;
-  --max-width: 1200px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background-color: var(--bg);
-  color: var(--text-main);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-a { text-decoration: none; color: var(--primary-blue); transition: color 0.2s; }
-a:hover { color: var(--primary-hover); }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LifePera — Free data-backed tools and analytical decision frameworks.">
+  <title>LifePera — Free Tools for Real Life Decisions</title>
+  
+  <style>
+    /* ==========================================================================
+       1. CORE RESET & VARIABLES
+       ========================================================================== */
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --text-main: #202124;
+      --text-muted: #5f6368;
+      --primary-blue: #1a73e8;
+      --primary-hover: #1557b0;
+      --border: #dadce0;
+      --radius: 12px;
+      --max-width: 1200px;
+    }
 
-/* Header & Nav */
-header {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-}
-.nav-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  height: 72px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--text-main);
-  letter-spacing: -0.5px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.logo span { color: var(--primary-blue); }
-.logo-badge {
-  background: #e8f0fe;
-  color: var(--primary-blue);
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.nav-links { display: flex; gap: 2rem; font-weight: 600; font-size: 0.95rem; align-items: center; }
-.nav-links a { color: var(--text-muted); transition: color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Hero Section */
-.hero {
-  text-align: center;
-  padding: 4rem 1.5rem 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.hero-badge {
-  display: inline-block;
-  background: #e8f0fe;
-  color: var(--primary-blue);
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 6px 16px;
-  border-radius: 20px;
-  margin-bottom: 1.5rem;
-}
-.hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.15;
-  margin-bottom: 1.2rem;
-}
-.hero p {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* Two-Column Layout */
-.main-layout {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 2.5rem;
-}
+    a {
+      text-decoration: none;
+      color: var(--primary-blue);
+      transition: color 0.2s ease;
+    }
 
-/* Tools Content Area */
-.section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.5px; }
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem;
-}
-.tool-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
-}
-.tool-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-.tool-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-.tool-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
-.tool-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem; flex-grow: 1; }
-.tool-link { font-size: 0.88rem; font-weight: 700; color: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px; }
+    a:hover {
+      color: var(--primary-hover);
+    }
 
-/* Right Sidebar */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-.sidebar-widget {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-}
-.widget-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e8f0fe;
-  color: var(--text-main);
-}
-.widget-about p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.65;
-  margin-bottom: 1rem;
-}
-.widget-about a {
-  font-size: 0.88rem;
-  font-weight: 700;
-}
+    /* ==========================================================================
+       2. HEADER & NAVIGATION
+       ========================================================================== */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
 
-/* Recent Posts Widget */
-.recent-posts-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.recent-post-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.recent-post-item a {
-  color: var(--text-main);
-  font-weight: 600;
-  font-size: 0.92rem;
-  line-height: 1.35;
-}
-.recent-post-item a:hover {
-  color: var(--primary-blue);
-}
-.recent-post-meta {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
+    .nav-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* Footer */
-footer {
-  background: #111827;
-  color: #9ca3af;
-  border-top: 1px solid #1f2937;
-  padding: 4rem 1.5rem 2rem;
-  margin-top: 4rem;
-}
-.footer-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 2.5rem;
-}
-.footer-brand .logo { color: #ffffff !important; margin-bottom: 1rem; }
-.footer-brand p { font-size: 0.9rem; color: #9ca3af; line-height: 1.6; max-width: 320px; margin-bottom: 1.5rem; }
-.trust-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #1f2937;
-  border: 1px solid #374151;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  color: #d1d5db;
-  font-weight: 500;
-}
-.footer-col h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff !important;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.5px;
-}
-.footer-col ul { list-style: none; padding: 0; margin: 0; }
-.footer-col li { margin-bottom: 0.7rem; }
-.footer-col a { color: #9ca3af !important; font-size: 0.9rem; transition: color 0.2s; }
-.footer-col a:hover { color: #ffffff !important; }
-.footer-bottom {
-  max-width: var(--max-width);
-  margin: 3rem auto 0;
-  padding-top: 2rem;
-  border-top: 1px solid #1f2937;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  color: #6b7280;
-}
-.footer-disclaimer {
-  max-width: var(--max-width);
-  margin: 1.5rem auto 0;
-  font-size: 0.78rem;
-  color: #4b5563;
-  line-height: 1.5;
-  text-align: center;
-}
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-@media (max-width: 960px) {
-  .main-layout { grid-template-columns: 1fr; }
-  .footer-container { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-}
-</style>
+    .logo span {
+      color: var(--primary-blue);
+    }
+
+    .logo-badge {
+      background: #e8f0fe;
+      color: var(--primary-blue);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary-blue);
+    }
+
+    /* ==========================================================================
+       3. MAIN LAYOUT GRID (FIXES MISALIGNMENT)
+       ========================================================================== */
+    .layout-container {
+      max-width: var(--max-width);
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 340px; /* Left takes remaining space, Right is fixed width */
+      gap: 2rem;
+      align-items: start; /* CRITICAL: Aligns top edges of left and right columns */
+    }
+
+    /* Left Section: Main Content */
+    .main-content .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.3px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 equal columns for tools */
+      gap: 1.5rem;
+    }
+
+    /* Right Section: Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* ==========================================================================
+       4. CARDS STYLING (TOOLS & SIDEBAR)
+       ========================================================================== */
+    .card, .sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover, .sidebar-card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      border-color: #c6c9ce;
+    }
+
+    .card-icon {
+      font-size: 2.2rem;
+      background: #f1f3f4;
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      margin-bottom: 1.25rem;
+    }
+
+    .card h3, .sidebar-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p, .sidebar-card p {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-link {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Sidebar Specific Styling */
+    .sidebar-card h3 {
+      font-size: 1.15rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e8f0fe;
+    }
+
+    .article-item {
+      padding-top: 0.75rem;
+    }
+
+    .article-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .article-title:hover {
+      color: var(--primary-blue);
+    }
+
+    .article-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       5. FOOTER
+       ========================================================================== */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      border-top: 1px solid #1f2937;
+      padding: 4rem 1.5rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand .logo {
+      color: #ffffff !important;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      line-height: 1.6;
+      max-width: 320px;
+      margin-bottom: 1.5rem;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1f2937;
+      border: 1px solid #374151;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #d1d5db;
+      font-weight: 500;
+    }
+
+    .footer-col h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-col a {
+      color: #9ca3af;
+      font-size: 0.88rem;
+    }
+
+    .footer-col a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      max-width: var(--max-width);
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #1f2937;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    /* ==========================================================================
+       6. RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .layout-container {
+        grid-template-columns: 1fr; /* Stacks sidebar under main content */
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tools-grid {
+        grid-template-columns: 1fr; /* Single column tools for mobile */
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="nav-container">
-    <a href="/index.html" class="logo">
-      Life<span>Pera</span>
-      <span class="logo-badge">Pro</span>
-    </a>
-    <div class="nav-links">
-      <a href="/tools.html">Tools</a>
-      <a href="/blog.html">Blog</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="/index.html" class="logo">
+        Life<span>Pera</span>
+        <span class="logo-badge">Pro</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/tools.html" class="active">Tools</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
     </div>
-  </div>
-</header>
+  </header>
 
-<section class="hero">
-  <span class="hero-badge">⚡ 100% Free • No Sign-Up Required</span>
-  <h1>Smart Tools for Practical Life Decisions</h1>
-  <p>Explore free calculators, analytical frameworks, and research-backed guides covering career advancement, personal finance, travel logistics, and relationships.</p>
-</section>
+  <!-- MAIN 2-COLUMN LAYOUT -->
+  <div class="layout-container">
+    
+    <!-- LEFT: MAIN CONTENT AREA -->
+    <main class="main-content">
+      <h2 class="section-title">Popular Tools</h2>
+      
+      <div class="tools-grid">
+        
+        <!-- Tool Card 1 -->
+        <div class="card">
+          <div>
+            <div class="card-icon">💰</div>
+            <h3>"How Rich Am I?" Global Comparator</h3>
+            <p>Compare your personal income against global percentile benchmarks and cost-of-living metrics.</p>
+          </div>
+          <a href="/tool-how-rich.html" class="card-link">Use Calculator →</a>
+        </div>
 
-<div class="main-layout">
-  <!-- Left Side: Main Content -->
-  <main class="content-area">
-    <h2 class="section-title">Popular Tools</h2>
-    <div class="tools-grid">
-      <div class="tool-card">
-        <div class="tool-icon">💰</div>
-        <h3>"How Rich Am I?" Global Comparator</h3>
-        <p>Compare your personal income against global percentile benchmarks and cost-of-living metrics.</p>
-        <a href="/tool-how-rich.html" class="tool-link">Use Calculator →</a>
+        <!-- Tool Card 2 -->
+        <div class="card">
+          <div>
+            <div class="card-icon">✈️</div>
+            <h3>Visa-Free Travel Explorer</h3>
+            <p>Instant passport mobility tool showing visa requirements and border rules for worldwide destinations.</p>
+          </div>
+          <a href="/tool-visa.html" class="card-link">Check Passports →</a>
+        </div>
+
+        <!-- Tool Card 3 -->
+        <div class="card">
+          <div>
+            <div class="card-icon">💼</div>
+            <h3>"Should I Quit My Job?" Matrix</h3>
+            <p>A structured 10-point evaluation scoring framework designed to help you make career moves with confidence.</p>
+          </div>
+          <a href="/tool-quit-job.html" class="card-link">Evaluate Now →</a>
+        </div>
+
+        <!-- Tool Card 4 -->
+        <div class="card">
+          <div>
+            <div class="card-icon">📈</div>
+            <h3>Am I Underpaid? Compensation Analyzer</h3>
+            <p>Benchmark your income against industry metrics and gain actionable salary negotiation insights.</p>
+          </div>
+          <a href="/tool-underpaid.html" class="card-link">Analyze Salary →</a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- RIGHT: SIDEBAR AREA -->
+    <aside class="sidebar">
+      
+      <!-- Sidebar Card 1: About -->
+      <div class="sidebar-card">
+        <h3>About LifePera</h3>
+        <p>LifePera provides free, data-backed tools and analytical decision frameworks designed to remove guesswork from personal finance, travel, career moves, and personal growth.</p>
+        <a href="/about.html" class="card-link">Learn more about our mission →</a>
       </div>
 
-      <div class="tool-card">
-        <div class="tool-icon">✈️</div>
-        <h3>Visa-Free Travel Explorer</h3>
-        <p>Instant passport mobility tool showing visa requirements and border rules for worldwide destinations.</p>
-        <a href="/tool-visa.html" class="tool-link">Check Passports →</a>
+      <!-- Sidebar Card 2: Recent Articles -->
+      <div class="sidebar-card">
+        <h3>Recent Articles</h3>
+        <div class="article-item">
+          <a href="/blog/post-10-cultural-mistakes-thailand.html" class="article-title">10 Cultural Mistakes Tourists Make in Thailand</a>
+          <span class="article-meta">Culture • Travel • July 24, 2026</span>
+        </div>
       </div>
 
-      <div class="tool-card">
-        <div class="tool-icon">💼</div>
-        <h3>"Should I Quit My Job?" Matrix</h3>
-        <p>A structured 10-point evaluation engine analyzing burnout, compensation, and growth potential.</p>
-        <a href="/tool-quit-job.html" class="tool-link">Evaluate Career →</a>
-      </div>
+    </aside>
 
-      <div class="tool-card">
-        <div class="tool-icon">📈</div>
-        <h3>Am I Underpaid? Compensation Analyzer</h3>
-        <p>Benchmark your salary against remote, regional, and industry compensation distributions.</p>
-        <a href="/tool-underpaid.html" class="tool-link">Analyze Salary →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">💕</div>
-        <h3>Attachment Style Diagnostic</h3>
-        <p>Identify your primary attachment patterns to improve relationship dynamics and communication.</p>
-        <a href="/tool-attachment.html" class="tool-link">Take Quiz →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">📱</div>
-        <h3>Mobile Banking Fee Calculator</h3>
-        <p>Calculate exact transaction charges and cash-out tariffs across popular mobile banking platforms.</p>
-        <a href="/tool-mfs.html" class="tool-link">Calculate Fees →</a>
-      </div>
-    </div>
-  </main>
-
-  <!-- Right Side: Sidebar -->
-  <aside class="sidebar">
-    <!-- Widget 1: About Us -->
-    <div class="sidebar-widget widget-about">
-      <h3 class="widget-title">About LifePera</h3>
-      <p>LifePera provides free, data-backed tools and analytical decision frameworks designed to remove guesswork from personal finance, travel, career moves, and personal growth.</p>
-      <a href="/about.html">Learn more about our mission →</a>
-    </div>
-
-    <!-- Widget 2: 5 Recent Blog Posts -->
-    <div class="sidebar-widget">
-      <h3 class="widget-title">Recent Articles</h3>
-      <ul id="sidebar-recent-posts" class="recent-posts-list">
-        <!-- Dynamically populated from blog-index.json -->
-      </ul>
-    </div>
-  </aside>
-</div>
-
-<script>
-  // Fetch top 5 blog posts for sidebar
-  fetch('/blog-index.json')
-    .then(res => res.json())
-    .then(posts => {
-      const container = document.getElementById('sidebar-recent-posts');
-      if (!posts || posts.length === 0) return;
-      const recent = posts.slice(0, 5);
-      container.innerHTML = recent.map(post => `
-        <li class="recent-post-item">
-          <a href="${post.file}">${post.title}</a>
-          <span class="recent-post-meta">${post.cat} • ${post.date}</span>
-        </li>
-      `).join('');
-    })
-    .catch(err => console.log('Sidebar post loading waiting...'));
-</script>
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-brand">
-      <a href="/index.html" class="logo" style="color:#ffffff;">Life<span>Pera</span></a>
-      <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-      <div class="trust-badge">
-        <span>🛡️</span> 100% Free • Privacy Protected • Data-Backed
-      </div>
-    </div>
-
-    <div class="footer-col">
-      <h4>Popular Tools</h4>
-      <ul>
-        <li><a href="/tool-how-rich.html">"How Rich Am I?" Comparator</a></li>
-        <li><a href="/tool-visa.html">Visa-Free Travel Checker</a></li>
-        <li><a href="/tool-quit-job.html">Should I Quit My Job? Matrix</a></li>
-        <li><a href="/tool-underpaid.html">Am I Underpaid? Analyzer</a></li>
-        <li><a href="/tool-attachment.html">Attachment Style Quiz</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Company & Trust</h4>
-      <ul>
-        <li><a href="/about.html">About Us</a></li>
-        <li><a href="/about.html#editorial">Editorial & Fact-Checking</a></li>
-        <li><a href="/blog.html">Editorial Blog</a></li>
-        <li><a href="/contact.html">Contact & Support</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Legal & Standards</h4>
-      <ul>
-        <li><a href="/privacy.html">Privacy Policy</a></li>
-        <li><a href="/terms.html">Terms of Service</a></li>
-        <li><a href="/sitemap.xml">Sitemap.xml</a></li>
-      </ul>
-    </div>
   </div>
 
-  <div class="footer-disclaimer">
-    Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.
-  </div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="/index.html" class="logo">Life<span>Pera</span></a>
+        <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
+        <div class="trust-badge">
+          <span>🛡️</span> 100% Free • Privacy Protected
+        </div>
+      </div>
 
-  <div class="footer-bottom">
-    <div>© 2026 LifePera. All rights reserved.</div>
-    <div>Built for curious minds worldwide.</div>
-  </div>
-</footer>
+      <div class="footer-col">
+        <h4>Popular Tools</h4>
+        <ul>
+          <li><a href="/tool-how-rich.html">Income Comparator</a></li>
+          <li><a href="/tool-visa.html">Visa Checker</a></li>
+          <li><a href="/tool-quit-job.html">Job Decision Matrix</a></li>
+          <li><a href="/tool-underpaid.html">Salary Analyzer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About Us</a></li>
+          <li><a href="/blog.html">Editorial Blog</a></li>
+          <li><a href="/contact.html">Contact & Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 LifePera. All rights reserved.</div>
+      <div>Built for curious minds worldwide.</div>
+    </div>
+  </footer>
 
 </body>
 </html>
