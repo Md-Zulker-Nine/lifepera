@@ -53,7 +53,7 @@ Requirements:
 
 Format the response as valid HTML with these exact tags only:
 - <h2> for section headings
-- <p> for paragraphs   
+- <p> for paragraphs  
 - <ul> and <li> for lists
 - <strong> for emphasis
 
@@ -87,10 +87,9 @@ const req = https.request(options, (res) => {
         process.exit(1);
       }
 
-      // 1. STRIP MARKDOWN BACKTICKS (```html ... ```)
+      // 1. ROBUST MARKDOWN STRIPPING
       content = content
-        .replace(/^```(html)?/i, '')
-        .replace(/```$/i, '')
+        .replace(/```(?:html)?\s*([\s\S]*?)\s*```/gi, '$1')
         .trim();
 
       // 2. READ MASTER TEMPLATE (blog-post.html)
@@ -113,13 +112,14 @@ const req = https.request(options, (res) => {
       const filename = `blog/post-${dateStr}-${slug}.html`;
 
       // 3. INJECT CONTENT INTO TEMPLATE PLACEHOLDERS
+      // Ensure your blog-post.html uses these exact placeholders:
+      // {{TITLE}}, {{CAT}}, {{EMOJI}}, {{DATE}}, {{CONTENT}}
       let finalHtml = htmlTemplate
-        .replace(/<title>.*?<\/title>/gi, `<title>${topic.title} — LifePera</title>`)
-        .replace(/<div class="post-cat">.*?<\/div>/gi, `<div class="post-cat">${topic.cat}</div>`)
-        .replace(/<h1>.*?<\/h1>/gi, `<h1>${topic.title}</h1>`)
-        .replace(/<div class="meta">.*?<\/div>/gi, `<div class="meta">By Zulker Nine · ${niceDate} · LifePera Editorial</div>`)
-        .replace(/<div class="hero-icon-box">.*?<\/div>/gi, `<div class="hero-icon-box">${topic.emoji}</div>`)
-        .replace(/<div class="body">[\s\S]*?<\/div>/gi, `<div class="body">\n${content}\n</div>`);
+        .replace(/{{TITLE}}/g, topic.title)
+        .replace(/{{CAT}}/g, topic.cat)
+        .replace(/{{EMOJI}}/g, topic.emoji)
+        .replace(/{{DATE}}/g, niceDate)
+        .replace(/{{CONTENT}}/g, content);
 
       // Ensure output directory exists
       if (!fs.existsSync('blog')) fs.mkdirSync('blog');
@@ -132,7 +132,9 @@ const req = https.request(options, (res) => {
       const blogIndexFile = 'blog-index.json';
       let blogPosts = [];
       if (fs.existsSync(blogIndexFile)) {
-        blogPosts = JSON.parse(fs.readFileSync(blogIndexFile, 'utf8'));
+        try {
+          blogPosts = JSON.parse(fs.readFileSync(blogIndexFile, 'utf8'));
+        } catch (e) {}
       }
       blogPosts.unshift({
         title: topic.title,
