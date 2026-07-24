@@ -112,84 +112,344 @@ const req = https.request(options, (res) => {
 <meta property="og:description" content="Read the full guide on LifePera — free tools for real life decisions."/>
 <meta property="og:url" content="https://lifepera.com/${filename}"/>
 <title>${topic.title} — LifePera</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#07080b;--surface:#0d0f14;--card:#121520;--border:#1c2030;--border2:#242b3d;--gold:#c8a84b;--gold2:#e8cc80;--teal:#00c2a8;--rose:#e8547a;--text:#eef0f8;--text2:#b0b8cc;--muted:#626880;--col:1180px;--article:720px}
-html{font-size:16px}body{background:var(--bg);color:var(--text);font-family:'Lora',serif;line-height:1.7;-webkit-font-smoothing:antialiased}
-::selection{background:var(--gold);color:#000}a{text-decoration:none;color:inherit}
-nav{position:sticky;top:0;z-index:500;background:rgba(7,8,11,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:var(--col);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px}
-.logo{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:900;letter-spacing:-.03em}.logo-dot{color:var(--gold)}
-.nav-btn{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;padding:8px 20px;border-radius:6px;border:none;cursor:pointer}
-.wrap{max-width:var(--article);margin:0 auto;padding:3rem 2rem}
-.breadcrumb{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin-bottom:2rem}
-.post-cat{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem}
-h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:1rem}
-.meta{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);padding-bottom:1.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
-.hero-img{aspect-ratio:16/7;background:linear-gradient(135deg,#1a1208,#2d1f0a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:4rem;margin-bottom:2.5rem}
-.ad-slot{background:var(--surface);border:1px dashed var(--border2);height:90px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border-radius:8px;margin:1.5rem 0}
-.body p{font-size:1rem;color:var(--text2);line-height:1.8;margin-bottom:1.3rem}
-.body p:first-child{font-size:1.08rem;color:var(--text)}
-.body h2{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:900;letter-spacing:-.02em;margin:2.5rem 0 1rem;color:var(--text)}
-.body strong{color:var(--text);font-weight:600}
-.body ul,.body ol{margin:1rem 0 1.5rem 1.5rem;color:var(--text2)}
-.body li{margin-bottom:.5rem;line-height:1.65}
-.tool-cta{background:linear-gradient(135deg,var(--card),#161a24);border:1px solid rgba(200,168,75,.25);border-radius:12px;padding:1.8rem;margin:2rem 0;display:flex;gap:1.2rem;align-items:center}
-.tc-icon{font-size:2rem;flex-shrink:0}
-.tc-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:.3rem}
-.tc-desc{font-size:.85rem;color:var(--muted);margin-bottom:.8rem}
-.tc-btn{display:inline-block;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;padding:8px 18px;border-radius:6px}
-.share-row{border-top:1px solid var(--border);margin-top:2.5rem;padding-top:1.5rem}
-.sr-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem}
-.share-btns{display:flex;gap:.6rem;flex-wrap:wrap}
-.share-btn{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:7px 14px;border-radius:6px;border:1px solid var(--border2);cursor:pointer;background:none;color:var(--text2);transition:all .2s}
-.share-btn.tw{border-color:#1DA1F2;color:#1DA1F2}.share-btn.fb{border-color:#4267B2;color:#4267B2}.share-btn.wa{border-color:#25D366;color:#25D366}
-footer{background:var(--surface);border-top:1px solid var(--border);margin-top:3rem}
-.footer-bottom{max-width:var(--col);margin:0 auto;padding:1.5rem 2rem;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
-.footer-bottom a{color:var(--muted)}.footer-bottom a:hover{color:var(--gold)}
-@media(max-width:768px){.wrap{padding:2rem 1.5rem}.tool-cta{flex-direction:column}}
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --text-main: #202124;
+  --text-muted: #5f6368;
+  --primary-blue: #1a73e8;
+  --primary-hover: #1557b0;
+  --border: #dadce0;
+  --radius: 12px;
+  --max-width: 1200px;
+  --article-width: 760px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: var(--primary-blue); transition: color 0.2s; }
+a:hover { color: var(--primary-hover); }
+
+/* Header & Nav */
+header {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+.nav-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo span { color: var(--primary-blue); }
+.logo-badge {
+  background: #e8f0fe;
+  color: var(--primary-blue);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.nav-links { display: flex; gap: 2rem; font-weight: 600; font-size: 0.95rem; align-items: center; }
+.nav-links a { color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+.btn-nav {
+  background: var(--primary-blue);
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+}
+.btn-nav:hover { background: var(--primary-hover); }
+
+/* Article Layout */
+.wrap { max-width: var(--article-width); margin: 2.5rem auto; padding: 0 1.5rem; }
+.breadcrumb { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+.post-cat {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-blue);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+h1 {
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+.meta {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+.hero-icon-box {
+  background: linear-gradient(135deg, #e8f0fe 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  margin-bottom: 2rem;
+}
+.ad-slot-leaderboard {
+  background: #f1f3f4;
+  border: 1px dashed #bdc1c6;
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-radius: var(--radius);
+  margin: 2rem 0;
+}
+
+/* Article Content Body */
+.body p { font-size: 1.05rem; color: var(--text-main); line-height: 1.8; margin-bottom: 1.4rem; }
+.body p:first-child { font-size: 1.12rem; color: #1a1d20; font-weight: 400; }
+.body h2 { font-size: 1.5rem; font-weight: 800; margin: 2.5rem 0 1rem; color: var(--text-main); letter-spacing: -0.3px; }
+.body strong { color: #1a1d20; font-weight: 700; }
+.body ul, .body ol { margin: 1rem 0 1.5rem 1.5rem; color: var(--text-main); }
+.body li { margin-bottom: 0.6rem; line-height: 1.7; }
+
+/* Call to Action Box */
+.tool-cta {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary-blue);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin: 2.5rem 0;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+.tc-icon { font-size: 2.5rem; flex-shrink: 0; }
+.tc-title { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem; }
+.tc-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+
+/* Share Row */
+.share-row { border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; }
+.sr-label { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 1rem; }
+.share-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.share-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  background: #fff;
+  color: var(--text-main);
+  transition: all 0.2s;
+}
+.share-btn:hover { border-color: #bdc1c6; background: #f8f9fa; }
+.share-btn.tw { border-color: #1DA1F2; color: #1DA1F2; }
+.share-btn.fb { border-color: #4267B2; color: #4267B2; }
+.share-btn.wa { border-color: #25D366; color: #25D366; }
+
+/* Footer */
+footer {
+  background: #111827;
+  color: #9ca3af;
+  border-top: 1px solid #1f2937;
+  padding: 4rem 1.5rem 2rem;
+  margin-top: 4rem;
+}
+.footer-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+}
+.footer-brand .logo { color: #ffffff !important; margin-bottom: 1rem; }
+.footer-brand p { font-size: 0.9rem; color: #9ca3af; line-height: 1.6; max-width: 320px; margin-bottom: 1.5rem; }
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #d1d5db;
+  font-weight: 500;
+}
+.footer-col h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+}
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col li { margin-bottom: 0.7rem; }
+.footer-col a { color: #9ca3af !important; font-size: 0.9rem; transition: color 0.2s; }
+.footer-col a:hover { color: #ffffff !important; }
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 3rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid #1f2937;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+.footer-disclaimer {
+  max-width: var(--max-width);
+  margin: 1.5rem auto 0;
+  font-size: 0.78rem;
+  color: #4b5563;
+  line-height: 1.5;
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .footer-container { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .tool-cta { flex-direction: column; text-align: center; }
+}
 </style>
 </head>
 <body>
-<nav><div class="nav-inner">
-  <a class="logo" href="/index.html">Life<span class="logo-dot">Pera</span></a>
-  <a class="nav-btn" href="/tools.html">All Tools</a>
-</div></nav>
+
+<header>
+  <div class="nav-container">
+    <a href="/index.html" class="logo">
+      Life<span>Pera</span>
+      <span class="logo-badge">Pro</span>
+    </a>
+    <div class="nav-links">
+      <a href="/tools.html">Tools</a>
+      <a href="/blog.html" class="active">Blog</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
 <div class="wrap">
   <div class="breadcrumb"><a href="/index.html">Home</a> — <a href="/blog.html">Blog</a> — ${topic.cat}</div>
   <div class="post-cat">${topic.cat}</div>
   <h1>${topic.title}</h1>
-  <div class="meta">Zulker Nine • ${niceDate} • LifePera Blog</div>
-  <div class="hero-img">${topic.emoji}</div>
-  <div class="ad-slot">Advertisement • 728×90</div>
+  <div class="meta">By Zulker Nine · ${niceDate} · LifePera Editorial</div>
+  <div class="hero-icon-box">${topic.emoji}</div>
+  <div class="ad-slot-leaderboard">[ AdSense Responsive Leaderboard ]</div>
+  
   <div class="body">
 ${content}
   </div>
+
   <div class="tool-cta">
     <div class="tc-icon">🛠️</div>
     <div>
       <div class="tc-title">Try Our Free Tools on LifePera</div>
-      <div class="tc-desc">36 free tools covering travel, relationships, career, culture, psychology and finance. No signup required.</div>
-      <a class="tc-btn" href="/tools.html">Explore All Free Tools →</a>
+      <div class="tc-desc">36 free data-driven tools covering travel, relationships, career, culture, psychology, and finance. No signup required.</div>
+      <a class="btn-nav" href="/tools.html">Explore All Free Tools →</a>
     </div>
   </div>
+
   <div class="share-row">
-    <div class="sr-label">Share this post</div>
+    <div class="sr-label">Share this article</div>
     <div class="share-btns">
       <button class="share-btn tw" onclick="window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('${topic.title}\\nhttps://lifepera.com/${filename}'),'_blank')">𝕏 Tweet</button>
       <button class="share-btn fb" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('https://lifepera.com/${filename}'),'_blank')">Facebook</button>
       <button class="share-btn wa" onclick="window.open('https://wa.me/?text='+encodeURIComponent('${topic.title}\\nhttps://lifepera.com/${filename}'),'_blank')">WhatsApp</button>
-      <button class="share-btn" onclick="navigator.clipboard.writeText('https://lifepera.com/${filename}').then(()=>alert('Copied!'))">📋 Copy</button>
+      <button class="share-btn" onclick="navigator.clipboard.writeText('https://lifepera.com/${filename}').then(()=>alert('Copied link!'))">📋 Copy Link</button>
     </div>
   </div>
 </div>
-<footer><div class="footer-bottom">
-  <span>© 2026 LifePera • lifepera.com</span>
-  <span><a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="/blog.html">Blog</a></span>
-</div></footer>
-</body></html>`;
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="/index.html" class="logo" style="color:#ffffff;">Life<span>Pera</span></a>
+      <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
+      <div class="trust-badge">
+        <span>🛡️</span> 100% Free • Privacy Protected • Data-Backed
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Popular Tools</h4>
+      <ul>
+        <li><a href="/tool-how-rich.html">"How Rich Am I?" Comparator</a></li>
+        <li><a href="/tool-visa.html">Visa-Free Travel Checker</a></li>
+        <li><a href="/tool-quit-job.html">Should I Quit My Job? Matrix</a></li>
+        <li><a href="/tool-underpaid.html">Am I Underpaid? Analyzer</a></li>
+        <li><a href="/tool-attachment.html">Attachment Style Quiz</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company & Trust</h4>
+      <ul>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/about.html#editorial">Editorial & Fact-Checking</a></li>
+        <li><a href="/blog.html">Editorial Blog</a></li>
+        <li><a href="/contact.html">Contact & Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal & Standards</h4>
+      <ul>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/sitemap.xml">Sitemap.xml</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-disclaimer">
+    Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 LifePera. All rights reserved.</div>
+    <div>Built for curious minds worldwide.</div>
+  </div>
+</footer>
+
+</body>
+</html>`;
 
       fs.writeFileSync(filename, html);
       console.log(`✅ Generated: ${filename}`);
