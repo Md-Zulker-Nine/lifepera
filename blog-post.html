@@ -1,258 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="10 cultural mistakes tourists make in Japan and how to avoid them — from tipping etiquette to chopstick rules."/>
-<title>10 Cultural Mistakes Tourists Make in Japan – LifePera Blog</title>
-<style>
-/* Paste universal CSS here */
-:root { --bg: #f8f9fa; --surface: #ffffff; --text-main: #202124; --text-muted: #5f6368; --primary-blue: #1a73e8; --primary-hover: #1557b0; --border: #dadce0; --radius: 8px; --max-width: 1200px; }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background-color: var(--bg); color: var(--text-main); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-a { text-decoration: none; color: var(--primary-blue); transition: color 0.2s; }
-a:hover { color: var(--primary-hover); }
-header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-.nav-container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; height: 70px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
-.logo span { color: var(--primary-blue); }
-.nav-links { display: flex; gap: 1.5rem; font-weight: 500; font-size: 0.95rem; }
-.nav-links a { color: var(--text-muted); }
-.nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
-.btn-nav { background: var(--primary-blue); color: #fff !important; padding: 8px 16px; border-radius: 4px; font-weight: 600; }
-.btn-nav:hover { background: var(--primary-hover); }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read full guides and articles on LifePera — free tools for real life decisions.">
+  <title>Article Title — LifePera</title>
 
-/* Article Layout */
-.container { max-width: var(--max-width); margin: 2rem auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1fr 320px; gap: 3rem; }
-.article-header { margin-bottom: 2rem; }
-.post-cat { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--primary-blue); margin-bottom: 0.5rem; letter-spacing: 0.5px; }
-.article-title { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--text-main); }
-.article-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; color: var(--text-muted); padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-.author-avatar { width: 32px; height: 32px; background: #e8eaed; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--text-main); }
-.article-hero { width: 100%; height: 300px; background: #e8eaed; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 4rem; margin-bottom: 2.5rem; }
+  <style>
+    /* ==========================================================================
+       1. CORE RESET & VARIABLES
+       ========================================================================== */
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --text-main: #202124;
+      --text-muted: #5f6368;
+      --primary-blue: #1a73e8;
+      --primary-hover: #1557b0;
+      --border: #dadce0;
+      --radius: 12px;
+      --max-width: 1200px;
+      --article-width: 820px;
+    }
 
-/* Article Body */
-.article-body { font-size: 1.1rem; color: var(--text-main); line-height: 1.8; }
-.article-body h2 { font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-.article-body p { margin-bottom: 1.5rem; }
-.article-body strong { font-weight: 700; }
-.callout { background: #f1f3f4; border-left: 4px solid var(--primary-blue); padding: 1.2rem 1.5rem; margin: 1.5rem 0; font-size: 1rem; border-radius: 0 8px 8px 0; }
-.tool-cta { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Sidebar & Ads */
-.ad-slot-rect { background: #e8eaed; border: 1px dashed #bdc1c6; display: flex; align-items: center; justify-content: center; height: 250px; color: var(--text-muted); font-size: 0.85rem; border-radius: var(--radius); margin-bottom: 2rem; }
-.sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-.widget { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
-.widget-title { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
-.category-list { list-style: none; }
-.category-list li { margin-bottom: 0.8rem; border-bottom: 1px solid var(--bg); padding-bottom: 0.8rem; }
-.category-list a { color: var(--text-main); font-weight: 500; font-size: 0.95rem; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 1.5rem; margin-top: 3rem; }
-.footer-container { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; }
-.footer-about p { font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem; max-width: 300px; }
-.footer-links h4 { font-size: 1rem; margin-bottom: 1rem; }
-.footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 0.5rem; }
-.footer-links a { color: var(--text-muted); font-size: 0.9rem; }
-.footer-bottom { max-width: var(--max-width); margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+    a {
+      text-decoration: none;
+      color: var(--primary-blue);
+      transition: color 0.2s ease;
+    }
 
-@media (max-width: 900px) { .container { grid-template-columns: 1fr; } .footer-container { grid-template-columns: 1fr; } }
+    a:hover {
+      color: var(--primary-hover);
+    }
 
-/* Premium Dark Footer Styling */
-footer {
-  background: #111827 !important;
-  color: #9ca3af !important;
-  border-top: 1px solid #1f2937 !important;
-  padding: 4rem 1.5rem 2rem !important;
-  margin-top: 4rem !important;
-}
-.footer-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 2.5rem;
-}
-.footer-brand .logo { color: #ffffff !important; margin-bottom: 1rem; }
-.footer-brand p { font-size: 0.9rem; color: #9ca3af; line-height: 1.6; max-width: 320px; margin-bottom: 1.5rem; }
-.trust-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #1f2937;
-  border: 1px solid #374151;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  color: #d1d5db;
-  font-weight: 500;
-}
-.footer-col h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff !important;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.5px;
-}
-.footer-col ul { list-style: none; padding: 0; margin: 0; }
-.footer-col li { margin-bottom: 0.7rem; }
-.footer-col a { color: #9ca3af !important; font-size: 0.9rem; transition: color 0.2s; }
-.footer-col a:hover { color: #ffffff !important; }
-.footer-bottom {
-  max-width: var(--max-width);
-  margin: 3rem auto 0;
-  padding-top: 2rem;
-  border-top: 1px solid #1f2937;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  color: #6b7280;
-}
-.footer-disclaimer {
-  max-width: var(--max-width);
-  margin: 1.5rem auto 0;
-  font-size: 0.78rem;
-  color: #4b5563;
-  line-height: 1.5;
-  text-align: center;
-}
-.logo-badge {
-  background: #e8f0fe;
-  color: var(--primary-blue);
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-@media (max-width: 900px) {
-  .footer-container { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-}
+    /* ==========================================================================
+       2. HEADER & NAVIGATION
+       ========================================================================== */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
 
-</style>
+    .nav-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      color: var(--primary-blue);
+    }
+
+    .logo-badge {
+      background: #e8f0fe;
+      color: var(--primary-blue);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary-blue);
+    }
+
+    /* ==========================================================================
+       3. ARTICLE WRAPPER & CARD
+       ========================================================================== */
+    .wrap {
+      max-width: var(--article-width);
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .breadcrumb {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .post-cat {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      letter-spacing: 0.8px;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .hero-icon-box {
+      background: #f1f3f4;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .ad-slot-leaderboard {
+      background: #f8f9fa;
+      border: 1px dashed #bdc1c6;
+      text-align: center;
+      padding: 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-radius: var(--radius);
+      margin: 2rem 0;
+    }
+
+    /* Article Content Typography */
+    .body p {
+      font-size: 1.05rem;
+      color: #3c4043;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .body p:first-child {
+      font-size: 1.12rem;
+      color: var(--text-main);
+    }
+
+    .body h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 2.5rem 0 1rem;
+      color: var(--text-main);
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+    }
+
+    .body strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .body ul, .body ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+      color: #3c4043;
+    }
+
+    .body li {
+      margin-bottom: 0.6rem;
+      line-height: 1.7;
+      font-size: 1.02rem;
+    }
+
+    /* Call to Action Box */
+    .tool-cta {
+      background: #e8f0fe;
+      border: 1px solid #d2e3fc;
+      border-left: 4px solid var(--primary-blue);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin: 2.5rem 0 1rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .tc-icon { font-size: 2.2rem; flex-shrink: 0; }
+    .tc-title { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem; }
+    .tc-desc { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+    
+    .btn-cta {
+      background: var(--primary-blue);
+      color: #ffffff !important;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .btn-cta:hover { background: var(--primary-hover); }
+
+    /* Share Section */
+    .share-row {
+      border-top: 1px solid var(--border);
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+    }
+
+    .sr-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .share-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    
+    .share-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      background: #fff;
+      color: var(--text-main);
+      transition: all 0.2s;
+    }
+
+    .share-btn:hover { border-color: #bdc1c6; background: #f8f9fa; }
+
+    /* ==========================================================================
+       4. FOOTER
+       ========================================================================== */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      border-top: 1px solid #1f2937;
+      padding: 4rem 1.5rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand .logo {
+      color: #ffffff !important;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      line-height: 1.6;
+      max-width: 320px;
+      margin-bottom: 1.5rem;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1f2937;
+      border: 1px solid #374151;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #d1d5db;
+      font-weight: 500;
+    }
+
+    .footer-col h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.7rem; }
+    .footer-col a { color: #9ca3af; font-size: 0.88rem; }
+    .footer-col a:hover { color: #ffffff; }
+
+    .footer-bottom {
+      max-width: var(--max-width);
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #1f2937;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 900px) {
+      .post-card { padding: 1.75rem 1.25rem; }
+      .footer-container { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+      .tool-cta { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="nav-container">
-    <a href="index.html" class="logo">
-      Life<span>Pera</span>
-      <span class="logo-badge">Pro</span>
-    </a>
-    <div class="nav-links">
-      <a href="tools.html">Tools</a>
-      <a href="blog.html">Blog</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="/index.html" class="logo">
+        Life<span>Pera</span>
+        <span class="logo-badge">Pro</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/tools.html">Tools</a>
+        <a href="/blog.html" class="active">Blog</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="container">
-  <article>
-    <header class="article-header">
-      <div class="post-cat">Culture · Travel</div>
-      <h1 class="article-title">10 Cultural Mistakes Tourists Make in Japan (And How to Avoid Every One)</h1>
-      <div class="article-meta">
-        <div class="author-avatar">ZN</div>
-        <span>Zulker Nine</span>
-        <span>·</span>
-        <span>June 10, 2026</span>
-        <span>·</span>
-        <span>8 min read</span>
-      </div>
-    </header>
-
-    <div class="article-hero">🇯🇵</div>
-
-    <div class="article-body">
-      <p>Japan is one of the most rewarding travel destinations on Earth — but also one where cultural missteps happen constantly, often without the traveler even realizing it. Japanese culture values harmony, respect, and social awareness at a level that most Western visitors simply aren't prepared for.</p>
+  <!-- ARTICLE PAGE WRAPPER -->
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/index.html">Home</a> — <a href="/blog.html">Blog</a> — Sample Category</div>
+    
+    <article class="post-card">
+      <div class="post-cat">Culture & Travel</div>
+      <h1>Sample Article Heading Goes Here</h1>
+      <div class="meta">By Zulker Nine · July 24, 2026 · LifePera Editorial</div>
+      <div class="hero-icon-box">🌍</div>
+      <div class="ad-slot-leaderboard">[ AdSense Responsive Leaderboard ]</div>
       
-      <h2>1. Tipping Anyone, Anywhere</h2>
-      <p>This is perhaps the single most important rule. <strong>Do not tip in Japan.</strong> Not at restaurants, not at hotels, not in taxis, not at ryokan (traditional inns), not anywhere. Tipping is considered rude — it implies the person isn't being paid enough and can cause genuine embarrassment.</p>
-      <div class="callout"><strong>What to do instead:</strong> Express gratitude verbally. "Arigatou gozaimasu" said sincerely goes far further than any tip ever could.</div>
-
-      <h2>2. Wearing Shoes Inside</h2>
-      <p>Japan maintains a strict separation between outside (dirty) and inside (clean) spaces. <strong>Always remove your shoes</strong> when entering a home, many traditional restaurants, ryokan, some temples, and even certain shops.</p>
+      <div class="body">
+        <p>This is a sample introduction paragraph matching the typography and line height of your generated posts on LifePera.</p>
+        <h2>Key Takeaways for Travelers</h2>
+        <p>Your blog content will render smoothly here with optimized spacing, font colors, and list styling suitable for Google AdSense compliance.</p>
+      </div>
 
       <div class="tool-cta">
-        <h3 style="margin-bottom: 0.5rem;">Check Cultural Rules for 60+ Countries</h3>
-        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Use our free Cultural Faux Pas Checker before your next trip.</p>
-        <a class="btn-nav" href="tool-cultural.html">Check Before You Travel</a>
+        <div class="tc-icon">🛠️</div>
+        <div>
+          <div class="tc-title">Try Our Free Tools on LifePera</div>
+          <div class="tc-desc">36 free data-driven tools covering travel, relationships, career, culture, psychology, and finance. No signup required.</div>
+          <a class="btn-cta" href="/tools.html">Explore All Free Tools →</a>
+        </div>
       </div>
 
-      <h2>3. Chopstick Mistakes at the Table</h2>
-      <p>Two chopstick behaviors are particularly serious: <strong>sticking chopsticks upright in a bowl of rice</strong> and <strong>passing food chopstick-to-chopstick</strong>. Both mimic funeral rituals associated with Buddhist cremation rites.</p>
-    </div>
-  </article>
+      <div class="share-row">
+        <div class="sr-label">Share this article</div>
+        <div class="share-btns">
+          <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied!'))">📋 Copy Link</button>
+        </div>
+      </div>
+    </article>
+  </div>
 
-  <aside class="sidebar">
-    <div class="ad-slot-rect">[ AdSense 300x250 ]</div>
-    
-    <div class="widget">
-      <div class="widget-title">Related Posts</div>
-      <ul class="category-list">
-        <li><a href="blog.html" style="font-weight: 400;">Tap Water Safety Around the World</a></li>
-        <li><a href="blog.html" style="font-weight: 400;">The Most Powerful Passports in 2026</a></li>
-        <li><a href="blog.html" style="font-weight: 400;">Why Your Name Means Something Different Abroad</a></li>
-      </ul>
-    </div>
-  </aside>
-</div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="/index.html" class="logo">Life<span>Pera</span></a>
+        <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
+        <div class="trust-badge">
+          <span>🛡️</span> 100% Free • Privacy Protected
+        </div>
+      </div>
 
-<footer>
-  <div class="footer-container">
-    <div class="footer-brand">
-      <a href="index.html" class="logo" style="color:#ffffff;">Life<span>Pera</span></a>
-      <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-      <div class="trust-badge">
-        <span>🛡️</span> 100% Free • Privacy Protected • Data-Backed
+      <div class="footer-col">
+        <h4>Popular Tools</h4>
+        <ul>
+          <li><a href="/tool-how-rich.html">Income Comparator</a></li>
+          <li><a href="/tool-visa.html">Visa Checker</a></li>
+          <li><a href="/tool-quit-job.html">Job Decision Matrix</a></li>
+          <li><a href="/tool-underpaid.html">Salary Analyzer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about.html">About Us</a></li>
+          <li><a href="/blog.html">Editorial Blog</a></li>
+          <li><a href="/contact.html">Contact & Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+        </ul>
       </div>
     </div>
 
-    <div class="footer-col">
-      <h4>Popular Tools</h4>
-      <ul>
-        <li><a href="tool-how-rich.html">"How Rich Am I?" Comparator</a></li>
-        <li><a href="tool-visa.html">Visa-Free Travel Checker</a></li>
-        <li><a href="tool-quit-job.html">Should I Quit My Job? Matrix</a></li>
-        <li><a href="tool-underpaid.html">Am I Underpaid? Analyzer</a></li>
-        <li><a href="tool-attachment.html">Attachment Style Quiz</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <div>© 2026 LifePera. All rights reserved.</div>
+      <div>Built for curious minds worldwide.</div>
     </div>
-
-    <div class="footer-col">
-      <h4>Company & Trust</h4>
-      <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="about.html#editorial">Editorial Policy</a></li>
-        <li><a href="blog.html">Editorial Blog</a></li>
-        <li><a href="contact.html">Contact & Support</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Legal & Standards</h4>
-      <ul>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="terms.html">Terms of Service</a></li>
-        <li><a href="sitemap.xml">Sitemap.xml</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-disclaimer">
-    Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.
-  </div>
-
-  <div class="footer-bottom">
-    <div>© 2026 LifePera. All rights reserved.</div>
-    <div>Built for curious minds worldwide.</div>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
