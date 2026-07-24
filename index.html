@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EYST6H5RWZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,9 +16,6 @@
   <title>LifePera — Free Tools for Real Life Decisions</title>
   
   <style>
-    /* ==========================================================================
-       1. CORE RESET & VARIABLES
-       ========================================================================== */
     :root {
       --bg: #f8f9fa;
       --surface: #ffffff;
@@ -42,30 +39,20 @@
       color: var(--text-main);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
     }
 
     a {
       text-decoration: none;
       color: var(--primary-blue);
-      transition: color 0.2s ease;
     }
 
-    a:hover {
-      color: var(--primary-hover);
-    }
-
-    /* ==========================================================================
-       2. HEADER & NAVIGATION
-       ========================================================================== */
+    /* HEADER - CLEAN LOGO LINK FIXED TO "/" */
     header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: #ffffff;
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
     }
 
     .nav-container {
@@ -82,15 +69,12 @@
       font-size: 1.6rem;
       font-weight: 800;
       color: var(--text-main);
-      letter-spacing: -0.5px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .logo span {
-      color: var(--primary-blue);
-    }
+    .logo span { color: var(--primary-blue); }
 
     .logo-badge {
       background: #e8f0fe;
@@ -99,8 +83,6 @@
       font-weight: 700;
       padding: 2px 8px;
       border-radius: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
     .nav-links {
@@ -108,70 +90,96 @@
       gap: 2rem;
       font-weight: 600;
       font-size: 0.95rem;
-      align-items: center;
     }
 
-    .nav-links a {
-      color: var(--text-muted);
-    }
+    .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
 
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--primary-blue);
-    }
-
-    /* ==========================================================================
-       3. HERO SECTION
-       ========================================================================== */
+    /* HERO & SEARCH BAR */
     .hero {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
-      padding: 4.5rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       text-align: center;
     }
 
     .hero-container {
-      max-width: 800px;
+      max-width: 750px;
       margin: 0 auto;
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-size: 2.5rem;
       font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.2;
-      color: var(--text-main);
-      margin-bottom: 1.2rem;
+      letter-spacing: -0.8px;
+      margin-bottom: 1rem;
     }
 
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    /* ==========================================================================
-       4. MAIN LAYOUT GRID & ALIGNMENT
-       ========================================================================== */
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      font-size: 0.95rem;
+      outline: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary-blue);
+    }
+
+    /* MAIN CONTENT AREA */
     .content-wrapper {
       max-width: var(--max-width);
-      margin: 3rem auto;
+      margin: 2.5rem auto;
       padding: 0 1.5rem;
     }
 
-    .section-title {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--text-main);
+    /* CATEGORY FILTER TABS FOR ADSENSE ENGAGEMENT */
+    .filter-tabs {
+      display: flex;
+      gap: 0.75rem;
       margin-bottom: 1.5rem;
-      letter-spacing: -0.4px;
+      flex-wrap: wrap;
     }
 
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary-blue);
+      color: #ffffff;
+      border-color: var(--primary-blue);
+    }
+
+    /* GRID & SIDEBAR ALIGNMENT */
     .layout-container {
       display: grid;
-      grid-template-columns: 1fr 340px; /* Left content flexes, Right sidebar fixed 340px */
+      grid-template-columns: 1fr 340px;
       gap: 2rem;
-      align-items: start; /* CRITICAL: Ensures top cards align horizontally */
+      align-items: start;
     }
 
     .tools-grid {
@@ -186,67 +194,51 @@
       gap: 1.5rem;
     }
 
-    /* ==========================================================================
-       5. CARD STYLING
-       ========================================================================== */
+    /* CARDS */
     .card, .sidebar-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.75rem;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .card:hover, .sidebar-card:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-      border-color: #c6c9ce;
     }
 
     .card-icon {
-      font-size: 2.2rem;
+      font-size: 2rem;
       background: #f1f3f4;
-      width: 54px;
-      height: 54px;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 10px;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
     .card h3, .sidebar-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.35;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .card p, .sidebar-card p {
-      font-size: 0.93rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .card-link {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
-      color: var(--primary-blue);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
     }
 
-    /* Sidebar Article Styling */
+    /* SIDEBAR RECENT ARTICLES */
     .sidebar-card h3 {
-      font-size: 1.15rem;
-      padding-bottom: 0.5rem;
       border-bottom: 2px solid #e8f0fe;
+      padding-bottom: 0.5rem;
     }
 
     .article-item {
@@ -254,38 +246,27 @@
       border-bottom: 1px solid #f1f3f4;
     }
 
-    .article-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
+    .article-item:last-child { border-bottom: none; }
 
     .article-title {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
       color: var(--text-main);
-      line-height: 1.4;
       display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .article-title:hover {
-      color: var(--primary-blue);
+      margin-bottom: 0.2rem;
     }
 
     .article-meta {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
-    /* ==========================================================================
-       6. FOOTER
-       ========================================================================== */
+    /* FOOTER */
     footer {
       background: #111827;
       color: #9ca3af;
-      border-top: 1px solid #1f2937;
-      padding: 4rem 1.5rem 2rem;
-      margin-top: 5rem;
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: 4rem;
     }
 
     .footer-container {
@@ -293,93 +274,47 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 2.5rem;
+      gap: 2rem;
     }
 
-    .footer-brand .logo {
-      color: #ffffff !important;
-      margin-bottom: 1rem;
-    }
+    .footer-brand .logo { color: #ffffff !important; margin-bottom: 0.8rem; }
+    .footer-brand p { font-size: 0.85rem; max-width: 300px; }
 
-    .footer-brand p {
-      font-size: 0.9rem;
-      color: #9ca3af;
-      line-height: 1.6;
-      max-width: 320px;
-      margin-bottom: 1.5rem;
-    }
-
-    .trust-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #1f2937;
-      border: 1px solid #374151;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      color: #d1d5db;
-      font-weight: 500;
-    }
-
-    .footer-col h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.5px;
-    }
-
+    .footer-col h4 { color: #ffffff; margin-bottom: 1rem; font-size: 0.9rem; }
     .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 0.7rem; }
-    .footer-col a { color: #9ca3af; font-size: 0.88rem; }
-    .footer-col a:hover { color: #ffffff; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a { color: #9ca3af; font-size: 0.85rem; }
 
     .footer-bottom {
       max-width: var(--max-width);
-      margin: 3rem auto 0;
-      padding-top: 2rem;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
       border-top: 1px solid #1f2937;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
-      color: #6b7280;
+      font-size: 0.8rem;
     }
 
-    /* Responsive Breakpoints */
     @media (max-width: 992px) {
-      .layout-container {
-        grid-template-columns: 1fr;
-      }
+      .layout-container { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 640px) {
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-      .footer-container {
-        grid-template-columns: 1fr;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
+      .tools-grid { grid-template-columns: 1fr; }
+      .footer-container { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER NAVIGATION -->
+  <!-- HEADER NAVIGATION (FIXED CLEAN "/" ROOT LOGO LINK) -->
   <header>
     <div class="nav-container">
-      <a href="/index.html" class="logo">
+      <a href="/" class="logo">
         Life<span>Pera</span>
         <span class="logo-badge">Pro</span>
       </a>
       <nav class="nav-links">
-        <a href="/tools.html" class="active">Tools</a>
+        <a href="/" class="active">Tools</a>
         <a href="/blog.html">Blog</a>
         <a href="/about.html">About</a>
         <a href="/contact.html">Contact</a>
@@ -391,72 +326,119 @@
   <section class="hero">
     <div class="hero-container">
       <h1>Free Tools for Real Life Decisions</h1>
-      <p>Data-backed calculators, mobility tools, and interactive decision frameworks designed to eliminate guesswork from travel, career, finance, and relationships.</p>
+      <p>Data-backed calculators, mobility tools, and interactive decision frameworks.</p>
+      <div class="search-box">
+        <input type="text" id="tool-search" placeholder="Search 30+ calculators and tools..." onkeyup="filterTools()">
+      </div>
     </div>
   </section>
 
-  <!-- CONTENT SECTION WITH TOP-ALIGNED GRID -->
+  <!-- MAIN CONTENT -->
   <div class="content-wrapper">
-    <h2 class="section-title">Popular Tools</h2>
+    
+    <!-- CATEGORY FILTER BUTTONS FOR ADSENSE COMPLIANCE -->
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterCategory('all', this)">All Tools</button>
+      <button class="filter-btn" onclick="filterCategory('finance', this)">Finance</button>
+      <button class="filter-btn" onclick="filterCategory('career', this)">Career</button>
+      <button class="filter-btn" onclick="filterCategory('travel', this)">Travel</button>
+      <button class="filter-btn" onclick="filterCategory('growth', this)">Self Growth</button>
+    </div>
 
     <div class="layout-container">
       
-      <!-- LEFT: TOOLS GRID -->
-      <main class="tools-grid">
+      <!-- LEFT: DYNAMIC 8+ TOOL GRID -->
+      <main class="tools-grid" id="tools-container">
         
-        <div class="card">
+        <!-- Pre-rendered fallbacks for instant SEO indexing -->
+        <div class="card" data-cat="finance" data-title="how rich am i global comparator">
           <div>
             <div class="card-icon">💰</div>
             <h3>"How Rich Am I?" Global Comparator</h3>
-            <p>Compare your personal income against global percentile benchmarks and cost-of-living metrics.</p>
+            <p>Compare your personal income against global percentile benchmarks.</p>
           </div>
           <a href="/tool-how-rich.html" class="card-link">Use Calculator →</a>
         </div>
 
-        <div class="card">
+        <div class="card" data-cat="travel" data-title="visa-free travel explorer">
           <div>
             <div class="card-icon">✈️</div>
             <h3>Visa-Free Travel Explorer</h3>
-            <p>Instant passport mobility tool showing visa requirements and border rules for worldwide destinations.</p>
+            <p>Instant passport mobility tool showing visa requirements worldwide.</p>
           </div>
           <a href="/tool-visa.html" class="card-link">Check Passports →</a>
         </div>
 
-        <div class="card">
+        <div class="card" data-cat="career" data-title="should i quit my job matrix">
           <div>
             <div class="card-icon">💼</div>
             <h3>"Should I Quit My Job?" Matrix</h3>
-            <p>A structured 10-point evaluation scoring framework designed to help you make career moves with confidence.</p>
+            <p>A structured 10-point scoring framework for career moves.</p>
           </div>
           <a href="/tool-quit-job.html" class="card-link">Evaluate Now →</a>
         </div>
 
-        <div class="card">
+        <div class="card" data-cat="career" data-title="am i underpaid compensation analyzer">
           <div>
             <div class="card-icon">📈</div>
             <h3>Am I Underpaid? Compensation Analyzer</h3>
-            <p>Benchmark your income against industry metrics and gain actionable salary negotiation insights.</p>
+            <p>Benchmark your salary against global industry metrics.</p>
           </div>
           <a href="/tool-underpaid.html" class="card-link">Analyze Salary →</a>
         </div>
 
+        <div class="card" data-cat="finance" data-title="mobile banking fee calculator">
+          <div>
+            <div class="card-icon">📲</div>
+            <h3>Mobile Banking Fee Calculator</h3>
+            <p>Calculate cash-out and transfer fees for mobile wallet services.</p>
+          </div>
+          <a href="/tool-banking-calculator.html" class="card-link">Calculate Fees →</a>
+        </div>
+
+        <div class="card" data-cat="growth" data-title="attachment style test framework">
+          <div>
+            <div class="card-icon">🧠</div>
+            <h3>Attachment Style Framework</h3>
+            <p>Discover your relationship communication and bonding style.</p>
+          </div>
+          <a href="/tool-attachment-style.html" class="card-link">Take Assessment →</a>
+        </div>
+
+        <div class="card" data-cat="travel" data-title="global cost of living index">
+          <div>
+            <div class="card-icon">🌍</div>
+            <h3>Global Cost of Living Index</h3>
+            <p>Compare housing, food, and transport costs between major cities.</p>
+          </div>
+          <a href="/tool-cost-of-living.html" class="card-link">Compare Cities →</a>
+        </div>
+
+        <div class="card" data-cat="growth" data-title="core values decision builder">
+          <div>
+            <div class="card-icon">✨</div>
+            <h3>Core Values Decision Builder</h3>
+            <p>Clarify your top personal values to make complex decisions easily.</p>
+          </div>
+          <a href="/tool-core-values.html" class="card-link">Start Tool →</a>
+        </div>
+
       </main>
 
-      <!-- RIGHT: SIDEBAR -->
+      <!-- RIGHT SIDEBAR -->
       <aside class="sidebar">
         
         <div class="sidebar-card">
           <h3>About LifePera</h3>
-          <p>LifePera provides free, data-backed tools and analytical decision frameworks designed to remove guesswork from personal finance, travel, career moves, and personal growth.</p>
-          <a href="/about.html" class="card-link">Learn more about our mission →</a>
+          <p>LifePera provides free, data-backed tools and decision frameworks designed to remove guesswork from personal finance, travel, and career choices.</p>
+          <a href="/about.html" class="card-link">Learn more →</a>
         </div>
 
         <div class="sidebar-card">
           <h3>Recent Articles</h3>
           <div id="recent-articles-list">
-            <!-- Dynamic fallbacks will render here automatically to prevent 404s -->
             <div class="article-item">
-              <a href="/blog.html" class="article-title">Browse all published articles</a>
+              <a href="/blog.html" class="article-title">Browse all editorial articles</a>
               <span class="article-meta">LifePera Editorial</span>
             </div>
           </div>
@@ -467,24 +449,20 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (FIXED CLEAN "/" ROOT LOGO LINK) -->
   <footer>
     <div class="footer-container">
       <div class="footer-brand">
-        <a href="/index.html" class="logo">Life<span>Pera</span></a>
-        <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-        <div class="trust-badge">
-          <span>🛡️</span> 100% Free • Privacy Protected
-        </div>
+        <a href="/" class="logo">Life<span>Pera</span></a>
+        <p>Free tools for real-life decisions. Privacy-focused, no signup required.</p>
       </div>
 
       <div class="footer-col">
         <h4>Popular Tools</h4>
         <ul>
-          <li><a href="/tool-how-rich.html">Income Comparator</a></li>
+          <li><a href="/tool-how-rich.html">Income Calculator</a></li>
           <li><a href="/tool-visa.html">Visa Checker</a></li>
           <li><a href="/tool-quit-job.html">Job Decision Matrix</a></li>
-          <li><a href="/tool-underpaid.html">Salary Analyzer</a></li>
         </ul>
       </div>
 
@@ -493,7 +471,7 @@
         <ul>
           <li><a href="/about.html">About Us</a></li>
           <li><a href="/blog.html">Editorial Blog</a></li>
-          <li><a href="/contact.html">Contact & Support</a></li>
+          <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
 
@@ -512,24 +490,67 @@
     </div>
   </footer>
 
-  <!-- SCRIPT TO LOAD REAL POST LINKS FROM BLOG-INDEX.JSON (PREVENTS 404s) -->
+  <!-- DYNAMIC ALL_TOOLS.JSON LOADER & SEARCH ENGINE -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // 1. Load articles for sidebar
       fetch('/blog-index.json')
         .then(res => res.json())
         .then(posts => {
           const container = document.getElementById('recent-articles-list');
           if (!container || !posts || posts.length === 0) return;
-          
-          container.innerHTML = posts.slice(0, 3).map(post => `
-            <div class="article-item">
-              <a href="/${post.file}" class="article-title">${post.title}</a>
-              <span class="article-meta">${post.cat} • ${post.date}</span>
+          container.innerHTML = posts.slice(0, 3).map(post => {
+            const postPath = post.file.startsWith('blog/') ? `/${post.file}` : `/blog/${post.file}`;
+            return `
+              <div class="article-item">
+                <a href="${postPath}" class="article-title">${post.title}</a>
+                <span class="article-meta">${post.cat} • ${post.date}</span>
+              </div>
+            `;
+          }).join('');
+        }).catch(() => {});
+
+      // 2. Load dynamic tools from all_tools.json if available
+      fetch('/all_tools.json')
+        .then(res => res.json())
+        .then(tools => {
+          if (!tools || tools.length === 0) return;
+          const grid = document.getElementById('tools-container');
+          grid.innerHTML = tools.map(t => `
+            <div class="card" data-cat="${t.cat || 'finance'}" data-title="${t.title.toLowerCase()}">
+              <div>
+                <div class="card-icon">${t.icon || '🛠️'}</div>
+                <h3>${t.title}</h3>
+                <p>${t.desc}</p>
+              </div>
+              <a href="${t.link}" class="card-link">${t.action || 'Open Tool →'}</a>
             </div>
           `).join('');
-        })
-        .catch(err => console.log('Index loading fallback active'));
+        }).catch(() => {});
     });
+
+    // Instant Filter Functions for User Engagement
+    function filterTools() {
+      const query = document.getElementById('tool-search').value.toLowerCase();
+      const cards = document.querySelectorAll('.tools-grid .card');
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title') || card.innerText.toLowerCase();
+        card.style.display = title.includes(query) ? 'flex' : 'none';
+      });
+    }
+
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cards = document.querySelectorAll('.tools-grid .card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
   </script>
 
 </body>
