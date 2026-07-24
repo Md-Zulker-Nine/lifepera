@@ -1,607 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EYST6H5RWZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EYST6H5RWZ');
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="LifePera – 36 free premium data-driven tools for real life decisions. Visa checker, salary comparator, personality quizzes, career calculators, and more. No signup required."/>
+<meta name="keywords" content="free online tools, life decisions, personality quiz, salary calculator, visa checker, relationship quiz, career tools"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://lifepera.com/"/>
+<meta property="og:title" content="LifePera – Tools That Actually Matter"/>
+<meta property="og:description" content="36 free, data-driven calculators, checkers, and quizzes for real life decisions. No signups, no fluff."/>
+<meta property="og:url" content="https://lifepera.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="LifePera"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="LifePera – Tools That Actually Matter"/>
+<meta name="twitter:description" content="36 free data-driven tools for real life decisions. No signups required."/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"LifePera","url":"https://lifepera.com/","description":"Free premium tools for real life decisions. Data-backed calculators for travel, relationships, career, psychology, finance, and culture.","author":{"@type":"Person","name":"Zulker Nine"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"1247","bestRating":"5"}}
 </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="LifePera — Free data-backed tools and analytical decision frameworks.">
-  <title>LifePera — Free Tools for Real Life Decisions</title>
-  
-  <style>
-    :root {
-      --bg: #f8f9fa;
-      --surface: #ffffff;
-      --text-main: #202124;
-      --text-muted: #5f6368;
-      --primary-blue: #1a73e8;
-      --primary-hover: #1557b0;
-      --border: #dadce0;
-      --radius: 12px;
-      --max-width: 1200px;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--primary-blue);
-    }
-
-    /* HEADER - CLEAN LOGO LINK FIXED TO "/" */
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .nav-container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      height: 72px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo span { color: var(--primary-blue); }
-
-    .logo-badge {
-      background: #e8f0fe;
-      color: var(--primary-blue);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 12px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a { color: var(--text-muted); }
-    .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
-
-    /* HERO & SEARCH BAR */
-    .hero {
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      padding: 3.5rem 1.5rem;
-      text-align: center;
-    }
-
-    .hero-container {
-      max-width: 750px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .search-box {
-      max-width: 500px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 12px 20px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      font-size: 0.95rem;
-      outline: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    }
-
-    .search-box input:focus {
-      border-color: var(--primary-blue);
-    }
-
-    /* MAIN CONTENT AREA */
-    .content-wrapper {
-      max-width: var(--max-width);
-      margin: 2.5rem auto;
-      padding: 0 1.5rem;
-    }
-
-    /* CATEGORY FILTER TABS FOR ADSENSE ENGAGEMENT */
-    .filter-tabs {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--primary-blue);
-      color: #ffffff;
-      border-color: var(--primary-blue);
-    }
-
-    /* GRID & SIDEBAR ALIGNMENT */
-    .layout-container {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    /* CARDS */
-    .card, .sidebar-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    }
-
-    .card-icon {
-      font-size: 2rem;
-      background: #f1f3f4;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-    }
-
-    .card h3, .sidebar-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .card p, .sidebar-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .card-link {
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
-
-    /* SIDEBAR RECENT ARTICLES */
-    .sidebar-card h3 {
-      border-bottom: 2px solid #e8f0fe;
-      padding-bottom: 0.5rem;
-    }
-
-    .article-item {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid #f1f3f4;
-    }
-
-    .article-item:last-child { border-bottom: none; }
-
-    .article-title {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text-main);
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-
-    .article-meta {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      padding: 3rem 1.5rem 1.5rem;
-      margin-top: 4rem;
-    }
-
-    .footer-container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .footer-brand .logo { color: #ffffff !important; margin-bottom: 0.8rem; }
-    .footer-brand p { font-size: 0.85rem; max-width: 300px; }
-
-    .footer-col h4 { color: #ffffff; margin-bottom: 1rem; font-size: 0.9rem; }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 0.5rem; }
-    .footer-col a { color: #9ca3af; font-size: 0.85rem; }
-
-    .footer-bottom {
-      max-width: var(--max-width);
-      margin: 2rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid #1f2937;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-    }
-
-    @media (max-width: 992px) {
-      .layout-container { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .tools-grid { grid-template-columns: 1fr; }
-      .footer-container { grid-template-columns: 1fr; }
-    }
-  </style>
+<title>LifePera – Tools That Actually Matter</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f8f9fa;--surface:#ffffff;--text-main:#1a1d20;--text-muted:#5f6368;--primary:#1a73e8;--primary-hover:#1557b0;--gold:#f9ab00;--border:#dadce0;--radius:12px;--max-w:1200px}
+body{background:var(--bg);color:var(--text-main);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:var(--primary);transition:color .2s}
+a:hover{color:var(--primary-hover)}
+header{background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000}
+.nav{max-width:var(--max-w);margin:0 auto;padding:0 1.5rem;height:72px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.6rem;font-weight:800;color:var(--text-main);letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--primary)}
+.badge{background:#e8f0fe;color:var(--primary);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
+.nav-links{display:flex;gap:2rem;font-weight:600;font-size:.92rem;align-items:center}
+.nav-links a{color:var(--text-muted)}
+.nav-links a:hover,.nav-links a.active{color:var(--primary)}
+.container{max-width:var(--max-w);margin:2.5rem auto;padding:0 1.5rem;display:grid;grid-template-columns:1fr 320px;gap:2.5rem}
+.hero{background:linear-gradient(135deg,#fff 0%,#f1f5f9 100%);border:1px solid var(--border);border-radius:var(--radius);padding:3.5rem 2rem;text-align:center;margin-bottom:2.5rem;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:1rem;letter-spacing:-.5px}
+.hero p{font-size:1.15rem;color:var(--text-muted);max-width:650px;margin:0 auto 2rem}
+.search-wrap{max-width:600px;margin:0 auto;position:relative}
+.search-box{position:relative;display:flex;align-items:center}
+.search-icon{position:absolute;left:18px;font-size:1.2rem;color:var(--text-muted);pointer-events:none}
+.search-input{width:100%;padding:16px 50px;font-size:1.05rem;font-family:inherit;border:2px solid var(--border);border-radius:50px;background:var(--surface);color:var(--text-main);box-shadow:0 4px 15px rgba(0,0,0,.05);transition:border-color .2s,box-shadow .2s}
+.search-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(26,115,232,.15)}
+.search-clear{position:absolute;right:16px;background:#e8eaed;border:none;border-radius:50%;width:26px;height:26px;display:none;align-items:center;justify-content:center;font-size:.8rem;cursor:pointer;color:var(--text-muted)}
+.search-status{margin-top:.8rem;font-size:.9rem;color:var(--text-muted);font-weight:500;min-height:22px}
+.category{margin-bottom:3.5rem;scroll-margin-top:90px}
+.cat-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:.5rem;border-bottom:2px solid var(--border)}
+.cat-title{font-size:1.4rem;font-weight:700}
+.cat-count{background:#e8f0fe;color:var(--primary);padding:4px 12px;border-radius:20px;font-size:.85rem;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;color:inherit}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08);border-color:#bdc1c6}
+.card-icon{font-size:2.2rem;margin-bottom:1rem}
+.card h3{font-size:1.12rem;font-weight:700;margin-bottom:.5rem}
+.card p{font-size:.9rem;color:var(--text-muted);margin-bottom:1.2rem;flex-grow:1;line-height:1.5}
+.card-link{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--primary)}
+.no-results{display:none;background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius);padding:3rem 2rem;text-align:center;margin:2rem 0}
+.no-results h3{font-size:1.3rem;margin-bottom:.5rem}
+.no-results p{color:var(--text-muted);font-size:.95rem;margin-bottom:1.5rem}
+.ad-slot{background:#f1f3f4;border:1px dashed #bdc1c6;text-align:center;padding:1.8rem;color:var(--text-muted);font-size:.85rem;border-radius:var(--radius);margin-bottom:2.5rem}
+.sidebar{display:flex;flex-direction:column;gap:1.8rem}
+.widget{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem}
+.widget-title{font-size:.92rem;font-weight:700;margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted)}
+.author-widget{text-align:center}
+.avatar{width:76px;height:76px;background:linear-gradient(135deg,#1a73e8,#1557b0);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;color:#fff;box-shadow:0 4px 12px rgba(26,115,232,.3)}
+.author-widget p{font-size:.9rem;color:var(--text-muted);margin-bottom:1.2rem;line-height:1.5}
+.cat-list{list-style:none}
+.cat-list li{margin-bottom:.8rem;border-bottom:1px solid var(--bg);padding-bottom:.8rem}
+.cat-list li:last-child{border:none;margin:0;padding:0}
+.cat-list a{display:flex;justify-content:space-between;color:var(--text-main);font-weight:500;font-size:.95rem}
+.cat-list a:hover{color:var(--primary)}
+.cat-list .num{color:var(--text-muted);font-size:.85rem}
+.blog-list{list-style:none}
+.blog-list li{margin-bottom:.8rem;border-bottom:1px solid var(--bg);padding-bottom:.8rem}
+.blog-list li:last-child{border:none;margin:0;padding:0}
+.blog-list a{font-size:.88rem;color:var(--text-main);font-weight:400;line-height:1.4;display:block}
+.blog-list a:hover{color:var(--primary)}
+footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand .logo{color:#fff;margin-bottom:1rem}
+.footer-brand p{font-size:.88rem;color:#9ca3af;line-height:1.6;max-width:320px;margin-bottom:1.5rem}
+.trust{display:inline-flex;align-items:center;gap:8px;background:#1f2937;border:1px solid #374151;padding:6px 12px;border-radius:6px;font-size:.78rem;color:#d1d5db;font-weight:500}
+.f-col h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1.2rem;letter-spacing:.5px}
+.f-col ul{list-style:none}
+.f-col li{margin-bottom:.7rem}
+.f-col a{color:#9ca3af;font-size:.88rem;transition:color .2s}
+.f-col a:hover{color:#fff}
+.footer-bot{max-width:var(--max-w);margin:3rem auto 0;padding-top:2rem;border-top:1px solid #1f2937;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#6b7280}
+.footer-disc{max-width:var(--max-w);margin:1.5rem auto 0;font-size:.76rem;color:#4b5563;line-height:1.5;text-align:center}
+.cookie-bar{position:fixed;bottom:0;left:0;right:0;background:#1f2937;color:#d1d5db;padding:1rem 1.5rem;z-index:9999;display:none;border-top:1px solid #374151}
+.cookie-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.cookie-inner p{font-size:.85rem;line-height:1.5}
+.cookie-btn{background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:6px;font-weight:600;cursor:pointer;font-size:.88rem;white-space:nowrap}
+.cookie-btn:hover{background:var(--primary-hover)}
+@media(max-width:900px){
+.container{grid-template-columns:1fr}
+.grid{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr}
+.footer-bot{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
 </head>
 <body>
 
-  <!-- HEADER NAVIGATION (FIXED CLEAN "/" ROOT LOGO LINK) -->
-  <header>
-    <div class="nav-container">
-      <a href="/" class="logo">
-        Life<span>Pera</span>
-        <span class="logo-badge">Pro</span>
-      </a>
-      <nav class="nav-links">
-        <a href="/" class="active">Tools</a>
-        <a href="/blog.html">Blog</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header>
+<div class="nav">
+<a href="index.html" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="blog.html">Blog</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+</div>
+</header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-container">
-      <h1>Free Tools for Real Life Decisions</h1>
-      <p>Data-backed calculators, mobility tools, and interactive decision frameworks.</p>
-      <div class="search-box">
-        <input type="text" id="tool-search" placeholder="Search 30+ calculators and tools..." onkeyup="filterTools()">
-      </div>
-    </div>
-  </section>
+<div class="container">
+<main>
+<div class="hero">
+<h1>Tools That Actually Matter</h1>
+<p>36 free, data-driven calculators, checkers, and quizzes for real life decisions. No signups, no fluff.</p>
+<div class="search-wrap">
+<div class="search-box">
+<span class="search-icon">🔍</span>
+<input type="text" class="search-input" id="heroSearch" placeholder="Search 36 tools... e.g. visa, salary, rich, attachment, water" oninput="filterTools()">
+<button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+</div>
+<div class="search-status" id="searchStatus">Showing all 36 free tools</div>
+</div>
+</div>
 
-  <!-- MAIN CONTENT -->
-  <div class="content-wrapper">
-    
-    <!-- CATEGORY FILTER BUTTONS FOR ADSENSE COMPLIANCE -->
-    <div class="filter-tabs">
-      <button class="filter-btn active" onclick="filterCategory('all', this)">All Tools</button>
-      <button class="filter-btn" onclick="filterCategory('finance', this)">Finance</button>
-      <button class="filter-btn" onclick="filterCategory('career', this)">Career</button>
-      <button class="filter-btn" onclick="filterCategory('travel', this)">Travel</button>
-      <button class="filter-btn" onclick="filterCategory('growth', this)">Self Growth</button>
-    </div>
+<div class="ad-slot">[ AdSense Responsive Leaderboard ]</div>
 
-    <div class="layout-container">
-      
-      <!-- LEFT: DYNAMIC 8+ TOOL GRID -->
-      <main class="tools-grid" id="tools-container">
-        
-        <!-- Pre-rendered fallbacks for instant SEO indexing -->
-        <div class="card" data-cat="finance" data-title="how rich am i global comparator">
-          <div>
-            <div class="card-icon">💰</div>
-            <h3>"How Rich Am I?" Global Comparator</h3>
-            <p>Compare your personal income against global percentile benchmarks.</p>
-          </div>
-          <a href="/tool-how-rich.html" class="card-link">Use Calculator →</a>
-        </div>
+<div class="no-results" id="noResults">
+<h3>No matching tools found</h3>
+<p>Try searching for keywords like "visa", "salary", "job", "relationship", or "budget".</p>
+<button onclick="clearSearch()" style="background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:6px;font-weight:600;cursor:pointer">Show All 36 Tools</button>
+</div>
 
-        <div class="card" data-cat="travel" data-title="visa-free travel explorer">
-          <div>
-            <div class="card-icon">✈️</div>
-            <h3>Visa-Free Travel Explorer</h3>
-            <p>Instant passport mobility tool showing visa requirements worldwide.</p>
-          </div>
-          <a href="/tool-visa.html" class="card-link">Check Passports →</a>
-        </div>
+<div class="category" id="career-finance">
+<div class="cat-header"><h2 class="cat-title">Career & Finance</h2><span class="cat-count">6 Tools</span></div>
+<div class="grid">
+<a href="tool-how-rich.html" class="card" data-title="how rich am i global comparator" data-desc="enter your income and see exactly where you rank among all 8 billion people on earth." data-tags="income salary wealth rank global rich money earnings">
+<span class="card-icon">💰</span><h3>"How Rich Am I?" Global Comparator</h3>
+<p>Enter your income and see exactly where you rank among all 8 billion people on Earth.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-quit-job.html" class="card" data-title="should i quit my job" data-desc="a weighted decision matrix that gives you an honest data-driven answer." data-tags="job career resign quit work salary boss burnout">
+<span class="card-icon">💼</span><h3>Should I Quit My Job?</h3>
+<p>A weighted decision matrix that gives you an honest, data-driven answer.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-underpaid.html" class="card" data-title="am i underpaid salary analyzer" data-desc="analyze your salary against global benchmarks cost of living and industry standards." data-tags="salary underpaid pay wage benchmark market raise">
+<span class="card-icon">📉</span><h3>Am I Underpaid? Salary Analyzer</h3>
+<p>Analyze your salary against global benchmarks, cost of living, and industry standards.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-freelance.html" class="card" data-title="freelance vs full-time calculator" data-desc="compare real earnings accounting for taxes benefits sick days and stability." data-tags="freelance fulltime contractor hourly rate self employment tax">
+<span class="card-icon">⚖️</span><h3>Freelance vs Full-Time Calculator</h3>
+<p>Compare real earnings accounting for taxes, benefits, sick days, and stability.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-email-tone.html" class="card" data-title="email tone checker" data-desc="paste any email to check if you sound passive-aggressive too formal or professional." data-tags="email tone passive aggressive professional writing work">
+<span class="card-icon">📧</span><h3>Email Tone Checker</h3>
+<p>Paste any email to check if you sound passive-aggressive, too formal, or professional.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-toxic-workplace.html" class="card" data-title="toxic workplace identifier" data-desc="a 20-sign checklist giving you a workplace toxicity score and action plan." data-tags="toxic workplace job stress micromanagement boss red flags">
+<span class="card-icon">☣️</span><h3>Toxic Workplace Identifier</h3>
+<p>A 20-sign checklist giving you a workplace toxicity score and action plan.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+</div></div>
 
-        <div class="card" data-cat="career" data-title="should i quit my job matrix">
-          <div>
-            <div class="card-icon">💼</div>
-            <h3>"Should I Quit My Job?" Matrix</h3>
-            <p>A structured 10-point scoring framework for career moves.</p>
-          </div>
-          <a href="/tool-quit-job.html" class="card-link">Evaluate Now →</a>
-        </div>
+<div class="category" id="travel-global-living">
+<div class="cat-header"><h2 class="cat-title">Travel & Global Living</h2><span class="cat-count">7 Tools</span></div>
+<div class="grid">
+<a href="tool-visa.html" class="card" data-title="visa-free travel checker" data-desc="instantly see every destination your specific passport can enter without a visa." data-tags="visa passport travel freedom destination entry border">
+<span class="card-icon">✈️</span><h3>Visa-Free Travel Checker</h3>
+<p>Instantly see every destination your specific passport can enter without a visa.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-best-visit.html" class="card" data-title="best month to visit any country" data-desc="discover peak seasons budget-friendly months and weather windows worldwide." data-tags="best month visit weather travel season cheap flights">
+<span class="card-icon">🗓️</span><h3>Best Month to Visit Any Country</h3>
+<p>Discover peak seasons, budget-friendly months, and weather windows worldwide.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-solo-safety.html" class="card" data-title="solo travel safety index" data-desc="get safety ratings insider tips and personalized checklists for solo travelers." data-tags="safety solo travel female safety crime index advice">
+<span class="card-icon">🛡️</span><h3>Solo Travel Safety Index</h3>
+<p>Get safety ratings, insider tips, and personalized checklists for solo travelers.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-travel-budget.html" class="card" data-title="travel budget reality checker" data-desc="calculate realistic daily travel expenses by destination and travel style." data-tags="travel budget daily cost expenses backpacker hotel">
+<span class="card-icon">💵</span><h3>Travel Budget Reality Checker</h3>
+<p>Calculate realistic daily travel expenses by destination and travel style.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-tap-water.html" class="card" data-title="can i drink the tap water" data-desc="check tap water safety for 500+ global destinations instantly." data-tags="tap water drink safe health traveler stomach bottle">
+<span class="card-icon">🚰</span><h3>Can I Drink the Tap Water?</h3>
+<p>Check tap water safety for 500+ global destinations instantly.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-language-kit.html" class="card" data-title="language survival kit generator" data-desc="get essential travel phrases with pronunciation guides and cultural context." data-tags="language phrases spanish french japanese travel translate">
+<span class="card-icon">🗣️</span><h3>Language Survival Kit Generator</h3>
+<p>Get essential travel phrases with pronunciation guides and cultural context.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-country-match.html" class="card" data-title="which country fits your personality" data-desc="match your lifestyle preferences to find the best country for you to live in." data-tags="country match expat relocate live abroad personality">
+<span class="card-icon">🌍</span><h3>Which Country Fits Your Personality?</h3>
+<p>Match your lifestyle preferences to find the best country for you to live in.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+</div></div>
 
-        <div class="card" data-cat="career" data-title="am i underpaid compensation analyzer">
-          <div>
-            <div class="card-icon">📈</div>
-            <h3>Am I Underpaid? Compensation Analyzer</h3>
-            <p>Benchmark your salary against global industry metrics.</p>
-          </div>
-          <a href="/tool-underpaid.html" class="card-link">Analyze Salary →</a>
-        </div>
+<div class="category" id="culture-identity">
+<div class="cat-header"><h2 class="cat-title">Culture & Identity</h2><span class="cat-count">7 Tools</span></div>
+<div class="grid">
+<a href="tool-cultural.html" class="card" data-title="cultural faux pas checker" data-desc="know what not to do before you travel to avoid embarrassing cultural mistakes." data-tags="cultural faux pas etiquette taboos gestures tipping">
+<span class="card-icon">🌏</span><h3>Cultural Faux Pas Checker</h3>
+<p>Know what NOT to do before you travel to avoid embarrassing cultural mistakes.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-culture-map.html" class="card" data-title="cultural distance calculator" data-desc="compare culture gap scores across power distance individualism and context." data-tags="cultural distance gap hofstede individualism directness">
+<span class="card-icon">🗺️</span><h3>Cultural Distance Calculator</h3>
+<p>Compare culture gap scores across power distance, individualism, and context.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-age-cultures.html" class="card" data-title="what age are you in other cultures" data-desc="calculate your age across korean chinese hijri hebrew and mayan systems." data-tags="cultural age korean age hijri lunar calendar birthday">
+<span class="card-icon">⏳</span><h3>What Age Are You in Other Cultures?</h3>
+<p>Calculate your age across Korean, Chinese, Hijri, Hebrew, and Mayan systems.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-name-meaning.html" class="card" data-title="name meaning by culture" data-desc="discover what your name means across 20+ languages and cultures worldwide." data-tags="name meaning origin heritage numerology languages">
+<span class="card-icon">✨</span><h3>Name Meaning by Culture</h3>
+<p>Discover what your name means across 20+ languages and cultures worldwide.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-lucky.html" class="card" data-title="lucky number by culture" data-desc="find lucky and unlucky numbers across different traditions based on your birthday." data-tags="lucky number feng shui birthday numerology">
+<span class="card-icon">🎲</span><h3>Lucky Number by Culture</h3>
+<p>Find lucky and unlucky numbers across different traditions based on your birthday.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-generation.html" class="card" data-title="what generation are you really" data-desc="find your true cultural generation based on habits rather than birth year." data-tags="generation gen z millennial gen x boomer quiz habits">
+<span class="card-icon">⚡</span><h3>What Generation Are You Really?</h3>
+<p>Find your true cultural generation based on habits rather than birth year.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-era-born.html" class="card" data-title="what era were you born for" data-desc="discover which historical era matches your mindset values and aesthetic." data-tags="historical era 80s 90s 20s nostalgia vibe soul era">
+<span class="card-icon">🕰️</span><h3>What Era Were You Born For?</h3>
+<p>Discover which historical era matches your mindset, values, and aesthetic.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+</div></div>
 
-        <div class="card" data-cat="finance" data-title="mobile banking fee calculator">
-          <div>
-            <div class="card-icon">📲</div>
-            <h3>Mobile Banking Fee Calculator</h3>
-            <p>Calculate cash-out and transfer fees for mobile wallet services.</p>
-          </div>
-          <a href="/tool-banking-calculator.html" class="card-link">Calculate Fees →</a>
-        </div>
+<div class="category" id="psychology-self-discovery">
+<div class="cat-header"><h2 class="cat-title">Psychology & Self-Discovery</h2><span class="cat-count">8 Tools</span></div>
+<div class="grid">
+<a href="tool-attachment.html" class="card" data-title="attachment style quiz" data-desc="discover why you love the way you do and why your relationships follow patterns." data-tags="attachment style anxious avoidant secure relationship quiz">
+<span class="card-icon">💙</span><h3>Attachment Style Quiz</h3>
+<p>Discover why you love the way you do and why your relationships follow patterns.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-cognitive-bias.html" class="card" data-title="cognitive bias test" data-desc="find out which mental shortcuts are secretly sabotaging your decisions." data-tags="cognitive bias sunk cost confirmation bias decision mental">
+<span class="card-icon">🧠</span><h3>Cognitive Bias Test</h3>
+<p>Find out which mental shortcuts are secretly sabotaging your decisions.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-eq.html" class="card" data-title="emotional intelligence eq test" data-desc="measure your ability to perceive control and evaluate emotions." data-tags="eq emotional intelligence empathy stress awareness test">
+<span class="card-icon">💡</span><h3>Emotional Intelligence (EQ) Test</h3>
+<p>Measure your ability to perceive, control, and evaluate emotions.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-introvert.html" class="card" data-title="introvert-extrovert spectrum test" data-desc="measure where you land on the spectrum with customized social battery advice." data-tags="introvert extrovert ambivert social battery spectrum quiz">
+<span class="card-icon">🧘</span><h3>Introvert-Extrovert Spectrum Test</h3>
+<p>Measure where you land on the spectrum with customized social battery advice.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-core-values.html" class="card" data-title="core personal values identifier" data-desc="rank 30 core values to discover your top 5 non-negotiable principles." data-tags="core values priorities life principles non-negotiables">
+<span class="card-icon">🎯</span><h3>Core Personal Values Identifier</h3>
+<p>Rank 30 core values to discover your top 5 non-negotiable principles.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-zodiac.html" class="card" data-title="zodiac vs science personality test" data-desc="compare your astrological sign reading against a big five personality test." data-tags="zodiac astrology big five science personality test">
+<span class="card-icon">🔮</span><h3>Zodiac vs Science Personality Test</h3>
+<p>Compare your astrological sign reading against a Big Five personality test.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-texting.html" class="card" data-title="personality via texting style" data-desc="discover your texting archetype overthinker ghost exclamation addict etc." data-tags="texting personality emoji response ghoster overthinker">
+<span class="card-icon">📲</span><h3>Personality via Texting Style</h3>
+<p>Discover your texting archetype (Overthinker, Ghost, Exclamation Addict, etc.).</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-detox.html" class="card" data-title="digital detox feasibility score" data-desc="evaluate phone habits to get a realistic digital detox score and plan." data-tags="digital detox screen time phone addiction digital wellness">
+<span class="card-icon">📱</span><h3>Digital Detox Feasibility Score</h3>
+<p>Evaluate phone habits to get a realistic digital detox score and plan.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+</div></div>
 
-        <div class="card" data-cat="growth" data-title="attachment style test framework">
-          <div>
-            <div class="card-icon">🧠</div>
-            <h3>Attachment Style Framework</h3>
-            <p>Discover your relationship communication and bonding style.</p>
-          </div>
-          <a href="/tool-attachment-style.html" class="card-link">Take Assessment →</a>
-        </div>
+<div class="category" id="relationships">
+<div class="cat-header"><h2 class="cat-title">Relationships & Social Connections</h2><span class="cat-count">5 Tools</span></div>
+<div class="grid">
+<a href="tool-toxic-relationship.html" class="card" data-title="toxic relationship identifier" data-desc="a clinical checklist to evaluate if your relationship patterns are unhealthy." data-tags="toxic relationship gaslighting red flags relationship health">
+<span class="card-icon">🚩</span><h3>Toxic Relationship Identifier</h3>
+<p>A clinical checklist to evaluate if your relationship patterns are unhealthy.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-breakup.html" class="card" data-title="is it time to break up" data-desc="an objective score based on trust communication shared future and happiness." data-tags="breakup decision relationship trust future joy score">
+<span class="card-icon">💔</span><h3>Is It Time to Break Up?</h3>
+<p>An objective score based on trust, communication, shared future, and happiness.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-breadcrumbing.html" class="card" data-title="breadcrumbing mixed signals calculator" data-desc="rate text frequency and effort to see if they are breadcrumbing you." data-tags="breadcrumbing mixed signals dating effort ghosting">
+<span class="card-icon">🍞</span><h3>Breadcrumbing & Mixed Signals Calculator</h3>
+<p>Rate text frequency and effort to see if they are breadcrumbing you.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-friendship.html" class="card" data-title="friendship compatibility scorer" data-desc="evaluate shared values communication and mutual effort in your friendship." data-tags="friendship compatibility soulmate friend effort score">
+<span class="card-icon">🤝</span><h3>Friendship Compatibility Scorer</h3>
+<p>Evaluate shared values, communication, and mutual effort in your friendship.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-comm-clash.html" class="card" data-title="communication style clash finder" data-desc="compare direct vs indirect communication to pinpoint why you miscommunicate." data-tags="communication clash direct indirect friction misunderstanding">
+<span class="card-icon">💬</span><h3>Communication Style Clash Finder</h3>
+<p>Compare direct vs indirect communication to pinpoint why you miscommunicate.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+</div></div>
 
-        <div class="card" data-cat="travel" data-title="global cost of living index">
-          <div>
-            <div class="card-icon">🌍</div>
-            <h3>Global Cost of Living Index</h3>
-            <p>Compare housing, food, and transport costs between major cities.</p>
-          </div>
-          <a href="/tool-cost-of-living.html" class="card-link">Compare Cities →</a>
-        </div>
+<div class="category" id="fun-stats">
+<div class="cat-header"><h2 class="cat-title">Fun Stats & Curiosity</h2><span class="cat-count">3 Tools</span></div>
+<div class="grid">
+<a href="tool-rare-birthday.html" class="card" data-title="how rare is your birthday" data-desc="discover your birthday rarity ranking among 365 days and famous date twins." data-tags="birthday rarity rank 365 days birth frequency rare date">
+<span class="card-icon">🎂</span><h3>How Rare Is Your Birthday?</h3>
+<p>Discover your birthday's rarity ranking among 365 days and famous date twins.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-name-peak.html" class="card" data-title="your name peak popularity year" data-desc="track 100 years of naming trends and find when your name peaked." data-tags="name peak popularity year trends historical baby names">
+<span class="card-icon">📈</span><h3>Your Name's Peak Popularity Year</h3>
+<p>Track 100 years of naming trends and find when your name peaked.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+<a href="tool-google-data.html" class="card" data-title="how much does google know about you" data-desc="estimate your digital data footprint size and get steps to reduce it." data-tags="google data footprint privacy location history tracking profile">
+<span class="card-icon">🔍</span><h3>How Much Does Google Know About You?</h3>
+<p>Estimate your digital data footprint size and get steps to reduce it.</p>
+<span class="card-link">Use Tool →</span>
+</a>
+</div></div>
 
-        <div class="card" data-cat="growth" data-title="core values decision builder">
-          <div>
-            <div class="card-icon">✨</div>
-            <h3>Core Values Decision Builder</h3>
-            <p>Clarify your top personal values to make complex decisions easily.</p>
-          </div>
-          <a href="/tool-core-values.html" class="card-link">Start Tool →</a>
-        </div>
+<div class="ad-slot" style="margin-bottom:0">[ AdSense In-Feed Ad Unit ]</div>
+</main>
 
-      </main>
+<aside class="sidebar">
+<div class="widget author-widget">
+<div class="widget-title">About LifePera</div>
+<div class="avatar">LP</div>
+<p>LifePera provides data-backed calculators and interactive tools to help you navigate finance, travel, career, and human relationships.</p>
+<a href="about.html" style="display:inline-block;font-size:.85rem;color:var(--primary);font-weight:600">Read Our Story →</a>
+</div>
 
-      <!-- RIGHT SIDEBAR -->
-      <aside class="sidebar">
-        
-        <div class="sidebar-card">
-          <h3>About LifePera</h3>
-          <p>LifePera provides free, data-backed tools and decision frameworks designed to remove guesswork from personal finance, travel, and career choices.</p>
-          <a href="/about.html" class="card-link">Learn more →</a>
-        </div>
+<div class="widget">
+<div class="widget-title">Browse by Category</div>
+<ul class="cat-list">
+<li><a href="#career-finance">Career & Finance <span class="num">(6)</span></a></li>
+<li><a href="#travel-global-living">Travel & Global Living <span class="num">(7)</span></a></li>
+<li><a href="#culture-identity">Culture & Identity <span class="num">(7)</span></a></li>
+<li><a href="#psychology-self-discovery">Psychology & Self-Discovery <span class="num">(8)</span></a></li>
+<li><a href="#relationships">Relationships <span class="num">(5)</span></a></li>
+<li><a href="#fun-stats">Fun Stats & Curiosity <span class="num">(3)</span></a></li>
+</ul>
+</div>
 
-        <div class="sidebar-card">
-          <h3>Recent Articles</h3>
-          <div id="recent-articles-list">
-            <div class="article-item">
-              <a href="/blog.html" class="article-title">Browse all editorial articles</a>
-              <span class="article-meta">LifePera Editorial</span>
-            </div>
-          </div>
-        </div>
+<div class="widget">
+<div class="widget-title">Latest Articles</div>
+<ul class="blog-list" id="latestBlogList">
+<li><a href="blog-post.html">10 Cultural Mistakes Tourists Make in Japan</a></li>
+<li><a href="blog.html">You're Richer Than 80% of the World</a></li>
+<li><a href="blog.html">The Most Powerful Passports in 2026</a></li>
+</ul>
+</div>
+</aside>
+</div>
 
-      </aside>
+<footer>
+<div class="footer-inner">
+<div class="footer-brand">
+<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
+<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+</div>
+<div class="f-col">
+<h4>Popular Tools</h4>
+<ul>
+<li><a href="tool-how-rich.html">"How Rich Am I?" Comparator</a></li>
+<li><a href="tool-visa.html">Visa-Free Travel Checker</a></li>
+<li><a href="tool-quit-job.html">Should I Quit My Job?</a></li>
+<li><a href="tool-underpaid.html">Am I Underpaid? Analyzer</a></li>
+<li><a href="tool-attachment.html">Attachment Style Quiz</a></li>
+</ul>
+</div>
+<div class="f-col">
+<h4>Company & Trust</h4>
+<ul>
+<li><a href="about.html">About Us</a></li>
+<li><a href="about.html#editorial">Editorial Policy</a></li>
+<li><a href="blog.html">Editorial Blog</a></li>
+<li><a href="contact.html">Contact & Support</a></li>
+</ul>
+</div>
+<div class="f-col">
+<h4>Legal & Standards</h4>
+<ul>
+<li><a href="privacy.html">Privacy Policy</a></li>
+<li><a href="terms.html">Terms of Service</a></li>
+<li><a href="sitemap.xml">Sitemap</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-disc">Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.</div>
+<div class="footer-bot"><span>© 2026 LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
+</footer>
 
-    </div>
-  </div>
+<div class="cookie-bar" id="cookieBar">
+<div class="cookie-inner">
+<p>🍪 LifePera uses cookies to improve your experience and serve personalized ads. By continuing, you agree to our <a href="privacy.html" style="color:#8ab4f8">Privacy Policy</a>.</p>
+<button class="cookie-btn" onclick="acceptCookies()">Accept All</button>
+</div>
+</div>
 
-  <!-- FOOTER (FIXED CLEAN "/" ROOT LOGO LINK) -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-brand">
-        <a href="/" class="logo">Life<span>Pera</span></a>
-        <p>Free tools for real-life decisions. Privacy-focused, no signup required.</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Popular Tools</h4>
-        <ul>
-          <li><a href="/tool-how-rich.html">Income Calculator</a></li>
-          <li><a href="/tool-visa.html">Visa Checker</a></li>
-          <li><a href="/tool-quit-job.html">Job Decision Matrix</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about.html">About Us</a></li>
-          <li><a href="/blog.html">Editorial Blog</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div>© 2026 LifePera. All rights reserved.</div>
-      <div>Built for curious minds worldwide.</div>
-    </div>
-  </footer>
-
-  <!-- DYNAMIC ALL_TOOLS.JSON LOADER & SEARCH ENGINE -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Load articles for sidebar
-      fetch('/blog-index.json')
-        .then(res => res.json())
-        .then(posts => {
-          const container = document.getElementById('recent-articles-list');
-          if (!container || !posts || posts.length === 0) return;
-          container.innerHTML = posts.slice(0, 3).map(post => {
-            const postPath = post.file.startsWith('blog/') ? `/${post.file}` : `/blog/${post.file}`;
-            return `
-              <div class="article-item">
-                <a href="${postPath}" class="article-title">${post.title}</a>
-                <span class="article-meta">${post.cat} • ${post.date}</span>
-              </div>
-            `;
-          }).join('');
-        }).catch(() => {});
-
-      // 2. Load dynamic tools from all_tools.json if available
-      fetch('/all_tools.json')
-        .then(res => res.json())
-        .then(tools => {
-          if (!tools || tools.length === 0) return;
-          const grid = document.getElementById('tools-container');
-          grid.innerHTML = tools.map(t => `
-            <div class="card" data-cat="${t.cat || 'finance'}" data-title="${t.title.toLowerCase()}">
-              <div>
-                <div class="card-icon">${t.icon || '🛠️'}</div>
-                <h3>${t.title}</h3>
-                <p>${t.desc}</p>
-              </div>
-              <a href="${t.link}" class="card-link">${t.action || 'Open Tool →'}</a>
-            </div>
-          `).join('');
-        }).catch(() => {});
-    });
-
-    // Instant Filter Functions for User Engagement
-    function filterTools() {
-      const query = document.getElementById('tool-search').value.toLowerCase();
-      const cards = document.querySelectorAll('.tools-grid .card');
-      cards.forEach(card => {
-        const title = card.getAttribute('data-title') || card.innerText.toLowerCase();
-        card.style.display = title.includes(query) ? 'flex' : 'none';
-      });
-    }
-
-    function filterCategory(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cards = document.querySelectorAll('.tools-grid .card');
-      cards.forEach(card => {
-        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-  </script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Load Recent Blog Posts for Sidebar
-    fetch('/blog-index.json')
-      .then(res => res.json())
-      .then(posts => {
-        const container = document.getElementById('recent-articles-list');
-        if (!container || !posts || posts.length === 0) return;
-        
-        container.innerHTML = posts.slice(0, 3).map(post => {
-          let cleanPath = post.file.startsWith('/') ? post.file : `/${post.file}`;
-          return `
-            <div class="article-item">
-              <a href="${cleanPath}" class="article-title">${post.title}</a>
-              <span class="article-meta">${post.cat || 'Article'} • ${post.date || ''}</span>
-            </div>
-          `;
-        }).join('');
-      })
-      .catch(err => console.log('Sidebar fallback active'));
-
-    // 2. Load ALL 36 Tools from all_tools.json dynamically
-    fetch('/all_tools.json')
-      .then(res => res.json())
-      .then(tools => {
-        const container = document.querySelector('.tools-grid');
-        if (!container || !tools || tools.length === 0) return;
-
-        container.innerHTML = tools.map(tool => {
-          // Fallback icon if icon field is empty string ("")
-          const icon = tool.icon && tool.icon.trim() !== "" ? tool.icon : "🛠️";
-          
-          // Ensures clean relative route to tool HTML file
-          const link = tool.file.startsWith('/') ? tool.file : `/${tool.file}`;
-
-          return `
-            <div class="card">
-              <div>
-                <div class="card-icon">${icon}</div>
-                <h3>${tool.title}</h3>
-                <p>${tool.desc}</p>
-              </div>
-              <a href="${link}" class="card-link">Use Tool →</a>
-            </div>
-          `;
-        }).join('');
-      })
-      .catch(err => console.error('Error loading tools JSON:', err));
-  });
+function filterTools(){const q=document.getElementById('heroSearch').value.toLowerCase().trim(),c=document.getElementById('searchClear'),cards=document.querySelectorAll('.card'),sections=document.querySelectorAll('.category'),st=document.getElementById('searchStatus'),nr=document.getElementById('noResults');c.style.display=q.length>0?'flex':'none';let m=0;cards.forEach(cd=>{const t=(cd.getAttribute('data-title')||'').toLowerCase(),d=(cd.getAttribute('data-desc')||'').toLowerCase(),tg=(cd.getAttribute('data-tags')||'').toLowerCase();if(!q||t.includes(q)||d.includes(q)||tg.includes(q)){cd.style.display='flex';m++}else cd.style.display='none'});sections.forEach(s=>{const v=s.querySelectorAll('.card[style*="display: flex"],.card:not([style*="display: none"])');s.style.display=q&&v.length===0?'none':'block'});if(!q){st.innerHTML='Showing all 36 free tools';nr.style.display='none'}else{st.innerHTML='Found <strong>'+m+'</strong> tool'+(m===1?'':'s')+' matching "'+q+'"';nr.style.display=m===0?'block':'none'}}
+function clearSearch(){document.getElementById('heroSearch').value='';filterTools()}
+function acceptCookies(){document.getElementById('cookieBar').style.display='none';localStorage.setItem('cookiesAccepted','true')}
+(function(){if(!localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBar').style.display='block'})();
+async function loadLatest(){try{const r=await fetch('blog-index.json');if(!r.ok)return;const posts=await r.json();const list=document.getElementById('latestBlogList');if(!posts||posts.length===0)return;let html='';posts.slice(0,5).forEach(function(p){html+='<li><a href="'+p.file+'" style="font-size:.88rem;color:var(--text-main);font-weight:400;line-height:1.4;display:block">'+p.title+'</a></li>'});list.innerHTML=html}catch(e){}}loadLatest();
 </script>
 </body>
 </html>

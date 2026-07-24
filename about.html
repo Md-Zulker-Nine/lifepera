@@ -1,283 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="About LifePera — free premium tools for real life decisions. Built by Zulker Nine to help people worldwide make better decisions faster."/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="About LifePera – free premium tools for real life decisions. Built by Zulker Nine to help people worldwide make better decisions faster."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://lifepera.com/about.html"/>
+<meta property="og:title" content="About – LifePera"/>
+<meta property="og:description" content="Learn about LifePera's mission, values, and the founder behind 36 free decision-making tools."/>
+<meta property="og:url" content="https://lifepera.com/about.html"/>
+<meta property="og:type" content="website"/>
 <title>About – LifePera</title>
 <style>
-/* Universal Authority Theme CSS */
-:root {
-  --bg: #f8f9fa;
-  --surface: #ffffff;
-  --text-main: #202124;
-  --text-muted: #5f6368;
-  --primary-blue: #1a73e8;
-  --primary-hover: #1557b0;
-  --border: #dadce0;
-  --radius: 8px;
-  --max-width: 1200px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f8f9fa;--surface:#ffffff;--text-main:#202124;--text-muted:#5f6368;--primary:#1a73e8;--primary-hover:#1557b0;--border:#dadce0;--radius:12px;--max-w:1200px}
+body{background:var(--bg);color:var(--text-main);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:var(--primary);transition:color .2s}
+a:hover{color:var(--primary-hover)}
+header{background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000}
+.nav{max-width:var(--max-w);margin:0 auto;padding:0 1.5rem;height:72px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.6rem;font-weight:800;color:var(--text-main);letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--primary)}
+.badge{background:#e8f0fe;color:var(--primary);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
+.nav-links{display:flex;gap:2rem;font-weight:600;font-size:.92rem;align-items:center}
+.nav-links a{color:var(--text-muted)}
+.nav-links a:hover,.nav-links a.active{color:var(--primary)}
+main{max-width:860px;margin:3rem auto;padding:0 1.5rem}
+.page{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:3rem}
+.page-hdr{text-align:center;margin-bottom:3rem}
+.page-hdr h1{font-size:2.5rem;font-weight:800;line-height:1.2;margin-bottom:1rem}
+.page-hdr p{font-size:1.1rem;color:var(--text-muted)}
+.sec{margin-bottom:2.8rem}
+.sec h2{font-size:1.4rem;margin-bottom:1.2rem;border-bottom:2px solid var(--primary);display:inline-block;padding-bottom:.3rem}
+.sec p{margin-bottom:1rem;color:var(--text-muted);font-size:1rem}
+.sec ul{margin:1rem 0 1.5rem 1.5rem;color:var(--text-muted)}
+.sec li{margin-bottom:.6rem;line-height:1.6}
+.author-box{display:flex;gap:2rem;background:var(--bg);padding:2rem;border-radius:var(--radius);border:1px solid var(--border);margin-top:2rem;align-items:center}
+.avatar-l{width:90px;height:90px;background:linear-gradient(135deg,#1a73e8,#1557b0);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;flex-shrink:0}
+.author-info h3{margin-bottom:.3rem;font-size:1.2rem}
+.author-info .role{color:var(--primary);font-weight:500;font-size:.85rem;margin-bottom:.5rem}
+.author-info p{font-size:.95rem;color:var(--text-muted);line-height:1.7}
+.val-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.5rem 0}
+.val-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+.val-card h3{font-size:1.05rem;margin-bottom:.5rem;color:var(--text-main)}
+.val-card p{font-size:.9rem;color:var(--text-muted);margin:0}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0;text-align:center}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--primary)}
+.stat-label{font-size:.85rem;color:var(--text-muted);margin-top:.3rem}
+footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand .logo{color:#fff;margin-bottom:1rem}
+.footer-brand p{font-size:.88rem;color:#9ca3af;line-height:1.6;max-width:320px;margin-bottom:1.5rem}
+.trust{display:inline-flex;align-items:center;gap:8px;background:#1f2937;border:1px solid #374151;padding:6px 12px;border-radius:6px;font-size:.78rem;color:#d1d5db;font-weight:500}
+.f-col h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1.2rem;letter-spacing:.5px}
+.f-col ul{list-style:none}
+.f-col li{margin-bottom:.7rem}
+.f-col a{color:#9ca3af;font-size:.88rem;transition:color .2s}
+.f-col a:hover{color:#fff}
+.footer-bot{max-width:var(--max-w);margin:3rem auto 0;padding-top:2rem;border-top:1px solid #1f2937;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#6b7280}
+.footer-disc{max-width:var(--max-w);margin:1.5rem auto 0;font-size:.76rem;color:#4b5563;line-height:1.5;text-align:center}
+@media(max-width:768px){
+.page{padding:1.5rem}
+.author-box{flex-direction:column;text-align:center}
+.val-grid{grid-template-columns:1fr}
+.stat-row{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr}
+.footer-bot{flex-direction:column;gap:1rem;text-align:center}
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background-color: var(--bg);
-  color: var(--text-main);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-
-a { text-decoration: none; color: var(--primary-blue); transition: color 0.2s; }
-a:hover { color: var(--primary-hover); }
-
-/* Navigation */
-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.nav-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
-.logo span { color: var(--primary-blue); }
-.nav-links { display: flex; gap: 1.5rem; font-weight: 500; font-size: 0.95rem; }
-.nav-links a { color: var(--text-muted); }
-.nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
-.btn-nav {
-  background: var(--primary-blue); color: #fff !important; padding: 8px 16px; border-radius: 4px; font-weight: 600;
-}
-.btn-nav:hover { background: var(--primary-hover); }
-
-/* Main Container */
-.container-single {
-  max-width: 860px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 3rem;
-}
-
-/* Page Headers */
-.page-header { text-align: center; margin-bottom: 3rem; }
-.page-header h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
-.page-header p { font-size: 1.1rem; color: var(--text-muted); }
-
-/* Content Formatting */
-.content-section { margin-bottom: 2.5rem; }
-.content-section h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main); border-bottom: 2px solid var(--primary-blue); display: inline-block; padding-bottom: 0.3rem;}
-.content-section p { margin-bottom: 1rem; color: var(--text-muted); }
-.content-section ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text-muted); }
-.content-section li { margin-bottom: 0.5rem; }
-
-/* Author Box */
-.author-box { display: flex; gap: 1.5rem; background: var(--bg); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border); margin-top: 2rem; align-items: center;}
-.author-avatar-large { width: 80px; height: 80px; background: var(--primary-blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0; }
-.author-info h3 { margin-bottom: 0.3rem; }
-.author-info p { margin-bottom: 0; font-size: 0.95rem; }
-
-/* Footer */
-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 1.5rem; margin-top: 3rem; }
-.footer-container { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; }
-.footer-about p { font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem; max-width: 300px; }
-.footer-links h4 { font-size: 1rem; margin-bottom: 1rem; }
-.footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 0.5rem; }
-.footer-links a { color: var(--text-muted); font-size: 0.9rem; }
-.footer-bottom { max-width: var(--max-width); margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.85rem; }
-
-@media (max-width: 768px) {
-  .author-box { flex-direction: column; text-align: center; }
-  .footer-container { grid-template-columns: 1fr; }
-  .container-single { padding: 1.5rem; margin: 1.5rem auto; }
-}
-
-/* Premium Dark Footer Styling */
-footer {
-  background: #111827 !important;
-  color: #9ca3af !important;
-  border-top: 1px solid #1f2937 !important;
-  padding: 4rem 1.5rem 2rem !important;
-  margin-top: 4rem !important;
-}
-.footer-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 2.5rem;
-}
-.footer-brand .logo { color: #ffffff !important; margin-bottom: 1rem; }
-.footer-brand p { font-size: 0.9rem; color: #9ca3af; line-height: 1.6; max-width: 320px; margin-bottom: 1.5rem; }
-.trust-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #1f2937;
-  border: 1px solid #374151;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  color: #d1d5db;
-  font-weight: 500;
-}
-.footer-col h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff !important;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.5px;
-}
-.footer-col ul { list-style: none; padding: 0; margin: 0; }
-.footer-col li { margin-bottom: 0.7rem; }
-.footer-col a { color: #9ca3af !important; font-size: 0.9rem; transition: color 0.2s; }
-.footer-col a:hover { color: #ffffff !important; }
-.footer-bottom {
-  max-width: var(--max-width);
-  margin: 3rem auto 0;
-  padding-top: 2rem;
-  border-top: 1px solid #1f2937;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  color: #6b7280;
-}
-.footer-disclaimer {
-  max-width: var(--max-width);
-  margin: 1.5rem auto 0;
-  font-size: 0.78rem;
-  color: #4b5563;
-  line-height: 1.5;
-  text-align: center;
-}
-.logo-badge {
-  background: #e8f0fe;
-  color: var(--primary-blue);
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-@media (max-width: 900px) {
-  .footer-container { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-}
-
 </style>
 </head>
 <body>
 
 <header>
-  <div class="nav-container">
-    <a href="index.html" class="logo">
-      Life<span>Pera</span>
-      <span class="logo-badge">Pro</span>
-    </a>
-    <div class="nav-links">
-      <a href="tools.html">Tools</a>
-      <a href="blog.html">Blog</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
+<div class="nav">
+<a href="index.html" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="blog.html">Blog</a>
+<a href="about.html" class="active">About</a>
+<a href="contact.html">Contact</a>
+</div>
+</div>
 </header>
 
-<div class="container-single">
-  <div class="page-header">
-    <h1>About LifePera</h1>
-    <p>Tools That Actually Matter</p>
-  </div>
-
-  <div class="content-section">
-    <h2>Why LifePera Exists</h2>
-    <p>Most free tool websites are built for developers — unit converters, code formatters, JSON validators. Useful, but not life-changing. LifePera was built for everyone else: the traveler who wants to know what their passport unlocks, the person questioning a relationship pattern they can't quite name, the professional wondering if they're underpaid.</p>
-    <p>We believe that access to clear, actionable information — the kind that used to require expensive consultants, therapists, or hours of research — should be free and instant for everyone on Earth.</p>
-    <p>Every tool on LifePera answers a question real people are actually asking. We built 36 of them, covering travel, relationships, career, psychology, finance, and culture — and we're adding more every month.</p>
-  </div>
-
-  <div class="content-section">
-    <h2>Our Core Values</h2>
-    <ul>
-      <li><strong>Free Forever:</strong> Every tool is free to use, unlimited times, with no account required.</li>
-      <li><strong>Radically Private:</strong> Your data never leaves your browser. We don't collect your quiz results, your income, or your relationship answers.</li>
-      <li><strong>Globally Inclusive:</strong> We build for everyone on Earth — not just people in wealthy English-speaking countries.</li>
-      <li><strong>Honest Results:</strong> Our tools give you real, data-driven answers, not just what you want to hear.</li>
-    </ul>
-  </div>
-
-  <div class="author-box">
-    <div class="author-avatar-large">ZN</div>
-    <div class="author-info">
-      <h3>Zulker Nine</h3>
-      <p style="color: var(--primary-blue); font-weight: 500; font-size: 0.85rem; margin-bottom: 0.5rem;">Founder & Creator</p>
-      <p>I built LifePera because I kept finding myself searching for tools that didn't exist. The information existed scattered across academic papers, Reddit threads, and expensive consultants — I wanted to make it free, instant, and accessible to everyone. Every tool on this site was designed with one question in mind: would this genuinely help someone make a better decision today?</p>
-    </div>
-  </div>
+<main>
+<div class="page">
+<div class="page-hdr">
+<h1>About LifePera</h1>
+<p>Tools That Actually Matter — free, private, and built for everyone on Earth.</p>
 </div>
 
+<div class="stat-row">
+<div><div class="stat-num">36</div><div class="stat-label">Free Tools</div></div>
+<div><div class="stat-num">100%</div><div class="stat-label">Client-Side Privacy</div></div>
+<div><div class="stat-num">0</div><div class="stat-label">Signups Required</div></div>
+</div>
+
+<div class="sec">
+<h2>Why LifePera Exists</h2>
+<p>Most free tool websites are built for developers — unit converters, code formatters, JSON validators. Useful, but not life-changing. LifePera was built for everyone else: the traveler who wants to know what their passport unlocks, the person questioning a relationship pattern they can't quite name, the professional wondering if they're underpaid.</p>
+<p>We believe that access to clear, actionable information — the kind that used to require expensive consultants, therapists, or hours of research — should be free and instant for everyone on Earth.</p>
+<p>Every tool on LifePera answers a question real people are actually asking. We built 36 of them, covering travel, relationships, career, psychology, finance, and culture — and we're adding more every month.</p>
+</div>
+
+<div class="sec">
+<h2>Our Core Values</h2>
+<div class="val-grid">
+<div class="val-card">
+<h3>🔓 Free Forever</h3>
+<p>Every tool is free to use, unlimited times, with no account, no credit card, and no hidden limits. Always.</p>
+</div>
+<div class="val-card">
+<h3>🔒 Radically Private</h3>
+<p>Your data never leaves your browser. We don't collect quiz results, income figures, or relationship answers. Every calculation runs locally via JavaScript.</p>
+</div>
+<div class="val-card">
+<h3>🌍 Globally Inclusive</h3>
+<p>We build for everyone on Earth — not just people in wealthy English-speaking countries. Income tools use global percentile data. Travel tools cover every passport.</p>
+</div>
+<div class="val-card">
+<h3>🎯 Honest Results</h3>
+<p>Our tools give you real, data-driven answers, not just what you want to hear. We cite sources where possible and are transparent about methodology.</p>
+</div>
+</div>
+</div>
+
+<div class="sec">
+<h2>Editorial Standards & Fact-Checking</h2>
+<p>LifePera is committed to accuracy and transparency. Our content and tool methodologies are based on:</p>
+<ul>
+<li><strong>Data-driven research:</strong> Income percentiles from World Bank, IMF, and national statistics. Travel data from government sources and international databases. Relationship psychology from peer-reviewed attachment theory research.</li>
+<li><strong>Regular updates:</strong> Tool data is reviewed quarterly. Visa-free travel data is updated as policies change.</li>
+<li><strong>Correction policy:</strong> If you find an error, email <a href="mailto:contact@lifepera.com">contact@lifepera.com</a>. We correct verified errors within 5 business days and note the correction.</li>
+<li><strong>No sponsored content:</strong> We do not accept payment to influence tool results or editorial content. Advertisements are clearly marked.</li>
+</ul>
+</div>
+
+<div class="author-box">
+<div class="avatar-l">ZN</div>
+<div class="author-info">
+<h3>Zulker Nine</h3>
+<div class="role">Founder & Creator</div>
+<p>I built LifePera because I kept finding myself searching for tools that didn't exist. The information existed — scattered across academic papers, Reddit threads, and expensive consultants — but it wasn't accessible. So I built it.</p>
+<p>Every tool on this site was designed with one question in mind: <em>"Would this genuinely help someone make a better decision today?"</em> If the answer wasn't a clear yes, I didn't build it.</p>
+<p>I personally review every tool, every blog post, and every data update. LifePera is my full-time commitment to making useful information free for everyone.</p>
+</div>
+</div>
+</div>
+</main>
+
 <footer>
-  <div class="footer-container">
-    <div class="footer-brand">
-      <a href="index.html" class="logo" style="color:#ffffff;">Life<span>Pera</span></a>
-      <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-      <div class="trust-badge">
-        <span>🛡️</span> 100% Free • Privacy Protected • Data-Backed
-      </div>
-    </div>
-
-    <div class="footer-col">
-      <h4>Popular Tools</h4>
-      <ul>
-        <li><a href="tool-how-rich.html">"How Rich Am I?" Comparator</a></li>
-        <li><a href="tool-visa.html">Visa-Free Travel Checker</a></li>
-        <li><a href="tool-quit-job.html">Should I Quit My Job? Matrix</a></li>
-        <li><a href="tool-underpaid.html">Am I Underpaid? Analyzer</a></li>
-        <li><a href="tool-attachment.html">Attachment Style Quiz</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Company & Trust</h4>
-      <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="about.html#editorial">Editorial Policy</a></li>
-        <li><a href="blog.html">Editorial Blog</a></li>
-        <li><a href="contact.html">Contact & Support</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Legal & Standards</h4>
-      <ul>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="terms.html">Terms of Service</a></li>
-        <li><a href="sitemap.xml">Sitemap.xml</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-disclaimer">
-    Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.
-  </div>
-
-  <div class="footer-bottom">
-    <div>© 2026 LifePera. All rights reserved.</div>
-    <div>Built for curious minds worldwide.</div>
-  </div>
+<div class="footer-inner">
+<div class="footer-brand">
+<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
+<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+</div>
+<div class="f-col">
+<h4>Popular Tools</h4>
+<ul>
+<li><a href="tool-how-rich.html">"How Rich Am I?" Comparator</a></li>
+<li><a href="tool-visa.html">Visa-Free Travel Checker</a></li>
+<li><a href="tool-quit-job.html">Should I Quit My Job?</a></li>
+<li><a href="tool-underpaid.html">Am I Underpaid? Analyzer</a></li>
+<li><a href="tool-attachment.html">Attachment Style Quiz</a></li>
+</ul>
+</div>
+<div class="f-col">
+<h4>Company & Trust</h4>
+<ul>
+<li><a href="about.html">About Us</a></li>
+<li><a href="about.html#editorial">Editorial Policy</a></li>
+<li><a href="blog.html">Editorial Blog</a></li>
+<li><a href="contact.html">Contact & Support</a></li>
+</ul>
+</div>
+<div class="f-col">
+<h4>Legal & Standards</h4>
+<ul>
+<li><a href="privacy.html">Privacy Policy</a></li>
+<li><a href="terms.html">Terms of Service</a></li>
+<li><a href="sitemap.xml">Sitemap</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-disc">Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only.</div>
+<div class="footer-bot"><span>© 2026 LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
 </footer>
 
 </body>
