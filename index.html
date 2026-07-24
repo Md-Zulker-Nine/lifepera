@@ -552,6 +552,56 @@
       });
     }
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Load Recent Blog Posts for Sidebar
+    fetch('/blog-index.json')
+      .then(res => res.json())
+      .then(posts => {
+        const container = document.getElementById('recent-articles-list');
+        if (!container || !posts || posts.length === 0) return;
+        
+        container.innerHTML = posts.slice(0, 3).map(post => {
+          let cleanPath = post.file.startsWith('/') ? post.file : `/${post.file}`;
+          return `
+            <div class="article-item">
+              <a href="${cleanPath}" class="article-title">${post.title}</a>
+              <span class="article-meta">${post.cat || 'Article'} • ${post.date || ''}</span>
+            </div>
+          `;
+        }).join('');
+      })
+      .catch(err => console.log('Sidebar fallback active'));
 
+    // 2. Load ALL 36 Tools from all_tools.json dynamically
+    fetch('/all_tools.json')
+      .then(res => res.json())
+      .then(tools => {
+        const container = document.querySelector('.tools-grid');
+        if (!container || !tools || tools.length === 0) return;
+
+        container.innerHTML = tools.map(tool => {
+          // Fallback icon if icon field is empty string ("")
+          const icon = tool.icon && tool.icon.trim() !== "" ? tool.icon : "🛠️";
+          
+          // Ensures clean relative route to tool HTML file
+          const link = tool.file.startsWith('/') ? tool.file : `/${tool.file}`;
+
+          return `
+            <div class="card">
+              <div>
+                <div class="card-icon">${icon}</div>
+                <h3>${tool.title}</h3>
+                <p>${tool.desc}</p>
+              </div>
+              <a href="${link}" class="card-link">Use Tool →</a>
+            </div>
+          `;
+        }).join('');
+      })
+      .catch(err => console.error('Error loading tools JSON:', err));
+  });
+</script>
 </body>
 </html>
