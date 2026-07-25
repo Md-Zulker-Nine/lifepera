@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Get essential travel phrases with pronunciation guides and cultural context notes."/>
+<meta name="description" content="Traveling somewhere you do not speak the language? This generator creates a custom survival kit with essential phrases, pronunciation guides, and cultural context. Learn how to greet, order, ask for help, and show respect anywhere you go."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-language-kit.html"/>
 <meta property="og:title" content="Language Survival Kit Generator – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,19 +125,26 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Language Survival Kit</div>
       <h1 class="tool-title">Language Survival Kit Generator</h1>
-      <p class="tool-subtitle">Select your destination language to get essential travel phrases with pronunciation guides.</p>
+      <p class="tool-subtitle">Get a custom set of essential phrases, pronunciation help, and cultural tips for your next destination.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
       
       <label class="tool-label">Destination Language</label>
       <select class="tool-select" id="langInput">
+        <option value="">-- Select Language --</option>
         <option value="es">Spanish (Spain & Latin America)</option>
         <option value="fr">French (France, Canada, W. Africa)</option>
         <option value="ja">Japanese (Japan)</option>
         <option value="it">Italian (Italy)</option>
         <option value="de">German (Germany, Austria)</option>
         <option value="th">Thai (Thailand)</option>
+        <option value="zh">Mandarin Chinese (China, Taiwan)</option>
+        <option value="ar">Arabic (Middle East, N. Africa)</option>
+        <option value="pt">Portuguese (Portugal, Brazil)</option>
+        <option value="ko">Korean (South Korea)</option>
+        <option value="vi">Vietnamese (Vietnam)</option>
+        <option value="tr">Turkish (Turkey)</option>
       </select>
     
 
@@ -149,13 +156,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -174,10 +185,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>The Power of Basic Phrases</h2>
-      <p>Learning just 10 key phrases in the local language opens doors, shows respect, and leads to warmer interactions.</p>
+      <p>Learning just 10 key phrases in the local language opens doors, shows respect, and leads to warmer interactions. Travelers who make an effort with the language are consistently treated better, get better service, and have richer experiences than those who expect everyone to speak English. Even a mispronounced "thank you" is appreciated more than silence.</p>
       
       <h2>Cultural Etiquette</h2>
-      <p>Greetings like 'Hello', 'Please', and 'Thank You' are universally appreciated across all cultures.</p>
+      <p>Greetings like hello, please, and thank you are universally appreciated — but how you deliver them matters. In Japan, a bow accompanies the words. In Italy, eye contact and a smile matter. In the Middle East, using the right hand for greetings and eating is essential. Learning the phrase is step one; learning the gesture is step two.</p>
+
+      <h2>Which Languages Matter Most</h2>
+      <p>Mandarin Chinese, Spanish, Arabic, Hindi, and French cover the most ground geographically. But the most useful language kit depends entirely on where you travel. A set of phrases for Southeast Asia looks completely different from one for South America. The tool customizes your kit based on your destination and travel style.</p>
+
+      <h2>Making It Stick</h2>
+      <p>Don't try to learn 50 phrases at once. Pick 10 — greetings, numbers, directions, ordering food, and emergencies. Practice them on the flight. Use them immediately on arrival. The confidence boost alone is worth the effort, and locals will meet your effort with patience and warmth even when you get it wrong.</p>
     </div>
   </main>
 
@@ -197,7 +214,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -237,7 +254,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Language Survival Kit Generator - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -245,6 +262,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Language Survival Kit Generator");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-language-kit";
     currentShareText = "I just tested Language Survival Kit Generator on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -254,10 +273,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       const phrases = {
         es: "Hola (Hello) | Gracias (Thank you) | Por favor (Please) | ¿Dónde está...? (Where is...?)",
         fr: "Bonjour (Hello) | Merci (Thank you) | S'il vous plaît (Please) | Où est...? (Where is...?)",
-        ja: "Konnichiwa (Hello) | Arigatou (Thank you) | Sumimasen (Excuse me)",
-        it: "Ciao (Hello) | Grazie (Thank you) | Per favore (Please)",
-        de: "Hallo (Hello) | Danke (Thank you) | Bitte (Please)",
-        th: "Sawatdee (Hello) | Khop khun (Thank you) | Ka/Krab (Polite suffix)"
+        ja: "Konnichiwa (Hello) | Arigatou (Thank you) | Sumimasen (Excuse me) | Ikura desu ka? (How much?)",
+        it: "Ciao (Hello) | Grazie (Thank you) | Per favore (Please) | Dov'è...? (Where is...?)",
+        de: "Hallo (Hello) | Danke (Thank you) | Bitte (Please) | Wo ist...? (Where is...?)",
+        th: "Sawatdee (Hello) | Khop khun (Thank you) | Ka/Krab (Polite suffix) | Tao rai? (How much?)",
+        zh: "Nǐ hǎo (Hello) | Xiè xiè (Thank you) | Qǐng (Please) | Duō shǎo qián? (How much?)",
+        ar: "Marhaba (Hello) | Shukran (Thank you) | Min fadlik (Please) | Kam al-thaman? (How much?)",
+        pt: "Olá (Hello) | Obrigado (Thank you) | Por favor (Please) | Onde fica...? (Where is...?)",
+        ko: "Annyeonghaseyo (Hello) | Gamsahamnida (Thank you) | Juseyo (Please) | Olma-eyo? (How much?)",
+        vi: "Xin chào (Hello) | Cảm ơn (Thank you) | Làm ơn (Please) | Bao nhiêu? (How much?)",
+        tr: "Merhaba (Hello) | Teşekkür ederim (Thank you) | Lütfen (Please) | Ne kadar? (How much?)"
       };
       showResult("Essential Kit: " + lang.toUpperCase(), phrases[lang], "10 Key Phrases Ready 🗣️", "Language Kit Generated");
     }
@@ -272,20 +297,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

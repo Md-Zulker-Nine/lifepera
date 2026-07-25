@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -142,13 +142,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -167,10 +171,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Reclaiming Attention in a Dopamine Economy</h2>
-      <p>Smartphones are engineered to capture human attention through variable reward schedules and notification triggers.</p>
+      <p>Smartphones are engineered by some of the brightest minds on the planet to capture as much of your attention as possible. Variable reward schedules, notification triggers, and infinite scroll are not accidents — they are design features optimized to keep you looking at a screen.</p>
       
       <h2>Practical Digital Hygiene</h2>
-      <p>Greyscale mode, phone-free bedrooms, and notification audits offer immediate mental bandwidth recovery.</p>
+      <p>Switching your phone to grayscale mode removes the dopamine hit of bright colors. Keeping phones out of the bedroom improves sleep quality significantly. Turning off all non-essential notifications can reduce pickups by over 50 percent in the first week alone.</p>
+
+      <h2>What the Score Means</h2>
+      <p>Your detox score reflects how dependent your daily routine is on digital devices. A low score means your habits are relatively healthy. A high score suggests your phone use is interfering with sleep, focus, relationships, or productivity — and a reset could make a real difference in how you feel.</p>
+
+      <h2>Starting Your Detox</h2>
+      <p>Based on your score, the tool gives you a personalized plan. It might start with something as simple as no phones during meals or a 9 PM digital cutoff. Small, consistent changes beat dramatic detoxes that last two days. Start where you are and build from there.</p>
     </div>
   </main>
 
@@ -190,7 +200,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -230,7 +240,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Digital Detox Feasibility Score - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -238,6 +248,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Digital Detox Feasibility Score");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-detox";
     currentShareText = "I just tested Digital Detox Feasibility Score on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -264,20 +276,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

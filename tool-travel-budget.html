@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Calculate realistic daily travel expenses by destination and travel style."/>
+<meta name="description" content="How much should you budget for your next trip? Enter your destination and travel style to get a realistic daily cost breakdown covering accommodation, food, transport, and activities. No more guesswork — just honest numbers."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-travel-budget.html"/>
 <meta property="og:title" content="Travel Budget Reality Checker – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,19 +125,24 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Travel Budget Checker</div>
       <h1 class="tool-title">Travel Budget Reality Checker</h1>
-      <p class="tool-subtitle">Estimate your real daily and total budget based on destination and travel style.</p>
+      <p class="tool-subtitle">Get a realistic daily and total budget for any destination based on how you actually like to travel.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
       
       <label class="tool-label">Destination Region</label>
       <select class="tool-select" id="regionInput">
+        <option value="">-- Select Region --</option>
         <option value="sea">Southeast Asia (Thailand, Vietnam, Bali)</option>
         <option value="weu">Western Europe (France, Italy, UK)</option>
         <option value="eeu">Eastern Europe (Poland, Hungary, Czechia)</option>
         <option value="lat">Latin America (Mexico, Colombia, Peru)</option>
         <option value="usa">USA / Canada Major Cities</option>
         <option value="jp">Japan / South Korea</option>
+        <option value="mea">Middle East / Africa (UAE, Morocco, Kenya)</option>
+        <option value="oce">Oceania (Australia, New Zealand)</option>
+        <option value="sca">Scandinavia (Norway, Sweden, Denmark)</option>
+        <option value="sas">South Asia (India, Nepal, Sri Lanka)</option>
       </select>
 
       <label class="tool-label">Travel Style</label>
@@ -159,13 +164,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -184,10 +193,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Budgeting Beyond the Flight Ticket</h2>
-      <p>Hidden costs like airport transport, tipping, daily water, SIM cards, and entrance fees often catch travelers off guard.</p>
+      <p>Hidden costs like airport transport, local tipping customs, daily drinking water, local SIM cards, attraction entrance fees, and travel insurance often catch travelers off guard. The flight is just the beginning — your actual daily expenses on the ground can vary by a factor of five depending on where you go and how you travel.</p>
       
       <h2>Realistic Travel Categories</h2>
-      <p>Backpacker ($30-$60/day), Mid-Range ($100-$200/day), and Luxury ($350+/day) styles vary dramatically by region.</p>
+      <p>Backpacker budgets run roughly $30 to $60 per day in most regions, covering hostels, street food, and public transport. Mid-Range travelers spending $100 to $200 per day get private rooms, restaurant meals, and occasional taxis. Luxury travelers spending $350 or more per day have high-end hotels, fine dining, and private transfers. The same style costs very different amounts in Bangkok versus Zurich.</p>
+
+      <h2>Biggest Budget Killers</h2>
+      <p>Unplanned medical expenses, last-minute accommodation changes, tourist trap restaurants, unnecessary souvenirs, and forgetting to account for the exchange rate when making daily decisions are the biggest budget busters. A coffee that costs $2 at home might cost $7 in a tourist area. Small expenses add up faster than most travelers realize.</p>
+
+      <h2>Stretching Your Travel Budget</h2>
+      <p>Travel during shoulder season (just before or after peak), eat where locals eat, use public transport, book accommodation with kitchen access, and always have a buffer of 20 percent above your estimated budget. The best trips are not necessarily the most expensive ones — they are the ones where you planned well enough to enjoy yourself without worrying about money every day.</p>
     </div>
   </main>
 
@@ -207,7 +222,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -247,13 +262,15 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Travel Budget Reality Checker - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Travel Budget Reality Checker");
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-travel-budget";
     document.getElementById('bannerSubtext').innerHTML = details;
     currentShareText = "I just tested Travel Budget Reality Checker on LifePera: " + badge + "! Try yours here:";
   }
@@ -270,7 +287,11 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
         eeu: { budget: 55, mid: 130, luxury: 350 },
         lat: { budget: 45, mid: 120, luxury: 340 },
         usa: { budget: 110, mid: 260, luxury: 650 },
-        jp: { budget: 75, mid: 180, luxury: 480 }
+        jp: { budget: 75, mid: 180, luxury: 480 },
+        mea: { budget: 50, mid: 140, luxury: 400 },
+        oce: { budget: 80, mid: 200, luxury: 520 },
+        sca: { budget: 100, mid: 240, luxury: 600 },
+        sas: { budget: 30, mid: 90, luxury: 280 }
       };
 
       const daily = rates[region][style];
@@ -292,20 +313,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

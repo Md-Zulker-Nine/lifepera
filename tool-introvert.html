@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Measure where you land on the spectrum with customized social battery advice."/>
+<meta name="description" content="Not sure if you are an introvert, extrovert, or somewhere in between? This spectrum test reveals your social battery type and gives you customized advice on managing energy, social situations, and relationships based on where you land."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-introvert.html"/>
 <meta property="og:title" content="Introvert-Extrovert Spectrum Test – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Introvert Spectrum</div>
       <h1 class="tool-title">Introvert-Extrovert Spectrum Test</h1>
-      <p class="tool-subtitle">Measure where you land on the spectrum with customized social battery advice.</p>
+      <p class="tool-subtitle">Discover where you fall on the introvert-extrovert scale and get tips tailored to your social battery type.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -146,13 +146,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -171,10 +175,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Understanding Social Energy</h2>
-      <p>Introversion vs Extroversion is about how you recharge your mental battery—not about shyness or social skill.</p>
+      <p>Introversion versus extroversion is not about being shy or outgoing — it is about how you recharge your mental battery. Introverts gain energy from solitude and feel drained by prolonged social interaction. Extroverts gain energy from being around others and feel drained by too much alone time. Neither is better, but understanding where you fall is key to designing a life that does not exhaust you.</p>
       
       <h2>The Ambivert Majority</h2>
-      <p>Most people fall somewhere in the middle, displaying ambivert traits depending on environment and comfort level.</p>
+      <p>Most people fall somewhere in the middle, displaying ambivert traits depending on the environment and comfort level. You might be introverted in large groups but extroverted with close friends, or energized by socializing at work but needing complete quiet on weekends. The spectrum is fluid, and your position can shift with context, stress levels, and life stage.</p>
+
+      <h2>Social Battery Management</h2>
+      <p>If you score as introverted, pay attention to your social limits. Schedule recovery time after big events. If you are extroverted, make sure you are getting enough social contact — isolation hits you harder than it does others. The key is knowing your baseline and planning your energy expenditure accordingly, just like you would with a budget.</p>
+
+      <h2>Applying Your Score</h2>
+      <p>Use your result to make better decisions about your work environment, social life, and living situation. An introvert in an open-plan office with constant collaboration will burn out faster than one with private workspace options. An extrovert working alone remotely may need to build in social rituals to stay energized. Align your environment with your nature.</p>
     </div>
   </main>
 
@@ -194,7 +204,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -234,7 +244,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Introvert-Extrovert Spectrum Test - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -242,6 +252,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Introvert-Extrovert Spectrum Test");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-introvert";
     currentShareText = "I just tested Introvert-Extrovert Spectrum Test on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -267,20 +279,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

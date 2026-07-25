@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Calculate your age across Korean, Chinese, Hijri, Hebrew, and Mayan calendar systems."/>
+<meta name="description" content="Did you know you could be a different age in another culture? Calculate your age across Korean, Chinese, Hijri, Hebrew, and Mayan calendar systems. A fun, mind-bending look at how differently cultures measure the passing of time."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-age-cultures.html"/>
 <meta property="og:title" content="What Age Are You in Other Cultures? – LifePera"/>
@@ -123,9 +123,9 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="container">
   <main>
     <div class="tool-header">
-      <div class="breadcrumb"><a href="https://lifepera.com">Home</a> › <a href="tools.html">Tools</a> › Cultural Age Calculator</div>
+      <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Cultural Age Calculator</div>
       <h1 class="tool-title">What Age Are You in Other Cultures?</h1>
-      <p class="tool-subtitle">Calculate your age across Korean, Chinese, Hijri, Hebrew, and Mayan calendar systems.</p>
+      <p class="tool-subtitle">Find out how old you are in five different calendar systems from around the world.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -142,13 +142,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -167,10 +171,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Different Ways Humanity Tracks Age</h2>
-      <p>While Western calendars count age from your exact day of birth, East Asian traditional systems start age at birth or on Lunar New Year.</p>
+      <p>While Western calendars count age from your exact day of birth, East Asian traditional systems start age at birth or on Lunar New Year. This means a baby born in December is already considered one year old in Korea, and everyone ages up together on Seollal rather than on individual birthdays.</p>
       
       <h2>Lunar vs Solar Calendars</h2>
-      <p>Islamic Hijri years are ~11 days shorter than Gregorian solar years, meaning your age in Hijri years is higher!</p>
+      <p>Islamic Hijri years are about 11 days shorter than Gregorian solar years, meaning your age in Hijri years is higher than your Western age. Similarly, the Chinese and Vietnamese lunar calendars add leap months to stay aligned with seasons, creating fascinating differences in how birthdays are celebrated across cultures.</p>
+
+      <h2>Why Age Systems Differ</h2>
+      <p>How a society counts age reflects deeper cultural values. Western systems emphasize individual milestones and exact birth moments. East Asian systems emphasize the collective — everyone ages together on the same day. The Hebrew calendar tracks both lunar months and solar years simultaneously, while the Mayan calendar operates on entirely different cycles tied to astronomy.</p>
+
+      <h2>What Your Results Show</h2>
+      <p>Enter your birth date to see your age in Korean, Chinese, Hijri, Hebrew, and Mayan systems side by side. It is a fascinating reminder that something as basic as your age is not as universal as you might think. Different cultures, different numbers — all pointing to the same person.</p>
     </div>
   </main>
 
@@ -230,7 +240,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "What Age Are You in Other Cultures? - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -238,6 +248,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "What Age Are You in Other Cultures?");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-age-cultures";
     currentShareText = "I just tested What Age Are You in Other Cultures? on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -260,20 +272,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

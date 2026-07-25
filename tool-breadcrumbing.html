@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -153,13 +153,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -178,10 +182,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>What Is Breadcrumbing?</h2>
-      <p>Breadcrumbing occurs when someone sends sporadic, low-effort signals (like late-night texts or random likes) to keep you on the hook without intention of committing.</p>
+      <p>Breadcrumbing occurs when someone sends sporadic, low-effort signals to keep you interested without any intention of committing. These can be late-night texts, random social media likes, or vague promises like "we should hang out soon" that never materialize into actual plans.</p>
       
       <h2>Spotting the Pattern</h2>
-      <p>Inconsistency is the key indicator: rapid replies one day followed by days of radio silence and flakiness on concrete plans.</p>
+      <p>Inconsistency is the clearest indicator. They reply rapidly for a day or two, then vanish for a week. They engage just enough to keep you hoping but never enough to build anything real. If you feel confused about where you stand, breadcrumbing is often the reason.</p>
+
+      <h2>Why People Breadcrumb</h2>
+      <p>Most breadcrumbers are not malicious — they are often uncertain about what they want, afraid of confrontation, or seeking validation without emotional responsibility. Understanding the motivation behind the behavior helps you stop taking it personally and see it for what it really is.</p>
+
+      <h2>How to Respond</h2>
+      <p>Once you recognize breadcrumbing, the healthiest response is to name the pattern and set a clear boundary. You deserve someone whose interest is consistent and whose actions match their words. This tool helps you confirm what your gut may already be telling you.</p>
     </div>
   </main>
 
@@ -201,7 +211,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -241,7 +251,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Breadcrumbing & Mixed Signals Calculator - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -249,6 +259,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Breadcrumbing & Mixed Signals Calculator");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-breadcrumbing";
     currentShareText = "I just tested Breadcrumbing & Mixed Signals Calculator on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -283,20 +295,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

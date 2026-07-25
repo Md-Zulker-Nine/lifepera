@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Check which countries you can visit visa-free with your specific passport."/>
+<meta name="description" content="Planning your next trip but tired of visa research? Select your passport and instantly see every country you can visit without a visa. Covers 190+ destinations with entry requirements, visa-on-arrival options, and stay duration limits."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-visa.html"/>
 <meta property="og:title" content="Visa-Free Travel Checker – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Visa-Free Checker</div>
       <h1 class="tool-title">Visa-Free Travel Checker</h1>
-      <p class="tool-subtitle">Select your passport to instantly see your travel freedom score and visa-free access list.</p>
+      <p class="tool-subtitle">Pick your passport and instantly see every destination you can enter without applying for a visa.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -133,21 +133,62 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       <label class="tool-label">Select Your Passport</label>
       <select class="tool-select" id="passportInput">
         <option value="">-- Choose Passport Country --</option>
-        <option value="us">United States (186 countries)</option>
-        <option value="uk">United Kingdom (187 countries)</option>
         <option value="sg">Singapore (192 countries)</option>
+        <option value="kr">South Korea (191 countries)</option>
         <option value="jp">Japan (190 countries)</option>
         <option value="de">Germany (190 countries)</option>
+        <option value="fi">Finland (189 countries)</option>
+        <option value="es">Spain (188 countries)</option>
+        <option value="fr">France (188 countries)</option>
+        <option value="it">Italy (188 countries)</option>
+        <option value="se">Sweden (188 countries)</option>
+        <option value="uk">United Kingdom (187 countries)</option>
+        <option value="nl">Netherlands (187 countries)</option>
+        <option value="no">Norway (187 countries)</option>
+        <option value="us">United States (184 countries)</option>
+        <option value="au">Australia (186 countries)</option>
+        <option value="nz">New Zealand (186 countries)</option>
         <option value="ca">Canada (185 countries)</option>
-        <option value="au">Australia (185 countries)</option>
-        <option value="my">Malaysia (180 countries)</option>
+        <option value="hu">Hungary (180 countries)</option>
+        <option value="pl">Poland (178 countries)</option>
+        <option value="hr">Croatia (173 countries)</option>
+        <option value="ae">UAE (172 countries)</option>
+        <option value="ar">Argentina (171 countries)</option>
         <option value="br">Brazil (170 countries)</option>
-        <option value="mx">Mexico (160 countries)</option>
-        <option value="in">India (62 countries)</option>
-        <option value="ph">Philippines (67 countries)</option>
-        <option value="pk">Pakistan (33 countries)</option>
-        <option value="ng">Nigeria (46 countries)</option>
+        <option value="hk">Hong Kong (171 countries)</option>
+        <option value="mx">Mexico (162 countries)</option>
+        <option value="il">Israel (160 countries)</option>
+        <option value="my">Malaysia (179 countries)</option>
+        <option value="cl">Chile (174 countries)</option>
+        <option value="cr">Costa Rica (151 countries)</option>
         <option value="za">South Africa (106 countries)</option>
+        <option value="tr">Turkey (111 countries)</option>
+        <option value="ru">Russia (115 countries)</option>
+        <option value="sa">Saudi Arabia (86 countries)</option>
+        <option value="cn">China (85 countries)</option>
+        <option value="th">Thailand (82 countries)</option>
+        <option value="qa">Qatar (97 countries)</option>
+        <option value="ph">Philippines (67 countries)</option>
+        <option value="in">India (62 countries)</option>
+        <option value="id">Indonesia (75 countries)</option>
+        <option value="ke">Kenya (46 countries)</option>
+        <option value="ng">Nigeria (46 countries)</option>
+        <option value="pk">Pakistan (33 countries)</option>
+        <option value="eg">Egypt (52 countries)</option>
+        <option value="ma">Morocco (68 countries)</option>
+        <option value="pe">Peru (99 countries)</option>
+        <option value="co">Colombia (98 countries)</option>
+        <option value="vn">Vietnam (55 countries)</option>
+        <option value="np">Nepal (39 countries)</option>
+        <option value="mv">Maldives (87 countries)</option>
+        <option value="jo">Jordan (54 countries)</option>
+        <option value="et">Ethiopia (44 countries)</option>
+        <option value="dk">Denmark (189 countries)</option>
+        <option value="pt">Portugal (186 countries)</option>
+        <option value="cz">Czech Republic (187 countries)</option>
+        <option value="is">Iceland (188 countries)</option>
+        <option value="gr">Greece (186 countries)</option>
+        <option value="ch">Switzerland (189 countries)</option>
       </select>
     
 
@@ -159,13 +200,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -184,10 +229,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>The Power of Passports</h2>
-      <p>Global mobility is heavily dictated by geopolitical relationships, economic standing, and international agreements.</p>
+      <p>Global mobility is heavily dictated by geopolitical relationships, economic standing, and international agreements. A passport from Singapore, Japan, or Germany opens over 190 destinations without needing a visa in advance. A passport from Afghanistan, Iraq, or Syria allows access to fewer than 30. The difference is not about you — it is entirely about which document you hold.</p>
       
       <h2>What Does Visa-Free Really Mean?</h2>
-      <p>Visa-free travel allows entry upon presenting a valid passport without prior approval or embassy visits.</p>
+      <p>Visa-free travel allows entry upon presenting a valid passport without prior approval or an embassy visit. But there are nuances — some countries require an electronic travel authorization (like the US ESTA or Canadian eTA), others offer visa on arrival, and some have reciprocal arrangements that change with political shifts. Always double-check entry requirements before booking.</p>
+
+      <h2>Visa Types and Duration</h2>
+      <p>Tourist visas typically allow 30 to 90 days of stay. Work visas, student visas, digital nomad visas, and retirement visas all have different requirements and durations. Some countries offer visa-free access only for specific purposes (tourism but not work), and overstaying even by a day can result in fines, bans, or deportation depending on the country.</p>
+
+      <h2>Planning Your Travel Strategy</h2>
+      <p>If your passport has limited mobility, plan around visa processing times — some can take weeks or months. Consider second passports or residency programs if global travel is central to your lifestyle. Use the tool to check exactly where you can go without a visa, where you can get one on arrival, and where you need to plan ahead, so there are no surprises at the airport.</p>
     </div>
   </main>
 
@@ -207,7 +258,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -247,7 +298,9 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Visa-Free Travel Checker - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-visa";
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -262,27 +315,69 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     function runTool() {
       const passport = document.getElementById('passportInput').value;
       if (!passport) { alert("Please select a passport country."); return; }
+      const destName = document.getElementById('passportInput').selectedOptions[0].text;
       
       const data = {
-        us: { score: "186 Countries", rank: "Top 8% Mobility ✈️", text: "Your US passport grants visa-free or visa-on-arrival entry to 186 countries including Schengen Europe, UK, and Japan." },
-        uk: { score: "187 Countries", rank: "Top 6% Mobility ✈️", text: "Your UK passport offers exceptional travel freedom across 187 destinations globally." },
         sg: { score: "192 Countries", rank: "Top 1% Global Rank 👑", text: "Singapore holds one of the most powerful passports on Earth with access to 192 nations!" },
+        kr: { score: "191 Countries", rank: "Top 2% Global Rank 🌟", text: "South Korea's passport provides access to 191 destinations with strong mobility across Asia and the Americas." },
         jp: { score: "190 Countries", rank: "Top 2% Global Rank 🌟", text: "Japan's passport gives seamless access to 190 countries across Asia, Europe, and the Americas." },
         de: { score: "190 Countries", rank: "Top 2% EU Freedom 🇪🇺", text: "German passport holders enjoy full EU freedom of movement plus visa-free entry to 190 countries." },
+        fi: { score: "189 Countries", rank: "Top 3% Nordic Pass 🍃", text: "Finnish passport offers visa-free travel to 189 destinations with excellent global mobility." },
+        es: { score: "188 Countries", rank: "Top 5% EU Pass 🇪🇸", text: "Spanish passport holders enjoy visa-free access to 188 countries across all continents." },
+        fr: { score: "188 Countries", rank: "Top 5% EU Freedom 🥖", text: "French passport holders enjoy full EU mobility and visa-free access to 188 countries worldwide." },
+        it: { score: "188 Countries", rank: "Top 5% EU Pass 🇮🇹", text: "Italian passport grants visa-free or VOA entry to 188 destinations worldwide." },
+        se: { score: "188 Countries", rank: "Top 5% Nordic Pass 🇸🇪", text: "Swedish passport offers visa-free access to 188 countries with strong global mobility." },
+        uk: { score: "187 Countries", rank: "Top 6% Mobility ✈️", text: "Your UK passport offers exceptional travel freedom across 187 destinations globally." },
+        nl: { score: "187 Countries", rank: "Top 6% EU Pass 🇳🇱", text: "Dutch passport holders can visit 187 countries visa-free with full EU mobility." },
+        no: { score: "187 Countries", rank: "Top 6% Nordic Pass 🇳🇴", text: "Norwegian passport provides visa-free access to 187 countries worldwide." },
+        us: { score: "184 Countries", rank: "Top 8% Mobility ✈️", text: "Your US passport grants visa-free or visa-on-arrival entry to 184 countries including Schengen Europe and Japan." },
+        au: { score: "186 Countries", rank: "Top 8% Mobility 🇦🇺", text: "Australian passport grants access to 186 global destinations visa-free." },
+        nz: { score: "186 Countries", rank: "Top 8% Mobility 🥝", text: "New Zealand passport provides visa-free access to 186 countries worldwide." },
         ca: { score: "185 Countries", rank: "Top 10% Mobility 🇨🇦", text: "Canadian passport holders enjoy hassle-free travel to 185 countries." },
-        au: { score: "185 Countries", rank: "Top 10% Mobility 🇦🇺", text: "Australian passport grants access to 185 global destinations visa-free." },
-        my: { score: "180 Countries", rank: "Top 15% Mobility 🇲🇾", text: "Malaysia offers one of the strongest passports in Southeast Asia with 180 visa-free countries." },
+        hu: { score: "180 Countries", rank: "Top 15% EU Pass 🇭🇺", text: "Hungarian passport offers visa-free access to 180 destinations with full EU mobility." },
+        pl: { score: "178 Countries", rank: "Top 15% EU Pass 🇵🇱", text: "Polish passport grants visa-free or VOA entry to 178 countries globally." },
+        hr: { score: "173 Countries", rank: "Top 20% EU Pass 🇭🇷", text: "Croatian passport provides access to 173 visa-free destinations with EU mobility." },
+        ae: { score: "172 Countries", rank: "Top 20% Mobility 🇦🇪", text: "UAE passport has risen rapidly in rankings, now offering visa-free access to 172 countries." },
+        ar: { score: "171 Countries", rank: "Top 25% Mobility 🇦🇷", text: "Argentine passport holders can travel visa-free across Europe and most of Latin America." },
         br: { score: "170 Countries", rank: "Top 25% Mobility 🇧🇷", text: "Brazilian passport holders can travel visa-free across Europe and most of Latin America." },
-        mx: { score: "160 Countries", rank: "Top 30% Mobility 🇲🇽", text: "Mexican passport provides visa-free access to 160 destinations worldwide." },
-        in: { score: "62 Countries", rank: "Global Mobility Tier 🌐", text: "Indian passport holders can visit 62 countries visa-free or VOA including Thailand, Maldives, and Mauritius." },
+        hk: { score: "171 Countries", rank: "Top 25% Mobility 🇭🇰", text: "Hong Kong SAR passport provides visa-free access to 171 destinations worldwide." },
+        mx: { score: "162 Countries", rank: "Top 30% Mobility 🇲🇽", text: "Mexican passport provides visa-free access to 162 destinations worldwide." },
+        il: { score: "160 Countries", rank: "Top 30% Mobility 🇮🇱", text: "Israeli passport grants visa-free entry to 160 countries across Europe, Asia, and the Americas." },
+        my: { score: "179 Countries", rank: "Top 12% Mobility 🇲🇾", text: "Malaysia offers one of the strongest passports in Southeast Asia with 179 visa-free countries." },
+        cl: { score: "174 Countries", rank: "Top 20% Mobility 🇨🇱", text: "Chilean passport provides visa-free access to 174 destinations worldwide." },
+        cr: { score: "151 Countries", rank: "Top 35% Mobility 🇨🇷", text: "Costa Rican passport offers visa-free travel to 151 countries across multiple continents." },
+        za: { score: "106 Countries", rank: "Top 45% Mobility 🇿🇦", text: "South African passport leads African mobility with 106 visa-free destinations." },
+        tr: { score: "111 Countries", rank: "Top 40% Mobility 🇹🇷", text: "Turkish passport provides visa-free access to 111 destinations including Japan and Southeast Asia." },
+        ru: { score: "115 Countries", rank: "Top 40% Mobility 🇷🇺", text: "Russian passport grants visa-free or VOA access to 115 countries across Asia, Africa, and Latin America." },
+        sa: { score: "86 Countries", rank: "Global Mobility Tier 🇸🇦", text: "Saudi passport has been improving, now offering visa-free or VOA access to 86 countries." },
+        cn: { score: "85 Countries", rank: "Global Mobility Tier 🇨🇳", text: "China passport has been steadily improving, now offering visa-free or VOA access to 85 countries." },
+        th: { score: "82 Countries", rank: "Global Mobility Tier 🇹🇭", text: "Thai passport provides visa-free or VOA access to 82 destinations across Asia and beyond." },
+        qa: { score: "97 Countries", rank: "Top 50% Mobility 🇶🇦", text: "Qatar passport offers visa-free or VOA access to 97 countries worldwide." },
         ph: { score: "67 Countries", rank: "Global Mobility Tier 🇵🇭", text: "Philippine passport allows visa-free access to ASEAN nations and select South American destinations." },
-        pk: { score: "33 Countries", rank: "Regional Mobility Tier 📊", text: "Pakistani passport grants visa-free or VOA access to 33 countries." },
+        in: { score: "62 Countries", rank: "Global Mobility Tier 🌐", text: "Indian passport holders can visit 62 countries visa-free or VOA including Thailand, Maldives, and Mauritius." },
+        id: { score: "75 Countries", rank: "Global Mobility Tier 🇮🇩", text: "Indonesian passport provides visa-free or VOA access to 75 countries across Asia." },
+        ke: { score: "46 Countries", rank: "Regional Mobility Tier 🇰🇪", text: "Kenyan passport grants visa-free or VOA access to 46 countries in Africa and beyond." },
         ng: { score: "46 Countries", rank: "Regional Mobility Tier 🇳🇬", text: "Nigerian passport grants visa-free entry to ECOWAS member states and select destinations." },
-        za: { score: "106 Countries", rank: "Top 45% Mobility 🇿🇦", text: "South African passport leads African mobility with 106 visa-free destinations." }
+        pk: { score: "33 Countries", rank: "Regional Mobility Tier 📊", text: "Pakistani passport grants visa-free or VOA access to 33 countries." },
+        eg: { score: "52 Countries", rank: "Regional Mobility Tier 🇪🇬", text: "Egyptian passport provides visa-free or VOA access to 52 countries across Africa and the Middle East." },
+        ma: { score: "68 Countries", rank: "Global Mobility Tier 🇲🇦", text: "Moroccan passport offers visa-free or VOA access to 68 destinations worldwide." },
+        pe: { score: "99 Countries", rank: "Top 50% Mobility 🇵🇪", text: "Peruvian passport grants visa-free or VOA access to 99 countries across Latin America and Europe." },
+        co: { score: "98 Countries", rank: "Top 50% Mobility 🇨🇴", text: "Colombian passport provides visa-free or VOA access to 98 destinations globally." },
+        vn: { score: "55 Countries", rank: "Regional Mobility Tier 🇻🇳", text: "Vietnamese passport offers visa-free or VOA access to 55 countries across Asia." },
+        np: { score: "39 Countries", rank: "Regional Mobility Tier 🇳🇵", text: "Nepalese passport grants visa-free or VOA access to 39 countries." },
+        mv: { score: "87 Countries", rank: "Global Mobility Tier 🇲🇻", text: "Maldivian passport provides visa-free or VOA access to 87 countries worldwide." },
+        jo: { score: "54 Countries", rank: "Regional Mobility Tier 🇯🇴", text: "Jordanian passport offers visa-free or VOA access to 54 countries." },
+        et: { score: "44 Countries", rank: "Regional Mobility Tier 🇪🇹", text: "Ethiopian passport grants visa-free or VOA access to 44 countries." },
+        dk: { score: "189 Countries", rank: "Top 3% Nordic Pass 🇩🇰", text: "Danish passport offers visa-free access to 189 destinations with excellent global mobility." },
+        pt: { score: "186 Countries", rank: "Top 8% EU Pass 🇵🇹", text: "Portuguese passport grants visa-free or VOA entry to 186 countries worldwide." },
+        cz: { score: "187 Countries", rank: "Top 6% EU Pass 🇨🇿", text: "Czech passport provides visa-free access to 187 destinations with full EU mobility." },
+        is: { score: "188 Countries", rank: "Top 5% Nordic Pass 🇮🇸", text: "Icelandic passport offers visa-free access to 188 countries despite its small size." },
+        gr: { score: "186 Countries", rank: "Top 8% EU Pass 🇬🇷", text: "Greek passport grants visa-free or VOA entry to 186 destinations worldwide." },
+        ch: { score: "189 Countries", rank: "Top 3% Swiss Pass 🇨🇭", text: "Swiss passport offers visa-free access to 189 destinations with excellent global mobility." }
       };
 
       const res = data[passport];
-      showResult("Passport Travel Freedom: " + res.score, res.text, res.rank, res.score + " Visa-Free");
+      showResult("Passport Travel Freedom: " + res.score, res.text, res.rank, res.score + " Visa-Free", destName);
     }
     
 
@@ -295,20 +390,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

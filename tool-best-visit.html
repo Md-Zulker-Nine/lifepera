@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Discover peak seasons, budget-friendly months, and weather windows worldwide."/>
+<meta name="description" content="Trying to figure out the best time to visit a country? This guide breaks down peak seasons, shoulder months, and budget-friendly windows for every destination. Factor in weather, crowd levels, and flight costs to plan your perfect trip."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-best-visit.html"/>
 <meta property="og:title" content="Best Month to Visit Any Country – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Best Month to Visit</div>
       <h1 class="tool-title">Best Month to Visit Any Country</h1>
-      <p class="tool-subtitle">Select a travel destination to discover its ideal weather window, budget month, and peak season.</p>
+      <p class="tool-subtitle">Find the ideal month for any destination based on weather, prices, crowds, and local events.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -133,16 +133,61 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       <label class="tool-label">Destination Country</label>
       <select class="tool-select" id="destInput">
         <option value="">-- Select Destination --</option>
-        <option value="japan">Japan (Tokyo, Kyoto)</option>
-        <option value="italy">Italy (Rome, Venice)</option>
-        <option value="thailand">Thailand (Bangkok, Phuket)</option>
-        <option value="france">France (Paris, Nice)</option>
-        <option value="switzerland">Switzerland (Zermatt, Zurich)</option>
-        <option value="iceland">Iceland (Reykjavik)</option>
-        <option value="greece">Greece (Santorini, Athens)</option>
-        <option value="mexico">Mexico (Cancun, Oaxaca)</option>
-        <option value="indonesia">Indonesia (Bali)</option>
+        <option value="argentina">Argentina (Buenos Aires)</option>
+        <option value="australia">Australia (Sydney, Melbourne)</option>
+        <option value="austria">Austria (Vienna, Salzburg)</option>
+        <option value="belgium">Belgium (Brussels, Bruges)</option>
+        <option value="brazil">Brazil (Rio, Sao Paulo)</option>
+        <option value="canada">Canada (Toronto, Vancouver)</option>
+        <option value="chile">Chile (Santiago, Patagonia)</option>
+        <option value="china">China (Beijing, Shanghai)</option>
+        <option value="colombia">Colombia (Bogota, Cartagena)</option>
+        <option value="costa-rica">Costa Rica (San Jose, Tamarindo)</option>
+        <option value="croatia">Croatia (Dubrovnik, Split)</option>
+        <option value="czech">Czech Republic (Prague)</option>
+        <option value="denmark">Denmark (Copenhagen)</option>
         <option value="egypt">Egypt (Cairo, Luxor)</option>
+        <option value="finland">Finland (Helsinki, Lapland)</option>
+        <option value="france">France (Paris, Nice)</option>
+        <option value="germany">Germany (Berlin, Munich)</option>
+        <option value="greece">Greece (Santorini, Athens)</option>
+        <option value="hong-kong">Hong Kong</option>
+        <option value="hungary">Hungary (Budapest)</option>
+        <option value="iceland">Iceland (Reykjavik)</option>
+        <option value="india">India (Delhi, Jaipur)</option>
+        <option value="indonesia">Indonesia (Bali)</option>
+        <option value="ireland">Ireland (Dublin, Galway)</option>
+        <option value="israel">Israel (Tel Aviv, Jerusalem)</option>
+        <option value="italy">Italy (Rome, Venice)</option>
+        <option value="japan">Japan (Tokyo, Kyoto)</option>
+        <option value="jordan">Jordan (Petra, Amman)</option>
+        <option value="kenya">Kenya (Nairobi, Maasai Mara)</option>
+        <option value="malaysia">Malaysia (Kuala Lumpur, Penang)</option>
+        <option value="maldives">Maldives (Male)</option>
+        <option value="mexico">Mexico (Cancun, Oaxaca)</option>
+        <option value="morocco">Morocco (Marrakech, Fes)</option>
+        <option value="netherlands">Netherlands (Amsterdam)</option>
+        <option value="new-zealand">New Zealand (Auckland, Queenstown)</option>
+        <option value="norway">Norway (Oslo, Bergen)</option>
+        <option value="peru">Peru (Cusco, Lima)</option>
+        <option value="philippines">Philippines (Manila, Palawan)</option>
+        <option value="poland">Poland (Krakow, Warsaw)</option>
+        <option value="portugal">Portugal (Lisbon, Porto)</option>
+        <option value="qatar">Qatar (Doha)</option>
+        <option value="russia">Russia (Moscow, St Petersburg)</option>
+        <option value="saudi">Saudi Arabia (Riyadh, Jeddah)</option>
+        <option value="singapore">Singapore</option>
+        <option value="south-africa">South Africa (Cape Town, Kruger)</option>
+        <option value="south-korea">South Korea (Seoul, Busan)</option>
+        <option value="spain">Spain (Barcelona, Madrid)</option>
+        <option value="sweden">Sweden (Stockholm)</option>
+        <option value="switzerland">Switzerland (Zermatt, Zurich)</option>
+        <option value="thailand">Thailand (Bangkok, Phuket)</option>
+        <option value="turkey">Turkey (Istanbul, Cappadocia)</option>
+        <option value="uae">UAE (Dubai, Abu Dhabi)</option>
+        <option value="uk">United Kingdom (London, Edinburgh)</option>
+        <option value="usa">United States (NYC, LA)</option>
+        <option value="vietnam">Vietnam (Hanoi, Ho Chi Minh)</option>
       </select>
     
 
@@ -154,13 +199,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -179,10 +228,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Timing Your Travels Perfectly</h2>
-      <p>Traveling during shoulder season can save up to 40% on accommodation and flights while offering pleasant weather and fewer crowds.</p>
+      <p>Traveling during shoulder season can save up to 40% on accommodation and flights while still offering pleasant weather and manageable crowd levels. The sweet spot is usually two to four weeks before or after peak season, when the destination is fully open but the rush has not arrived yet.</p>
       
       <h2>Weather vs Budget Trade-offs</h2>
-      <p>Peak months bring sunny skies but premium prices. Shoulder months balance comfortable temperatures with affordable rates.</p>
+      <p>Peak months bring sunny skies and vibrant energy but come with premium prices and packed attractions. Shoulder months balance comfortable temperatures with affordable rates. Off-season travel offers the lowest prices but may mean closed restaurants, limited tours, or unpredictable weather depending on the region.</p>
+
+      <h2>What Our Tool Shows</h2>
+      <p>Select any destination to see a month-by-month breakdown of weather averages, tourist seasons, and budget windows. Whether you are chasing sunshine, avoiding monsoons, or looking for the cheapest time to fly, this tool gives you the full picture before you book anything.</p>
+
+      <h2>Plan Smarter, Not Harder</h2>
+      <p>The best month to visit depends entirely on what you value — perfect weather, empty streets, or rock-bottom prices. Use this tool to find the month that matches your priorities so you can stop second-guessing and start planning your actual trip.</p>
     </div>
   </main>
 
@@ -202,7 +257,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -242,7 +297,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Best Month to Visit Any Country - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -250,6 +305,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Best Month to Visit Any Country");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-best-visit";
     currentShareText = "I just tested Best Month to Visit Any Country on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -257,22 +314,68 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     function runTool() {
       const dest = document.getElementById('destInput').value;
       if (!dest) { alert("Please select a destination country."); return; }
+      const destName = document.getElementById('destInput').selectedOptions[0].text;
       
       const data = {
-        japan: { best: "March – May & Oct – Nov", score: "Spring & Autumn 🌸", text: "Cherry blossom season in April and vibrant autumn leaves in November offer pleasant 15°C–22°C temperatures." },
-        italy: { best: "May – June & Sept – Oct", score: "Shoulder Season 🍷", text: "Warm sunny days without the oppressive August heatwave and peak summer crowds." },
-        thailand: { best: "November – February", score: "Cool & Dry Season ☀️", text: "Coolest and driest months across Thailand with comfortable 28°C weather and calm seas." },
-        france: { best: "May – June & September", score: "Late Spring / Autumn 🥐", text: "Fewer queues at the Louvre and Eiffel Tower, blooming gardens, and ideal sidewalk café weather." },
-        switzerland: { best: "June – August (Hiking) / Dec – March (Skiing)", score: "Alpine Peak 🏔️", text: "Lush green hiking trails in summer, world-class snow powder in winter." },
-        iceland: { best: "June – August (Midnight Sun) / Sept – March (Northern Lights)", score: "Aurora & Sun 🌌", text: "Visit Sept–March for clear skies to spot the Aurora Borealis." },
-        greece: { best: "May – June & September – October", score: "Mediterranean Bliss 🇬🇷", text: "Warm sea water, open tavernas, and 50% cheaper hotels than July/August." },
-        mexico: { best: "December – April", score: "Dry & Warm 🌮", text: "Escape winter cold with dry, sunny 26°C weather across Riviera Maya and Pacific coast." },
-        indonesia: { best: "May – September", score: "Dry Season Bali 🏝️", text: "Low humidity, low rainfall, perfect surfing conditions, and starry nights." },
-        egypt: { best: "October – April", score: "Cool Desert Window 🐫", text: "Avoid scorching 45°C summer heat; explore Pyramids comfortably in 22°C winter sunshine." }
+        argentina: { best: "October – March", score: "Spring & Summer Down South 🌤️", text: "Buenos Aires comes alive in spring October–December. For Patagonia, visit November–February for 20°C hiking conditions." },
+        australia: { best: "March – May & September – November", score: "Shoulder Season 🦘", text: "Mild 22°C–26°C days across Sydney and Melbourne. Avoid the December–February peak heat and holiday crowds." },
+        austria: { best: "May – September", score: "Alpine Summer 🏔️", text: "Vienna and Salzburg shine in summer with outdoor concerts and lake swimming. December is magical for Christmas markets." },
+        belgium: { best: "April – June & September – October", score: "Mild European Window 🍺", text: "Pleasant 15°C–20°C days perfect for Bruges canal walks and Brussels beer tourism without summer queues." },
+        brazil: { best: "April – October", score: "Dry & Cooler Season 🌴", text: "Winter months bring 22°C–28°C temps in Rio and Sao Paulo with lower humidity and fewer rain showers." },
+        canada: { best: "June – September (Summer) / December – March (Winter)", score: "Seasonal Split 🍁", text: "Summer offers 25°C lake weather and Banff hiking. Winter brings world-class skiing in Whistler and Quebec." },
+        chile: { best: "October – March", score: "Patagonia Prime Season 🌄", text: "Visit Patagonia from November–February for 15°C–20°C trekking weather. Santiago enjoys dry, warm summers." },
+        china: { best: "April – May & September – October", score: "Spring & Autumn 🏯", text: "Avoid the Great Wall crowds of summer and the freezing Beijing winter. Pleasant 18°C–24°C with clear skies." },
+        colombia: { best: "December – March & July – August", score: "Dry Season Colombia 🇨🇴", text: "Cartagena and Bogota see least rainfall December–March. Coffee region is lush and accessible year-round." },
+        "costa-rica": { best: "December – April", score: "Dry Season Paradise 🌴", text: "Guaranteed sunshine on Pacific beaches, active wildlife spotting, and easy access to Arenal Volcano trails." },
+        croatia: { best: "May – June & September", score: "Adriatic Shoulder 🇭🇷", text: "Dubrovnik and Split are much quieter than July–August. Sea temperatures are warm enough for swimming by late May." },
+        czech: { best: "May – September", score: "Bohemian Summer 🍺", text: "Prague's outdoor beer gardens open in May. June–August bring 25°C days and festivals; December has famous Christmas markets." },
+        denmark: { best: "May – August", score: "Scandinavian Summer ☀️", text: "Copenhagen hits 20°C–25°C with 17 hours of daylight. Tivoli Gardens and canal tours operate at full capacity." },
+        egypt: { best: "October – April", score: "Cool Desert Window 🐫", text: "Avoid scorching 45°C summer heat; explore Pyramids and Luxor temples comfortably in 22°C winter sunshine." },
+        finland: { best: "June – August (Midnight Sun) / December – March (Northern Lights)", score: "Sun & Snow 🌌", text: "Summer offers 24-hour daylight in Lapland. Winter is prime for aurora hunting, husky safaris, and snow castles." },
+        france: { best: "May – June & September", score: "Late Spring & Autumn 🥐", text: "Fewer queues at the Louvre and Eiffel Tower, blooming lavender in Provence, and ideal sidewalk café weather." },
+        germany: { best: "May – September", score: "Festival Season 🎉", text: "Berlin's street life and beer gardens buzz from May. Oktoberfest in Munich runs late September through early October." },
+        greece: { best: "May – June & September – October", score: "Mediterranean Bliss 🇬🇷", text: "Warm 25°C sea water, open seaside tavernas, and hotel prices 50% lower than the packed July–August peak." },
+        "hong-kong": { best: "October – November & March – April", score: "Pleasant Shoulder 🏙️", text: "Escape the humid summer and chilly winter. October–November offers 24°C clear skies ideal for Victoria Peak views." },
+        hungary: { best: "April – May & September – October", score: "Budapest Gold Months 🌉", text: "Thermal baths are magical in crisp October air. Avoid August heatwave when the city feels stifling." },
+        iceland: { best: "June – August (Midnight Sun) / September – March (Northern Lights)", score: "Aurora & Sun 🌌", text: "June–August offer 20-hour daylight for road trips. September–March deliver clear winter skies for Aurora viewing." },
+        india: { best: "October – March", score: "Cool & Dry Season 🕌", text: "Delhi and Jaipur enjoy 15°C–25°C pleasant weather October–March. Avoid the monsoon June–September and summer heat." },
+        indonesia: { best: "May – September", score: "Dry Season Bali 🏝️", text: "Low humidity, minimal rainfall, perfect surfing at Uluwatu, and clear starry nights across the archipelago." },
+        ireland: { best: "May – June & September", score: "Green Season 🌿", text: "Longest daylight hours in May–June with 15°C–20°C temps. September offers fewer tourists and vibrant autumn foliage." },
+        israel: { best: "March – May & October – November", score: "Spring & Autumn Holy Land 🕊️", text: "Pleasant 20°C–28°C for exploring Jerusalem's Old City and Tel Aviv beaches without summer humidity." },
+        italy: { best: "May – June & September – October", score: "Shoulder Season 🍷", text: "Warm 25°C sunny days in Rome and Venice without the oppressive August heatwave and peak summer crowds." },
+        japan: { best: "March – May & October – November", score: "Spring & Autumn 🌸", text: "Cherry blossoms in April and fiery autumn leaves in November offer pleasant 15°C–22°C temperatures nationwide." },
+        jordan: { best: "March – May & September – November", score: "Desert Sweet Spot 🏜️", text: "Petra and Wadi Rum are best explored in 20°C–28°C spring/autumn weather. Summer exceeds 40°C easily." },
+        kenya: { best: "July – October & January – February", score: "Great Migration Season 🦁", text: "Witness the wildebeest migration July–October in the Maasai Mara. January–February offers dry, clear skies for safaris." },
+        malaysia: { best: "December – February & June – August", score: "Tropical Windows 🌴", text: "West coast (Langkawi, Penang) best December–February. East coast islands (Perhentians) best June–August." },
+        maldives: { best: "November – April", score: "Dry Season Paradise 🌊", text: "Crystal-clear skies, calm Indian Ocean waters, and 28°C–30°C temps. January–April offers the best underwater visibility." },
+        mexico: { best: "December – April", score: "Dry & Warm 🌮", text: "Escape winter cold with dry, sunny 26°C weather across Riviera Maya, Mexico City, and the Pacific coastline." },
+        morocco: { best: "March – May & September – November", score: "Spring & Autumn Souks 🕌", text: "Comfortable 20°C–28°C days for exploring Fes medinas and Sahara camps. Summer in Marrakech can exceed 45°C." },
+        netherlands: { best: "April – May & September", score: "Tulip & Fall 🌷", text: "April tulip season turns Keukenhof Gardens into a rainbow. September offers 18°C days with fewer tourists." },
+        "new-zealand": { best: "November – March", score: "Kiwi Summer 🥝", text: "Queenstown and Auckland enjoy 22°C–28°C summer warmth. December–February is prime for Milford Sound and hiking trails." },
+        norway: { best: "May – August", score: "Fjord Summer 🌄", text: "Bergen and the fjords are accessible from May. June–July bring 24-hour daylight above the Arctic Circle." },
+        peru: { best: "May – September", score: "Dry Andes Season 🏔️", text: "Best time for Machu Picchu with clear blue skies. June features the Inti Raymi festival in Cusco — book months ahead." },
+        philippines: { best: "December – May", score: "Dry Archipelago ☀️", text: "Palawan and Siargao shine November–April with 28°C–32°C sunshine. Avoid typhoon season June–October." },
+        poland: { best: "May – September", score: "Central European Summer 🏰", text: "Krakow's Old Town and Warsaw's gardens are beautiful May–September. December brings fairy-tale Christmas markets." },
+        portugal: { best: "May – June & September – October", score: "Golden Months 🇵🇹", text: "Warm 26°C sunshine without summer crowds. Ideal for surfing at Nazare, port wine tours in Porto, and Lisbon hills." },
+        qatar: { best: "November – March", score: "Cool Gulf Winter 🌇", text: "Doha offers 20°C–26°C pleasant weather November–March. Summer temperatures regularly exceed 45°C with high humidity." },
+        russia: { best: "June – August", score: "White Nights Season 🇷🇺", text: "Moscow and St Petersburg enjoy 20°C–25°C and the famous White Nights in June. Winter is bitterly cold but magical." },
+        saudi: { best: "November – February", score: "Mild Arabian Winter 🕌", text: "Riyadh and Jeddah are pleasant at 20°C–28°C from November to February. Summer heat is extreme and unforgiving." },
+        singapore: { best: "February – April & July – September", score: "Dry-ish Windows 🏙️", text: "Singapore is warm year-round but February–April and July–September see slightly less rain and lower humidity." },
+        "south-africa": { best: "May – September", score: "Dry Safari Season 🦒", text: "Kruger National Park offers prime game viewing May–September. Cape Town is mild at 15°C–20°C with blooming fynbos." },
+        "south-korea": { best: "April – June & September – November", score: "Spring & Autumn 🇰🇷", text: "Seoul's cherry blossoms peak in April. Autumn foliage in Busan October–November offers 15°C–20°C golden days." },
+        spain: { best: "April – June & September – October", score: "Mediterranean Perfect 🏖️", text: "Barcelona and Madrid enjoy 22°C–28°C without the July–August heatwave. September sea water is still warm." },
+        sweden: { best: "May – August", score: "Stockholm Summer 🇸🇪", text: "Stockholm's islands and archipelagos come alive May–August with 20°C–25°C days and 18 hours of daylight." },
+        switzerland: { best: "June – August (Hiking) / December – March (Skiing)", score: "Alpine Peak 🏔️", text: "Lush green hiking trails in summer with 25°C lake temps. Winter delivers world-class snow powder in Zermatt." },
+        thailand: { best: "November – February", score: "Cool & Dry Season ☀️", text: "Coolest and driest months with comfortable 28°C weather, calm Andaman Sea waters, and clear skies across Phuket." },
+        turkey: { best: "April – May & September – October", score: "Spring & Autumn 🎈", text: "Cappadocia balloon flights run best in April–May and September–October. Istanbul is pleasant at 20°C–26°C." },
+        uae: { best: "November – March", score: "Gulf Winter Luxury 🌆", text: "Dubai and Abu Dhabi offer 22°C–28°C perfect beach weather. Skiing indoors makes sense when summer hits 48°C." },
+        uk: { best: "May – June & September", score: "English Summer ☕", text: "London's parks and Edinburgh's festivals peak in June. September offers mild 18°C days with thinner crowds." },
+        usa: { best: "April – June & September – October", score: "Spring & Fall 🌎", text: "NYC and LA are best in spring and autumn with 18°C–26°C. Avoid July–August humidity in the East and wildfire season." },
+        vietnam: { best: "February – April & September – November", score: "Mild & Dry Season 🇻🇳", text: "Pleasant 22°C–28°C across North to South. Avoid monsoon rains and typhoons in July–August." }
       };
 
       const res = data[dest];
-      showResult("Best Window: " + res.best, res.text, res.score, res.best);
+      showResult("Best Window: " + res.best, res.text, res.score, res.best, destName);
     }
     
 
@@ -285,20 +388,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

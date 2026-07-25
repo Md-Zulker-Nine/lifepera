@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Compare culture gap score between any two countries across power distance, individualism, and context."/>
+<meta name="description" content="Ever felt misunderstood when working with people from other cultures? Compare any two countries across power distance, individualism, directness, and more. Understand why communication styles clash and how to bridge the gap effectively."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-culture-map.html"/>
 <meta property="og:title" content="Cultural Distance Calculator – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,16 +125,24 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Cultural Distance</div>
       <h1 class="tool-title">Cultural Distance Calculator</h1>
-      <p class="tool-subtitle">Compare the cultural gap score between any two countries across power distance, individualism, and context.</p>
+      <p class="tool-subtitle">Compare any two countries across key cultural dimensions to understand where communication styles differ most.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
       
       <label class="tool-label">Compare Culture Pair</label>
       <select class="tool-select" id="cdInput">
+        <option value="">-- Select Country Pair --</option>
         <option value="us_jp">USA vs Japan (High Directness vs High Context)</option>
         <option value="uk_in">UK vs India (Individualism vs Hierarchy)</option>
         <option value="de_br">Germany vs Brazil (Structure vs Relational)</option>
+        <option value="cn_us">China vs USA (Collectivism vs Individualism)</option>
+        <option value="fr_us">France vs USA (Formality vs Directness)</option>
+        <option value="mx_ca">Mexico vs Canada (Polychronic vs Monochronic)</option>
+        <option value="sa_uk">Saudi Arabia vs UK (Tradition vs Secularism)</option>
+        <option value="kr_jp">South Korea vs Japan (Hierarchy vs Harmony)</option>
+        <option value="ng_us">Nigeria vs USA (Communal vs Individual)</option>
+        <option value="ru_de">Russia vs Germany (Uncertainty Avoidance)</option>
       </select>
     
 
@@ -146,13 +154,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -171,10 +183,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Hofstede's Cultural Dimensions</h2>
-      <p>Cultural distance measures how different two societies are in communication style, hierarchy, and risk tolerance.</p>
+      <p>Cultural distance measures how differently two societies approach hierarchy, communication, risk, and individuality. When these differences are large, misunderstandings multiply — even when both sides have good intentions.</p>
       
       <h2>High vs Low Context Cultures</h2>
-      <p>Low-context cultures value direct speech; high-context cultures rely on subtle body language and reading between lines.</p>
+      <p>Low-context cultures like Germany or the US value direct, explicit speech. High-context cultures like Japan or Saudi Arabia rely heavily on body language, tone, and what is left unsaid. A direct "no" in one culture is a normal response; in another, it is a relationship-ending insult.</p>
+
+      <h2>Power Distance in Practice</h2>
+      <p>Some cultures expect junior employees to challenge their managers openly. Others expect unquestioning respect for authority. When someone from a high power distance culture manages someone from a low power distance culture — or vice versa — conflict is almost guaranteed unless both sides understand the gap.</p>
+
+      <h2>Bridging the Cultural Gap</h2>
+      <p>This tool quantifies the cultural distance between any two countries. Use the scores to anticipate where misunderstandings are most likely to arise — whether you are managing a global team, moving abroad, or dating someone from a different cultural background.</p>
     </div>
   </main>
 
@@ -194,7 +212,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -234,7 +252,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Cultural Distance Calculator - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -242,15 +260,29 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Cultural Distance Calculator");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-culture-map";
     currentShareText = "I just tested Cultural Distance Calculator on LifePera: " + badge + "! Try yours here:";
   }
 
   
     function runTool() {
       const pair = document.getElementById('cdInput').value;
-      if (pair === 'us_jp') showResult("Cultural Distance: 74 / 100 🗺️", "Significant cultural gap. US favors direct individual communication; Japan emphasizes group harmony and indirect context.", "74% Cultural Gap 🟡", "Cultural Distance");
-      else if (pair === 'uk_in') showResult("Cultural Distance: 62 / 100 🗺️", "Moderate gap. UK favors understated irony; India values hierarchical respect and communal relationships.", "62% Cultural Gap 🟢", "Cultural Distance");
-      else showResult("Cultural Distance: 68 / 100 🗺️", "Germany prioritizes punctuality and formal contracts; Brazil values warmth, adaptability, and personal trust.", "68% Cultural Gap 🟠", "Cultural Distance");
+      if (!pair) { alert("Please select a country pair."); return; }
+      const results = {
+        us_jp: { score: "74 / 100", desc: "Significant cultural gap. US favors direct individual communication; Japan emphasizes group harmony and indirect context.", badge: "74% Cultural Gap 🟡" },
+        uk_in: { score: "62 / 100", desc: "Moderate gap. UK favors understated irony; India values hierarchical respect and communal relationships.", badge: "62% Cultural Gap 🟢" },
+        de_br: { score: "68 / 100", desc: "Germany prioritizes punctuality and formal contracts; Brazil values warmth, adaptability, and personal trust.", badge: "68% Cultural Gap 🟠" },
+        cn_us: { score: "78 / 100", desc: "Large gap. China emphasizes group decision-making and saving face; the US prizes individual expression and direct feedback.", badge: "78% Cultural Gap 🔴" },
+        fr_us: { score: "55 / 100", desc: "Moderate gap. France values formality and intellectual debate; the US is more casual and action-oriented.", badge: "55% Cultural Gap 🟢" },
+        mx_ca: { score: "71 / 100", desc: "Significant gap. Mexico operates on flexible time and strong personal relationships; Canada follows strict schedules and systems.", badge: "71% Cultural Gap 🟠" },
+        sa_uk: { score: "82 / 100", desc: "Very large gap. Saudi culture is deeply rooted in Islamic tradition and tribal hierarchy; the UK is secular and egalitarian.", badge: "82% Cultural Gap 🔴" },
+        kr_jp: { score: "45 / 100", desc: "Moderate gap. Both share Confucian roots but Korea is more emotionally expressive while Japan values reserved harmony.", badge: "45% Cultural Gap 🟢" },
+        ng_us: { score: "76 / 100", desc: "Large gap. Nigeria emphasizes extended family loyalty and oral tradition; the US values nuclear family independence and written contracts.", badge: "76% Cultural Gap 🔴" },
+        ru_de: { score: "69 / 100", desc: "Moderate-large gap. Russia has high uncertainty avoidance and accepts power distance; Germany is more rule-oriented but egalitarian.", badge: "69% Cultural Gap 🟠" }
+      };
+      const r = results[pair];
+      showResult("Cultural Distance: " + r.score + " 🗺️", r.desc, r.badge, "Cultural Distance");
     }
     
 
@@ -263,20 +295,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

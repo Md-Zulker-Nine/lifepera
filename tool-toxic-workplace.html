@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="A checklist that gives you a toxicity score and tells you clearly: is this fixable, or when to leave."/>
+<meta name="description" content="Not sure if your workplace is actually toxic or just stressful? Answer 20 targeted questions about your work environment, management style, and daily experience. Get a clear toxicity score and personalized advice on whether to speak up, set boundaries, or leave."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-toxic-workplace.html"/>
 <meta property="og:title" content="Toxic Workplace Identifier – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Toxic Workplace Checker</div>
       <h1 class="tool-title">Toxic Workplace Identifier</h1>
-      <p class="tool-subtitle">A 20-sign checklist giving you a clear workplace toxicity score and actionable guidance.</p>
+      <p class="tool-subtitle">Answer 20 straightforward questions to find out if your workplace is toxic, stressful, or still worth investing in.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -148,13 +148,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -173,10 +177,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Recognizing Workplace Red Flags</h2>
-      <p>A toxic work environment damages mental health, confidence, and long-term career growth. Identifying red flags early is key.</p>
+      <p>A toxic work environment damages your mental health, confidence, and long-term career growth — often slowly enough that you do not realize how bad it has gotten until you are deep in it. Identifying the red flags early is the best way to protect your career and your well-being before the damage becomes cumulative.</p>
       
       <h2>Psychological Safety Matters</h2>
-      <p>High turnover, constant gossip, micromanagement, and fear of asking questions are classic markers of toxic organizational culture.</p>
+      <p>High turnover (people keep leaving), constant gossip and triangulation, micromanagement that erodes autonomy, and a culture where asking questions or admitting mistakes is punished are classic markers of toxic organizational culture. If you dread Sunday evenings, feel physically drained after work, or have noticed changes in your sleep and mood, those are signs worth paying attention to.</p>
+
+      <h2>The Cost of Staying Too Long</h2>
+      <p>Staying in a toxic workplace does not just affect your happiness — it affects your health. Chronic workplace stress is linked to anxiety, depression, cardiovascular issues, and a weakened immune system. It also affects your professional trajectory, because toxic environments rarely provide the mentorship, growth opportunities, or constructive feedback you need to advance.</p>
+
+      <h2>Planning Your Exit</h2>
+      <p>If your score flags a toxic environment, start by updating your resume and LinkedIn. Network discreetly. Set boundaries to protect your mental health while you search — do not check emails after hours, take your full lunch break, and use sick days when you need them. Your goal is to leave on your terms, not to be driven out by the environment that is failing you.</p>
     </div>
   </main>
 
@@ -196,7 +206,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -236,13 +246,15 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Toxic Workplace Identifier - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Toxic Workplace Identifier");
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-toxic-workplace";
     document.getElementById('bannerSubtext').innerHTML = details;
     currentShareText = "I just tested Toxic Workplace Identifier on LifePera: " + badge + "! Try yours here:";
   }
@@ -282,20 +294,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

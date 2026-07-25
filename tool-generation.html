@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Based on your attitudes and habits — not your birth year. Are you Gen Z, Millennial, or Boomer?"/>
+<meta name="description" content="Forget your birth year — what generation do you actually belong to? This quiz looks at your habits, attitudes, and worldview to place you on the generational spectrum. You might discover you are more Gen Z, Millennial, or Boomer than you thought."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-generation.html"/>
 <meta property="og:title" content="What Generation Are You Really? – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Generation Test</div>
       <h1 class="tool-title">What Generation Are You Really?</h1>
-      <p class="tool-subtitle">Determine your true cultural generation based on habits rather than birth year.</p>
+      <p class="tool-subtitle">Based on your habits and attitudes, not your birth year — find out which generation you truly belong to.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -146,13 +146,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -171,10 +175,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Cultural Generation vs Birth Year</h2>
-      <p>Technological habits, humor, and work attitudes define your mental generation far more accurately than birth certificates.</p>
+      <p>Your birth year does not always reflect where you belong culturally. Someone born in 1990 could have Gen X attitudes toward work and independence, or Gen Z sensibilities about social issues and technology. Your generation is shaped more by your environment and experiences than by your date of birth.</p>
       
       <h2>Generational Mindsets</h2>
-      <p>Gen Z favors authentic short-form video; Millennials value experiences and nostalgia; Gen X values independence.</p>
+      <p>Gen Z tends to favor authentic, short-form video content and values social consciousness. Millennials prioritize experiences over things and carry a nostalgic attachment to pre-internet childhoods. Gen X values independence, skepticism toward institutions, and a self-reliant attitude. Boomers tend to value stability, loyalty, and face-to-face connection.</p>
+
+      <h2>Why This Matters</h2>
+      <p>Understanding your cultural generation helps you make sense of why you might feel out of step with people your own age, or why you connect better with older or younger friends. It also helps in workplace dynamics, where generational misunderstandings about communication and work style are common sources of friction.</p>
+
+      <h2>How to Use Your Result</h2>
+      <p>Your result is not a label — it is a lens for understanding your preferences and biases. Share it with friends or colleagues and compare. You might be surprised to find a 55-year-old who shares your cultural wavelength more closely than a 25-year-old who grew up in a completely different world.</p>
     </div>
   </main>
 
@@ -194,7 +204,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -234,7 +244,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "What Generation Are You Really? - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -242,6 +252,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "What Generation Are You Really?");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-generation";
     currentShareText = "I just tested What Generation Are You Really? on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -263,20 +275,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

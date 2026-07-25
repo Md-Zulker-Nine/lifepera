@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -147,13 +147,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -172,10 +176,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Recognizing Relationship Red Flags</h2>
-      <p>Healthy relationships are built on trust, respect, and mutual safety. Recognizing coercive control early prevents emotional harm.</p>
+      <p>Healthy relationships are built on trust, respect, and mutual safety. When those foundations are eroded by control, manipulation, or emotional abuse, it can be hard to see clearly — especially when you love the person causing the harm. Recognizing the patterns early is the most important step toward protecting yourself.</p>
       
       <h2>Clinical Indicators</h2>
-      <p>Gaslighting, silent treatment, moving goalposts, and isolation are key emotional abuse tactics.</p>
+      <p>Gaslighting (making you question your own reality), the silent treatment as punishment, moving goalposts (nothing you do is ever good enough), and isolation from friends and family are key emotional abuse tactics. Other red flags include extreme jealousy, possessiveness, financial control, and monitoring your communications without cause.</p>
+
+      <h2>The Cycle of Abuse</h2>
+      <p>Toxic relationships often follow a predictable cycle: tension builds, an incident occurs, the abuser apologizes and promises change, a honeymoon period follows, and then the tension starts building again. Recognizing this cycle is crucial because the good periods make it easy to convince yourself things have changed — until they do not.</p>
+
+      <h2>What to Do Next</h2>
+      <p>If your score indicates a toxic pattern, the most important thing is to talk to someone you trust — a friend, family member, or professional counselor. Abuse thrives in secrecy. Document incidents if it is safe to do so. Research local support resources. You do not have to leave today, but you do need to start planning, because staying too long comes at a real cost to your well-being.</p>
     </div>
   </main>
 
@@ -195,7 +205,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -235,13 +245,15 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Toxic Relationship Identifier - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Toxic Relationship Identifier");
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-toxic-relationship";
     document.getElementById('bannerSubtext').innerHTML = details;
     currentShareText = "I just tested Toxic Relationship Identifier on LifePera: " + badge + "! Try yours here:";
   }
@@ -273,20 +285,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

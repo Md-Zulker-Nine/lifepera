@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -146,13 +146,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -171,10 +175,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Digital Communication Styles</h2>
-      <p>How you punctuate, reply, and use emojis reveals subtle traits about your emotional speed and interpersonal style.</p>
+      <p>How you punctuate, how quickly you reply, and how you use emojis reveals subtle but real traits about your emotional availability, communication priorities, and interpersonal style. In the age of dating apps and remote work, your texting style is often the first impression you make — and it speaks volumes before you ever meet someone in person.</p>
       
       <h2>The 4 Texting Archetypes</h2>
-      <p>The Exclamation Addict, The Ghoster, The Novel Writer, and The One-Word Minimalist.</p>
+      <p>The Exclamation Addict uses enthusiastic punctuation and lots of emojis. The Ghoster disappears mid-conversation for hours or days. The Novel Writer sends paragraph-long messages with multiple thoughts. The One-Word Minimalist replies with "k," "yeah," or single emojis. Each style communicates something different about the sender's engagement level and personality.</p>
+
+      <h2>What Your Style Says About You</h2>
+      <p>Your texting patterns can reveal your attachment style — anxious texters tend to over-message and seek reassurance, avoidant texters delay replies and keep communication brief, and secure texters match the other person's pace naturally. Recognizing your own patterns helps you understand how you come across and whether your texting habits are helping or hurting your relationships.</p>
+
+      <h2>Bridging Texting Mismatches</h2>
+      <p>When two people have very different texting styles, misunderstandings happen. The Novel Writer feels ignored by the Minimalist. The Minimalist feels overwhelmed by the Novel Writer. The solution is not to change your style completely but to communicate about expectations — and to use the awareness this tool provides to adjust your approach when it matters.</p>
     </div>
   </main>
 
@@ -194,7 +204,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -234,13 +244,15 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Personality via Texting Style - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Personality via Texting Style");
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-texting";
     document.getElementById('bannerSubtext').innerHTML = details;
     currentShareText = "I just tested Personality via Texting Style on LifePera: " + badge + "! Try yours here:";
   }
@@ -263,20 +275,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

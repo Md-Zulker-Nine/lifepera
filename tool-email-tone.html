@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Paste any email and find out if you sound passive-aggressive, too formal, or professional."/>
+<meta name="description" content="Hit send with confidence. Paste your email into this tone analyzer and find out if you sound passive-aggressive, too formal, overly casual, or perfectly professional. A must-use before sending important work emails or difficult conversations."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-email-tone.html"/>
 <meta property="og:title" content="Email Tone Checker – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Email Tone Checker</div>
       <h1 class="tool-title">Email Tone Checker</h1>
-      <p class="tool-subtitle">Paste any email draft to analyze whether it sounds passive-aggressive, formal, or professional.</p>
+      <p class="tool-subtitle">Paste any draft and find out how your words actually come across — before you hit send.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -142,13 +142,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -167,10 +171,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Mastering Workplace Communication</h2>
-      <p>Written communication lacks vocal tone and facial expressions, making it easy for polite emails to sound abrupt or passive-aggressive.</p>
+      <p>Written communication lacks vocal tone, facial expressions, and body language — which means your carefully crafted email can easily land differently than you intended. A message that sounds perfectly neutral to you can come across as cold, passive-aggressive, or unnecessarily harsh to the person reading it.</p>
       
       <h2>Common Trigger Phrases</h2>
-      <p>Phrases like 'per my last email', 'as stated below', or 'just following up again' can inadvertently create defensiveness.</p>
+      <p>Phrases like "per my last email," "as previously stated," or "just following up again" can inadvertently create defensiveness. Even "I think you missed this" can feel accusatory depending on the relationship and context. Small wording changes make a big difference in how your message is received.</p>
+
+      <h2>Why Tone Matters for Your Career</h2>
+      <p>How you communicate in writing directly affects how colleagues, clients, and managers perceive your professionalism and emotional intelligence. Emails that land the wrong way can damage relationships, slow down projects, and even hurt your chances of promotion — all without you ever realizing it.</p>
+
+      <h2>How to Use the Feedback</h2>
+      <p>Paste your draft email into the tool before hitting send. The analysis highlights phrases that might carry unintended tone and suggests alternatives. Over time, you will start noticing patterns in your own writing and naturally adjust — making every email you send work for you instead of against you.</p>
     </div>
   </main>
 
@@ -190,7 +200,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -230,7 +240,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Email Tone Checker - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -238,6 +248,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Email Tone Checker");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-email-tone";
     currentShareText = "I just tested Email Tone Checker on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -278,20 +290,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

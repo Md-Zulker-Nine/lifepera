@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Analyze your salary against global benchmarks, cost of living, and industry standards."/>
+<meta name="description" content="Are you getting paid what you are worth? Compare your salary against industry benchmarks, cost of living data, and global averages. This tool factors in your experience level and location to tell you if you are underpaid, fairly compensated, or ahead of the curve."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-underpaid.html"/>
 <meta property="og:title" content="Am I Underpaid? Salary Analyzer – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Am I Underpaid?</div>
       <h1 class="tool-title">Am I Underpaid? Salary Analyzer</h1>
-      <p class="tool-subtitle">Analyze your compensation against global benchmarks, experience, and industry standards.</p>
+      <p class="tool-subtitle">Find out if your compensation is fair for your role, experience, and where you live — compared to real market data.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -153,13 +153,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -178,10 +182,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Know Your Worth in 2026</h2>
-      <p>Wage stagnation affects millions. Regularly assessing market value ensures you aren't leaving tens of thousands on the table.</p>
+      <p>Wage stagnation affects millions of workers across industries. Studies show that employees who do not negotiate their starting salary lose hundreds of thousands of dollars over their career. Regularly assessing your market value ensures you are not leaving tens of thousands of dollars on the table every year simply because you have not checked what others in your role are earning.</p>
       
       <h2>Benchmarking Salary Ranges</h2>
-      <p>We factor in experience, job sector, and international compensation percentiles.</p>
+      <p>We factor in your years of experience, industry sector, geographic location, education level, and international compensation percentiles to give you a realistic range. Salaries for the same role can vary by 50 percent or more between cities and countries, so knowing where you stand relative to your specific market is essential context before any negotiation.</p>
+
+      <h2>The Negotiation Gap</h2>
+      <p>Women and people from underrepresented groups are statistically less likely to negotiate initial offers and ask for raises — which compounds over decades into significant wealth gaps. Knowing your number gives you the confidence to ask for what you are worth. The data is on your side if you take the time to understand it before walking into that conversation.</p>
+
+      <h2>What to Do With Your Number</h2>
+      <p>If you are underpaid, you have three options: negotiate a raise with your current employer, look for a new role that pays market rate, or develop skills that justify a higher bracket. Use your market value as leverage in interviews and performance reviews. The worst they can say is no — and even a "no" gives you information you can use to plan your next move.</p>
     </div>
   </main>
 
@@ -201,7 +211,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -241,13 +251,15 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Am I Underpaid? Salary Analyzer - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Am I Underpaid? Salary Analyzer");
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-underpaid";
     document.getElementById('bannerSubtext').innerHTML = details;
     currentShareText = "I just tested Am I Underpaid? Salary Analyzer on LifePera: " + badge + "! Try yours here:";
   }
@@ -280,20 +292,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

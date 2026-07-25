@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Enter your numbers to see whether freelancing or full-time employment pays more for you."/>
+<meta name="description" content="Torn between freelancing and a full-time job? This calculator gives you a realistic side-by-side comparison of both paths. It accounts for taxes, benefits, sick days, vacation time, and stability so you can make an informed career decision."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-freelance.html"/>
 <meta property="og:title" content="Freelance vs Full-Time Calculator – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Freelance vs Full-Time</div>
       <h1 class="tool-title">Freelance vs Full-Time Calculator</h1>
-      <p class="tool-subtitle">Calculate real earnings accounting for taxes, health benefits, unpaid vacation, and job stability.</p>
+      <p class="tool-subtitle">A realistic earnings comparison that accounts for taxes, benefits, unpaid time off, and the true cost of going solo.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -148,13 +148,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -173,10 +177,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Comparing Real Take-Home Pay</h2>
-      <p>A $100,000 full-time salary is not equal to $100,000 in freelance revenue due to self-employment tax, equipment, health insurance, and unpaid time off.</p>
+      <p>A $100,000 full-time salary is not equal to $100,000 in freelance revenue. Once you account for self-employment tax, health insurance premiums, equipment costs, retirement contributions, and unpaid time off, the gap can be surprisingly wide in either direction.</p>
       
       <h2>The 1.3x Rule of Thumb</h2>
-      <p>Freelancers generally need to charge at least 30-40% more per hour than an equivalent employee to break even on benefits and overhead.</p>
+      <p>Freelancers generally need to charge at least 30 to 40 percent more per hour than an equivalent employee to break even on benefits, taxes, and overhead. This calculator gives you a personalized number rather than relying on rough estimates so you know exactly what rate you need to match or beat your current salary.</p>
+
+      <h2>Beyond the Numbers</h2>
+      <p>Money is only part of the equation. Freelancing offers flexibility, autonomy, and the ability to choose your projects — but it also comes with income instability, isolation, and the responsibility of managing every aspect of your business. Full-time work offers stability and benefits but often less control over your time.</p>
+
+      <h2>Making the Right Call</h2>
+      <p>Use the financial comparison as your baseline, then factor in how much you value flexibility versus stability. The right answer is different for everyone, and it can change at different stages of your life and career. This tool gives you the numbers — you bring the self-reflection.</p>
     </div>
   </main>
 
@@ -196,7 +206,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -236,7 +246,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Freelance vs Full-Time Calculator - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -244,6 +254,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Freelance vs Full-Time Calculator");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-freelance";
     currentShareText = "I just tested Freelance vs Full-Time Calculator on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -281,20 +293,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

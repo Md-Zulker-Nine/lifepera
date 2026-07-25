@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Find out where your income ranks globally. See your exact percentile among all 8 billion people on Earth."/>
+<meta name="description" content="Ever wondered where you stand financially compared to the rest of the world? Enter your annual income and discover your exact percentile ranking among 8 billion people. This eye-opening calculator adjusts for purchasing power and gives you a realistic picture of your global economic standing."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-how-rich.html"/>
 <meta property="og:title" content=""How Rich Am I?" Global Comparator – LifePera"/>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › How Rich Am I?</div>
       <h1 class="tool-title">"How Rich Am I?" Global Comparator</h1>
-      <p class="tool-subtitle">Enter your annual income to see your exact percentile among all 8 billion people on Earth.</p>
+      <p class="tool-subtitle">See where your income places you among every person on the planet — adjusted for what it's actually worth where you live.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -142,13 +142,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -167,10 +171,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>The Global Wealth Perspective</h2>
-      <p>It is easy to feel financially behind when comparing yourself to peers in high-cost cities. Stepping back reveals a stark global reality.</p>
+      <p>It is easy to feel financially behind when comparing yourself to peers in high-cost cities. Stepping back reveals a stark global reality. Most people overestimate where they stand and underestimate how vast the economic gap really is across borders.</p>
       
       <h2>Understanding Purchasing Power</h2>
-      <p>While absolute income matters, true wealth depends on Purchasing Power Parity (PPP). A $30,000 income goes much further in developing countries.</p>
+      <p>While absolute income matters, true wealth depends on Purchasing Power Parity (PPP). A $30,000 income goes much further in developing countries where the cost of basic goods and housing is significantly lower than in places like New York or London.</p>
+
+      <h2>Why This Calculation Matters</h2>
+      <p>Knowing your global percentile is not about comparison for its own sake. It helps you put your financial situation in perspective, set realistic goals, and understand how your income translates into quality of life depending on where you live or plan to move.</p>
+
+      <h2>What the Results Mean</h2>
+      <p>Your result places you on a spectrum from the top 1 percent to the bottom 50 percent of global earners. If you earn above $3,000 per year, you already outrank roughly half the world's population. That is not about politics — it is simply what the data from leading economic institutions shows.</p>
     </div>
   </main>
 
@@ -230,7 +240,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = '\u201cHow Rich Am I?\u201d Global Comparator - LifePera';
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -238,6 +248,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = '✨ ' + (cardTitle || '\u201cHow Rich Am I?\u201d Global Comparator');
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-how-rich";
     currentShareText = 'I just tested \u201cHow Rich Am I?\u201d Global Comparator on LifePera: ' + badge + '! Try yours here:';
   }
 
@@ -267,20 +279,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>

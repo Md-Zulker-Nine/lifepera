@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="12 questions reveal why you love the way you do and why your relationships follow patterns."/>
+<meta name="description" content="Why do your relationships keep following the same patterns? This 12-question quiz reveals your attachment style — anxious, avoidant, or secure. Understand how your early experiences shape the way you love, communicate, and connect with others."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://lifepera.com/tool-attachment.html"/>
 <meta property="og:title" content="Attachment Style Quiz – LifePera"/>
@@ -107,7 +107,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="logo">
+    <a href="https://lifepera.com" class="logo">
       Life<span>Pera</span>
       <span class="badge">Pro</span>
     </a>
@@ -125,7 +125,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <div class="tool-header">
       <div class="breadcrumb"><a href="index.html">Home</a> › <a href="tools.html">Tools</a> › Attachment Quiz</div>
       <h1 class="tool-title">Attachment Style Quiz</h1>
-      <p class="tool-subtitle">Discover your core relational pattern: Secure, Anxious, Avoidant, or Disorganized.</p>
+      <p class="tool-subtitle">Twelve questions to reveal how your early experiences shape the way you connect with people today.</p>
     </div>
 
     <div class="tool-canvas" id="app-container">
@@ -153,13 +153,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
         <!-- Visual Shareable Result Card -->
         <div class="banner-wrapper" id="bannerWrapper">
+          <a href="https://lifepera.com" target="_blank" class="banner-link" style="text-decoration: none; color: inherit; display: block;">
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
+            <div class="banner-country" id="bannerCountry"></div>
             <div class="banner-hook" id="bannerHook">✨ Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
+            <div class="banner-url" id="bannerUrl">lifepera.com</div>
           </div>
+          </a>
           
           <div class="action-buttons">
             <button class="native-share-btn" id="nativeShareBtn" onclick="shareResult()">
@@ -178,10 +182,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
     <div class="tool-guide">
       <h2>Understanding Attachment Theory</h2>
-      <p>Developed by John Bowlby, attachment theory explains how early emotional bonds shape adult romantic relationships.</p>
+      <p>Developed by John Bowlby in the 1950s, attachment theory explains how the emotional bonds we form with our caregivers in early childhood go on to shape every romantic relationship we have as adults. The way you handle conflict, closeness, and independence often traces back to those early patterns.</p>
       
       <h2>The 4 Main Styles</h2>
-      <p>Secure (comfortable with intimacy), Anxious (fear of abandonment), Avoidant (values independence over closeness), and Disorganized (mixed signals).</p>
+      <p>Secure individuals feel comfortable with intimacy and trust. Anxious types crave closeness but fear abandonment. Avoidant people value independence and often keep partners at arm's length. Disorganized attachment swings between both extremes, creating confusion and emotional turbulence in relationships.</p>
+
+      <h2>Why Your Style Matters</h2>
+      <p>Your attachment style influences who you are attracted to, how you argue, how you handle rejection, and even how you communicate in everyday situations. The good news is that styles are not fixed — self-awareness is the first step toward building healthier, more secure connections with the people you care about.</p>
+
+      <h2>How to Use Your Results</h2>
+      <p>After taking the quiz, read up on your specific style and notice where it shows up in your current or past relationships. Small shifts in communication and boundary-setting can gradually move you toward a more secure attachment pattern over time.</p>
     </div>
   </main>
 
@@ -201,7 +211,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
 </div>
@@ -241,7 +251,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   let currentShareTitle = "Attachment Style Quiz - LifePera";
   let currentShareText = "";
 
-  function showResult(headline, details, badge, cardTitle) {
+  function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
     document.getElementById('resultHeadline').innerHTML = headline;
@@ -249,6 +259,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('bannerResult').innerHTML = badge;
     document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Attachment Style Quiz");
     document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('bannerCountry').innerHTML = countryName || '';
+    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-attachment";
     currentShareText = "I just tested Attachment Style Quiz on LifePera: " + badge + "! Try yours here:";
   }
 
@@ -276,20 +288,37 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     link.click();
   }
 
+  function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    if (navigator.share) {
+    const banner = document.getElementById('viralBanner');
+    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
         await navigator.share({
-          title: currentShareTitle,
-          text: currentShareText,
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
+          files: [file]
+        });
+      } catch (err) {
+        console.log("Share cancelled", err);
+      }
+    } else if (navigator.share) {
+      try {
+        await navigator.share({
+          title: stripEmoji(currentShareTitle),
+          text: stripEmoji(currentShareText + " " + window.location.href),
           url: window.location.href
         });
       } catch (err) {
         console.log("Share cancelled", err);
       }
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      const link = document.createElement('a');
+      link.download = 'lifepera-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   }
 </script>
