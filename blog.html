@@ -34,6 +34,10 @@ header{background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backd
 .post-title{font-size:1.2rem;font-weight:700;margin-bottom:.5rem;line-height:1.3}
 .post-excerpt{font-size:.92rem;color:var(--text-muted);margin-bottom:.8rem}
 .post-meta{font-size:.82rem;color:var(--text-muted)}
+.pagination{display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem;align-items:center}
+.page-btn{background:var(--surface);border:1px solid var(--border);color:var(--text-main);padding:8px 14px;border-radius:6px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.page-btn:hover{background:var(--bg);border-color:var(--primary);color:var(--primary)}
+.page-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 .widget{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem}
 .widget-title{font-size:1rem;font-weight:700;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
 .cat-list{list-style:none}.cat-list li{margin-bottom:.8rem;border-bottom:1px solid var(--bg);padding-bottom:.8rem}
@@ -77,35 +81,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <h1>Editorial Blog</h1>
 <p>Insights on travel, relationships, career, culture, and psychology — for curious minds worldwide.</p>
 </div>
-<div class="blog-grid" id="blogPosts">
-<div class="post-card" id="fallbackPosts">
-<div class="post-icon">🌏</div>
-<div class="post-body">
-<div class="post-cat">Culture · Travel</div>
-<div class="post-title">10 Cultural Mistakes Tourists Make in Japan (And How to Avoid Them)</div>
-<div class="post-excerpt">From tipping at restaurants to how you hand over business cards — Japan has a dense network of unwritten social rules...</div>
-<div class="post-meta">By Zulker Nine · June 10, 2026</div>
-</div>
-</div>
-<div class="post-card">
-<div class="post-icon">💰</div>
-<div class="post-body">
-<div class="post-cat">Finance</div>
-<div class="post-title">You're Richer Than 80% of the World and Don't Know It</div>
-<div class="post-excerpt">A deep dive into global income statistics and why our perception of wealth is fundamentally skewed by our immediate surroundings.</div>
-<div class="post-meta">By Zulker Nine · 5 min read</div>
-</div>
-</div>
-<div class="post-card">
-<div class="post-icon">💔</div>
-<div class="post-body">
-<div class="post-cat">Relationships</div>
-<div class="post-title">What Your Attachment Style Says About Every Relationship</div>
-<div class="post-excerpt">Understanding the science behind anxious, avoidant, and secure attachment styles to break destructive dating patterns.</div>
-<div class="post-meta">By Zulker Nine · 7 min read</div>
-</div>
-</div>
-</div>
+<div class="blog-grid" id="blogPosts"></div>
+<div id="paginationControls" class="pagination"></div>
 </main>
 <aside>
 <div class="widget">
@@ -168,7 +145,71 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-bot"><span>© 2026 LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
 </footer>
 <script>
-async function loadBlogPosts(){try{const r=await fetch('blog-index.json');if(!r.ok)return;const posts=await r.json();const grid=document.getElementById('blogPosts');if(!posts||posts.length===0)return;let html='';posts.forEach(function(p){html+='<a href="'+p.file+'" class="post-card"><div class="post-icon">'+p.emoji+'</div><div class="post-body"><div class="post-cat">'+p.cat+'</div><div class="post-title">'+p.title+'</div><div class="post-meta">By Zulker Nine · '+p.date+'</div></div></a>'});grid.innerHTML=html}catch(e){}}loadBlogPosts();
+let allPosts = [];
+let currentPage = 1;
+const postsPerPage = 10;
+
+async function loadBlogPosts() {
+  try {
+    const r = await fetch('blog-index.json');
+    if (!r.ok) return;
+    allPosts = await r.json();
+    if (!allPosts || allPosts.length === 0) {
+      document.getElementById('blogPosts').innerHTML = '<p style="color:var(--text-muted)">No blog posts published yet.</p>';
+      return;
+    }
+    renderPage(1);
+  } catch (e) {
+    console.error('Error loading blog index:', e);
+  }
+}
+
+function renderPage(page) {
+  currentPage = page;
+  const grid = document.getElementById('blogPosts');
+  if (!grid) return;
+
+  const startIndex = (page - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const pagePosts = allPosts.slice(startIndex, endIndex);
+
+  let html = '';
+  pagePosts.forEach(function(p) {
+    html += '<a href="' + p.file + '" class="post-card"><div class="post-icon">' + p.emoji + '</div><div class="post-body"><div class="post-cat">' + p.cat + '</div><div class="post-title">' + p.title + '</div><div class="post-meta">By Zulker Nine · ' + p.date + '</div></div></a>';
+  });
+  grid.innerHTML = html;
+
+  renderPaginationControls();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderPaginationControls() {
+  const paginationContainer = document.getElementById('paginationControls');
+  if (!paginationContainer) return;
+
+  const totalPages = Math.ceil(allPosts.length / postsPerPage);
+  if (totalPages <= 1) {
+    paginationContainer.innerHTML = '';
+    return;
+  }
+
+  let html = '';
+  if (currentPage > 1) {
+    html += '<button onclick="renderPage(' + (currentPage - 1) + ')" class="page-btn">&larr; Prev</button>';
+  }
+
+  for (let i = 1; i <= totalPages; i++) {
+    html += '<button onclick="renderPage(' + i + ')" class="page-btn ' + (i === currentPage ? 'active' : '') + '">' + i + '</button>';
+  }
+
+  if (currentPage < totalPages) {
+    html += '<button onclick="renderPage(' + (currentPage + 1) + ')" class="page-btn">Next &rarr;</button>';
+  }
+
+  paginationContainer.innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', loadBlogPosts);
 </script>
 </body>
 </html>
