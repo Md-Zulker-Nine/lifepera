@@ -33,7 +33,7 @@ const TOPICS = [
 const MODELS = ['gemini-3.6-flash', 'gemini-3.5-flash-lite'];
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-async function generateContent(payload) {
+async function callGemini(payload) {
   for (const model of MODELS) {
     for (let attempt = 1; attempt <= 3; attempt++) {
       try {
@@ -64,39 +64,33 @@ async function run() {
   }
 
   const publishedTitles = new Set(posts.map(p => p.title));
-
   let topic;
   let content;
 
-  // 1. Check if there are remaining topics in the fixed list
   const nextTopic = TOPICS.find(t => !publishedTitles.has(t.title));
 
   if (nextTopic) {
     topic = nextTopic;
-    console.log(`Publishing from fixed topic list: "${topic.title}"`);
-
-    const prompt = `Write a high-quality blog post for LifePera (lifepera.com).
+    console.log(`Publishing from manual list: "${topic.title}"`);
+    const prompt = `Write a comprehensive, in-depth blog post for LifePera (lifepera.com).
 
 Title: "${topic.title}"
 Category: ${topic.cat}
 Keywords: ${topic.keywords}
 
-- 1500-1600 words, conversational tone
-- Practical takeaways, H2 subheadings
-- Hook intro, end with CTA to a LifePera tool
-- Global audience, no fluff
-- Only use: <h2>, <p>, <ul><li>, <strong>
-- No html/head/body/CSS tags`;
+- 1000-1400 words, conversational tone
+- Detailed explanations, multiple H2 subheadings, and bullet points where helpful
+- Hook intro, deep practical insights, and end with a clear CTA to LifePera tools
+- Global audience, high quality, no fluff
+- Only use these HTML tags in the body: <h2>, <p>, <ul><li>, <strong>
+- Do not include html, head, body, or CSS tags in this response.`;
 
-    content = await generateContent({
+    content = await callGemini({
       contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.7, maxOutputTokens: 2500 }
+      generationConfig: { temperature: 0.7, maxOutputTokens: 8192 }
     });
-
   } else {
-    // 2. Fixed list finished -> switch to Google Trending mode
-    console.log('Fixed topic list completed. Switching to automatic Google Trending mode...');
-
+    console.log('Manual list complete. Switching to Google Trending mode...');
     const existingTitles = posts.map(p => p.title).join('\n- ');
     const prompt = `You are the lead content creator and SEO expert for LifePera (lifepera.com), a website offering free tools for real-life decisions in Career, Finance, Travel, Relationships, Psychology, and Culture.
 
@@ -111,12 +105,12 @@ You must output your response strictly starting with a JSON block on the very fi
 Line 1 (JSON metadata only): 
 {"title": "Your Generated Title Here", "cat": "Category Name", "emoji": "🎯", "keywords": "comma separated SEO keywords"}
 
-Lines 2 onwards: The full blog post content (900-1200 words, conversational tone, practical takeaways, H2 subheadings, hook intro, ending with a CTA reference to LifePera tools). 
+Lines 2 onwards: The full blog post content (1000-1400 words, conversational tone, practical takeaways, multiple H2 subheadings, hook intro, ending with a CTA reference to LifePera tools). 
 Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No html, head, body, or CSS tags in the body content.`;
 
-    const rawOutput = await generateContent({
+    const rawOutput = await callGemini({
       contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.8, maxOutputTokens: 3000 },
+      generationConfig: { temperature: 0.8, maxOutputTokens: 8192 },
       tools: [{ googleSearch: {} }]
     });
 
@@ -217,7 +211,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <body>
 <header>
 <div class="nav">
-<a href="/https://lifepera.com" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
+<a href="/index.html" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
 <div class="nav-links">
 <a href="/tools.html">Tools</a><a href="/blog.html">Blog</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
 </div>
@@ -238,7 +232,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="/https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="/index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free · Privacy Protected · Data-Backed</span>
 </div>
