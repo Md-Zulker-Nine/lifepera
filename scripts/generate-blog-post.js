@@ -211,7 +211,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <body>
 <header>
 <div class="nav">
-<a href="/index.html" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
+<a href="/" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
 <div class="nav-links">
 <a href="/tools.html">Tools</a><a href="/blog.html">Blog</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
 </div>
@@ -232,7 +232,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <footer>
 <div class="footer-inner">
 <div class="footer-brand">
-<a href="/index.html" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<a href="/" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
 <span class="trust">🛡️ 100% Free · Privacy Protected · Data-Backed</span>
 </div>
