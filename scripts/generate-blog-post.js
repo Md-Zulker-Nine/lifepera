@@ -108,11 +108,6 @@ function findRelatedTools(topic) {
   return matches;
 }
 
-function findRelatedPosts(currentTitle, posts) {
-  const related = posts.filter(p => p.title !== currentTitle).slice(0, 3);
-  return related;
-}
-
 async function callGemini(payload) {
   for (const model of MODELS) {
     for (let attempt = 1; attempt <= 3; attempt++) {
@@ -307,13 +302,6 @@ h1{font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem;letter-s
 .related-tools ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
 .related-tools a{display:flex;align-items:center;gap:.5rem;padding:8px 12px;background:var(--bg);border-radius:8px;font-weight:500;font-size:.95rem;transition:background .15s}
 .related-tools a:hover{background:#e8f0fe}
-.related-posts{margin:2.5rem 0;padding:2rem 0;border-top:1px solid var(--border)}
-.related-posts h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
-.related-posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-.related-post-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;text-decoration:none;color:var(--text);transition:border-color .15s}
-.related-post-card:hover{border-color:var(--blue)}
-.related-post-card .rp-cat{font-size:.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:.3rem}
-.related-post-card .rp-title{font-size:.92rem;font-weight:600;line-height:1.4}
 footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
 .footer-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
 .footer-brand .logo{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;color:#fff;margin-bottom:1rem}
@@ -358,11 +346,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 ${findRelatedTools(topic).map(t => `<li><a href="/${t.tool}">${t.name} →</a></li>`).join('\n')}
 </ul>
 </div>
-<div class="related-posts">
-<h3>You May Also Like</h3>
-<div class="related-posts-grid">
-${findRelatedPosts(topic.title, posts).map(p => `<a href="/${p.file}" class="related-post-card"><div class="rp-cat">${p.cat}</div><div class="rp-title">${p.title}</div></a>`).join('\n')}
-</div>
+
 </div>
 </main>
 <footer>
