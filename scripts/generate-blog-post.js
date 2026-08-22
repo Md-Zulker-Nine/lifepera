@@ -42,8 +42,75 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const MIN_WORDS = 800;
 const MAX_ATTEMPTS = 3;
 
+const TOOL_MAP = [
+  { keywords: ['underpaid','salary','pay','income','earn','wage'], tool: 'tool-underpaid.html', name: 'Am I Underpaid? Analyzer' },
+  { keywords: ['job','quit','career','burnout','workplace','boss'], tool: 'tool-quit-job.html', name: 'Should I Quit My Job?' },
+  { keywords: ['attachment','relationship','anxious','avoidant','partner'], tool: 'tool-attachment.html', name: 'Attachment Style Quiz' },
+  { keywords: ['visa','passport','travel','country','countries'], tool: 'tool-visa.html', name: 'Visa-Free Travel Checker' },
+  { keywords: ['rich','wealth','income','money','global','afford'], tool: 'tool-how-rich.html', name: 'How Rich Am I? Comparator' },
+  { keywords: ['tap water','drink','water','safety','destination'], tool: 'tool-tap-water.html', name: 'Tap Water Safety Checker' },
+  { keywords: ['breakup','heartbreak','healing','loss','grief'], tool: 'tool-breakup.html', name: 'Breakup Recovery Guide' },
+  { keywords: ['toxic','gaslight','manipulate','red flag','abus'], tool: 'tool-toxic-relationship.html', name: 'Toxic Relationship Checker' },
+  { keywords: ['email','tone','passive','aggressive','communication'], tool: 'tool-email-tone.html', name: 'Email Tone Analyzer' },
+  { keywords: ['emotional intelligence','eq','iq','empathy'], tool: 'tool-eq.html', name: 'Emotional Intelligence Quiz' },
+  { keywords: ['core values','values','decision','purpose'], tool: 'tool-core-values.html', name: 'Core Values Identifier' },
+  { keywords: ['breadcrumb','dating','texting','ghost'], tool: 'tool-breadcrumbing.html', name: 'Breadcrumbing Detector' },
+  { keywords: ['lucky','number','numerology','belief'], tool: 'tool-lucky.html', name: 'Lucky Number Generator' },
+  { keywords: ['japan','visit','travel','season','best time'], tool: 'tool-best-visit.html', name: 'Best Time to Visit Japan' },
+  { keywords: ['name','meaning','language','culture'], tool: 'tool-name-meaning.html', name: 'Name Meaning Explorer' },
+  { keywords: ['freelance','full-time','self-employ','gig'], tool: 'tool-freelance.html', name: 'Freelance vs Full-Time Calculator' },
+  { keywords: ['zodiac','horoscope','astrology','birth'], tool: 'tool-zodiac.html', name: 'Zodiac Personality Decoder' },
+  { keywords: ['cognitive','bias','thinking','decision'], tool: 'tool-cognitive-bias.html', name: 'Cognitive Bias Decoder' },
+  { keywords: ['introvert','extrovert','personality','social'], tool: 'tool-introvert.html', name: 'Introvert/Extrovert Scale' },
+  { keywords: ['friend','friendship','social','connection'], tool: 'tool-friendship.html', name: 'Friendship Compatibility Quiz' },
+  { keywords: ['travel budget','cost','price','afford'], tool: 'tool-travel-budget.html', name: 'Travel Budget Planner' },
+  { keywords: ['toxic workplace','boss','colleague','office'], tool: 'tool-toxic-workplace.html', name: 'Toxic Workplace Checklist' },
+  { keywords: ['cultural','faux pas','etiquette','mistake'], tool: 'tool-cultural.html', name: 'Cultural Faux Pas Guide' },
+  { keywords: ['generation','gen z','millennial','boomer'], tool: 'tool-generation.html', name: 'Generation Personality Quiz' },
+  { keywords: ['solo travel','safety','alone','backpack'], tool: 'tool-solo-safety.html', name: 'Solo Travel Safety Score' },
+  { keywords: ['text','texting','reply','message'], tool: 'tool-texting.html', name: 'Texting Style Analyzer' },
+  { keywords: ['detox','digital','screen','phone'], tool: 'tool-detox.html', name: 'Digital Detox Planner' },
+  { keywords: ['google','data','privacy','track'], tool: 'tool-google-data.html', name: 'Google Data Privacy Check' },
+  { keywords: ['name peak','peak','viral','trend'], tool: 'tool-name-peak.html', name: 'Name Peak popularity' },
+  { keywords: ['rare birthday','birthday','date','birth'], tool: 'tool-rare-birthday.html', name: 'Rare Birthday Finder' },
+  { keywords: ['country match','match','where live','relocate'], tool: 'tool-country-match.html', name: 'Country Match Finder' },
+  { keywords: ['era born','historical','era','time'], tool: 'tool-era-born.html', name: 'Which Era Were You Born In?' },
+  { keywords: ['language kit','learn','polyglot','alphabet'], tool: 'tool-language-kit.html', name: 'Language Learning Kit' },
+  { keywords: ['comm clash','conflict','miscommunic','argue'], tool: 'tool-comm-clash.html', name: 'Communication Clash Detector' },
+  { keywords: ['culture map','cross-cultural','global','international'], tool: 'tool-culture-map.html', name: 'Culture Map Quiz' },
+  { keywords: ['age culture','aging','elder','youth'], tool: 'tool-age-cultures.html', name: 'Age Across Cultures Quiz' },
+];
+
 function wordCount(html) {
   return (html.replace(/<[^>]+>/g, '').match(/\S+/g) || []).length;
+}
+
+function findRelatedTools(topic) {
+  const text = (topic.title + ' ' + topic.keywords + ' ' + topic.cat).toLowerCase();
+  const matches = [];
+  for (const entry of TOOL_MAP) {
+    if (entry.keywords.some(kw => text.includes(kw))) {
+      matches.push(entry);
+      if (matches.length >= 2) break;
+    }
+  }
+  if (matches.length < 2) {
+    const fallback = [
+      { tool: 'tool-how-rich.html', name: 'How Rich Am I?' },
+      { tool: 'tool-visa.html', name: 'Visa-Free Travel Checker' },
+      { tool: 'tool-attachment.html', name: 'Attachment Style Quiz' },
+    ];
+    for (const fb of fallback) {
+      if (!matches.find(m => m.tool === fb.tool)) matches.push(fb);
+      if (matches.length >= 2) break;
+    }
+  }
+  return matches;
+}
+
+function findRelatedPosts(currentTitle, posts) {
+  const related = posts.filter(p => p.title !== currentTitle).slice(0, 3);
+  return related;
 }
 
 async function callGemini(payload) {
@@ -235,6 +302,18 @@ h1{font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem;letter-s
 .cta p{font-size:.95rem;color:var(--muted);margin-bottom:1rem}
 .cta-btn{display:inline-block;background:var(--blue);color:#fff!important;padding:10px 24px;border-radius:6px;font-weight:600;font-size:.9rem}
 .cta-btn:hover{background:#1557b0}
+.related-tools{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2.5rem 0}
+.related-tools h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
+.related-tools ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.related-tools a{display:flex;align-items:center;gap:.5rem;padding:8px 12px;background:var(--bg);border-radius:8px;font-weight:500;font-size:.95rem;transition:background .15s}
+.related-tools a:hover{background:#e8f0fe}
+.related-posts{margin:2.5rem 0;padding:2rem 0;border-top:1px solid var(--border)}
+.related-posts h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
+.related-posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.related-post-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;text-decoration:none;color:var(--text);transition:border-color .15s}
+.related-post-card:hover{border-color:var(--blue)}
+.related-post-card .rp-cat{font-size:.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:.3rem}
+.related-post-card .rp-title{font-size:.92rem;font-weight:600;line-height:1.4}
 footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
 .footer-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
 .footer-brand .logo{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;color:#fff;margin-bottom:1rem}
@@ -272,6 +351,18 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <h3>Try Our Free Tools</h3>
 <p>36 free tools covering travel, relationships, career, culture, psychology and finance. No signup required.</p>
 <a class="cta-btn" href="/tools.html">Explore All Free Tools &rarr;</a>
+</div>
+<div class="related-tools">
+<h3>🛠️ Tools Related to This Article</h3>
+<ul>
+${findRelatedTools(topic).map(t => `<li><a href="/${t.tool}">${t.name} →</a></li>`).join('\n')}
+</ul>
+</div>
+<div class="related-posts">
+<h3>📖 You May Also Like</h3>
+<div class="related-posts-grid">
+${findRelatedPosts(topic.title, posts).map(p => `<a href="/${p.file}" class="related-post-card"><div class="rp-cat">${p.cat}</div><div class="rp-title">${p.title}</div></a>`).join('\n')}
+</div>
 </div>
 </main>
 <footer>
