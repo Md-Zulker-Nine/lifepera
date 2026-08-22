@@ -81,19 +81,19 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <h1>Editorial Blog</h1>
 <p>Insights on travel, relationships, career, culture, and psychology — for curious minds worldwide.</p>
 </div>
-<div class="blog-grid" id="blogPosts"></div>
+<div class="blog-grid" id="blogPosts"><noscript><p>JavaScript is required to load the full blog post list. <a href="/blog.html">View the blog index</a>.</p></noscript></div>
 <div id="paginationControls" class="pagination"></div>
 </main>
 <aside>
 <div class="widget">
 <div class="widget-title">Browse by Topic</div>
 <ul class="cat-list">
-<li><a href="#">Travel <span class="num">(12)</span></a></li>
-<li><a href="#">Relationships <span class="num">(10)</span></a></li>
-<li><a href="#">Career <span class="num">(8)</span></a></li>
-<li><a href="#">Psychology <span class="num">(9)</span></a></li>
-<li><a href="#">Finance <span class="num">(7)</span></a></li>
-<li><a href="#">Culture <span class="num">(8)</span></a></li>
+<li><a href="#travel" onclick="filterByCat('Travel');return false;">Travel <span class="num">(12)</span></a></li>
+<li><a href="#relationships" onclick="filterByCat('Relationships');return false;">Relationships <span class="num">(10)</span></a></li>
+<li><a href="#career" onclick="filterByCat('Career');return false;">Career <span class="num">(8)</span></a></li>
+<li><a href="#psychology" onclick="filterByCat('Psychology');return false;">Psychology <span class="num">(9)</span></a></li>
+<li><a href="#finance" onclick="filterByCat('Finance');return false;">Finance <span class="num">(7)</span></a></li>
+<li><a href="#culture" onclick="filterByCat('Culture');return false;">Culture <span class="num">(8)</span></a></li>
 </ul>
 </div>
 <div class="widget">
@@ -148,6 +148,20 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 let allPosts = [];
 let currentPage = 1;
 const postsPerPage = 10;
+let activeFilter = null;
+
+function getFilteredPosts() {
+  if (!activeFilter) return allPosts;
+  return allPosts.filter(function(p) {
+    var primary = ((p.cat || '').split(/[·&]/)[0] || '').trim().toLowerCase();
+    return primary === activeFilter.toLowerCase();
+  });
+}
+
+function filterByCat(cat) {
+  activeFilter = (activeFilter === cat) ? null : cat;
+  renderPage(1);
+}
 
 async function loadBlogPosts() {
   try {
@@ -171,9 +185,13 @@ function renderPage(page) {
 
   const startIndex = (page - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
-  const pagePosts = allPosts.slice(startIndex, endIndex);
+  const filtered = getFilteredPosts();
+  const pagePosts = filtered.slice(startIndex, endIndex);
 
   let html = '';
+  if (activeFilter) {
+    html += '<div style="flex:1 0 100%;font-size:.9rem;color:#5f6368">Filtered by <strong>' + activeFilter + '</strong> (' + filtered.length + ' articles) &middot; <a href="blog.html" onclick="filterByCat(\'' + activeFilter + '\');return false;" style="cursor:pointer;font-weight:600">Show all</a></div>';
+  }
   pagePosts.forEach(function(p) {
     html += '<a href="' + p.file + '" class="post-card"><div class="post-icon">' + p.emoji + '</div><div class="post-body"><div class="post-cat">' + p.cat + '</div><div class="post-title">' + p.title + '</div><div class="post-meta">By Zulker Nine · ' + p.date + '</div></div></a>';
   });
@@ -187,7 +205,7 @@ function renderPaginationControls() {
   const paginationContainer = document.getElementById('paginationControls');
   if (!paginationContainer) return;
 
-  const totalPages = Math.ceil(allPosts.length / postsPerPage);
+  const totalPages = Math.ceil(getFilteredPosts().length / postsPerPage);
   if (totalPages <= 1) {
     paginationContainer.innerHTML = '';
     return;
