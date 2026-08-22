@@ -5,16 +5,16 @@ files.forEach(f => {
   const p = 'blog/' + f;
   let c = fs.readFileSync(p, 'utf8');
   const o = c;
-  // Remove related-posts div (the whole section)
-  c = c.replace(/<div class="related-posts">[\s\S]*?<\/div>\s*<\/div>/g, '');
-  // Remove leftover related-posts CSS from style blocks
-  c = c.replace(/\.related-posts\{[^}]+\}/g, '');
-  c = c.replace(/\.related-posts h3\{[^}]+\}/g, '');
-  c = c.replace(/\.related-posts-grid\{[^}]+\}/g, '');
-  c = c.replace(/\.related-post-card\{[^}]+\}/g, '');
-  c = c.replace(/\.related-post-card:hover\{[^}]+\}/g, '');
-  c = c.replace(/\.related-post-card \.rp-cat\{[^}]+\}/g, '');
-  c = c.replace(/\.related-post-card \.rp-title\{[^}]+\}/g, '');
+  // Remove any remaining related-post-card anchor tags
+  c = c.replace(/<a[^>]*class="related-post-card"[^>]*>[\s\S]*?<\/a>/g, '');
+  // Remove any remaining rp-title divs
+  c = c.replace(/<div class="rp-title">[^<]*<\/div>/g, '');
+  // Remove any remaining rp-cat divs
+  c = c.replace(/<div class="rp-cat">[^<]*<\/div>/g, '');
+  // Remove any orphaned closing divs from related-posts removal
+  c = c.replace(/<\/div>\s*<\/div>\s*<div class="related-tools"/, '<div class="related-tools"');
+  // Clean up leftover empty divs
+  c = c.replace(/<div>\s*<\/div>/g, '');
   if (c !== o) {
     fs.writeFileSync(p, c, 'utf8');
     fixed++;
