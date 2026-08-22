@@ -207,7 +207,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -263,7 +263,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -307,7 +307,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Solo Travel Safety Index");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Solo Travel Safety Index");
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-solo-safety";
@@ -321,62 +321,62 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       const destName = document.getElementById('destInput').selectedOptions[0].text;
       
       const data = {
-        is: { score: "98 / 100", tier: "Top Safety Rank 🟢", text: "Ranked #1 on the Global Peace Index for over a decade. Exceptionally friendly locals and practically zero violent crime." },
-        sg: { score: "96 / 100", tier: "Ultra Safe 🟢", text: "Strict laws and top-tier infrastructure make Singapore ideal for first-time solo travelers." },
-        jp: { score: "94 / 100", tier: "Ultra Safe 🟢", text: "Japan is one of the safest countries on Earth. Walking alone late at night is common and violent crime is extremely low." },
-        nz: { score: "95 / 100", tier: "Ultra Safe 🟢", text: "New Zealand is incredibly safe for solo travelers. Friendly locals, well-maintained trails, and low crime rates." },
-        no: { score: "93 / 100", tier: "Ultra Safe 🟢", text: "Norway has very low crime rates and excellent public safety. The biggest risk is weather-related, not crime." },
-        ch: { score: "92 / 100", tier: "Very Safe 🟢", text: "High safety standards, reliable train systems, and welcoming alpine towns." },
-        dk: { score: "92 / 100", tier: "Very Safe 🟢", text: "Denmark is consistently ranked among the safest countries. Copenhagen is very walkable even at night." },
-        fi: { score: "91 / 100", tier: "Very Safe 🟢", text: "Finland offers exceptional safety with very low crime. Public transport is reliable even late at night." },
-        ca: { score: "90 / 100", tier: "Very Safe 🟢", text: "Canada is very safe for solo travelers. Keep an eye on belongings in major city transit hubs." },
-        au: { score: "89 / 100", tier: "Very Safe 🟢", text: "Australia is generally very safe. Watch for beach safety flags and wildlife awareness more than crime." },
-        pt: { score: "88 / 100", tier: "Very Safe 🟢", text: "Portugal is one of Europe's safest countries. Watch for pickpockets in Lisbon trams and Porto station areas." },
-        nl: { score: "87 / 100", tier: "Very Safe 🟢", text: "Netherlands is safe and bike-friendly. Watch your belongings in Amsterdam's crowded areas and train stations." },
-        se: { score: "88 / 100", tier: "Very Safe 🟢", text: "Sweden has low violent crime. Be cautious in Malmö and Stockholm suburbs late at night." },
-        ae: { score: "87 / 100", tier: "Very Safe 🟢", text: "UAE is very safe for solo travelers with low crime and excellent infrastructure. Respect local dress codes in public." },
-        ie: { score: "86 / 100", tier: "Very Safe 🟢", text: "Ireland is welcoming and safe. Avoid poorly lit areas in Dublin late at night." },
-        es: { score: "85 / 100", tier: "Safe (Watch Pickpockets) 🟡", text: "Very safe for solo travelers. Keep an eye on bags in tourist hotspots like Barcelona Ramblas." },
-        de: { score: "87 / 100", tier: "Very Safe 🟢", text: "Germany is very safe. Watch for pickpockets in major train stations and tourist areas." },
-        uk: { score: "84 / 100", tier: "Safe (Watch Pickpockets) 🟡", text: "UK is generally safe. Be alert in central London tube stations and avoid isolated areas at night." },
-        kr: { score: "83 / 100", tier: "Safe (Watch Pickpockets) 🟡", text: "South Korea is very safe with low crime. Watch for late-night drinking culture in Hongdae and Itaewon." },
-        cr: { score: "82 / 100", tier: "Safe (Watch Pickpockets) 🟡", text: "Costa Rica is safe for solo travelers. Avoid displaying valuables on beaches and use registered taxis." },
-        hk: { score: "82 / 100", tier: "Safe (Watch Pickpockets) 🟡", text: "Hong Kong is generally safe. Be cautious during protests and keep belongings secure in crowded markets." },
-        be: { score: "82 / 100", tier: "Safe (Watch Pickpockets) 🟡", text: "Belgium is safe. Watch for pickpockets in Brussels metro and tourist squares." },
-        it: { score: "80 / 100", tier: "Safe (Watch Pickpockets) 🟡", text: "Italy is safe but notorious for pickpocketing in Rome Termini, Florence markets, and Naples streets." },
-        cz: { score: "80 / 100", tier: "Safe (Watch Pickpockets) 🟡", text: "Czech Republic is safe. Watch for pickpockets in Prague's Old Town Square and Charles Bridge." },
-        th: { score: "78 / 100", tier: "Moderate Safety 🟡", text: "Extremely popular for backpackers. Avoid unmetered tuk-tuks and guard belongings in night markets." },
-        fr: { score: "78 / 100", tier: "Moderate Safety 🟡", text: "France is generally safe. Be vigilant in Paris metro, Montmartre, and around major attractions for pickpockets." },
-        pl: { score: "78 / 100", tier: "Moderate Safety 🟡", text: "Poland is increasingly popular and safe. Watch for taxi scams at airports and train stations." },
-        cl: { score: "77 / 100", tier: "Moderate Safety 🟡", text: "Chile is one of South America's safest countries. Be cautious in Santiago's crowded areas at night." },
-        hr: { score: "76 / 100", tier: "Moderate Safety 🟡", text: "Croatia is safe for solo travelers. Watch for overcharging at tourist restaurants in Dubrovnik." },
-        gr: { score: "76 / 100", tier: "Moderate Safety 🟡", text: "Greece is generally safe. Watch for pickpockets in Athens metro and crowded island ferries." },
-        mv: { score: "76 / 100", tier: "Moderate Safety 🟡", text: "Maldives is very safe within resorts. Exercise caution on local islands and avoid alcohol beyond permitted areas." },
-        hu: { score: "75 / 100", tier: "Moderate Safety 🟡", text: "Hungary is safe. Watch for overpriced bars in Budapest's party district and pickpockets on public transport." },
-        my: { score: "74 / 100", tier: "Moderate Safety 🟡", text: "Malaysia is generally safe. Avoid unlicensed taxis and be cautious in back alleys of Kuala Lumpur." },
-        cn: { score: "74 / 100", tier: "Moderate Safety 🟡", text: "China has low violent crime but watch for digital scams and fake products. Internet restrictions affect trip planning." },
-        il: { score: "72 / 100", tier: "Moderate Safety 🟡", text: "Israel is safe in tourist areas. Stay aware of regional tensions and follow local security advice." },
-        vn: { score: "72 / 100", tier: "Moderate Safety 🟡", text: "Vietnam is generally safe. Main risks are street scams, chaotic traffic crossing, and bag snatching on scooters." },
-        sa: { score: "70 / 100", tier: "Moderate Safety 🟡", text: "Saudi Arabia is safe for crime but has strict laws. Solo female travelers should dress conservatively and use ride-hailing." },
-        ar: { score: "68 / 100", tier: "Exercise Caution 🟠", text: "Argentina is generally safe in tourist areas. Watch for petty theft in Buenos Aires and avoid informal taxi services." },
-        id: { score: "68 / 100", tier: "Exercise Caution 🟠", text: "Indonesia is safe in tourist hubs like Bali. Avoid unregulated transport and be cautious in remote areas." },
-        jo: { score: "66 / 100", tier: "Exercise Caution 🟠", text: "Jordan is safe for tourists. Use licensed guides for Petra and Wadi Rum. Avoid border areas." },
-        cu: { score: "65 / 100", tier: "Exercise Caution 🟠", text: "Cuba is generally safe but watch for dual-currency scams and unofficial taxis. Internet access is limited." },
-        mx: { score: "64 / 100", tier: "Exercise Caution 🟠", text: "Stick to well-traveled tourist areas like Oaxaca, Yucatan, and CDMX neighborhood hubs. Avoid night driving." },
-        ma: { score: "62 / 100", tier: "Exercise Caution 🟠", text: "Morocco is safe in medinas but watch for aggressive guides and fake tour operators. Dress modestly." },
-        ph: { score: "62 / 100", tier: "Exercise Caution 🟠", text: "Philippines is generally safe. Avoid remote Mindanao areas and watch for bag snatching in Manila." },
-        pe: { score: "60 / 100", tier: "Exercise Caution 🟠", text: "Peru is safe in tourist areas. Use licensed operators for Inca Trail and avoid night walks in Lima." },
-        lk: { score: "60 / 100", tier: "Exercise Caution 🟠", text: "Sri Lanka is recovering and mostly safe. Use registered drivers and avoid remote areas after dark." },
-        tr: { score: "58 / 100", tier: "High Vigilance 🔴", text: "Turkey is safe in tourist zones. Avoid border areas and be cautious in crowded bazaars for pickpockets." },
-        eg: { score: "58 / 100", tier: "High Vigilance 🔴", text: "Hire reputable licensed guides for Pyramids and Nile cruises to avoid aggressive touts and scams." },
-        in: { score: "58 / 100", tier: "High Vigilance 🔴", text: "India is safe for solo travelers who exercise caution. Avoid isolated areas at night, use ride-hailing apps, and dress modestly." },
-        do: { score: "58 / 100", tier: "High Vigilance 🔴", text: "Dominican Republic is safe in resorts. Avoid unregulated excursions and watch for drink spiking in bars." },
-        ru: { score: "54 / 100", tier: "High Vigilance 🔴", text: "Russia requires heightened caution. Avoid political discussions, use official taxis, and register your visa promptly." },
-        br: { score: "52 / 100", tier: "High Vigilance 🔴", text: "Brazil is vibrant but requires caution. Avoid favelas, don't wear flashy items, and use ride-hailing in cities." },
-        ke: { score: "50 / 100", tier: "High Vigilance 🔴", text: "Kenya requires vigilance. Use reputable safari operators, avoid walking alone in Nairobi at night, and secure valuables." },
-        za: { score: "48 / 100", tier: "High Vigilance 🔴", text: "South Africa requires caution. Avoid walking alone after dark, use ride-hailing apps, and keep valuables out of sight." },
-        ng: { score: "42 / 100", tier: "High Vigilance 🔴", text: "Nigeria requires high vigilance. Use trusted contacts, avoid unnecessary night travel, and secure accommodations carefully." },
-        pk: { score: "38 / 100", tier: "High Vigilance 🔴", text: "Pakistan is improving but requires caution. Travel with groups, avoid border regions, and check travel advisories regularly." }
+        is: { score: "98 / 100", tier: "Top Safety Rank ", text: "Ranked #1 on the Global Peace Index for over a decade. Exceptionally friendly locals and practically zero violent crime." },
+        sg: { score: "96 / 100", tier: "Ultra Safe ", text: "Strict laws and top-tier infrastructure make Singapore ideal for first-time solo travelers." },
+        jp: { score: "94 / 100", tier: "Ultra Safe ", text: "Japan is one of the safest countries on Earth. Walking alone late at night is common and violent crime is extremely low." },
+        nz: { score: "95 / 100", tier: "Ultra Safe ", text: "New Zealand is incredibly safe for solo travelers. Friendly locals, well-maintained trails, and low crime rates." },
+        no: { score: "93 / 100", tier: "Ultra Safe ", text: "Norway has very low crime rates and excellent public safety. The biggest risk is weather-related, not crime." },
+        ch: { score: "92 / 100", tier: "Very Safe ", text: "High safety standards, reliable train systems, and welcoming alpine towns." },
+        dk: { score: "92 / 100", tier: "Very Safe ", text: "Denmark is consistently ranked among the safest countries. Copenhagen is very walkable even at night." },
+        fi: { score: "91 / 100", tier: "Very Safe ", text: "Finland offers exceptional safety with very low crime. Public transport is reliable even late at night." },
+        ca: { score: "90 / 100", tier: "Very Safe ", text: "Canada is very safe for solo travelers. Keep an eye on belongings in major city transit hubs." },
+        au: { score: "89 / 100", tier: "Very Safe ", text: "Australia is generally very safe. Watch for beach safety flags and wildlife awareness more than crime." },
+        pt: { score: "88 / 100", tier: "Very Safe ", text: "Portugal is one of Europe's safest countries. Watch for pickpockets in Lisbon trams and Porto station areas." },
+        nl: { score: "87 / 100", tier: "Very Safe ", text: "Netherlands is safe and bike-friendly. Watch your belongings in Amsterdam's crowded areas and train stations." },
+        se: { score: "88 / 100", tier: "Very Safe ", text: "Sweden has low violent crime. Be cautious in Malmö and Stockholm suburbs late at night." },
+        ae: { score: "87 / 100", tier: "Very Safe ", text: "UAE is very safe for solo travelers with low crime and excellent infrastructure. Respect local dress codes in public." },
+        ie: { score: "86 / 100", tier: "Very Safe ", text: "Ireland is welcoming and safe. Avoid poorly lit areas in Dublin late at night." },
+        es: { score: "85 / 100", tier: "Safe (Watch Pickpockets) ", text: "Very safe for solo travelers. Keep an eye on bags in tourist hotspots like Barcelona Ramblas." },
+        de: { score: "87 / 100", tier: "Very Safe ", text: "Germany is very safe. Watch for pickpockets in major train stations and tourist areas." },
+        uk: { score: "84 / 100", tier: "Safe (Watch Pickpockets) ", text: "UK is generally safe. Be alert in central London tube stations and avoid isolated areas at night." },
+        kr: { score: "83 / 100", tier: "Safe (Watch Pickpockets) ", text: "South Korea is very safe with low crime. Watch for late-night drinking culture in Hongdae and Itaewon." },
+        cr: { score: "82 / 100", tier: "Safe (Watch Pickpockets) ", text: "Costa Rica is safe for solo travelers. Avoid displaying valuables on beaches and use registered taxis." },
+        hk: { score: "82 / 100", tier: "Safe (Watch Pickpockets) ", text: "Hong Kong is generally safe. Be cautious during protests and keep belongings secure in crowded markets." },
+        be: { score: "82 / 100", tier: "Safe (Watch Pickpockets) ", text: "Belgium is safe. Watch for pickpockets in Brussels metro and tourist squares." },
+        it: { score: "80 / 100", tier: "Safe (Watch Pickpockets) ", text: "Italy is safe but notorious for pickpocketing in Rome Termini, Florence markets, and Naples streets." },
+        cz: { score: "80 / 100", tier: "Safe (Watch Pickpockets) ", text: "Czech Republic is safe. Watch for pickpockets in Prague's Old Town Square and Charles Bridge." },
+        th: { score: "78 / 100", tier: "Moderate Safety ", text: "Extremely popular for backpackers. Avoid unmetered tuk-tuks and guard belongings in night markets." },
+        fr: { score: "78 / 100", tier: "Moderate Safety ", text: "France is generally safe. Be vigilant in Paris metro, Montmartre, and around major attractions for pickpockets." },
+        pl: { score: "78 / 100", tier: "Moderate Safety ", text: "Poland is increasingly popular and safe. Watch for taxi scams at airports and train stations." },
+        cl: { score: "77 / 100", tier: "Moderate Safety ", text: "Chile is one of South America's safest countries. Be cautious in Santiago's crowded areas at night." },
+        hr: { score: "76 / 100", tier: "Moderate Safety ", text: "Croatia is safe for solo travelers. Watch for overcharging at tourist restaurants in Dubrovnik." },
+        gr: { score: "76 / 100", tier: "Moderate Safety ", text: "Greece is generally safe. Watch for pickpockets in Athens metro and crowded island ferries." },
+        mv: { score: "76 / 100", tier: "Moderate Safety ", text: "Maldives is very safe within resorts. Exercise caution on local islands and avoid alcohol beyond permitted areas." },
+        hu: { score: "75 / 100", tier: "Moderate Safety ", text: "Hungary is safe. Watch for overpriced bars in Budapest's party district and pickpockets on public transport." },
+        my: { score: "74 / 100", tier: "Moderate Safety ", text: "Malaysia is generally safe. Avoid unlicensed taxis and be cautious in back alleys of Kuala Lumpur." },
+        cn: { score: "74 / 100", tier: "Moderate Safety ", text: "China has low violent crime but watch for digital scams and fake products. Internet restrictions affect trip planning." },
+        il: { score: "72 / 100", tier: "Moderate Safety ", text: "Israel is safe in tourist areas. Stay aware of regional tensions and follow local security advice." },
+        vn: { score: "72 / 100", tier: "Moderate Safety ", text: "Vietnam is generally safe. Main risks are street scams, chaotic traffic crossing, and bag snatching on scooters." },
+        sa: { score: "70 / 100", tier: "Moderate Safety ", text: "Saudi Arabia is safe for crime but has strict laws. Solo female travelers should dress conservatively and use ride-hailing." },
+        ar: { score: "68 / 100", tier: "Exercise Caution ", text: "Argentina is generally safe in tourist areas. Watch for petty theft in Buenos Aires and avoid informal taxi services." },
+        id: { score: "68 / 100", tier: "Exercise Caution ", text: "Indonesia is safe in tourist hubs like Bali. Avoid unregulated transport and be cautious in remote areas." },
+        jo: { score: "66 / 100", tier: "Exercise Caution ", text: "Jordan is safe for tourists. Use licensed guides for Petra and Wadi Rum. Avoid border areas." },
+        cu: { score: "65 / 100", tier: "Exercise Caution ", text: "Cuba is generally safe but watch for dual-currency scams and unofficial taxis. Internet access is limited." },
+        mx: { score: "64 / 100", tier: "Exercise Caution ", text: "Stick to well-traveled tourist areas like Oaxaca, Yucatan, and CDMX neighborhood hubs. Avoid night driving." },
+        ma: { score: "62 / 100", tier: "Exercise Caution ", text: "Morocco is safe in medinas but watch for aggressive guides and fake tour operators. Dress modestly." },
+        ph: { score: "62 / 100", tier: "Exercise Caution ", text: "Philippines is generally safe. Avoid remote Mindanao areas and watch for bag snatching in Manila." },
+        pe: { score: "60 / 100", tier: "Exercise Caution ", text: "Peru is safe in tourist areas. Use licensed operators for Inca Trail and avoid night walks in Lima." },
+        lk: { score: "60 / 100", tier: "Exercise Caution ", text: "Sri Lanka is recovering and mostly safe. Use registered drivers and avoid remote areas after dark." },
+        tr: { score: "58 / 100", tier: "High Vigilance ", text: "Turkey is safe in tourist zones. Avoid border areas and be cautious in crowded bazaars for pickpockets." },
+        eg: { score: "58 / 100", tier: "High Vigilance ", text: "Hire reputable licensed guides for Pyramids and Nile cruises to avoid aggressive touts and scams." },
+        in: { score: "58 / 100", tier: "High Vigilance ", text: "India is safe for solo travelers who exercise caution. Avoid isolated areas at night, use ride-hailing apps, and dress modestly." },
+        do: { score: "58 / 100", tier: "High Vigilance ", text: "Dominican Republic is safe in resorts. Avoid unregulated excursions and watch for drink spiking in bars." },
+        ru: { score: "54 / 100", tier: "High Vigilance ", text: "Russia requires heightened caution. Avoid political discussions, use official taxis, and register your visa promptly." },
+        br: { score: "52 / 100", tier: "High Vigilance ", text: "Brazil is vibrant but requires caution. Avoid favelas, don't wear flashy items, and use ride-hailing in cities." },
+        ke: { score: "50 / 100", tier: "High Vigilance ", text: "Kenya requires vigilance. Use reputable safari operators, avoid walking alone in Nairobi at night, and secure valuables." },
+        za: { score: "48 / 100", tier: "High Vigilance ", text: "South Africa requires caution. Avoid walking alone after dark, use ride-hailing apps, and keep valuables out of sight." },
+        ng: { score: "42 / 100", tier: "High Vigilance ", text: "Nigeria requires high vigilance. Use trusted contacts, avoid unnecessary night travel, and secure accommodations carefully." },
+        pk: { score: "38 / 100", tier: "High Vigilance ", text: "Pakistan is improving but requires caution. Travel with groups, avoid border regions, and check travel advisories regularly." }
       };
 
       const res = data[dest];

@@ -155,7 +155,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -211,7 +211,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -255,7 +255,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Freelance vs Full-Time Calculator");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Freelance vs Full-Time Calculator");
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-freelance";
@@ -275,11 +275,11 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       let badge = "", msg = "";
       if (netFL > netFT) {
         const diff = Math.round(netFL - netFT);
-        badge = "Freelancing Wins! 🚀";
+        badge = "Freelancing Wins! ";
         msg = `Freelancing yields approx $${Math.round(grossFL).toLocaleString()} gross ($${Math.round(netFL).toLocaleString()} net), earning you ~$${diff.toLocaleString()} MORE per year than full-time!`;
       } else {
         const diff = Math.round(netFT - netFL);
-        badge = "Full-Time Wins! 💼";
+        badge = "Full-Time Wins! ";
         msg = `Full-time employment yields ~$${diff.toLocaleString()} MORE net income when factoring health benefits, paid time off, and self-employment tax overhead. Raise your hourly rate to $${Math.round(rate * 1.35)} to break even!`;
       }
 

@@ -78,14 +78,14 @@ for (const post of posts) {
   const related = posts.filter(p => p.title !== post.title).slice(0, 3);
 
   const toolsHtml = `<div class="related-tools">
-<h3>🛠️ Tools Related to This Article</h3>
+<h3>Tools Related to This Article</h3>
 <ul>
 ${tools.map(t => `<li><a href="/${t.tool}">${t.name} →</a></li>`).join('\n')}
 </ul>
 </div>`;
 
   const relatedHtml = `<div class="related-posts">
-<h3>📖 You May Also Like</h3>
+<h3>You May Also Like</h3>
 <div class="related-posts-grid">
 ${related.map(p => `<a href="/${p.file}" class="related-post-card"><div class="rp-cat">${p.cat || ''}</div><div class="rp-title">${p.title}</div></a>`).join('\n')}
 </div>

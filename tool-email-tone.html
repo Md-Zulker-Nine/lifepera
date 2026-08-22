@@ -149,7 +149,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -205,7 +205,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -249,7 +249,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Email Tone Checker");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Email Tone Checker");
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-email-tone";
@@ -270,13 +270,13 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 
       let badge = "", msg = "";
       if (passiveCount >= 2) {
-        badge = "Passive-Aggressive Risk ⚠️";
+        badge = "Passive-Aggressive Risk ";
         msg = "Detected passive-aggressive triggers (e.g. 'per my last email'). Soften the wording to maintain warm professional relationships.";
       } else if (text.length < 30) {
-        badge = "Too Abrupt / Terse 📏";
+        badge = "Too Abrupt / Terse ";
         msg = "Your email is very short. Adding a warm greeting ('Hi [Name], thanks for following up') prevents it from sounding cold.";
       } else {
-        badge = "Professional & Clear ✅";
+        badge = "Professional & Clear ";
         msg = "Great job! Your email strikes a polite, clear, and professional tone suitable for workplace communication.";
       }
 

@@ -149,7 +149,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -205,7 +205,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -249,7 +249,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = '✨ ' + (cardTitle || '\u201cHow Rich Am I?\u201d Global Comparator');
+    document.getElementById('bannerHook').innerHTML = ' ' + (cardTitle || '\u201cHow Rich Am I?\u201d Global Comparator');
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-how-rich";
@@ -262,12 +262,12 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       if (isNaN(income) || income <= 0) { alert("Please enter a valid annual income."); return; }
       
       let badge = "", msg = "";
-      if (income >= 120000) { badge = "Top 1% 💎"; msg = "You earn more than 99% of humanity. Your income is exceptionally high globally."; }
-      else if (income >= 50000) { badge = "Top 5% 🚀"; msg = "You are in the wealthiest 5% of humanity, earning more in a month than many earn in a year."; }
+      if (income >= 120000) { badge = "Top 1% "; msg = "You earn more than 99% of humanity. Your income is exceptionally high globally."; }
+      else if (income >= 50000) { badge = "Top 5% "; msg = "You are in the wealthiest 5% of humanity, earning more in a month than many earn in a year."; }
       else if (income >= 25000) { badge = "Top 10% ⭐"; msg = "You fall into the top 10% of global earners with a high standard of living."; }
-      else if (income >= 10000) { badge = "Top 25% 📈"; msg = "You are in the top quarter of global income earners, well above global median."; }
-      else if (income >= 3000) { badge = "Top 50% 🌐"; msg = "Your income places you roughly in the global middle class."; }
-      else { badge = "Bottom 50% 📊"; msg = "Your income is below the global median of $3,000 USD per year."; }
+      else if (income >= 10000) { badge = "Top 25% "; msg = "You are in the top quarter of global income earners, well above global median."; }
+      else if (income >= 3000) { badge = "Top 50% "; msg = "Your income places you roughly in the global middle class."; }
+      else { badge = "Bottom 50% "; msg = "Your income is below the global median of $3,000 USD per year."; }
 
       showResult("You are in the " + badge, msg, badge, "Global Rank");
     }

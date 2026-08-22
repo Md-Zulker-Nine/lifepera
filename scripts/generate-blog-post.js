@@ -353,13 +353,13 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <a class="cta-btn" href="/tools.html">Explore All Free Tools &rarr;</a>
 </div>
 <div class="related-tools">
-<h3>🛠️ Tools Related to This Article</h3>
+<h3>Tools Related to This Article</h3>
 <ul>
 ${findRelatedTools(topic).map(t => `<li><a href="/${t.tool}">${t.name} →</a></li>`).join('\n')}
 </ul>
 </div>
 <div class="related-posts">
-<h3>📖 You May Also Like</h3>
+<h3>You May Also Like</h3>
 <div class="related-posts-grid">
 ${findRelatedPosts(topic.title, posts).map(p => `<a href="/${p.file}" class="related-post-card"><div class="rp-cat">${p.cat}</div><div class="rp-title">${p.title}</div></a>`).join('\n')}
 </div>
@@ -402,7 +402,7 @@ ${findRelatedPosts(topic.title, posts).map(p => `<a href="/${p.file}" class="rel
 </footer>
 <div class="cookie-bar" id="cookieBar">
 <div class="cookie-inner">
-<p>🍪 LifePera uses cookies to improve your experience and serve personalized ads. By continuing, you agree to our <a href="/privacy.html" style="color:#8ab4f8">Privacy Policy</a>.</p>
+<p>LifePera uses cookies to improve your experience and serve personalized ads. By continuing, you agree to our <a href="/privacy.html" style="color:#8ab4f8">Privacy Policy</a>.</p>
 <button class="cookie-btn" onclick="acceptCookies()">Accept All</button>
 </div>
 </div>

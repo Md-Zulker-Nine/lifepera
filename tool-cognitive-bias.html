@@ -153,7 +153,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -209,7 +209,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -253,7 +253,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Cognitive Bias Test");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Cognitive Bias Test");
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-cognitive-bias";
@@ -264,9 +264,9 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     function runTool() {
       const val = document.getElementById('biasInput').value;
       const data = {
-        sunk_cost: { badge: "Sunk Cost Fallacy 💸", text: "You tend to continue investing time or money into failing projects simply because of what you've already put in. Practice cutting losses early!" },
-        confirmation: { badge: "Confirmation Bias 🔍", text: "You naturally seek out information that agrees with your existing beliefs while ignoring contradictory evidence. Seek opposing viewpoints!" },
-        anchoring: { badge: "Anchoring Bias ⚓", text: "You anchor your judgment too heavily on the first piece of information received. Always gather fresh data points!" }
+        sunk_cost: { badge: "Sunk Cost Fallacy ", text: "You tend to continue investing time or money into failing projects simply because of what you've already put in. Practice cutting losses early!" },
+        confirmation: { badge: "Confirmation Bias ", text: "You naturally seek out information that agrees with your existing beliefs while ignoring contradictory evidence. Seek opposing viewpoints!" },
+        anchoring: { badge: "Anchoring Bias ", text: "You anchor your judgment too heavily on the first piece of information received. Always gather fresh data points!" }
       };
       const res = data[val];
       showResult("Primary Trap: " + res.badge, res.text, res.badge, "Cognitive Bias Profile");

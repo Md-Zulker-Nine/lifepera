@@ -208,7 +208,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -264,7 +264,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -308,7 +308,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Which Country Fits Your Personality?");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Which Country Fits Your Personality?");
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-country-match";
@@ -321,63 +321,63 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       if (!c) { alert("Please select a preference."); return; }
       const cName = document.getElementById('cm1').selectedOptions[0].text;
       const results = {
-        argentina: { title: "Match: Argentina 🇦🇷 (78% Compatibility)", desc: "Passionate tango nights, world-class beef, and dramatic Patagonian landscapes make Argentina an intoxicating place to call home.", badge: "Argentina 78% Match 🥩" },
-        australia: { title: "Match: Australia 🇦🇺 (87% Compatibility)", desc: "Australia delivers beach culture, outdoor adventure, strong economy, and a laid-back friendly attitude.", badge: "Australia 87% Match 🏄" },
-        austria: { title: "Match: Austria 🇦🇹 (82% Compatibility)", desc: "Crystal-clear Alpine lakes, imperial Vienna grandeur, and a serene outdoor lifestyle define the Austrian dream.", badge: "Austria 82% Match 🏔️" },
-        belgium: { title: "Match: Belgium 🇧🇪 (80% Compatibility)", desc: "Belgium charms with medieval squares, world-class beer, mouthwatering chocolate, and a truly multicultural European soul.", badge: "Belgium 80% Match 🍺" },
-        brazil: { title: "Match: Brazil 🇧🇷 (79% Compatibility)", desc: "Brazil pulses with samba energy, tropical beaches, Amazon adventures, and a warmth you can feel in the air.", badge: "Brazil 79% Match 🌴" },
-        canada: { title: "Match: Canada 🇨🇦 (88% Compatibility)", desc: "Canada offers diverse multicultural cities, universal healthcare, stunning national parks, and four-season beauty.", badge: "Canada 88% Match 🍁" },
-        chile: { title: "Match: Chile 🇨🇱 (76% Compatibility)", desc: "Chile stretches from the driest desert to Patagonian ice fields, offering wine valleys and star-filled skies.", badge: "Chile 76% Match 🍷" },
-        china: { title: "Match: China 🇨🇳 (74% Compatibility)", desc: "China blends ancient dynastic history with hyper-modern megacities, diverse cuisines, and ambitious energy.", badge: "China 74% Match 🏯" },
-        colombia: { title: "Match: Colombia 🇨🇴 (81% Compatibility)", desc: "Colombia surprises with coffee country, Caribbean vibes, salsa dancing, and some of the warmest people on earth.", badge: "Colombia 81% Match ☕" },
-        "costa-rica": { title: "Match: Costa Rica 🇨🇷 (89% Compatibility)", desc: "Pura vida lifestyle, rainforest and beaches, eco-conscious communities, and affordable healthcare.", badge: "Costa Rica 89% Match 🌿" },
-        croatia: { title: "Match: Croatia 🇭🇷 (77% Compatibility)", desc: "Croatia dazzles with Adriatic islands, Roman ruins, Game of Thrones scenery, and a relaxed coastal rhythm.", badge: "Croatia 77% Match ⛵" },
-        czech: { title: "Match: Czech Republic 🇨🇿 (79% Compatibility)", desc: "Prague fairytale streets, world-famous beer culture, and central European affordability make it an expat magnet.", badge: "Czech Republic 79% Match 🍻" },
-        denmark: { title: "Match: Denmark 🇩🇰 (86% Compatibility)", desc: "Denmark masters hygge living, cutting-edge design, bike-friendly cities, and a deeply progressive social fabric.", badge: "Denmark 86% Match 🕯️" },
-        egypt: { title: "Match: Egypt 🇪🇬 (72% Compatibility)", desc: "Egypt offers ancient pyramids, Nile Valley tranquility, Red Sea diving, and a timeless desert mystique.", badge: "Egypt 72% Match 🏛️" },
-        finland: { title: "Match: Finland 🇫🇮 (85% Compatibility)", desc: "Finland delivers northern lights, silent forests, thousand lakes, sauna rituals, and the happiest people on earth.", badge: "Finland 85% Match 🌌" },
-        france: { title: "Match: France 🇫🇷 (84% Compatibility)", desc: "France seduces with world-class cuisine, art-filled cities, lavender fields, and an effortless sense of style.", badge: "France 84% Match 🥐" },
-        germany: { title: "Match: Germany 🇩🇪 (83% Compatibility)", desc: "Germany impresses with efficient infrastructure, fairy-tale castles, vibrant beer gardens, and strong economic opportunity.", badge: "Germany 83% Match 🏰" },
-        greece: { title: "Match: Greece 🇬🇷 (82% Compatibility)", desc: "Greece invites you to island-hop turquoise waters, feast on Mediterranean flavors, and soak in ancient history.", badge: "Greece 82% Match ⛱️" },
-        "hong-kong": { title: "Match: Hong Kong 🇭🇰 (78% Compatibility)", desc: "Hong Kong dazzles with a neon skyline, dim sum culture, world-class shopping, and East-meets-West energy.", badge: "Hong Kong 78% Match 🌆" },
-        hungary: { title: "Match: Hungary 🇭🇺 (75% Compatibility)", desc: "Hungary charms with thermal bath culture, Budapest Danube beauty, hearty cuisine, and central European soul.", badge: "Hungary 75% Match 🛁" },
-        iceland: { title: "Match: Iceland 🇮🇸 (88% Compatibility)", desc: "Iceland offers otherworldly volcanic landscapes, geothermal lagoons, midnight sun, and a fiercely creative spirit.", badge: "Iceland 88% Match 🌋" },
-        india: { title: "Match: India 🇮🇳 (73% Compatibility)", desc: "India overwhelms the senses with spiritual traditions, colorful festivals, diverse cuisines, and incredible cultural depth.", badge: "India 73% Match 🕌" },
-        indonesia: { title: "Match: Indonesia 🇮🇩 (80% Compatibility)", desc: "Indonesia enchants with Bali spiritual wellness, Komodo dragons, tropical islands, and surf-perfect waves.", badge: "Indonesia 80% Match 🏝️" },
-        ireland: { title: "Match: Ireland 🇮🇪 (85% Compatibility)", desc: "Ireland welcomes with rolling green hills, cozy pub sessions, warm conversations, and a magical Celtic atmosphere.", badge: "Ireland 85% Match ☘️" },
-        israel: { title: "Match: Israel 🇮🇱 (76% Compatibility)", desc: "Israel blends ancient holy sites, Tel Aviv tech scene, desert landscapes, and an unmatched culinary fusion.", badge: "Israel 76% Match 🏙️" },
-        italy: { title: "Match: Italy 🇮🇹 (90% Compatibility)", desc: "Italy embodies la dolce vita with Renaissance art, pasta perfection, coastal gems, and passionate everyday living.", badge: "Italy 90% Match 🍝" },
-        japan: { title: "Match: Japan 🇯🇵 (90% Compatibility)", desc: "Japan delivers unparalleled public safety, rich traditions, and world-class culinary experiences.", badge: "Japan 90% Match 🌸" },
-        jordan: { title: "Match: Jordan 🇯🇴 (74% Compatibility)", desc: "Jordan reveals Petra rose-red city, Wadi Rum Martian deserts, Dead Sea floating, and legendary hospitality.", badge: "Jordan 74% Match 🏜️" },
-        kenya: { title: "Match: Kenya 🇰🇪 (75% Compatibility)", desc: "Kenya offers safari thrills, Maasai heritage, Indian Ocean beaches, and a wild beauty found nowhere else.", badge: "Kenya 75% Match 🦁" },
-        malaysia: { title: "Match: Malaysia 🇲🇾 (81% Compatibility)", desc: "Malaysia mixes Malay, Chinese, and Indian cultures, lush rainforests, and sizzling street food under tropical skies.", badge: "Malaysia 81% Match 🍜" },
-        maldives: { title: "Match: Maldives 🇲🇻 (79% Compatibility)", desc: "The Maldives means overwater bungalows, crystal-clear atolls, underwater dining, and pure tropical paradise.", badge: "Maldives 79% Match 🐠" },
-        mexico: { title: "Match: Mexico 🇲🇽 (83% Compatibility)", desc: "Mexico offers rich cultural heritage, diverse landscapes from beaches to mountains, and an affordable cost of living.", badge: "Mexico 83% Match 🌮" },
-        morocco: { title: "Match: Morocco 🇲🇦 (76% Compatibility)", desc: "Morocco captivates with maze-like medinas, Sahara dunes, mint tea rituals, and a vibrant artisan culture.", badge: "Morocco 76% Match 🐪" },
-        netherlands: { title: "Match: Netherlands 🇳🇱 (85% Compatibility)", desc: "The Netherlands offers bike-friendly cities, progressive values, excellent English, and great work-life balance.", badge: "Netherlands 85% Match 🚲" },
-        "new-zealand": { title: "Match: New Zealand 🇳🇿 (92% Compatibility)", desc: "New Zealand offers breathtaking nature, outdoor freedom, and peaceful community vibes.", badge: "New Zealand 92% Match 🏔️" },
-        nigeria: { title: "Match: Nigeria 🇳🇬 (72% Compatibility)", desc: "Nigeria pulses with Afrobeat energy, a booming creative economy, Nollywood, and incredible food traditions.", badge: "Nigeria 72% Match 🎵" },
-        norway: { title: "Match: Norway 🇳🇴 (87% Compatibility)", desc: "Norway stuns with dramatic fjords, northern lights, Arctic adventures, and a deep-rooted outdoor culture.", badge: "Norway 87% Match 🎣" },
-        pakistan: { title: "Match: Pakistan 🇵🇰 (73% Compatibility)", desc: "Pakistan reveals towering Karakoram peaks, ancient Silk Road cities, and a hospitality that redefines welcome.", badge: "Pakistan 73% Match 🗻" },
-        peru: { title: "Match: Peru 🇵🇪 (77% Compatibility)", desc: "Peru offers Machu Picchu mysteries, Amazon rainforest, ceviche mastery, and colorful Andean traditions.", badge: "Peru 77% Match 🥇" },
-        philippines: { title: "Match: Philippines 🇵🇭 (78% Compatibility)", desc: "The Philippines greets with 7000 islands, English-speaking locals, warm smiles, and world-class diving spots.", badge: "Philippines 78% Match 🤿" },
-        poland: { title: "Match: Poland 🇵🇱 (76% Compatibility)", desc: "Poland blends historic old towns, hearty pierogi, affordable living, and a rising entrepreneurial energy.", badge: "Poland 76% Match 🥟" },
-        portugal: { title: "Match: Portugal 🇵🇹 (94% Compatibility)", desc: "Portugal offers warm coastal weather, vibrant culture, high safety, and relaxed European living.", badge: "Portugal 94% Match 🏖️" },
-        qatar: { title: "Match: Qatar 🇶🇦 (74% Compatibility)", desc: "Qatar combines futuristic skylines, Arabian Gulf luxury, world-class museums, and a global business stage.", badge: "Qatar 74% Match 🏙️" },
-        russia: { title: "Match: Russia 🇷🇺 (72% Compatibility)", desc: "Russia spans vast tundra, imperial palaces, literary legacies, and a soulful cultural depth like no other.", badge: "Russia 72% Match ❄️" },
-        "saudi-arabia": { title: "Match: Saudi Arabia 🇸🇦 (73% Compatibility)", desc: "Saudi Arabia opens with Red Sea beaches, ancient Nabatean tombs, futuristic megaprojects, and warm Gulf hospitality.", badge: "Saudi Arabia 73% Match 🏝️" },
-        singapore: { title: "Match: Singapore 🇸🇬 (84% Compatibility)", desc: "Singapore shines with futuristic gardens, hawker food heaven, spotless streets, and a dynamic Asian crossroads.", badge: "Singapore 84% Match 🍽️" },
-        "south-africa": { title: "Match: South Africa 🇿🇦 (80% Compatibility)", desc: "South Africa delivers Big Five safaris, Cape Town beauty, wine routes, and an inspiring cultural rainbow.", badge: "South Africa 80% Match 🦓" },
-        "south-korea": { title: "Match: South Korea 🇰🇷 (82% Compatibility)", desc: "South Korea merges K-culture global influence, Seoul neon buzz, ancient temples, and a skincare-obsessed wellness.", badge: "South Korea 82% Match 🇰🇷" },
-        spain: { title: "Match: Spain 🇪🇸 (91% Compatibility)", desc: "Spain offers sunny Mediterranean weather, lively social culture, delicious tapas, and coastal beauty.", badge: "Spain 91% Match ☀️" },
-        sweden: { title: "Match: Sweden 🇸🇪 (86% Compatibility)", desc: "Sweden offers minimalist design, archipelago escapes, fika culture, and a progressive way of life in balance.", badge: "Sweden 86% Match 🇸🇪" },
-        switzerland: { title: "Match: Switzerland 🇨🇭 (93% Compatibility)", desc: "Switzerland offers stunning Alpine scenery, top-tier healthcare, high salaries, and exceptional safety.", badge: "Switzerland 93% Match 🏔️" },
-        thailand: { title: "Match: Thailand 🇹🇭 (86% Compatibility)", desc: "Thailand offers a low cost of living, warm tropical climate, delicious street food, and a thriving expat community.", badge: "Thailand 86% Match 🏝️" },
-        turkey: { title: "Match: Turkey 🇹🇷 (78% Compatibility)", desc: "Turkey bridges continents with Istanbul magic, fairy-chimney landscapes, bazaars, and unforgettable cuisine.", badge: "Turkey 78% Match 🎈" },
-        uae: { title: "Match: UAE 🇦🇪 (84% Compatibility)", desc: "The UAE offers tax-free income, world-class infrastructure, luxury lifestyle, and a global business environment.", badge: "UAE 84% Match 🌆" },
-        uk: { title: "Match: United Kingdom 🇬🇧 (81% Compatibility)", desc: "The UK blends London global energy, countryside charm, pub culture, and centuries of history and innovation.", badge: "United Kingdom 81% Match 🎡" },
-        usa: { title: "Match: United States 🇺🇸 (80% Compatibility)", desc: "The USA offers vast landscapes, career ambition, cultural diversity, and an energy that feels limitless.", badge: "United States 80% Match 🗽" },
-        vietnam: { title: "Match: Vietnam 🇻🇳 (79% Compatibility)", desc: "Vietnam seduces with steaming pho, motorbike chaos, terraced rice fields, and a resilient welcoming spirit.", badge: "Vietnam 79% Match 🍜" }
+        argentina: { title: "Match: Argentina  (78% Compatibility)", desc: "Passionate tango nights, world-class beef, and dramatic Patagonian landscapes make Argentina an intoxicating place to call home.", badge: "Argentina 78% Match " },
+        australia: { title: "Match: Australia  (87% Compatibility)", desc: "Australia delivers beach culture, outdoor adventure, strong economy, and a laid-back friendly attitude.", badge: "Australia 87% Match " },
+        austria: { title: "Match: Austria  (82% Compatibility)", desc: "Crystal-clear Alpine lakes, imperial Vienna grandeur, and a serene outdoor lifestyle define the Austrian dream.", badge: "Austria 82% Match " },
+        belgium: { title: "Match: Belgium  (80% Compatibility)", desc: "Belgium charms with medieval squares, world-class beer, mouthwatering chocolate, and a truly multicultural European soul.", badge: "Belgium 80% Match " },
+        brazil: { title: "Match: Brazil  (79% Compatibility)", desc: "Brazil pulses with samba energy, tropical beaches, Amazon adventures, and a warmth you can feel in the air.", badge: "Brazil 79% Match " },
+        canada: { title: "Match: Canada  (88% Compatibility)", desc: "Canada offers diverse multicultural cities, universal healthcare, stunning national parks, and four-season beauty.", badge: "Canada 88% Match " },
+        chile: { title: "Match: Chile  (76% Compatibility)", desc: "Chile stretches from the driest desert to Patagonian ice fields, offering wine valleys and star-filled skies.", badge: "Chile 76% Match " },
+        china: { title: "Match: China  (74% Compatibility)", desc: "China blends ancient dynastic history with hyper-modern megacities, diverse cuisines, and ambitious energy.", badge: "China 74% Match " },
+        colombia: { title: "Match: Colombia  (81% Compatibility)", desc: "Colombia surprises with coffee country, Caribbean vibes, salsa dancing, and some of the warmest people on earth.", badge: "Colombia 81% Match " },
+        "costa-rica": { title: "Match: Costa Rica  (89% Compatibility)", desc: "Pura vida lifestyle, rainforest and beaches, eco-conscious communities, and affordable healthcare.", badge: "Costa Rica 89% Match " },
+        croatia: { title: "Match: Croatia  (77% Compatibility)", desc: "Croatia dazzles with Adriatic islands, Roman ruins, Game of Thrones scenery, and a relaxed coastal rhythm.", badge: "Croatia 77% Match " },
+        czech: { title: "Match: Czech Republic  (79% Compatibility)", desc: "Prague fairytale streets, world-famous beer culture, and central European affordability make it an expat magnet.", badge: "Czech Republic 79% Match " },
+        denmark: { title: "Match: Denmark  (86% Compatibility)", desc: "Denmark masters hygge living, cutting-edge design, bike-friendly cities, and a deeply progressive social fabric.", badge: "Denmark 86% Match " },
+        egypt: { title: "Match: Egypt  (72% Compatibility)", desc: "Egypt offers ancient pyramids, Nile Valley tranquility, Red Sea diving, and a timeless desert mystique.", badge: "Egypt 72% Match " },
+        finland: { title: "Match: Finland  (85% Compatibility)", desc: "Finland delivers northern lights, silent forests, thousand lakes, sauna rituals, and the happiest people on earth.", badge: "Finland 85% Match " },
+        france: { title: "Match: France  (84% Compatibility)", desc: "France seduces with world-class cuisine, art-filled cities, lavender fields, and an effortless sense of style.", badge: "France 84% Match " },
+        germany: { title: "Match: Germany  (83% Compatibility)", desc: "Germany impresses with efficient infrastructure, fairy-tale castles, vibrant beer gardens, and strong economic opportunity.", badge: "Germany 83% Match " },
+        greece: { title: "Match: Greece  (82% Compatibility)", desc: "Greece invites you to island-hop turquoise waters, feast on Mediterranean flavors, and soak in ancient history.", badge: "Greece 82% Match " },
+        "hong-kong": { title: "Match: Hong Kong  (78% Compatibility)", desc: "Hong Kong dazzles with a neon skyline, dim sum culture, world-class shopping, and East-meets-West energy.", badge: "Hong Kong 78% Match " },
+        hungary: { title: "Match: Hungary  (75% Compatibility)", desc: "Hungary charms with thermal bath culture, Budapest Danube beauty, hearty cuisine, and central European soul.", badge: "Hungary 75% Match " },
+        iceland: { title: "Match: Iceland  (88% Compatibility)", desc: "Iceland offers otherworldly volcanic landscapes, geothermal lagoons, midnight sun, and a fiercely creative spirit.", badge: "Iceland 88% Match " },
+        india: { title: "Match: India  (73% Compatibility)", desc: "India overwhelms the senses with spiritual traditions, colorful festivals, diverse cuisines, and incredible cultural depth.", badge: "India 73% Match " },
+        indonesia: { title: "Match: Indonesia  (80% Compatibility)", desc: "Indonesia enchants with Bali spiritual wellness, Komodo dragons, tropical islands, and surf-perfect waves.", badge: "Indonesia 80% Match " },
+        ireland: { title: "Match: Ireland  (85% Compatibility)", desc: "Ireland welcomes with rolling green hills, cozy pub sessions, warm conversations, and a magical Celtic atmosphere.", badge: "Ireland 85% Match " },
+        israel: { title: "Match: Israel  (76% Compatibility)", desc: "Israel blends ancient holy sites, Tel Aviv tech scene, desert landscapes, and an unmatched culinary fusion.", badge: "Israel 76% Match " },
+        italy: { title: "Match: Italy  (90% Compatibility)", desc: "Italy embodies la dolce vita with Renaissance art, pasta perfection, coastal gems, and passionate everyday living.", badge: "Italy 90% Match " },
+        japan: { title: "Match: Japan  (90% Compatibility)", desc: "Japan delivers unparalleled public safety, rich traditions, and world-class culinary experiences.", badge: "Japan 90% Match " },
+        jordan: { title: "Match: Jordan  (74% Compatibility)", desc: "Jordan reveals Petra rose-red city, Wadi Rum Martian deserts, Dead Sea floating, and legendary hospitality.", badge: "Jordan 74% Match " },
+        kenya: { title: "Match: Kenya  (75% Compatibility)", desc: "Kenya offers safari thrills, Maasai heritage, Indian Ocean beaches, and a wild beauty found nowhere else.", badge: "Kenya 75% Match " },
+        malaysia: { title: "Match: Malaysia  (81% Compatibility)", desc: "Malaysia mixes Malay, Chinese, and Indian cultures, lush rainforests, and sizzling street food under tropical skies.", badge: "Malaysia 81% Match " },
+        maldives: { title: "Match: Maldives  (79% Compatibility)", desc: "The Maldives means overwater bungalows, crystal-clear atolls, underwater dining, and pure tropical paradise.", badge: "Maldives 79% Match " },
+        mexico: { title: "Match: Mexico  (83% Compatibility)", desc: "Mexico offers rich cultural heritage, diverse landscapes from beaches to mountains, and an affordable cost of living.", badge: "Mexico 83% Match " },
+        morocco: { title: "Match: Morocco  (76% Compatibility)", desc: "Morocco captivates with maze-like medinas, Sahara dunes, mint tea rituals, and a vibrant artisan culture.", badge: "Morocco 76% Match " },
+        netherlands: { title: "Match: Netherlands  (85% Compatibility)", desc: "The Netherlands offers bike-friendly cities, progressive values, excellent English, and great work-life balance.", badge: "Netherlands 85% Match " },
+        "new-zealand": { title: "Match: New Zealand  (92% Compatibility)", desc: "New Zealand offers breathtaking nature, outdoor freedom, and peaceful community vibes.", badge: "New Zealand 92% Match " },
+        nigeria: { title: "Match: Nigeria  (72% Compatibility)", desc: "Nigeria pulses with Afrobeat energy, a booming creative economy, Nollywood, and incredible food traditions.", badge: "Nigeria 72% Match " },
+        norway: { title: "Match: Norway  (87% Compatibility)", desc: "Norway stuns with dramatic fjords, northern lights, Arctic adventures, and a deep-rooted outdoor culture.", badge: "Norway 87% Match " },
+        pakistan: { title: "Match: Pakistan  (73% Compatibility)", desc: "Pakistan reveals towering Karakoram peaks, ancient Silk Road cities, and a hospitality that redefines welcome.", badge: "Pakistan 73% Match " },
+        peru: { title: "Match: Peru  (77% Compatibility)", desc: "Peru offers Machu Picchu mysteries, Amazon rainforest, ceviche mastery, and colorful Andean traditions.", badge: "Peru 77% Match " },
+        philippines: { title: "Match: Philippines  (78% Compatibility)", desc: "The Philippines greets with 7000 islands, English-speaking locals, warm smiles, and world-class diving spots.", badge: "Philippines 78% Match " },
+        poland: { title: "Match: Poland  (76% Compatibility)", desc: "Poland blends historic old towns, hearty pierogi, affordable living, and a rising entrepreneurial energy.", badge: "Poland 76% Match " },
+        portugal: { title: "Match: Portugal  (94% Compatibility)", desc: "Portugal offers warm coastal weather, vibrant culture, high safety, and relaxed European living.", badge: "Portugal 94% Match " },
+        qatar: { title: "Match: Qatar  (74% Compatibility)", desc: "Qatar combines futuristic skylines, Arabian Gulf luxury, world-class museums, and a global business stage.", badge: "Qatar 74% Match " },
+        russia: { title: "Match: Russia  (72% Compatibility)", desc: "Russia spans vast tundra, imperial palaces, literary legacies, and a soulful cultural depth like no other.", badge: "Russia 72% Match " },
+        "saudi-arabia": { title: "Match: Saudi Arabia  (73% Compatibility)", desc: "Saudi Arabia opens with Red Sea beaches, ancient Nabatean tombs, futuristic megaprojects, and warm Gulf hospitality.", badge: "Saudi Arabia 73% Match " },
+        singapore: { title: "Match: Singapore  (84% Compatibility)", desc: "Singapore shines with futuristic gardens, hawker food heaven, spotless streets, and a dynamic Asian crossroads.", badge: "Singapore 84% Match " },
+        "south-africa": { title: "Match: South Africa  (80% Compatibility)", desc: "South Africa delivers Big Five safaris, Cape Town beauty, wine routes, and an inspiring cultural rainbow.", badge: "South Africa 80% Match " },
+        "south-korea": { title: "Match: South Korea  (82% Compatibility)", desc: "South Korea merges K-culture global influence, Seoul neon buzz, ancient temples, and a skincare-obsessed wellness.", badge: "South Korea 82% Match " },
+        spain: { title: "Match: Spain  (91% Compatibility)", desc: "Spain offers sunny Mediterranean weather, lively social culture, delicious tapas, and coastal beauty.", badge: "Spain 91% Match " },
+        sweden: { title: "Match: Sweden  (86% Compatibility)", desc: "Sweden offers minimalist design, archipelago escapes, fika culture, and a progressive way of life in balance.", badge: "Sweden 86% Match " },
+        switzerland: { title: "Match: Switzerland  (93% Compatibility)", desc: "Switzerland offers stunning Alpine scenery, top-tier healthcare, high salaries, and exceptional safety.", badge: "Switzerland 93% Match " },
+        thailand: { title: "Match: Thailand  (86% Compatibility)", desc: "Thailand offers a low cost of living, warm tropical climate, delicious street food, and a thriving expat community.", badge: "Thailand 86% Match " },
+        turkey: { title: "Match: Turkey  (78% Compatibility)", desc: "Turkey bridges continents with Istanbul magic, fairy-chimney landscapes, bazaars, and unforgettable cuisine.", badge: "Turkey 78% Match " },
+        uae: { title: "Match: UAE  (84% Compatibility)", desc: "The UAE offers tax-free income, world-class infrastructure, luxury lifestyle, and a global business environment.", badge: "UAE 84% Match " },
+        uk: { title: "Match: United Kingdom  (81% Compatibility)", desc: "The UK blends London global energy, countryside charm, pub culture, and centuries of history and innovation.", badge: "United Kingdom 81% Match " },
+        usa: { title: "Match: United States  (80% Compatibility)", desc: "The USA offers vast landscapes, career ambition, cultural diversity, and an energy that feels limitless.", badge: "United States 80% Match " },
+        vietnam: { title: "Match: Vietnam  (79% Compatibility)", desc: "Vietnam seduces with steaming pho, motorbike chaos, terraced rice fields, and a resilient welcoming spirit.", badge: "Vietnam 79% Match " }
       };
       const r = results[c];
       showResult(r.title, r.desc, r.badge, "Country Match", cName);

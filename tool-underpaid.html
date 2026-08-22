@@ -160,7 +160,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -216,7 +216,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -260,7 +260,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Am I Underpaid? Salary Analyzer");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Am I Underpaid? Salary Analyzer");
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-underpaid";
     document.getElementById('bannerSubtext').innerHTML = details;
@@ -277,11 +277,11 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       let diff = ((sal - benchmark) / benchmark) * 100;
 
       if (diff < -15) {
-        showResult("Result: Significantly Underpaid 📉", `Your current compensation is approx ${Math.abs(Math.round(diff))}% below market benchmark for ${yoe} years of experience. It is time to negotiate a raise or explore new opportunities.`, "Underpaid Tier 🔴", `${Math.abs(Math.round(diff))}% Below Benchmark`);
+        showResult("Result: Significantly Underpaid ", `Your current compensation is approx ${Math.abs(Math.round(diff))}% below market benchmark for ${yoe} years of experience. It is time to negotiate a raise or explore new opportunities.`, "Underpaid Tier ", `${Math.abs(Math.round(diff))}% Below Benchmark`);
       } else if (diff >= -15 && diff <= 15) {
-        showResult("Result: Fairly Compensated ✅", `Your salary aligns well with industry averages for ${yoe} years of experience. You are within the median range.`, "Fair Compensation 🟢", "Fair Market Pay");
+        showResult("Result: Fairly Compensated ", `Your salary aligns well with industry averages for ${yoe} years of experience. You are within the median range.`, "Fair Compensation ", "Fair Market Pay");
       } else {
-        showResult("Result: Top Market Tier 💰", `Congratulations! Your compensation is ${Math.round(diff)}% above typical market benchmarks.`, "Top Percentile Pay 💎", "Above Market Average");
+        showResult("Result: Top Market Tier ", `Congratulations! Your compensation is ${Math.round(diff)}% above typical market benchmarks.`, "Top Percentile Pay ", "Above Market Average");
       }
     }
     

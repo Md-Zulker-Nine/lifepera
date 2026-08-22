@@ -153,7 +153,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -209,7 +209,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -253,7 +253,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Friendship Compatibility Scorer");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Friendship Compatibility Scorer");
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-friendship";
@@ -263,9 +263,9 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   
     function runTool() {
       const val = document.getElementById('fInit').value;
-      if (val === '5') showResult("Friendship Synergy: 95% (Soulmate Tier) 🤝", "Exceptional mutual investment! You have a rare, reciprocal friendship built on genuine trust and shared joy.", "95% Soulmate Friend 🟢", "Friendship Compatibility");
-      else if (val === '3') showResult("Friendship Synergy: 70% (Solid Companion) 🌿", "A warm, positive friendship. Express your desire for spontaneous catch-ups to deepen the connection.", "70% Solid Companion 🟡", "Friendship Compatibility");
-      else showResult("Friendship Synergy: 42% (One-Sided Alert) ⚠️", "Reciprocity is low. Step back slightly and give them space to initiate plans and show effort.", "42% One-Sided Risk 🔴", "Friendship Compatibility");
+      if (val === '5') showResult("Friendship Synergy: 95% (Soulmate Tier) ", "Exceptional mutual investment! You have a rare, reciprocal friendship built on genuine trust and shared joy.", "95% Soulmate Friend ", "Friendship Compatibility");
+      else if (val === '3') showResult("Friendship Synergy: 70% (Solid Companion) ", "A warm, positive friendship. Express your desire for spontaneous catch-ups to deepen the connection.", "70% Solid Companion ", "Friendship Compatibility");
+      else showResult("Friendship Synergy: 42% (One-Sided Alert) ", "Reciprocity is low. Step back slightly and give them space to initiate plans and show effort.", "42% One-Sided Risk ", "Friendship Compatibility");
     }
     
 

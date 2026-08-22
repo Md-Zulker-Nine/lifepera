@@ -207,7 +207,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -263,7 +263,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -309,7 +309,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Visa-Free Travel Checker");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Visa-Free Travel Checker");
     document.getElementById('bannerSubtext').innerHTML = details;
     currentShareText = "I just tested Visa-Free Travel Checker on LifePera: " + badge + "! Try yours here:";
   }
@@ -321,62 +321,62 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       const destName = document.getElementById('passportInput').selectedOptions[0].text;
       
       const data = {
-        sg: { score: "192 Countries", rank: "Top 1% Global Rank 👑", text: "Singapore holds one of the most powerful passports on Earth with access to 192 nations!" },
-        kr: { score: "191 Countries", rank: "Top 2% Global Rank 🌟", text: "South Korea's passport provides access to 191 destinations with strong mobility across Asia and the Americas." },
-        jp: { score: "190 Countries", rank: "Top 2% Global Rank 🌟", text: "Japan's passport gives seamless access to 190 countries across Asia, Europe, and the Americas." },
-        de: { score: "190 Countries", rank: "Top 2% EU Freedom 🇪🇺", text: "German passport holders enjoy full EU freedom of movement plus visa-free entry to 190 countries." },
-        fi: { score: "189 Countries", rank: "Top 3% Nordic Pass 🍃", text: "Finnish passport offers visa-free travel to 189 destinations with excellent global mobility." },
-        es: { score: "188 Countries", rank: "Top 5% EU Pass 🇪🇸", text: "Spanish passport holders enjoy visa-free access to 188 countries across all continents." },
-        fr: { score: "188 Countries", rank: "Top 5% EU Freedom 🥖", text: "French passport holders enjoy full EU mobility and visa-free access to 188 countries worldwide." },
-        it: { score: "188 Countries", rank: "Top 5% EU Pass 🇮🇹", text: "Italian passport grants visa-free or VOA entry to 188 destinations worldwide." },
-        se: { score: "188 Countries", rank: "Top 5% Nordic Pass 🇸🇪", text: "Swedish passport offers visa-free access to 188 countries with strong global mobility." },
-        uk: { score: "187 Countries", rank: "Top 6% Mobility ✈️", text: "Your UK passport offers exceptional travel freedom across 187 destinations globally." },
-        nl: { score: "187 Countries", rank: "Top 6% EU Pass 🇳🇱", text: "Dutch passport holders can visit 187 countries visa-free with full EU mobility." },
-        no: { score: "187 Countries", rank: "Top 6% Nordic Pass 🇳🇴", text: "Norwegian passport provides visa-free access to 187 countries worldwide." },
-        us: { score: "184 Countries", rank: "Top 8% Mobility ✈️", text: "Your US passport grants visa-free or visa-on-arrival entry to 184 countries including Schengen Europe and Japan." },
-        au: { score: "186 Countries", rank: "Top 8% Mobility 🇦🇺", text: "Australian passport grants access to 186 global destinations visa-free." },
-        nz: { score: "186 Countries", rank: "Top 8% Mobility 🥝", text: "New Zealand passport provides visa-free access to 186 countries worldwide." },
-        ca: { score: "185 Countries", rank: "Top 10% Mobility 🇨🇦", text: "Canadian passport holders enjoy hassle-free travel to 185 countries." },
-        hu: { score: "180 Countries", rank: "Top 15% EU Pass 🇭🇺", text: "Hungarian passport offers visa-free access to 180 destinations with full EU mobility." },
-        pl: { score: "178 Countries", rank: "Top 15% EU Pass 🇵🇱", text: "Polish passport grants visa-free or VOA entry to 178 countries globally." },
-        hr: { score: "173 Countries", rank: "Top 20% EU Pass 🇭🇷", text: "Croatian passport provides access to 173 visa-free destinations with EU mobility." },
-        ae: { score: "172 Countries", rank: "Top 20% Mobility 🇦🇪", text: "UAE passport has risen rapidly in rankings, now offering visa-free access to 172 countries." },
-        ar: { score: "171 Countries", rank: "Top 25% Mobility 🇦🇷", text: "Argentine passport holders can travel visa-free across Europe and most of Latin America." },
-        br: { score: "170 Countries", rank: "Top 25% Mobility 🇧🇷", text: "Brazilian passport holders can travel visa-free across Europe and most of Latin America." },
-        hk: { score: "171 Countries", rank: "Top 25% Mobility 🇭🇰", text: "Hong Kong SAR passport provides visa-free access to 171 destinations worldwide." },
-        mx: { score: "162 Countries", rank: "Top 30% Mobility 🇲🇽", text: "Mexican passport provides visa-free access to 162 destinations worldwide." },
-        il: { score: "160 Countries", rank: "Top 30% Mobility 🇮🇱", text: "Israeli passport grants visa-free entry to 160 countries across Europe, Asia, and the Americas." },
-        my: { score: "179 Countries", rank: "Top 12% Mobility 🇲🇾", text: "Malaysia offers one of the strongest passports in Southeast Asia with 179 visa-free countries." },
-        cl: { score: "174 Countries", rank: "Top 20% Mobility 🇨🇱", text: "Chilean passport provides visa-free access to 174 destinations worldwide." },
-        cr: { score: "151 Countries", rank: "Top 35% Mobility 🇨🇷", text: "Costa Rican passport offers visa-free travel to 151 countries across multiple continents." },
-        za: { score: "106 Countries", rank: "Top 45% Mobility 🇿🇦", text: "South African passport leads African mobility with 106 visa-free destinations." },
-        tr: { score: "111 Countries", rank: "Top 40% Mobility 🇹🇷", text: "Turkish passport provides visa-free access to 111 destinations including Japan and Southeast Asia." },
-        ru: { score: "115 Countries", rank: "Top 40% Mobility 🇷🇺", text: "Russian passport grants visa-free or VOA access to 115 countries across Asia, Africa, and Latin America." },
-        sa: { score: "86 Countries", rank: "Global Mobility Tier 🇸🇦", text: "Saudi passport has been improving, now offering visa-free or VOA access to 86 countries." },
-        cn: { score: "85 Countries", rank: "Global Mobility Tier 🇨🇳", text: "China passport has been steadily improving, now offering visa-free or VOA access to 85 countries." },
-        th: { score: "82 Countries", rank: "Global Mobility Tier 🇹🇭", text: "Thai passport provides visa-free or VOA access to 82 destinations across Asia and beyond." },
-        qa: { score: "97 Countries", rank: "Top 50% Mobility 🇶🇦", text: "Qatar passport offers visa-free or VOA access to 97 countries worldwide." },
-        ph: { score: "67 Countries", rank: "Global Mobility Tier 🇵🇭", text: "Philippine passport allows visa-free access to ASEAN nations and select South American destinations." },
-        in: { score: "62 Countries", rank: "Global Mobility Tier 🌐", text: "Indian passport holders can visit 62 countries visa-free or VOA including Thailand, Maldives, and Mauritius." },
-        id: { score: "75 Countries", rank: "Global Mobility Tier 🇮🇩", text: "Indonesian passport provides visa-free or VOA access to 75 countries across Asia." },
-        ke: { score: "46 Countries", rank: "Regional Mobility Tier 🇰🇪", text: "Kenyan passport grants visa-free or VOA access to 46 countries in Africa and beyond." },
-        ng: { score: "46 Countries", rank: "Regional Mobility Tier 🇳🇬", text: "Nigerian passport grants visa-free entry to ECOWAS member states and select destinations." },
-        pk: { score: "33 Countries", rank: "Regional Mobility Tier 📊", text: "Pakistani passport grants visa-free or VOA access to 33 countries." },
-        eg: { score: "52 Countries", rank: "Regional Mobility Tier 🇪🇬", text: "Egyptian passport provides visa-free or VOA access to 52 countries across Africa and the Middle East." },
-        ma: { score: "68 Countries", rank: "Global Mobility Tier 🇲🇦", text: "Moroccan passport offers visa-free or VOA access to 68 destinations worldwide." },
-        pe: { score: "99 Countries", rank: "Top 50% Mobility 🇵🇪", text: "Peruvian passport grants visa-free or VOA access to 99 countries across Latin America and Europe." },
-        co: { score: "98 Countries", rank: "Top 50% Mobility 🇨🇴", text: "Colombian passport provides visa-free or VOA access to 98 destinations globally." },
-        vn: { score: "55 Countries", rank: "Regional Mobility Tier 🇻🇳", text: "Vietnamese passport offers visa-free or VOA access to 55 countries across Asia." },
-        np: { score: "39 Countries", rank: "Regional Mobility Tier 🇳🇵", text: "Nepalese passport grants visa-free or VOA access to 39 countries." },
-        mv: { score: "87 Countries", rank: "Global Mobility Tier 🇲🇻", text: "Maldivian passport provides visa-free or VOA access to 87 countries worldwide." },
-        jo: { score: "54 Countries", rank: "Regional Mobility Tier 🇯🇴", text: "Jordanian passport offers visa-free or VOA access to 54 countries." },
-        et: { score: "44 Countries", rank: "Regional Mobility Tier 🇪🇹", text: "Ethiopian passport grants visa-free or VOA access to 44 countries." },
-        dk: { score: "189 Countries", rank: "Top 3% Nordic Pass 🇩🇰", text: "Danish passport offers visa-free access to 189 destinations with excellent global mobility." },
-        pt: { score: "186 Countries", rank: "Top 8% EU Pass 🇵🇹", text: "Portuguese passport grants visa-free or VOA entry to 186 countries worldwide." },
-        cz: { score: "187 Countries", rank: "Top 6% EU Pass 🇨🇿", text: "Czech passport provides visa-free access to 187 destinations with full EU mobility." },
-        is: { score: "188 Countries", rank: "Top 5% Nordic Pass 🇮🇸", text: "Icelandic passport offers visa-free access to 188 countries despite its small size." },
-        gr: { score: "186 Countries", rank: "Top 8% EU Pass 🇬🇷", text: "Greek passport grants visa-free or VOA entry to 186 destinations worldwide." },
-        ch: { score: "189 Countries", rank: "Top 3% Swiss Pass 🇨🇭", text: "Swiss passport offers visa-free access to 189 destinations with excellent global mobility." }
+        sg: { score: "192 Countries", rank: "Top 1% Global Rank ", text: "Singapore holds one of the most powerful passports on Earth with access to 192 nations!" },
+        kr: { score: "191 Countries", rank: "Top 2% Global Rank ", text: "South Korea's passport provides access to 191 destinations with strong mobility across Asia and the Americas." },
+        jp: { score: "190 Countries", rank: "Top 2% Global Rank ", text: "Japan's passport gives seamless access to 190 countries across Asia, Europe, and the Americas." },
+        de: { score: "190 Countries", rank: "Top 2% EU Freedom ", text: "German passport holders enjoy full EU freedom of movement plus visa-free entry to 190 countries." },
+        fi: { score: "189 Countries", rank: "Top 3% Nordic Pass ", text: "Finnish passport offers visa-free travel to 189 destinations with excellent global mobility." },
+        es: { score: "188 Countries", rank: "Top 5% EU Pass ", text: "Spanish passport holders enjoy visa-free access to 188 countries across all continents." },
+        fr: { score: "188 Countries", rank: "Top 5% EU Freedom ", text: "French passport holders enjoy full EU mobility and visa-free access to 188 countries worldwide." },
+        it: { score: "188 Countries", rank: "Top 5% EU Pass ", text: "Italian passport grants visa-free or VOA entry to 188 destinations worldwide." },
+        se: { score: "188 Countries", rank: "Top 5% Nordic Pass ", text: "Swedish passport offers visa-free access to 188 countries with strong global mobility." },
+        uk: { score: "187 Countries", rank: "Top 6% Mobility ", text: "Your UK passport offers exceptional travel freedom across 187 destinations globally." },
+        nl: { score: "187 Countries", rank: "Top 6% EU Pass ", text: "Dutch passport holders can visit 187 countries visa-free with full EU mobility." },
+        no: { score: "187 Countries", rank: "Top 6% Nordic Pass ", text: "Norwegian passport provides visa-free access to 187 countries worldwide." },
+        us: { score: "184 Countries", rank: "Top 8% Mobility ", text: "Your US passport grants visa-free or visa-on-arrival entry to 184 countries including Schengen Europe and Japan." },
+        au: { score: "186 Countries", rank: "Top 8% Mobility ", text: "Australian passport grants access to 186 global destinations visa-free." },
+        nz: { score: "186 Countries", rank: "Top 8% Mobility ", text: "New Zealand passport provides visa-free access to 186 countries worldwide." },
+        ca: { score: "185 Countries", rank: "Top 10% Mobility ", text: "Canadian passport holders enjoy hassle-free travel to 185 countries." },
+        hu: { score: "180 Countries", rank: "Top 15% EU Pass ", text: "Hungarian passport offers visa-free access to 180 destinations with full EU mobility." },
+        pl: { score: "178 Countries", rank: "Top 15% EU Pass ", text: "Polish passport grants visa-free or VOA entry to 178 countries globally." },
+        hr: { score: "173 Countries", rank: "Top 20% EU Pass ", text: "Croatian passport provides access to 173 visa-free destinations with EU mobility." },
+        ae: { score: "172 Countries", rank: "Top 20% Mobility ", text: "UAE passport has risen rapidly in rankings, now offering visa-free access to 172 countries." },
+        ar: { score: "171 Countries", rank: "Top 25% Mobility ", text: "Argentine passport holders can travel visa-free across Europe and most of Latin America." },
+        br: { score: "170 Countries", rank: "Top 25% Mobility ", text: "Brazilian passport holders can travel visa-free across Europe and most of Latin America." },
+        hk: { score: "171 Countries", rank: "Top 25% Mobility ", text: "Hong Kong SAR passport provides visa-free access to 171 destinations worldwide." },
+        mx: { score: "162 Countries", rank: "Top 30% Mobility ", text: "Mexican passport provides visa-free access to 162 destinations worldwide." },
+        il: { score: "160 Countries", rank: "Top 30% Mobility ", text: "Israeli passport grants visa-free entry to 160 countries across Europe, Asia, and the Americas." },
+        my: { score: "179 Countries", rank: "Top 12% Mobility ", text: "Malaysia offers one of the strongest passports in Southeast Asia with 179 visa-free countries." },
+        cl: { score: "174 Countries", rank: "Top 20% Mobility ", text: "Chilean passport provides visa-free access to 174 destinations worldwide." },
+        cr: { score: "151 Countries", rank: "Top 35% Mobility ", text: "Costa Rican passport offers visa-free travel to 151 countries across multiple continents." },
+        za: { score: "106 Countries", rank: "Top 45% Mobility ", text: "South African passport leads African mobility with 106 visa-free destinations." },
+        tr: { score: "111 Countries", rank: "Top 40% Mobility ", text: "Turkish passport provides visa-free access to 111 destinations including Japan and Southeast Asia." },
+        ru: { score: "115 Countries", rank: "Top 40% Mobility ", text: "Russian passport grants visa-free or VOA access to 115 countries across Asia, Africa, and Latin America." },
+        sa: { score: "86 Countries", rank: "Global Mobility Tier ", text: "Saudi passport has been improving, now offering visa-free or VOA access to 86 countries." },
+        cn: { score: "85 Countries", rank: "Global Mobility Tier ", text: "China passport has been steadily improving, now offering visa-free or VOA access to 85 countries." },
+        th: { score: "82 Countries", rank: "Global Mobility Tier ", text: "Thai passport provides visa-free or VOA access to 82 destinations across Asia and beyond." },
+        qa: { score: "97 Countries", rank: "Top 50% Mobility ", text: "Qatar passport offers visa-free or VOA access to 97 countries worldwide." },
+        ph: { score: "67 Countries", rank: "Global Mobility Tier ", text: "Philippine passport allows visa-free access to ASEAN nations and select South American destinations." },
+        in: { score: "62 Countries", rank: "Global Mobility Tier ", text: "Indian passport holders can visit 62 countries visa-free or VOA including Thailand, Maldives, and Mauritius." },
+        id: { score: "75 Countries", rank: "Global Mobility Tier ", text: "Indonesian passport provides visa-free or VOA access to 75 countries across Asia." },
+        ke: { score: "46 Countries", rank: "Regional Mobility Tier ", text: "Kenyan passport grants visa-free or VOA access to 46 countries in Africa and beyond." },
+        ng: { score: "46 Countries", rank: "Regional Mobility Tier ", text: "Nigerian passport grants visa-free entry to ECOWAS member states and select destinations." },
+        pk: { score: "33 Countries", rank: "Regional Mobility Tier ", text: "Pakistani passport grants visa-free or VOA access to 33 countries." },
+        eg: { score: "52 Countries", rank: "Regional Mobility Tier ", text: "Egyptian passport provides visa-free or VOA access to 52 countries across Africa and the Middle East." },
+        ma: { score: "68 Countries", rank: "Global Mobility Tier ", text: "Moroccan passport offers visa-free or VOA access to 68 destinations worldwide." },
+        pe: { score: "99 Countries", rank: "Top 50% Mobility ", text: "Peruvian passport grants visa-free or VOA access to 99 countries across Latin America and Europe." },
+        co: { score: "98 Countries", rank: "Top 50% Mobility ", text: "Colombian passport provides visa-free or VOA access to 98 destinations globally." },
+        vn: { score: "55 Countries", rank: "Regional Mobility Tier ", text: "Vietnamese passport offers visa-free or VOA access to 55 countries across Asia." },
+        np: { score: "39 Countries", rank: "Regional Mobility Tier ", text: "Nepalese passport grants visa-free or VOA access to 39 countries." },
+        mv: { score: "87 Countries", rank: "Global Mobility Tier ", text: "Maldivian passport provides visa-free or VOA access to 87 countries worldwide." },
+        jo: { score: "54 Countries", rank: "Regional Mobility Tier ", text: "Jordanian passport offers visa-free or VOA access to 54 countries." },
+        et: { score: "44 Countries", rank: "Regional Mobility Tier ", text: "Ethiopian passport grants visa-free or VOA access to 44 countries." },
+        dk: { score: "189 Countries", rank: "Top 3% Nordic Pass ", text: "Danish passport offers visa-free access to 189 destinations with excellent global mobility." },
+        pt: { score: "186 Countries", rank: "Top 8% EU Pass ", text: "Portuguese passport grants visa-free or VOA entry to 186 countries worldwide." },
+        cz: { score: "187 Countries", rank: "Top 6% EU Pass ", text: "Czech passport provides visa-free access to 187 destinations with full EU mobility." },
+        is: { score: "188 Countries", rank: "Top 5% Nordic Pass ", text: "Icelandic passport offers visa-free access to 188 countries despite its small size." },
+        gr: { score: "186 Countries", rank: "Top 8% EU Pass ", text: "Greek passport grants visa-free or VOA entry to 186 destinations worldwide." },
+        ch: { score: "189 Countries", rank: "Top 3% Swiss Pass ", text: "Swiss passport offers visa-free access to 189 destinations with excellent global mobility." }
       };
 
       const res = data[passport];

@@ -161,7 +161,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -217,7 +217,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -261,7 +261,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Cultural Distance Calculator");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Cultural Distance Calculator");
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-culture-map";
@@ -273,19 +273,19 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
       const pair = document.getElementById('cdInput').value;
       if (!pair) { alert("Please select a country pair."); return; }
       const results = {
-        us_jp: { score: "74 / 100", desc: "Significant cultural gap. US favors direct individual communication; Japan emphasizes group harmony and indirect context.", badge: "74% Cultural Gap 🟡" },
-        uk_in: { score: "62 / 100", desc: "Moderate gap. UK favors understated irony; India values hierarchical respect and communal relationships.", badge: "62% Cultural Gap 🟢" },
-        de_br: { score: "68 / 100", desc: "Germany prioritizes punctuality and formal contracts; Brazil values warmth, adaptability, and personal trust.", badge: "68% Cultural Gap 🟠" },
-        cn_us: { score: "78 / 100", desc: "Large gap. China emphasizes group decision-making and saving face; the US prizes individual expression and direct feedback.", badge: "78% Cultural Gap 🔴" },
-        fr_us: { score: "55 / 100", desc: "Moderate gap. France values formality and intellectual debate; the US is more casual and action-oriented.", badge: "55% Cultural Gap 🟢" },
-        mx_ca: { score: "71 / 100", desc: "Significant gap. Mexico operates on flexible time and strong personal relationships; Canada follows strict schedules and systems.", badge: "71% Cultural Gap 🟠" },
-        sa_uk: { score: "82 / 100", desc: "Very large gap. Saudi culture is deeply rooted in Islamic tradition and tribal hierarchy; the UK is secular and egalitarian.", badge: "82% Cultural Gap 🔴" },
-        kr_jp: { score: "45 / 100", desc: "Moderate gap. Both share Confucian roots but Korea is more emotionally expressive while Japan values reserved harmony.", badge: "45% Cultural Gap 🟢" },
-        ng_us: { score: "76 / 100", desc: "Large gap. Nigeria emphasizes extended family loyalty and oral tradition; the US values nuclear family independence and written contracts.", badge: "76% Cultural Gap 🔴" },
-        ru_de: { score: "69 / 100", desc: "Moderate-large gap. Russia has high uncertainty avoidance and accepts power distance; Germany is more rule-oriented but egalitarian.", badge: "69% Cultural Gap 🟠" }
+        us_jp: { score: "74 / 100", desc: "Significant cultural gap. US favors direct individual communication; Japan emphasizes group harmony and indirect context.", badge: "74% Cultural Gap " },
+        uk_in: { score: "62 / 100", desc: "Moderate gap. UK favors understated irony; India values hierarchical respect and communal relationships.", badge: "62% Cultural Gap " },
+        de_br: { score: "68 / 100", desc: "Germany prioritizes punctuality and formal contracts; Brazil values warmth, adaptability, and personal trust.", badge: "68% Cultural Gap " },
+        cn_us: { score: "78 / 100", desc: "Large gap. China emphasizes group decision-making and saving face; the US prizes individual expression and direct feedback.", badge: "78% Cultural Gap " },
+        fr_us: { score: "55 / 100", desc: "Moderate gap. France values formality and intellectual debate; the US is more casual and action-oriented.", badge: "55% Cultural Gap " },
+        mx_ca: { score: "71 / 100", desc: "Significant gap. Mexico operates on flexible time and strong personal relationships; Canada follows strict schedules and systems.", badge: "71% Cultural Gap " },
+        sa_uk: { score: "82 / 100", desc: "Very large gap. Saudi culture is deeply rooted in Islamic tradition and tribal hierarchy; the UK is secular and egalitarian.", badge: "82% Cultural Gap " },
+        kr_jp: { score: "45 / 100", desc: "Moderate gap. Both share Confucian roots but Korea is more emotionally expressive while Japan values reserved harmony.", badge: "45% Cultural Gap " },
+        ng_us: { score: "76 / 100", desc: "Large gap. Nigeria emphasizes extended family loyalty and oral tradition; the US values nuclear family independence and written contracts.", badge: "76% Cultural Gap " },
+        ru_de: { score: "69 / 100", desc: "Moderate-large gap. Russia has high uncertainty avoidance and accepts power distance; Germany is more rule-oriented but egalitarian.", badge: "69% Cultural Gap " }
       };
       const r = results[pair];
-      showResult("Cultural Distance: " + r.score + " 🗺️", r.desc, r.badge, "Cultural Distance");
+      showResult("Cultural Distance: " + r.score + " ", r.desc, r.badge, "Cultural Distance");
     }
     
 

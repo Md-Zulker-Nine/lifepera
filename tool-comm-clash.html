@@ -152,7 +152,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
           <div class="viral-banner" id="viralBanner">
             <div class="banner-logo">Life<span>Pera</span></div>
             <div class="banner-country" id="bannerCountry"></div>
-            <div class="banner-hook" id="bannerHook">✨ Official Result</div>
+            <div class="banner-hook" id="bannerHook"> Official Result</div>
             <div class="banner-result" id="bannerResult">Result Tier</div>
             <div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
             <div class="banner-watermark">Try this tool at lifepera.com</div>
@@ -208,7 +208,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-brand">
 <a href="https://lifepera.com" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free • Privacy Protected • Data-Backed</span>
+<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -252,7 +252,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = "✨ " + (cardTitle || "Communication Style Clash Finder");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Communication Style Clash Finder");
     document.getElementById('bannerSubtext').innerHTML = details;
     document.getElementById('bannerCountry').innerHTML = countryName || '';
     document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-comm-clash";
@@ -262,8 +262,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
   
     function runTool() {
       const val = document.getElementById('ccInput').value;
-      if (val === 'dir_ind') showResult("Friction Risk: High Directness Clash ⚡", "Primary Clash: You may perceive their subtlety as passive-aggressive, while they perceive your directness as harsh. Practice soft openers!", "High Directness Clash 🔴", "Communication Clash");
-      else showResult("Friction Risk: Emotion vs Logic Gap ⚖️", "Primary Clash: You seek emotional validation first; they jump straight to problem-solving logic. Validate feelings before solving!", "Emotion vs Logic Gap 🟡", "Communication Clash");
+      if (val === 'dir_ind') showResult("Friction Risk: High Directness Clash ", "Primary Clash: You may perceive their subtlety as passive-aggressive, while they perceive your directness as harsh. Practice soft openers!", "High Directness Clash ", "Communication Clash");
+      else showResult("Friction Risk: Emotion vs Logic Gap ", "Primary Clash: You seek emotional validation first; they jump straight to problem-solving logic. Validate feelings before solving!", "Emotion vs Logic Gap ", "Communication Clash");
     }
     
 
