@@ -9,11 +9,10 @@
 <meta property="og:description" content="Compare your astrological sign reading against a Big Five personality test."/>
 <meta property="og:url" content="https://lifepera.com/tool-zodiac.html"/>
 <meta property="og:type" content="website"/>
-<meta property="og:image" content="https://lifepera.com/favicon.svg"/>
-<meta name="twitter:image" content="https://lifepera.com/favicon.svg"/>
+<meta property="og:image" content="https://lifepera.com/og-image.svg"/>
+<meta name="twitter:image" content="https://lifepera.com/og-image.svg"/>
 <title>Zodiac vs Science Personality Test – LifePera</title>
-<!-- Include html2canvas for generating downloadable share card -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <style>
 /* Universal Authority Theme CSS */
 :root { --bg: #f8f9fa; --surface: #ffffff; --text-main: #202124; --text-muted: #5f6368; --primary-blue: #1a73e8; --primary-hover: #1557b0; --border: #dadce0; --radius: 12px; --max-width: 1200px; }
@@ -106,6 +105,11 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 .blog-widget{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem}.blog-widget h4{font-size:.9rem;font-weight:700;margin-bottom:.8rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}.blog-widget ul{list-style:none}.blog-widget li{margin-bottom:.6rem}.blog-widget a{font-size:.88rem;color:var(--text);text-decoration:none;line-height:1.4;display:block;padding:4px 0}.blog-widget a:hover{color:var(--blue)}
 </style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Zodiac vs Science Personality Test – LifePera","url":"https://lifepera.com/tool-zodiac.html","description":"Does your zodiac sign actually match your personality? Take this dual test that compares your astrological profile against a scientific Big Five personality assessment. See where the stars align and where they definitely do not.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Zulker Nine"}}
+</script>
 </head>
 <body>
 
@@ -254,6 +258,13 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </footer>
 
 <script>
+function loadHtml2Canvas(callback) {
+  if (window.html2canvas) { callback(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+  s.onload = callback;
+  document.head.appendChild(s);
+}
   let currentShareTitle = "Zodiac vs Science Personality Test - LifePera";
   let currentShareText = "";
 
@@ -278,46 +289,50 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     
 
   async function downloadBanner() {
-    const banner = document.getElementById('viralBanner');
-    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
-    const link = document.createElement('a');
-    link.download = 'tool-zodiac-result.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
+    loadHtml2Canvas(async function() {
+      const banner = document.getElementById('viralBanner');
+      const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+      const link = document.createElement('a');
+      link.download = 'tool-zodiac-result.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
   }
 
   function stripEmoji(s) { return s.replace(/[^\x00-\x7F]/g,'').trim(); }
   async function shareResult() {
-    const banner = document.getElementById('viralBanner');
-    const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
-    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-    const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
-    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-      try {
-        await navigator.share({
-          title: stripEmoji(currentShareTitle),
-          text: stripEmoji(currentShareText + " " + window.location.href),
-          files: [file]
-        });
-      } catch (err) {
-        console.log("Share cancelled", err);
+    loadHtml2Canvas(async function() {
+      const banner = document.getElementById('viralBanner');
+      const canvas = await html2canvas(banner, { scale: 2, backgroundColor: null });
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      const file = new File([blob], 'lifepera-result.png', { type: 'image/png' });
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            title: stripEmoji(currentShareTitle),
+            text: stripEmoji(currentShareText + " " + window.location.href),
+            files: [file]
+          });
+        } catch (err) {
+          console.log("Share cancelled", err);
+        }
+      } else if (navigator.share) {
+        try {
+          await navigator.share({
+            title: stripEmoji(currentShareTitle),
+            text: stripEmoji(currentShareText + " " + window.location.href),
+            url: window.location.href
+          });
+        } catch (err) {
+          console.log("Share cancelled", err);
+        }
+      } else {
+        const link = document.createElement('a');
+        link.download = 'lifepera-result.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
       }
-    } else if (navigator.share) {
-      try {
-        await navigator.share({
-          title: stripEmoji(currentShareTitle),
-          text: stripEmoji(currentShareText + " " + window.location.href),
-          url: window.location.href
-        });
-      } catch (err) {
-        console.log("Share cancelled", err);
-      }
-    } else {
-      const link = document.createElement('a');
-      link.download = 'lifepera-result.png';
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    }
+    });
   }
 </script>
 

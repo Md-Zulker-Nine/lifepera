@@ -265,6 +265,8 @@ Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No ht
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="${topic.title} — LifePera"/>
 <meta name="twitter:description" content="${topic.title} — Read the full guide on LifePera."/>
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"${topic.title}","author":{"@type":"Person","name":"Zulker Nine"},"publisher":{"@type":"Organization","name":"LifePera","url":"https://lifepera.com"},"datePublished":"${dateStr}","description":"${topic.title}"}
 </script>
@@ -313,11 +315,6 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 .f-col a{color:#9ca3af;font-size:.88rem}.f-col a:hover{color:#fff}
 .footer-bot{max-width:var(--max-w);margin:3rem auto 0;padding-top:2rem;border-top:1px solid #1f2937;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#6b7280}
 .footer-disc{max-width:var(--max-w);margin:1.5rem auto 0;font-size:.76rem;color:#4b5563;line-height:1.5;text-align:center}
-.cookie-bar{position:fixed;bottom:0;left:0;right:0;background:#1f2937;color:#d1d5db;padding:1rem 1.5rem;z-index:9999;display:none;border-top:1px solid #374151}
-.cookie-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-.cookie-inner p{font-size:.85rem;line-height:1.5}
-.cookie-btn{background:var(--blue);color:#fff;border:none;padding:10px 24px;border-radius:6px;font-weight:600;cursor:pointer;font-size:.88rem;white-space:nowrap}
-.cookie-btn:hover{background:#1557b0}
 @media(max-width:900px){.footer-inner{grid-template-columns:1fr}.footer-bot{flex-direction:column;gap:1rem;text-align:center}h1{font-size:1.8rem}}
 </style>
 </head>
@@ -360,7 +357,7 @@ ${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p
 <div class="footer-brand">
 <a href="/" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
 <p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">🛡️ 100% Free · Privacy Protected · Data-Backed</span>
+<span class="trust">100% Free · Privacy Protected · Data-Backed</span>
 </div>
 <div class="f-col">
 <h4>Tools</h4>
@@ -390,16 +387,6 @@ ${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p
 <div class="footer-disc">Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.</div>
 <div class="footer-bot"><span>&copy; 2026 LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
 </footer>
-<div class="cookie-bar" id="cookieBar">
-<div class="cookie-inner">
-<p>LifePera uses cookies to improve your experience and serve personalized ads. By continuing, you agree to our <a href="/privacy.html" style="color:#8ab4f8">Privacy Policy</a>.</p>
-<button class="cookie-btn" onclick="acceptCookies()">Accept All</button>
-</div>
-</div>
-<script>
-function acceptCookies(){document.getElementById('cookieBar').style.display='none';localStorage.setItem('cookiesAccepted','true')}
-(function(){if(!localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBar').style.display='block'})();
-</script>
 </body></html>`;
 
   fs.writeFileSync(filename, html);

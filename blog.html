@@ -9,8 +9,8 @@
 <meta property="og:description" content="Read the latest articles on travel, relationships, career, culture, psychology, and finance from LifePera."/>
 <meta property="og:url" content="https://lifepera.com/blog.html"/>
 <meta property="og:type" content="website"/>
-<meta property="og:image" content="https://lifepera.com/favicon.svg"/>
-<meta name="twitter:image" content="https://lifepera.com/favicon.svg"/>
+<meta property="og:image" content="https://lifepera.com/og-image.svg"/>
+<meta name="twitter:image" content="https://lifepera.com/og-image.svg"/>
 <title>Blog – LifePera</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -155,6 +155,35 @@ let currentPage = 1;
 const postsPerPage = 10;
 let activeFilter = null;
 
+const categoryMap = {
+  'Travel': 'travel',
+  'Relationships': 'relationships',
+  'Career': 'career',
+  'Psychology': 'psychology',
+  'Finance': 'finance',
+  'Culture': 'culture'
+};
+
+function updateCategoryCounts(posts) {
+  const counts = {};
+  Object.keys(categoryMap).forEach(function(k) { counts[k] = 0; });
+  posts.forEach(function(p) {
+    var raw = (p.cat || '').split(/·|&/).map(function(s) { return s.trim(); });
+    raw.forEach(function(c) {
+      if (categoryMap[c]) counts[c]++;
+    });
+  });
+  var spans = document.querySelectorAll('.cat-list .num');
+  spans.forEach(function(span) {
+    var link = span.closest('a');
+    if (!link) return;
+    var text = link.textContent || '';
+    Object.keys(categoryMap).forEach(function(k) {
+      if (text.indexOf(k) === 0) span.textContent = '(' + counts[k] + ')';
+    });
+  });
+}
+
 function getFilteredPosts() {
   if (!activeFilter) return allPosts;
   return allPosts.filter(function(p) {
@@ -177,6 +206,7 @@ async function loadBlogPosts() {
       document.getElementById('blogPosts').innerHTML = '<p style="color:var(--text-muted)">No blog posts published yet.</p>';
       return;
     }
+    updateCategoryCounts(allPosts);
     renderPage(1);
   } catch (e) {
     console.error('Error loading blog index:', e);
