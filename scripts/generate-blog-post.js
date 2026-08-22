@@ -27,11 +27,24 @@ const TOPICS = [
   { title: "10 Signs You Have an Anxious Attachment Style", cat: "Relationships · Psychology", emoji: "📌", keywords: "anxious attachment style signs relationships" },
   { title: "What Breadcrumbing Looks Like (And Why It Keeps Happening)", cat: "Relationships · Dating", emoji: "🍞", keywords: "breadcrumbing dating relationships signs" },
   { title: "How Different Cultures View Aging and What We Can Learn", cat: "Culture · Lifestyle", emoji: "⏳", keywords: "aging cultures perspective life stages global" },
-  { title: "Travel Budget Reality Check: What Things Actually Cost", cat: "Travel · Finance", emoji: "💵", keywords: "travel budget real costs destinations finance" }
+  { title: "Travel Budget Reality Check: What Things Actually Cost", cat: "Travel · Finance", emoji: "💵", keywords: "travel budget real costs destinations finance" },
+  { title: "Digital Nomad Burnout: When Freedom Becomes Loneliness", cat: "Travel · Lifestyle", emoji: "🧳", keywords: "digital nomad burnout remote work loneliness" },
+  { title: "Why Sharing Your True Self Feels Terrifying (And How to Overcome It)", cat: "Psychology · Relationships", emoji: "🧠", keywords: "vulnerability fear sharing emotions psychology" },
+  { title: "Career Cushioning: Why Everyone Is Quietly Building a Backup Plan", cat: "Career · Wellbeing", emoji: "💼", keywords: "career cushioning backup plan job security" },
+  { title: "The Hidden Epidemic of Financial Infidelity in Relationships", cat: "Finance · Relationships", emoji: "💳", keywords: "financial infidelity hidden money relationships" },
+  { title: "How to Take a Mini-Retirement Without Going Broke", cat: "Career · Finance", emoji: "🌴", keywords: "mini retirement mid career break finance planning" },
+  { title: "Why Making More Money Isn't Making You Richer (And How to Fix It)", cat: "Finance · Lifestyle", emoji: "💸", keywords: "lifestyle creep income inflation spending habits" },
+  { title: "High-Functioning Anxiety: The Silent Epidemic Among High Achievers", cat: "Psychology · Wellbeing", emoji: "⚡", keywords: "high functioning anxiety burnout performance masking" }
 ];
 
 const MODELS = ['gemini-3.6-flash', 'gemini-3.5-flash-lite'];
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+const MIN_WORDS = 800;
+const MAX_ATTEMPTS = 3;
+
+function wordCount(html) {
+  return (html.replace(/<[^>]+>/g, '').match(/\S+/g) || []).length;
+}
 
 async function callGemini(payload) {
   for (const model of MODELS) {
@@ -72,27 +85,48 @@ async function run() {
   if (nextTopic) {
     topic = nextTopic;
     console.log(`Publishing from manual list: "${topic.title}"`);
-    const prompt = `Write a comprehensive, in-depth blog post for LifePera (lifepera.com).
+
+    for (let wcAttempt = 1; wcAttempt <= MAX_ATTEMPTS; wcAttempt++) {
+      const wcHint = wcAttempt > 1
+        ? `\n\nCRITICAL: Your previous response was only ${wordCount(content || '')} words. You MUST write AT LEAST 1000 words of substantive, detailed content. Every section must have multiple paragraphs with concrete examples and practical advice. Do NOT write fewer than 1000 words.`
+        : '';
+      const prompt = `Write a comprehensive, in-depth blog post for LifePera (lifepera.com).
 
 Title: "${topic.title}"
 Category: ${topic.cat}
 Keywords: ${topic.keywords}
 
-- 1000-1400 words, conversational tone
+- AT LEAST 1000 words (aim for 1200-1400), conversational tone
 - Detailed explanations, multiple H2 subheadings, and bullet points where helpful
 - Hook intro, deep practical insights, and end with a clear CTA to LifePera tools
 - Global audience, high quality, no fluff
 - Only use these HTML tags in the body: <h2>, <p>, <ul><li>, <strong>
-- Do not include html, head, body, or CSS tags in this response.`;
+- Do not include html, head, body, or CSS tags in this response.${wcHint}`;
 
-    content = await callGemini({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.7, maxOutputTokens: 8192 }
-    });
+      content = await callGemini({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.7, maxOutputTokens: 8192 }
+      });
+
+      const wc = wordCount(content);
+      console.log(`Attempt ${wcAttempt}: ${wc} words`);
+      if (wc >= MIN_WORDS) break;
+      if (wcAttempt < MAX_ATTEMPTS) await sleep(5000);
+    }
+
+    if (wordCount(content) < 600) {
+      console.log(`SKIPPED: Content too thin (${wordCount(content)} words) after ${MAX_ATTEMPTS} attempts.`);
+      return;
+    }
   } else {
     console.log('Manual list complete. Switching to Google Trending mode...');
     const existingTitles = posts.map(p => p.title).join('\n- ');
-    const prompt = `You are the lead content creator and SEO expert for LifePera (lifepera.com), a website offering free tools for real-life decisions in Career, Finance, Travel, Relationships, Psychology, and Culture.
+
+    for (let wcAttempt = 1; wcAttempt <= MAX_ATTEMPTS; wcAttempt++) {
+      const wcHint = wcAttempt > 1
+        ? `\n\nCRITICAL: Your previous body content was only ${wordCount(content || '')} words. You MUST write AT LEAST 1000 words of substantive, detailed content in the body. Every section must have multiple paragraphs. Do NOT write fewer than 1000 words.`
+        : '';
+      const prompt = `You are the lead content creator and SEO expert for LifePera (lifepera.com), a website offering free tools for real-life decisions in Career, Finance, Travel, Relationships, Psychology, and Culture.
 
 Task:
 1. Identify a current trending topic, common modern dilemma, or high-interest search angle relevant to LifePera's audience.
@@ -105,29 +139,40 @@ You must output your response strictly starting with a JSON block on the very fi
 Line 1 (JSON metadata only): 
 {"title": "Your Generated Title Here", "cat": "Category Name", "emoji": "🎯", "keywords": "comma separated SEO keywords"}
 
-Lines 2 onwards: The full blog post content (1000-1400 words, conversational tone, practical takeaways, multiple H2 subheadings, hook intro, ending with a CTA reference to LifePera tools). 
-Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No html, head, body, or CSS tags in the body content.`;
+Lines 2 onwards: The full blog post content (AT LEAST 1000 words, conversational tone, practical takeaways, multiple H2 subheadings, hook intro, ending with a CTA reference to LifePera tools). 
+Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No html, head, body, or CSS tags in the body content.${wcHint}`;
 
-    const rawOutput = await callGemini({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.8, maxOutputTokens: 8192 },
-      tools: [{ googleSearch: {} }]
-    });
+      const rawOutput = await callGemini({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.8, maxOutputTokens: 8192 },
+        tools: [{ googleSearch: {} }]
+      });
 
-    const firstLineEnd = rawOutput.indexOf('\n');
-    if (firstLineEnd === -1) throw new Error('Invalid response format from Gemini');
+      const firstLineEnd = rawOutput.indexOf('\n');
+      if (firstLineEnd === -1) throw new Error('Invalid response format from Gemini');
 
-    let topicData;
-    try {
-      topicData = JSON.parse(rawOutput.substring(0, firstLineEnd).trim());
-    } catch(e) {
-      const jsonMatch = rawOutput.match(/\{[\s\S]*?\}/);
-      if (!jsonMatch) throw new Error('Could not parse topic JSON from Gemini response');
-      topicData = JSON.parse(jsonMatch[0]);
+      let topicData;
+      try {
+        topicData = JSON.parse(rawOutput.substring(0, firstLineEnd).trim());
+      } catch(e) {
+        const jsonMatch = rawOutput.match(/\{[\s\S]*?\}/);
+        if (!jsonMatch) throw new Error('Could not parse topic JSON from Gemini response');
+        topicData = JSON.parse(jsonMatch[0]);
+      }
+
+      topic = topicData;
+      content = rawOutput.substring(firstLineEnd).trim();
+
+      const wc = wordCount(content);
+      console.log(`Attempt ${wcAttempt}: ${wc} words (trending topic)`);
+      if (wc >= MIN_WORDS) break;
+      if (wcAttempt < MAX_ATTEMPTS) await sleep(5000);
     }
 
-    topic = topicData;
-    content = rawOutput.substring(firstLineEnd).trim();
+    if (wordCount(content) < 600) {
+      console.log(`SKIPPED: Trending content too thin (${wordCount(content)} words) after ${MAX_ATTEMPTS} attempts.`);
+      return;
+    }
   }
 
   const now = new Date();

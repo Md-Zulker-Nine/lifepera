@@ -175,5 +175,9 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <script>
 function handleSubmit(e){e.preventDefault();const n=document.getElementById('cName').value.trim(),em=document.getElementById('cEmail').value.trim(),sub=document.getElementById('cSubject').value,msg=document.getElementById('cMessage').value.trim(),btn=document.getElementById('submitBtn'),sb=document.getElementById('successBox'),sm=document.getElementById('successMsg');if(!n||!em||!msg){alert('Please fill in all required fields.');return}btn.innerHTML='Sending...';btn.disabled=true;const mailtoLink='mailto:contact@lifepera.com?subject='+encodeURIComponent(sub+' from '+n)+'&body='+encodeURIComponent('Name: '+n+'\nEmail: '+em+'\n\n'+msg);setTimeout(function(){btn.style.display='none';sm.innerHTML='Thank you <strong>'+n+'</strong>! Your <em>'+sub+'</em> message has been recorded. We will reply at <strong>'+em+'</strong> within 24 hours.';sb.style.display='block';window.location.href=mailtoLink},600)}
 </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EYST6H5RWZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EYST6H5RWZ');</script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>
