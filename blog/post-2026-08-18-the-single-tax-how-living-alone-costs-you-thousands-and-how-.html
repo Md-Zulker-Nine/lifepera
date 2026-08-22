@@ -64,7 +64,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 .cookie-btn:hover{background:#1557b0}
 @media(max-width:900px){.footer-inner{grid-template-columns:1fr}.footer-bot{flex-direction:column;gap:1rem;text-align:center}h1{font-size:1.8rem}}
 .related-tools{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2.5rem 0}.related-tools h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.related-tools ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}.related-tools a{display:flex;align-items:center;gap:.5rem;padding:8px 12px;background:var(--bg);border-radius:8px;font-weight:500;font-size:.95rem;transition:background .15s}.related-tools a:hover{background:#e8f0fe}
-.cross-links{margin:2.5rem 0;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}.cross-links h3{font-size:1rem;font-weight:700;margin-bottom:.8rem}.cross-links ul{list-style:none}.cross-links li{margin-bottom:.5rem}.cross-links a{font-size:.92rem;color:var(--blue);text-decoration:none;line-height:1.5}.cross-links a:hover{text-decoration:underline}
+
+.maylike{margin:2.5rem 0}.maylike h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.maylike-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.maylike-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-decoration:none;color:var(--text);transition:border-color .15s,box-shadow .15s}.maylike-card:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(26,115,232,.1)}.maylike-card .mc-cat{font-size:.72rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}.maylike-card .mc-title{font-size:.9rem;font-weight:600;line-height:1.4;color:var(--text)}@media(max-width:700px){.maylike-grid{grid-template-columns:1fr}}
 </style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 </head>
@@ -148,12 +149,13 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </div>
 
 </main>
-<div class="cross-links">
-    <h3>Continue Reading</h3>
-    <ul>
-    <li><a href="/blog/post-2026-08-20-the-convenience-trap-how-frictionless-living-is-quietly-drai.html">The Convenience Trap: How Frictionless Living Is Quietly Draining Your Wallet (And How to Reclaim Control)</a></li>
-    <li><a href="/blog/post-2026-08-15-loud-budgeting-how-to-set-financial-boundaries-without-ruini.html">Loud Budgeting: How to Set Financial Boundaries Without Ruining Your Social Life</a></li>
-    </ul>
+<div class="maylike">
+    <h3>You may also like</h3>
+    <div class="maylike-grid">
+    <a href="/blog/post-2026-08-20-the-convenience-trap-how-frictionless-living-is-quietly-drai.html" class="maylike-card"><div class="mc-cat">Finance</div><div class="mc-title">The Convenience Trap: How Frictionless Living Is Quietly Draining Your Wallet (And How to Reclaim Control)</div></a>
+    <a href="/blog/post-2026-08-15-loud-budgeting-how-to-set-financial-boundaries-without-ruini.html" class="maylike-card"><div class="mc-cat">Finance</div><div class="mc-title">Loud Budgeting: How to Set Financial Boundaries Without Ruining Your Social Life</div></a>
+    <a href="/blog/post-2026-08-14-doom-spending-why-youre-shopping-away-your-future-anxiety-an.html" class="maylike-card"><div class="mc-cat">Finance</div><div class="mc-title">Doom Spending: Why You're Shopping Away Your Future Anxiety (And How to Stop)</div></a>
+    </div>
   </div>
 <footer>
 <div class="footer-inner">

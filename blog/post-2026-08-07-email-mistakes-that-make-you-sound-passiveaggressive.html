@@ -64,7 +64,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 .cookie-btn:hover{background:#1557b0}
 @media(max-width:900px){.footer-inner{grid-template-columns:1fr}.footer-bot{flex-direction:column;gap:1rem;text-align:center}h1{font-size:1.8rem}}
 .related-tools{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2.5rem 0}.related-tools h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.related-tools ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}.related-tools a{display:flex;align-items:center;gap:.5rem;padding:8px 12px;background:var(--bg);border-radius:8px;font-weight:500;font-size:.95rem;transition:background .15s}.related-tools a:hover{background:#e8f0fe}
-.cross-links{margin:2.5rem 0;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}.cross-links h3{font-size:1rem;font-weight:700;margin-bottom:.8rem}.cross-links ul{list-style:none}.cross-links li{margin-bottom:.5rem}.cross-links a{font-size:.92rem;color:var(--blue);text-decoration:none;line-height:1.5}.cross-links a:hover{text-decoration:underline}
+
+.maylike{margin:2.5rem 0}.maylike h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.maylike-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.maylike-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-decoration:none;color:var(--text);transition:border-color .15s,box-shadow .15s}.maylike-card:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(26,115,232,.1)}.maylike-card .mc-cat{font-size:.72rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}.maylike-card .mc-title{font-size:.9rem;font-weight:600;line-height:1.4;color:var(--text)}@media(max-width:700px){.maylike-grid{grid-template-columns:1fr}}
 </style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 </head>
@@ -190,12 +191,13 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </div>
 
 </main>
-<div class="cross-links">
-    <h3>Continue Reading</h3>
-    <ul>
-    <li><a href="/blog/post-2026-08-22-proximity-bias-why-remote-work-might-be-silently-stunting-yo.html">Proximity Bias: Why Remote Work Might Be Silently Stunting Your Career (And How to Stay Visible Without Sucking Up)</a></li>
-    <li><a href="/blog/post-2026-08-22-shift-shock-what-to-do-when-your-new-job-isnt-what-you-signe.html">Shift Shock: What to Do When Your New Job Isn't What You Signed Up For</a></li>
-    </ul>
+<div class="maylike">
+    <h3>You may also like</h3>
+    <div class="maylike-grid">
+    <a href="/blog/post-2026-08-22-proximity-bias-why-remote-work-might-be-silently-stunting-yo.html" class="maylike-card"><div class="mc-cat">Career</div><div class="mc-title">Proximity Bias: Why Remote Work Might Be Silently Stunting Your Career (And How to Stay Visible Without Sucking Up)</div></a>
+    <a href="/blog/post-2026-08-22-shift-shock-what-to-do-when-your-new-job-isnt-what-you-signe.html" class="maylike-card"><div class="mc-cat">Career</div><div class="mc-title">Shift Shock: What to Do When Your New Job Isn't What You Signed Up For</div></a>
+    <a href="/blog/post-2026-08-21-the-hobby-monetization-trap-why-turning-your-passion-into-a-.html" class="maylike-card"><div class="mc-cat">Career</div><div class="mc-title">The Hobby Monetization Trap: Why Turning Your Passion Into a Side Hustle Kills the Joy (And How to Reclaim Leisure)</div></a>
+    </div>
   </div>
 <footer>
 <div class="footer-inner">

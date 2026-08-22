@@ -302,6 +302,7 @@ h1{font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem;letter-s
 .related-tools ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
 .related-tools a{display:flex;align-items:center;gap:.5rem;padding:8px 12px;background:var(--bg);border-radius:8px;font-weight:500;font-size:.95rem;transition:background .15s}
 .related-tools a:hover{background:#e8f0fe}
+.maylike{margin:2.5rem 0}.maylike h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.maylike-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.maylike-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-decoration:none;color:var(--text);transition:border-color .15s,box-shadow .15s}.maylike-card:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(26,115,232,.1)}.maylike-card .mc-cat{font-size:.72rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}.maylike-card .mc-title{font-size:.9rem;font-weight:600;line-height:1.4;color:var(--text)}@media(max-width:700px){.maylike-grid{grid-template-columns:1fr}}
 footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
 .footer-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
 .footer-brand .logo{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;color:#fff;margin-bottom:1rem}
@@ -346,7 +347,12 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 ${findRelatedTools(topic).map(t => `<li><a href="/${t.tool}">${t.name} →</a></li>`).join('\n')}
 </ul>
 </div>
-
+<div class="maylike">
+<h3>You may also like</h3>
+<div class="maylike-grid">
+${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p.file}" class="maylike-card"><div class="mc-cat">${p.cat || ''}</div><div class="mc-title">${p.title}</div></a>`).join('\n')}
+</div>
+</div>
 </div>
 </main>
 <footer>
