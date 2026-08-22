@@ -283,6 +283,14 @@ function acceptCookies(){document.getElementById('cookieBar').style.display='non
   posts.unshift({ title: topic.title, cat: topic.cat, emoji: topic.emoji, date: niceDate, file: filename });
   fs.writeFileSync(indexFile, JSON.stringify(posts, null, 2));
   console.log('Updated blog-index.json successfully.');
+
+  // Keep sitemap.xml in sync with the new post (dynamic sitemap)
+  try {
+    require('./generate-sitemap.js');
+    console.log('sitemap.xml regenerated with new post.');
+  } catch (e) {
+    console.error('WARN: sitemap regeneration failed:', e.message);
+  }
 }
 
 run().catch(err => { console.error(err.message); process.exit(1); });

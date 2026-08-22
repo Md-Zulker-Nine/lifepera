@@ -29,6 +29,10 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/generate-blog-post.js
 
+      - name: Regenerate dynamic sitemap
+        if: always()
+        run: node scripts/generate-sitemap.js
+
       - name: Commit and push new blog post
         run: |
           git config --local user.email "action@github.com"
