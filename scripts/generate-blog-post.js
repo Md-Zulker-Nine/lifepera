@@ -333,6 +333,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="meta"><span>Zulker Nine</span><span>·</span><span>${niceDate}</span></div>
 <div class="ad-slot" style="display:none">Reserved for AdSense</div>
 <div class="body">${content}</div>
+
+<div class="author-bio" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2rem 0;display:flex;gap:1.5rem;align-items:flex-start">
+  <img src="/assets/author-zulker-nine.webp" alt="Zulker Nine" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0">
+  <div class="author-info">
+    <h3 style="margin-bottom:.3rem;font-size:1.1rem">Zulker Nine</h3>
+    <p style="color:var(--blue);font-weight:500;font-size:.85rem;margin-bottom:.8rem">Founder & Creator, LifePera</p>
+    <p style="font-size:.95rem;color:var(--muted);line-height:1.6">Zulker builds data-driven decision tools for real life. He has authored 60+ deep-dive guides on career strategy, workplace psychology, financial literacy, and cross-cultural dynamics. His work focuses on translating academic research and institutional data into practical, privacy-first calculators that anyone can use for free. No signup, no tracking — just clear answers to hard questions.</p>
+    <a href="/about.html" style="font-size:.85rem;font-weight:600;color:var(--blue)">Read full bio →</a>
+  </div>
+</div>
+
 <div class="cta">
 <h3>Try Our Free Tools</h3>
 <p>36 free tools covering travel, relationships, career, culture, psychology and finance. No signup required.</p>
