@@ -313,8 +313,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 .f-col h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1.2rem;letter-spacing:.5px}
 .f-col ul{list-style:none}.f-col li{margin-bottom:.7rem}
 .f-col a{color:#9ca3af;font-size:.88rem}.f-col a:hover{color:#fff}
-.footer-bot{max-width:var(--max-w);margin:3rem auto 0;padding-top:2rem;border-top:1px solid #1f2937;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#6b7280}
-.footer-disc{max-width:var(--max-w);margin:1.5rem auto 0;font-size:.76rem;color:#4b5563;line-height:1.5;text-align:center}
+.footer-bot{max-width:var(--max-w);margin:3rem auto 0;padding-top:2rem;border-top:1px solid #1f2937;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#9ca3af}
+.footer-disc{max-width:var(--max-w);margin:1.5rem auto 0;font-size:.76rem;color:#9ca3af;line-height:1.5;text-align:center}
 @media(max-width:900px){.footer-inner{grid-template-columns:1fr}.footer-bot{flex-direction:column;gap:1rem;text-align:center}h1{font-size:1.8rem}}
 </style>
 </head>
