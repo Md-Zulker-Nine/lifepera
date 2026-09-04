@@ -3,8 +3,6 @@ name: Auto Blog Post Generator
 on:
   schedule:
     - cron: '0 6 * * *'    # 6 AM UTC
-    - cron: '0 14 * * *'   # 2 PM UTC
-    - cron: '0 20 * * *'   # 8 PM UTC
   workflow_dispatch:
 
 jobs:
