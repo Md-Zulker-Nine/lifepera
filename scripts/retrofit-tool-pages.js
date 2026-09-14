@@ -85,7 +85,7 @@ for (const [file, config] of Object.entries(TOOL_CATEGORIES)) {
 
   const relatedLinks = config.related
     .filter(r => TOOL_NAMES[r])
-    .map(r => `<li><a href="${r}" style="font-weight: 400;">${TOOL_NAMES[r]}</a></li>`)
+    .map(r =>     `<li><a href="${r.replace(/\.html$/, '')}" style="font-weight: 400;">${TOOL_NAMES[r]}</a></li>`)
     .join('\n        ');
 
   // Replace Related Tools sidebar widget
@@ -96,8 +96,8 @@ for (const [file, config] of Object.entries(TOOL_CATEGORIES)) {
 
   // Also update footer "Popular Tools" to include category-relevant tools
   const footerTools = config.related.slice(0, 3).map(r =>
-    `<li><a href="${r}">${TOOL_NAMES[r] || r}</a></li>`
-  ).join('\n<li><a href="tool-underpaid.html">Am I Underpaid?</a></li>\n');
+    `<li><a href="${r.replace(/\.html$/, '')}">${TOOL_NAMES[r] || r}</a></li>`
+  ).join('\n<li><a href="tool-underpaid">Am I Underpaid?</a></li>\n');
 
   html = html.replace(
     /<h4>Popular Tools<\/h4>\s*<ul>[\s\S]*?<\/ul>/,

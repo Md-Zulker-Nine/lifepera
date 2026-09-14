@@ -59,7 +59,7 @@ for (const [file, cats] of Object.entries(TOOL_BLOG_MAP)) {
   if (related.length === 0) { console.log(`SKIP (no matches): ${file}`); continue; }
 
   const blogLinks = related.map(p =>
-    `<li><a href="/${p.file}">${p.title}</a></li>`
+    `<li><a href="/${p.file.replace(/\.html$/, '')}">${p.title}</a></li>`
   ).join('\n        ');
 
   const widget = `<div class="blog-widget">

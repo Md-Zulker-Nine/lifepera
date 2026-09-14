@@ -244,6 +244,7 @@ Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No ht
   
   if (!fs.existsSync('blog')) fs.mkdirSync('blog');
   const filename = `blog/post-${dateStr}-${slug}.html`;
+  const publicPostUrl = `https://lifepera.com/${filename.replace(/\.html$/, '')}`;
 
   if (fs.existsSync(filename)) {
     console.log('Post file already exists: ' + filename);
@@ -256,10 +257,10 @@ Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No ht
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta name="description" content="${topic.title} — LifePera Blog. ${topic.keywords}."/>
 <meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://lifepera.com/${filename}"/>
+<link rel="canonical" href="${publicPostUrl}"/>
 <meta property="og:title" content="${topic.title} — LifePera"/>
 <meta property="og:description" content="${topic.title} — Read the full guide on LifePera — free tools for real life decisions."/>
-<meta property="og:url" content="https://lifepera.com/${filename}"/>
+<meta property="og:url" content="${publicPostUrl}"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="LifePera"/>
 <meta name="twitter:card" content="summary_large_image"/>
@@ -267,7 +268,7 @@ Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No ht
 <meta name="twitter:description" content="${topic.title} — Read the full guide on LifePera."/>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"${topic.title}","author":{"@type":"Person","name":"Zulker Nine"},"publisher":{"@type":"Organization","name":"LifePera","url":"https://lifepera.com"},"datePublished":"${dateStr}","description":"${topic.title}"}
+{"@context":"https://schema.org","@type":"Article","headline":"${topic.title}","author":{"@type":"Person","name":"Zulker Nine","url":"https://lifepera.com/about"},"publisher":{"@type":"Organization","name":"LifePera","url":"https://lifepera.com"},"datePublished":"${dateStr}","description":"${topic.title}","mainEntityOfPage":{"@type":"WebPage","@id":"${publicPostUrl}"}}
 </script>
 <title>${topic.title} — LifePera</title>
 <style>
@@ -322,7 +323,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="nav">
 <a href="/" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
 <div class="nav-links">
-<a href="/tools.html">Tools</a><a href="/blog.html">Blog</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+<a href="/tools">Tools</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a>
 </div>
 </div>
 </header>
@@ -339,14 +340,14 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
     <h3 style="margin-bottom:.3rem;font-size:1.1rem">Zulker Nine</h3>
     <p style="color:var(--blue);font-weight:500;font-size:.85rem;margin-bottom:.8rem">Founder & Creator, LifePera</p>
     <p style="font-size:.95rem;color:var(--muted);line-height:1.6">Zulker builds data-driven decision tools for real life. He has authored 60+ deep-dive guides on career strategy, workplace psychology, financial literacy, and cross-cultural dynamics. His work focuses on translating academic research and institutional data into practical, privacy-first calculators that anyone can use for free. No signup, no tracking — just clear answers to hard questions.</p>
-    <a href="/about.html" style="font-size:.85rem;font-weight:600;color:var(--blue)">Read full bio →</a>
+    <a href="/about" style="font-size:.85rem;font-weight:600;color:var(--blue)">Read full bio →</a>
   </div>
 </div>
 
 <div class="cta">
 <h3>Try Our Free Tools</h3>
 <p>36 free tools covering travel, relationships, career, culture, psychology and finance. No signup required.</p>
-<a class="cta-btn" href="/tools.html">Explore All Free Tools &rarr;</a>
+<a class="cta-btn" href="/tools">Explore All Free Tools &rarr;</a>
 </div>
 <div class="related-tools">
 <h3>Tools Related to This Article</h3>
@@ -372,24 +373,24 @@ ${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p
 <div class="f-col">
 <h4>Tools</h4>
 <ul>
-<li><a href="/tool-how-rich.html">Global Wealth Comparator</a></li>
-<li><a href="/tool-visa.html">Visa-Free Travel Checker</a></li>
-<li><a href="/tool-attachment.html">Attachment Style Quiz</a></li>
+<li><a href="/tool-how-rich">Global Wealth Comparator</a></li>
+<li><a href="/tool-visa">Visa-Free Travel Checker</a></li>
+<li><a href="/tool-attachment">Attachment Style Quiz</a></li>
 </ul>
 </div>
 <div class="f-col">
 <h4>Company</h4>
 <ul>
-<li><a href="/about.html">About Us</a></li>
-<li><a href="/blog.html">Editorial Blog</a></li>
-<li><a href="/contact.html">Contact & Support</a></li>
+<li><a href="/about">About Us</a></li>
+<li><a href="/blog">Editorial Blog</a></li>
+<li><a href="/contact">Contact & Support</a></li>
 </ul>
 </div>
 <div class="f-col">
 <h4>Legal</h4>
 <ul>
-<li><a href="/privacy.html">Privacy Policy</a></li>
-<li><a href="/terms.html">Terms of Service</a></li>
+<li><a href="/privacy">Privacy Policy</a></li>
+<li><a href="/terms">Terms of Service</a></li>
 <li><a href="/sitemap.xml">Sitemap</a></li>
 </ul>
 </div>

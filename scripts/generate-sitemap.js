@@ -2,6 +2,10 @@ const fs = require('fs');
 
 const SITE = 'https://lifepera.com';
 
+function publicUrl(file) {
+  return `${SITE}/${String(file).replace(/\.html$/, '')}`;
+}
+
 function xmlEscape(s) {
   return String(s)
     .replace(/&/g, '&amp;')
@@ -26,12 +30,12 @@ const urls = [];
 // 1) Core pages
 urls.push(
   { loc: `${SITE}/`, freq: 'daily', pri: '1.0', mod: today() },
-  { loc: `${SITE}/tools.html`, freq: 'weekly', pri: '0.9' },
-  { loc: `${SITE}/blog.html`, freq: 'daily', pri: '0.8' },
-  { loc: `${SITE}/about.html`, freq: 'monthly', pri: '0.6' },
-  { loc: `${SITE}/contact.html`, freq: 'monthly', pri: '0.5' },
-  { loc: `${SITE}/privacy.html`, freq: 'yearly', pri: '0.4' },
-  { loc: `${SITE}/terms.html`, freq: 'yearly', pri: '0.4' }
+  { loc: publicUrl('tools.html'), freq: 'weekly', pri: '0.9' },
+  { loc: publicUrl('blog.html'), freq: 'daily', pri: '0.8' },
+  { loc: publicUrl('about.html'), freq: 'monthly', pri: '0.6' },
+  { loc: publicUrl('contact.html'), freq: 'monthly', pri: '0.5' },
+  { loc: publicUrl('privacy.html'), freq: 'yearly', pri: '0.4' },
+  { loc: publicUrl('terms.html'), freq: 'yearly', pri: '0.4' }
 );
 
 // 2) Tools — sourced dynamically from all_tools.json
@@ -39,7 +43,7 @@ try {
   const tools = JSON.parse(fs.readFileSync('all_tools.json', 'utf8'));
   for (const t of tools) {
     if (!t.file || !t.file.endsWith('.html')) continue;
-    urls.push({ loc: `${SITE}/${t.file}`, freq: 'monthly', pri: '0.8' });
+    urls.push({ loc: publicUrl(t.file), freq: 'monthly', pri: '0.8' });
   }
 } catch (e) {
   console.error('WARN: could not read all_tools.json:', e.message);
@@ -54,7 +58,7 @@ try {
       if (!p.file || !p.file.endsWith('.html')) continue;
       // Only include posts whose file actually exists on disk
       if (!fs.existsSync(p.file)) continue;
-      urls.push({ loc: `${SITE}/${p.file}`, freq: 'monthly', pri: '0.7', mod: lastModFromFile(p.file) });
+      urls.push({ loc: publicUrl(p.file), freq: 'monthly', pri: '0.7', mod: lastModFromFile(p.file) });
       postCount++;
     }
   }
@@ -68,8 +72,8 @@ try {
     for (const f of fs.readdirSync('blog')) {
       if (!f.endsWith('.html')) continue;
       const rel = `blog/${f}`;
-      if (urls.some(u => u.loc === `${SITE}/${rel}`)) continue;
-      urls.push({ loc: `${SITE}/${rel}`, freq: 'monthly', pri: '0.7', mod: lastModFromFile(rel) });
+      if (urls.some(u => u.loc === publicUrl(rel))) continue;
+      urls.push({ loc: publicUrl(rel), freq: 'monthly', pri: '0.7', mod: lastModFromFile(rel) });
       postCount++;
     }
   }

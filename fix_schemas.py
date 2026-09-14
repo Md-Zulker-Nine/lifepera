@@ -23,7 +23,7 @@ ORG_SCHEMA = {
     "founder": {
         "@type": "Person",
         "name": "Zulker Nine",
-        "url": "https://lifepera.com/about.html"
+        "url": "https://lifepera.com/about"
     },
     "contactPoint": {
         "@type": "ContactPoint",
@@ -36,7 +36,7 @@ ORG_SCHEMA = {
 AUTHOR_SCHEMA = {
     "@type": "Person",
     "name": "Zulker Nine",
-    "url": "https://lifepera.com/about.html",
+    "url": "https://lifepera.com/about",
     "sameAs": [
         "https://github.com/Md-Zulker-Nine"
     ],
