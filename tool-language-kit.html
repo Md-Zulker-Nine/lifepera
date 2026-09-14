@@ -269,26 +269,26 @@ function loadHtml2Canvas(callback) {
     currentShareText = "I just tested Language Survival Kit Generator on LifePera: " + badge + "! Try yours here:";
   }
 
-  
+
     function runTool() {
       const lang = document.getElementById('langInput').value;
       const phrases = {
-        es: "Hola (Hello) | Gracias (Thank you) | Por favor (Please) | ¿DÃ³nde estÃ¡...? (Where is...?)",
-        fr: "Bonjour (Hello) | Merci (Thank you) | S'il vous plaÃ®t (Please) | OÃ¹ est...? (Where is...?)",
+        es: "Hola (Hello) | Gracias (Thank you) | Por favor (Please) | ¿Dónde está...? (Where is...?)",
+        fr: "Bonjour (Hello) | Merci (Thank you) | S'il vous plaît (Please) | Où est...? (Where is...?)",
         ja: "Konnichiwa (Hello) | Arigatou (Thank you) | Sumimasen (Excuse me) | Ikura desu ka? (How much?)",
-        it: "Ciao (Hello) | Grazie (Thank you) | Per favore (Please) | Dov'Ã¨...? (Where is...?)",
+        it: "Ciao (Hello) | Grazie (Thank you) | Per favore (Please) | Dov'è...? (Where is...?)",
         de: "Hallo (Hello) | Danke (Thank you) | Bitte (Please) | Wo ist...? (Where is...?)",
         th: "Sawatdee (Hello) | Khop khun (Thank you) | Ka/Krab (Polite suffix) | Tao rai? (How much?)",
-        zh: "NÇ hÇŽo (Hello) | XiÃ¨ xiÃ¨ (Thank you) | QÇng (Please) | DuÅ shÇŽo qiÃ¡n? (How much?)",
+        zh: "Nǐ hǎo (Hello) | Xiè xiè (Thank you) | Qǐng (Please) | Duō shǎo qián? (How much?)",
         ar: "Marhaba (Hello) | Shukran (Thank you) | Min fadlik (Please) | Kam al-thaman? (How much?)",
-        pt: "OlÃ¡ (Hello) | Obrigado (Thank you) | Por favor (Please) | Onde fica...? (Where is...?)",
+        pt: "Olá (Hello) | Obrigado (Thank you) | Por favor (Please) | Onde fica...? (Where is...?)",
         ko: "Annyeonghaseyo (Hello) | Gamsahamnida (Thank you) | Juseyo (Please) | Olma-eyo? (How much?)",
-        vi: "Xin chÃ o (Hello) | Cáº£m Æ¡n (Thank you) | LÃ m Æ¡n (Please) | Bao nhiÃªu? (How much?)",
-        tr: "Merhaba (Hello) | TeÅŸekkÃ¼r ederim (Thank you) | LÃ¼tfen (Please) | Ne kadar? (How much?)"
+        vi: "Xin chào (Hello) | Cảm ơn (Thank you) | Làm ơn (Please) | Bao nhiêu? (How much?)",
+        tr: "Merhaba (Hello) | Teşekkür ederim (Thank you) | Lütfen (Please) | Ne kadar? (How much?)"
       };
       showResult("Essential Kit: " + lang.toUpperCase(), phrases[lang], "10 Key Phrases Ready ", "Language Kit Generated");
     }
-    
+
 
   async function downloadBanner() {
     loadHtml2Canvas(async function() {

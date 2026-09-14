@@ -255,15 +255,15 @@ function loadHtml2Canvas(callback) {
     currentShareText = "I just tested What Age Are You in Other Cultures? on LifePera: " + badge + "! Try yours here:";
   }
 
-  
+
     function runTool() {
       const a = parseInt(document.getElementById('ageVal').value) || 28;
       const korean = a + 1;
       const hijri = Math.round(a * 1.03);
-      const text = `Western Solar Age: ${a} years old.<br>"¢ Traditional East Asian Age: ${korean} years old.<br>"¢ Islamic Hijri Age: ${hijri} lunar years old.`;
+      const text = `Western Solar Age: ${a} years old.<br>• Traditional East Asian Age: ${korean} years old.<br>• Islamic Hijri Age: ${hijri} lunar years old.`;
       showResult(`Cultural Age: ${korean} (East Asian) / ${hijri} (Hijri)`, text, `Hijri Age: ${hijri} `, "Cultural Age Breakdown");
     }
-    
+
 
   async function downloadBanner() {
     loadHtml2Canvas(async function() {

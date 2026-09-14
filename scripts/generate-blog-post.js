@@ -42,6 +42,11 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const MIN_WORDS = 800;
 const MAX_ATTEMPTS = 3;
 
+// Keep the fallback icon renderable even if a Windows/legacy encoding step corrupts emoji.
+function safePostIcon(icon) {
+  return /[\u00c2\u00c3\u00e2\u00f0\u0178\uFFFD]/.test(icon || '') ? '&#8226;' : icon;
+}
+
 const TOOL_MAP = [
   { keywords: ['toxic workplace','boss','colleague','office'], tool: 'tool-toxic-workplace.html', name: 'Toxic Workplace Checklist' },
   { keywords: ['toxic','gaslight','manipulate','red flag','abus'], tool: 'tool-toxic-relationship.html', name: 'Toxic Relationship Checker' },
@@ -253,7 +258,7 @@ Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No ht
   const dateStr = now.toISOString().split('T')[0];
   const niceDate = now.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
   const slug = topic.title.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,'-').substring(0,60);
-  
+
   if (!fs.existsSync('blog')) fs.mkdirSync('blog');
   const filename = `blog/post-${dateStr}-${slug}.html`;
   const publicPostUrl = `https://lifepera.com/${filename.replace(/\.html$/, '')}`;
@@ -419,7 +424,7 @@ ${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p
   console.log('Successfully generated post: ' + filename);
 
   posts = posts.filter(p => p.file !== filename && p.title !== topic.title);
-  posts.unshift({ title: topic.title, cat: topic.cat, emoji: topic.emoji, date: niceDate, file: filename });
+  posts.unshift({ title: topic.title, cat: topic.cat, emoji: safePostIcon(topic.emoji), date: niceDate, file: filename });
   fs.writeFileSync(indexFile, JSON.stringify(posts, null, 2));
   console.log('Updated blog-index.json successfully.');
 

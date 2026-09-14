@@ -315,12 +315,12 @@ function loadHtml2Canvas(callback) {
     currentShareText = "I just tested Solo Travel Safety Index on LifePera: " + badge + "! Try yours here:";
   }
 
-  
+
     function runTool() {
       const dest = document.getElementById('destInput').value;
       if (!dest) { alert("Please select a destination."); return; }
       const destName = document.getElementById('destInput').selectedOptions[0].text;
-      
+
       const data = {
         is: { score: "98 / 100", tier: "Top Safety Rank ", text: "Often ranks highly on global peace and safety measures. Conditions still vary by location, season, and personal circumstances." },
         sg: { score: "96 / 100", tier: "Ultra Safe ", text: "Strict laws and top-tier infrastructure make Singapore ideal for first-time solo travelers." },
@@ -334,7 +334,7 @@ function loadHtml2Canvas(callback) {
         au: { score: "89 / 100", tier: "Very Safe ", text: "Australia is generally very safe. Watch for beach safety flags and wildlife awareness more than crime." },
         pt: { score: "88 / 100", tier: "Very Safe ", text: "Portugal is one of Europe's safest countries. Watch for pickpockets in Lisbon trams and Porto station areas." },
         nl: { score: "87 / 100", tier: "Very Safe ", text: "Netherlands is safe and bike-friendly. Watch your belongings in Amsterdam's crowded areas and train stations." },
-        se: { score: "88 / 100", tier: "Very Safe ", text: "Sweden has low violent crime. Be cautious in MalmÃ¶ and Stockholm suburbs late at night." },
+        se: { score: "88 / 100", tier: "Very Safe ", text: "Sweden has low violent crime. Be cautious in Malmö and Stockholm suburbs late at night." },
         ae: { score: "87 / 100", tier: "Very Safe ", text: "UAE is very safe for solo travelers with low crime and excellent infrastructure. Respect local dress codes in public." },
         ie: { score: "86 / 100", tier: "Very Safe ", text: "Ireland is welcoming and safe. Avoid poorly lit areas in Dublin late at night." },
         es: { score: "85 / 100", tier: "Safe (Watch Pickpockets) ", text: "Very safe for solo travelers. Keep an eye on bags in tourist hotspots like Barcelona Ramblas." },
@@ -383,7 +383,7 @@ function loadHtml2Canvas(callback) {
       const res = data[dest];
       showResult("Safety Index: " + res.score, res.text, res.tier, "Safety Rating: " + res.score, destName);
     }
-    
+
 
   async function downloadBanner() {
     loadHtml2Canvas(async function() {

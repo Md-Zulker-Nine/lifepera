@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<meta content="Contact LifePera — get in touch for tool suggestions, bug reports, advertising, or general inquiries. We reply within 24 hours." name="description"/>
+<meta content="Contact LifePera — get in touch for tool suggestions, bug reports, advertising, or general inquiries." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://lifepera.com/contact" rel="canonical"/>
 <meta content="Contact | LifePera" property="og:title"/>
@@ -45,6 +45,7 @@ main{max-width:860px;margin:3rem auto;padding:0 1.5rem}
 .ft{resize:vertical;min-height:140px}
 .btn{width:100%;background:var(--primary);color:#fff;border:none;padding:14px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s,transform .1s}
 .btn:hover{background:var(--primary-hover);transform:translateY(-1px)}
+.form-note{font-size:.9rem;color:var(--text-muted);margin-bottom:1.25rem}
 .success{display:none;background:#e6f4ea;border:1px solid #ceead6;border-radius:8px;padding:1.5rem;text-align:center;margin-top:1rem}
 .success h4{color:#137333;font-size:1.2rem;margin-bottom:.5rem}
 .success p{color:#202124;font-size:.95rem}
@@ -67,7 +68,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 }
 </style>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": "https://lifepera.com/og-image.svg", "sameAs": ["https://github.com/Md-Zulker-Nine/lifepera"], "founder": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about"}, "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": "contact@lifepera.com", "availableLanguage": "English"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Contact | LifePera", "description": "Contact LifePera — get in touch for tool suggestions, bug reports, advertising, or general inquiries. We reply within 24 hours.", "publisher": {"@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": {"@type": "ImageObject", "url": "https://lifepera.com/og-image.svg", "width": 512, "height": 512}}, "author": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about", "sameAs": ["https://github.com/Md-Zulker-Nine"], "description": "Founder of LifePera. Builds free, privacy-first decision tools for career, finance, travel, relationships, psychology, and culture."}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://lifepera.com/contact"}}</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": "https://lifepera.com/og-image.svg", "sameAs": ["https://github.com/Md-Zulker-Nine/lifepera"], "founder": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about"}, "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": "contact@lifepera.com", "availableLanguage": "English"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Contact | LifePera", "description": "Contact LifePera — get in touch for tool suggestions, bug reports, advertising, or general inquiries.", "publisher": {"@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": {"@type": "ImageObject", "url": "https://lifepera.com/og-image.svg", "width": 512, "height": 512}}, "author": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about", "sameAs": ["https://github.com/Md-Zulker-Nine"], "description": "Founder of LifePera. Builds free, privacy-first decision tools for career, finance, travel, relationships, psychology, and culture."}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://lifepera.com/contact"}}</script></head>
 <body>
 <header>
 <div class="nav">
@@ -94,15 +95,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </div>
 <div class="info-card">
 <h3>Report a Bug</h3>
-<p>Found something broken? We fix bugs within 24 hours.</p>
+<p>Found something broken? Send us the details so we can investigate.</p>
 <a href="mailto:contact@lifepera.com">contact@lifepera.com</a>
 </div>
 <div class="info-card">
 <h3>Support Email</h3>
-<p>Email us directly at <strong>support@lifepera.com</strong> for priority support.</p>
+<p>Email us directly at <a href="mailto:contact@lifepera.com">contact@lifepera.com</a> for support.</p>
 </div>
 </div>
-<form class="form-box" id="contactForm" onsubmit="handleSubmit(event)">
+<form class="form-box" id="contactForm">
+<p class="form-note">This site has no server-side form endpoint. Submitting opens your email application with a prepared message to <a href="mailto:contact@lifepera.com">contact@lifepera.com</a>.</p>
 <div class="fg">
 <label class="fl">Your Name *</label>
 <input class="fi" id="cName" placeholder="John Doe" required="" type="text"/>
@@ -125,9 +127,9 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <textarea class="ft" id="cMessage" placeholder="How can we help you?" required=""></textarea>
 </div>
 <button class="btn" id="submitBtn" type="submit">Send Message</button>
-<div class="success" id="successBox">
-<h4>Message Sent Successfully!</h4>
-<p id="successMsg">Thank you! Your message has been recorded. We will reply within 24 hours.</p>
+<div class="success" id="successBox" aria-live="polite">
+<h4>Your email draft is ready</h4>
+<p id="successMsg">Your email application should open with the message. If it does not, use the direct email link above.</p>
 </div>
 </form>
 </div>
@@ -171,7 +173,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-bot"><span>© 2026 LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
 </footer>
 <script>
-function handleSubmit(e){e.preventDefault();const n=document.getElementById('cName').value.trim(),em=document.getElementById('cEmail').value.trim(),sub=document.getElementById('cSubject').value,msg=document.getElementById('cMessage').value.trim(),btn=document.getElementById('submitBtn'),sb=document.getElementById('successBox'),sm=document.getElementById('successMsg');if(!n||!em||!msg){alert('Please fill in all required fields.');return}btn.innerHTML='Sending...';btn.disabled=true;const mailtoLink='mailto:contact@lifepera.com?subject='+encodeURIComponent(sub+' from '+n)+'&body='+encodeURIComponent('Name: '+n+'\nEmail: '+em+'\n\n'+msg);setTimeout(function(){btn.style.display='none';sm.innerHTML='Thank you <strong>'+n+'</strong>! Your <em>'+sub+'</em> message has been recorded. We will reply at <strong>'+em+'</strong> within 24 hours.';sb.style.display='block';window.location.href=mailtoLink},600)}
+document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const n=document.getElementById('cName').value.trim(),em=document.getElementById('cEmail').value.trim(),sub=document.getElementById('cSubject').value,msg=document.getElementById('cMessage').value.trim(),btn=document.getElementById('submitBtn'),sb=document.getElementById('successBox');if(!n||!em||!msg){alert('Please fill in all required fields.');return}const mailtoLink='mailto:contact@lifepera.com?subject='+encodeURIComponent(sub+' from '+n)+'&body='+encodeURIComponent('Name: '+n+'\nEmail: '+em+'\n\n'+msg);btn.textContent='Opening email…';btn.disabled=true;sb.style.display='block';window.location.href=mailtoLink});
 </script>
 <script src="/cookie-consent.js"></script>
 </body>

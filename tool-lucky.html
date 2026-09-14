@@ -255,14 +255,14 @@ function loadHtml2Canvas(callback) {
     currentShareText = "I just tested Lucky Number by Culture on LifePera: " + badge + "! Try yours here:";
   }
 
-  
+
     function runTool() {
       const d = parseInt(document.getElementById('luckyDay').value) || 8;
       const luckySingle = (d % 9) || 9;
-      const text = `Your primary Lucky Digit is ${luckySingle}.<br>"¢ Chinese Feng Shui Lucky: 8 & 9.<br>"¢ Avoid in East Asia: 4 (sounds like death).<br>"¢ Western Lucky: 7 & 3.`;
+      const text = `Your primary Lucky Digit is ${luckySingle}.<br>• Chinese Feng Shui Lucky: 8 & 9.<br>• Avoid in East Asia: 4 (sounds like death).<br>• Western Lucky: 7 & 3.`;
       showResult(`Your Primary Lucky Number: ${luckySingle} `, text, `Lucky Digit: ${luckySingle} `, "Lucky Number Profile");
     }
-    
+
 
   async function downloadBanner() {
     loadHtml2Canvas(async function() {
