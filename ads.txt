@@ -1,3 +1,2 @@
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
-# Replace pub-0000000000000000 with your actual AdSense publisher ID from https://adsense.google.com
-# Format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# AdSense validation will be added after the site is approved and the publisher ID is issued by Google.
+# This placeholder has been intentionally removed to keep the publisher declaration accurate.

@@ -419,15 +419,19 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </footer>
 <div class="cookie-bar" id="cookieBar">
 <div class="cookie-inner">
-<p> LifePera uses cookies to improve your experience and serve personalized ads. By continuing, you agree to our <a href="privacy.html" style="color:#8ab4f8">Privacy Policy</a>.</p>
-<button class="cookie-btn" onclick="acceptCookies()">Accept All</button>
+<p> LifePera uses essential cookies to keep the site working. We may use analytics or advertising cookies only with your consent. Review our <a href="privacy.html" style="color:#8ab4f8">Privacy Policy</a>.</p>
+<div class="cookie-actions" style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;">
+<button class="cookie-btn secondary" onclick="setConsent('essential')" style="background:transparent;border:1px solid #4b5563;color:#d1d5db;padding:10px 18px;border-radius:6px;font-weight:600;cursor:pointer;font-size:.82rem;">Only essential</button>
+<button class="cookie-btn secondary" onclick="setConsent('reject')" style="background:transparent;border:1px solid #4b5563;color:#d1d5db;padding:10px 18px;border-radius:6px;font-weight:600;cursor:pointer;font-size:.82rem;">Reject optional</button>
+<button class="cookie-btn" onclick="setConsent('all')" style="background:#1a73e8;color:#fff;border:none;padding:10px 18px;border-radius:6px;font-weight:600;cursor:pointer;font-size:.82rem;">Accept all</button>
+</div>
 </div>
 </div>
 <script>
 function filterTools(){const q=document.getElementById('heroSearch').value.toLowerCase().trim(),c=document.getElementById('searchClear'),cards=document.querySelectorAll('.card'),sections=document.querySelectorAll('.category'),st=document.getElementById('searchStatus'),nr=document.getElementById('noResults');c.style.display=q.length>0?'flex':'none';let m=0;cards.forEach(cd=>{const t=(cd.getAttribute('data-title')||'').toLowerCase(),d=(cd.getAttribute('data-desc')||'').toLowerCase(),tg=(cd.getAttribute('data-tags')||'').toLowerCase();if(!q||t.includes(q)||d.includes(q)||tg.includes(q)){cd.style.display='flex';m++}else cd.style.display='none'});sections.forEach(s=>{const v=s.querySelectorAll('.card[style*="display: flex"],.card:not([style*="display: none"])');s.style.display=q&&v.length===0?'none':'block'});if(!q){st.innerHTML='Showing all 36 free tools';nr.style.display='none'}else{st.innerHTML='Found <strong>'+m+'</strong> tool'+(m===1?'':'s')+' matching "'+q+'"';nr.style.display=m===0?'block':'none'}}
 function clearSearch(){document.getElementById('heroSearch').value='';filterTools()}
-function acceptCookies(){document.getElementById('cookieBar').style.display='none';localStorage.setItem('cookiesAccepted','true')}
-(function(){if(!localStorage.getItem('cookiesAccepted'))document.getElementById('cookieBar').style.display='block'})();
+function setConsent(choice){var normalized=choice==='all'?'all':(choice==='essential'?'essential':'reject');localStorage.setItem('lifeperaConsent',normalized);document.getElementById('cookieBar').style.display='none';}
+(function(){if(!localStorage.getItem('lifeperaConsent'))document.getElementById('cookieBar').style.display='block'})();
 async function loadLatest(){try{const r=await fetch('blog-index.json');if(!r.ok)return;const posts=await r.json();const list=document.getElementById('latestBlogList');if(!posts||posts.length===0)return;let html='';posts.slice(0,5).forEach(function(p){html+='<li><a href="'+p.file+'" style="font-size:.88rem;color:var(--text-main);font-weight:400;line-height:1.4;display:block">'+p.title+'</a></li>'});list.innerHTML=html}catch(e){}}loadLatest();
 </script>
 </body>
