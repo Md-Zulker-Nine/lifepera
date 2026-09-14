@@ -26,6 +26,10 @@
       var name = cookie.split('=')[0].trim();
       if (/^(_ga|_gid|_gat|AMP_)/.test(name)) {
         document.cookie = name + '=; Max-Age=0; path=/';
+        document.cookie = name + '=; Max-Age=0; path=/; domain=' + location.hostname;
+        if (location.hostname.indexOf('.') !== -1) {
+          document.cookie = name + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+        }
       }
     });
   }
