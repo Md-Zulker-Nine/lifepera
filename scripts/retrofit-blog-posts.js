@@ -1,4 +1,16 @@
 const fs = require('fs');
+
+function editorialTrustNote(category) {
+  const cat = (category || '').toLowerCase();
+  if (cat.includes('finance')) return '';
+  if (cat.includes('travel') || cat.includes('safety') || cat.includes('passport')) {
+    return `<div class="editorial-trust-note"><strong>Sources &amp; update note:</strong> This travel guide is for general planning, not a guarantee of conditions or entry. We use official government and public-health guidance where available; verify current advisories and destination rules before acting. <strong>Last reviewed:</strong> September 2026. <a href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/" rel="noopener noreferrer" target="_blank">U.S. travel advisories</a> · <a href="https://wwwnc.cdc.gov/travel" rel="noopener noreferrer" target="_blank">CDC Travelers' Health</a></div>`;
+  }
+  if (cat.includes('psychology') || cat.includes('relationship') || cat.includes('wellbeing')) {
+    return `<div class="editorial-trust-note"><strong>Sources &amp; update note:</strong> This article translates general psychology and relationship concepts into practical reflection prompts; it is not diagnosis, therapy, or individualized advice. We prefer established research and public-health sources, and revise wording when guidance changes. <strong>Last reviewed:</strong> September 2026. <a href="https://www.apa.org/" rel="noopener noreferrer" target="_blank">American Psychological Association</a> · <a href="https://www.cdc.gov/intimate-partner-violence/about/index.html" rel="noopener noreferrer" target="_blank">CDC relationship-safety resources</a></div>`;
+  }
+  return '';
+}
 const path = require('path');
 
 const TOOL_MAP = [
@@ -93,13 +105,18 @@ ${related.map(p => `<a href="/${p.file.replace(/\.html$/, '')}" class="related-p
 
   // Inject CSS before </style> (only if not already present)
   if (!html.includes('.related-tools{')) {
-    const cssAddition = `.related-tools{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2.5rem 0}.related-tools h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.related-tools ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}.related-tools a{display:flex;align-items:center;gap:.5rem;padding:8px 12px;background:var(--bg);border-radius:8px;font-weight:500;font-size:.95rem;transition:background .15s}.related-tools a:hover{background:#e8f0fe}.related-posts{margin:2.5rem 0;padding:2rem 0;border-top:1px solid var(--border)}.related-posts h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.related-posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}.related-post-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;text-decoration:none;color:var(--text);transition:border-color .15s}.related-post-card:hover{border-color:var(--blue)}.related-post-card .rp-cat{font-size:.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:.3rem}.related-post-card .rp-title{font-size:.92rem;font-weight:600;line-height:1.4}`;
+    const cssAddition = `.related-tools{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2.5rem 0}.related-tools h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.related-tools ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}.related-tools a{display:flex;align-items:center;gap:.5rem;padding:8px 12px;background:var(--bg);border-radius:8px;font-weight:500;font-size:.95rem;transition:background .15s}.related-tools a:hover{background:#e8f0fe}.related-posts{margin:2.5rem 0;padding:2rem 0;border-top:1px solid var(--border)}.related-posts h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.related-posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}.related-post-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;text-decoration:none;color:var(--text);transition:border-color .15s}.related-post-card:hover{border-color:var(--blue)}.related-post-card .rp-cat{font-size:.75rem;font-weight:600;color:var(--blue);text-transform:uppercase;margin-bottom:.3rem}.related-post-card .rp-title{font-size:.92rem;font-weight:600;line-height:1.4}.editorial-trust-note{background:#f1f3f4;border-left:4px solid var(--blue);padding:1rem 1.2rem;margin:2rem 0;font-size:.92rem;color:var(--muted);line-height:1.6}.editorial-trust-note a{font-weight:600}`;
     html = html.replace('</style>', cssAddition + '\n</style>');
   }
 
   // Strip existing related-tools + related-posts sections if present
   html = html.replace(/<div class="related-tools">[\s\S]*?<\/div>\s*<div class="related-posts">[\s\S]*?<\/div>\s*/, '');
   html = html.replace(/<div class="related-tools">[\s\S]*?<\/div>\s*/, '');
+
+  const trustNote = editorialTrustNote(post.cat);
+  if (trustNote && !html.includes('editorial-trust-note')) {
+    html = html.replace('<div class="author-bio"', trustNote + '\n<div class="author-bio"');
+  }
 
   // Replace </main> with tools + related posts + </main>
   html = html.replace('</main>', toolsHtml + '\n' + relatedHtml + '\n</main>');

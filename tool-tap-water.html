@@ -223,13 +223,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </div>
 <div class="tool-guide">
 <h2>Water Quality Around the Globe</h2>
-<p>Tap water safety varies dramatically depending on municipal filtration systems, mineral content, source water quality, and the age of piping infrastructure. In countries like Switzerland, Singapore, and Finland, tap water is cleaner and better regulated than bottled water. In many other places, drinking tap water can cause serious illness even for locals.</p>
+<p>Tap water safety varies by municipality, source water, treatment, local advisories, and building plumbing. Switzerland, Singapore, and Finland generally have strong drinking-water standards, but conditions can still differ by location and temporary notice. In other places, untreated or contaminated water may pose a health risk.</p>
 <h2>Boil Notices and Travel Tips</h2>
 <p>In countries where tap water is not safe, stick to sealed bottled water, filtered bottles, or boiled water — even for brushing your teeth. Avoid ice cubes in drinks unless you know they were made with purified water. Street food is often fine when cooked, but raw vegetables washed in tap water can be a hidden source of contamination.</p>
 <h2>Why Water Quality Varies</h2>
-<p>Infrastructure investment, geographic water sources, climate, and regulatory standards all play a role. Developed countries with cold climates and modern treatment plants tend to have the safest tap water. Developing countries with older infrastructure, warmer climates, and less regulation face higher contamination risks from bacteria, heavy metals, and agricultural runoff.</p>
+<p>Infrastructure, water sources, climate, and regulatory standards all play a role. Country-level labels are only a starting point: a city, hotel, rural area, or current boil-water notice can change the practical advice. Check local public-health guidance for the exact destination and date.</p>
 <h2>Staying Healthy While Traveling</h2>
-<p>Your body is not adapted to local bacteria in a new place, so even water that is technically safe for locals can cause digestive issues for visitors. Start with bottled or filtered water and give your system time to adjust. A reusable filtered water bottle is one of the best investments you can make for travel health and reducing plastic waste.</p>
+<p>Travelers can experience stomach illness for many reasons, and a change in water is only one possibility. If you are unsure, use sealed, treated, or boiled water and follow local advisories. People who are pregnant, immunocompromised, or managing a medical condition should ask a clinician for destination-specific advice.</p>
+<h2>Sources, Methodology &amp; Update Note</h2>
+<p>This country-level guide is a quick educational reference, not a real-time water-quality test. It combines broad destination classifications with public-health travel guidance. For current conditions, check the <a href="https://wwwnc.cdc.gov/travel/yellowbook/2024/environmental-hazards-and-risks/water-disinfection-for-travelers" rel="noopener noreferrer" target="_blank">CDC Yellow Book guidance on water disinfection</a>, <a href="https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-hygiene/monitoring" rel="noopener noreferrer" target="_blank">WHO drinking-water monitoring resources</a>, and local utility or health-authority notices.</p>
+<p><strong>Last reviewed:</strong> September 2026. Conditions can change quickly, so verify local advisories before drinking tap water or using it for ice and brushing teeth.</p>
 </div>
 </main>
 <aside class="sidebar">
@@ -321,7 +324,7 @@ function loadHtml2Canvas(callback) {
       const cName = document.getElementById('countryInput').selectedOptions[0].text;
 
       if (val.startsWith("safe")) {
-        showResult("Tap Water is SAFE to Drink! ", "Municipal tap water meets high purification standards. You can drink directly from the faucet without filtering.", "Safe To Drink ", "100% Safe Tap Water", cName);
+        showResult("Tap Water Usually Meets Local Standards ", "This destination is commonly rated as lower risk, but conditions can vary by municipality, building plumbing, and current advisories. Check local guidance before drinking.", "Lower-Risk Status ", "Tap Water Guidance", cName);
       } else {
         showResult("DO NOT Drink Tap Water Unfiltered ", "Tap water in this destination may contain bacteria or heavy minerals. Use sealed bottled water, UV purifiers, or boil water before consumption.", "Use Bottled Water ", "Unsafe / Filter Needed", cName);
       }

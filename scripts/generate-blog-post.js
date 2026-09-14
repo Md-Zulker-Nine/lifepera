@@ -81,6 +81,18 @@ const TOOL_MAP = [
   { keywords: ['google','data','privacy','track'], tool: 'tool-google-data.html', name: 'Google Data Privacy Check' },
 ];
 
+function editorialTrustNote(category) {
+  const cat = (category || '').toLowerCase();
+  if (cat.includes('finance')) return '';
+  if (cat.includes('travel') || cat.includes('safety') || cat.includes('passport')) {
+    return `<div class="editorial-trust-note"><strong>Sources &amp; update note:</strong> This travel guide is for general planning, not a guarantee of conditions or entry. We use official government and public-health guidance where available; verify current advisories and destination rules before acting. <strong>Last reviewed:</strong> September 2026. <a href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/" rel="noopener noreferrer" target="_blank">U.S. travel advisories</a> · <a href="https://wwwnc.cdc.gov/travel" rel="noopener noreferrer" target="_blank">CDC Travelers' Health</a></div>`;
+  }
+  if (cat.includes('psychology') || cat.includes('relationship') || cat.includes('wellbeing')) {
+    return `<div class="editorial-trust-note"><strong>Sources &amp; update note:</strong> This article translates general psychology and relationship concepts into practical reflection prompts; it is not diagnosis, therapy, or individualized advice. We prefer established research and public-health sources, and revise wording when guidance changes. <strong>Last reviewed:</strong> September 2026. <a href="https://www.apa.org/" rel="noopener noreferrer" target="_blank">American Psychological Association</a> · <a href="https://www.cdc.gov/intimate-partner-violence/about/index.html" rel="noopener noreferrer" target="_blank">CDC relationship-safety resources</a></div>`;
+  }
+  return '';
+}
+
 function wordCount(html) {
   return (html.replace(/<[^>]+>/g, '').match(/\S+/g) || []).length;
 }
@@ -294,6 +306,7 @@ h1{font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem;letter-s
 .body strong{font-weight:700}
 .body ul{margin:1rem 0 1.5rem 1.5rem}
 .body li{margin-bottom:.5rem;line-height:1.7}
+.editorial-trust-note{background:#f1f3f4;border-left:4px solid var(--blue);padding:1rem 1.2rem;margin:2rem 0;font-size:.92rem;color:var(--muted);line-height:1.6}.editorial-trust-note a{font-weight:600}
 .cta{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2rem 0;text-align:center}
 .cta h3{margin-bottom:.5rem;font-size:1.2rem}
 .cta p{font-size:.95rem;color:var(--muted);margin-bottom:1rem}
@@ -333,6 +346,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="meta"><span>Zulker Nine</span><span>·</span><span>${niceDate}</span></div>
 <div class="ad-slot" style="display:none">Reserved for AdSense</div>
 <div class="body">${content}</div>
+${editorialTrustNote(topic.cat)}
 
 <div class="author-bio" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2rem 0;display:flex;gap:1.5rem;align-items:flex-start">
   <img src="/assets/author-zulker-nine.webp" alt="Zulker Nine" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0">
