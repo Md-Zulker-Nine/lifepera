@@ -239,7 +239,7 @@ function renderPage(page) {
     html += '<div style="flex:1 0 100%;font-size:.9rem;color:#5f6368">Filtered by <strong>' + activeFilter + '</strong> (' + filtered.length + ' articles) &middot; <a href="blog" onclick="filterByCat(\'' + activeFilter + '\');return false;" style="cursor:pointer;font-weight:600">Show all</a></div>';
   }
   pagePosts.forEach(function(p) {
-    html += '<a href="' + p.file + '" class="post-card"><div class="post-icon">' + p.emoji + '</div><div class="post-body"><div class="post-cat">' + p.cat + '</div><div class="post-title">' + p.title + '</div><div class="post-meta">By Zulker Nine · ' + p.date + '</div></div></a>';
+    html += '<a href="' + p.file.replace(/\.html$/, '') + '" class="post-card"><div class="post-icon">' + p.emoji + '</div><div class="post-body"><div class="post-cat">' + p.cat + '</div><div class="post-title">' + p.title + '</div><div class="post-meta">By Zulker Nine · ' + p.date + '</div></div></a>';
   });
   grid.innerHTML = html;
 

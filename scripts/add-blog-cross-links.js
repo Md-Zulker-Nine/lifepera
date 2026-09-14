@@ -40,7 +40,7 @@ for (const post of posts) {
   if (related.length === 0) continue;
 
   const cards = related.map(p =>
-    `<a href="/${p.file}" class="maylike-card"><div class="mc-cat">${p.cat || ''}</div><div class="mc-title">${p.title}</div></a>`
+    `<a href="/${p.file.replace(/\.html$/, '')}" class="maylike-card"><div class="mc-cat">${p.cat || ''}</div><div class="mc-title">${p.title}</div></a>`
   ).join('\n    ');
 
   const widget = `<div class="maylike">

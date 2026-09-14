@@ -372,7 +372,7 @@ ${findRelatedTools(topic).map(t => `<li><a href="/${t.tool}">${t.name} →</a></
 <div class="maylike">
 <h3>You may also like</h3>
 <div class="maylike-grid">
-${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p.file}" class="maylike-card"><div class="mc-cat">${p.cat || ''}</div><div class="mc-title">${p.title}</div></a>`).join('\n')}
+${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p.file.replace(/\.html$/, '')}" class="maylike-card"><div class="mc-cat">${p.cat || ''}</div><div class="mc-title">${p.title}</div></a>`).join('\n')}
 </div>
 </div>
 </div>

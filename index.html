@@ -422,7 +422,7 @@ function filterTools(){const q=document.getElementById('heroSearch').value.toLow
 function clearSearch(){document.getElementById('heroSearch').value='';filterTools()}
 function setConsent(choice){var normalized=choice==='all'?'all':(choice==='essential'?'essential':'reject');localStorage.setItem('lifeperaConsent',normalized);document.getElementById('cookieBar').style.display='none';}
 (function(){if(!localStorage.getItem('lifeperaConsent'))document.getElementById('cookieBar').style.display='block'})();
-async function loadLatest(){try{const r=await fetch('blog-index.json');if(!r.ok)return;const posts=await r.json();const list=document.getElementById('latestBlogList');if(!posts||posts.length===0)return;let html='';posts.slice(0,5).forEach(function(p){html+='<li><a href="'+p.file+'" style="font-size:.88rem;color:var(--text-main);font-weight:400;line-height:1.4;display:block">'+p.title+'</a></li>'});list.innerHTML=html}catch(e){}}loadLatest();
+async function loadLatest(){try{const r=await fetch('blog-index.json');if(!r.ok)return;const posts=await r.json();const list=document.getElementById('latestBlogList');if(!posts||posts.length===0)return;let html='';posts.slice(0,5).forEach(function(p){html+='<li><a href="'+p.file.replace(/\.html$/,'')+'" style="font-size:.88rem;color:var(--text-main);font-weight:400;line-height:1.4;display:block">'+p.title+'</a></li>'});list.innerHTML=html}catch(e){}}loadLatest();
 </script>
 <script src="/cookie-consent.js"></script>
 </body>
