@@ -6,7 +6,6 @@
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 <meta content="LifePera — 36 free premium data-driven tools for real life decisions. Visa checker, salary comparator, personality quizzes, career calculators, and more. No signup required." name="description"/>
 <meta content="free online tools, life decisions, personality quiz, salary calculator, visa checker, relationship quiz, career tools" name="keywords"/>
-<link crossorigin="" href="https://www.googletagmanager.com" rel="preconnect"/>
 <link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://lifepera.com/" rel="canonical"/>
@@ -20,15 +19,6 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="LifePera — Tools That Actually Matter" name="twitter:title"/>
 <meta content="36 free data-driven tools for real life decisions. No signups required." name="twitter:description"/>
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SBT0X71YW2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SBT0X71YW2');
-</script>
 <title>LifePera | Tools That Actually Matter</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -434,5 +424,6 @@ function setConsent(choice){var normalized=choice==='all'?'all':(choice==='essen
 (function(){if(!localStorage.getItem('lifeperaConsent'))document.getElementById('cookieBar').style.display='block'})();
 async function loadLatest(){try{const r=await fetch('blog-index.json');if(!r.ok)return;const posts=await r.json();const list=document.getElementById('latestBlogList');if(!posts||posts.length===0)return;let html='';posts.slice(0,5).forEach(function(p){html+='<li><a href="'+p.file+'" style="font-size:.88rem;color:var(--text-main);font-weight:400;line-height:1.4;display:block">'+p.title+'</a></li>'});list.innerHTML=html}catch(e){}}loadLatest();
 </script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>

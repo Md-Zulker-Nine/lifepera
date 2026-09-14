@@ -4,7 +4,9 @@
   "description": "Automated blog post generator using Gemini API and GitHub Actions",
   "main": "generate.js",
   "scripts": {
-    "start": "node generate.js"
+    "start": "node generate.js",
+    "check:consent": "node scripts/check-consent-coverage.js",
+    "check:js": "node --check cookie-consent.js && node --check scripts/check-consent-coverage.js && node --check scripts/generate-blog-post.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0"

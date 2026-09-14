@@ -265,7 +265,6 @@ Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No ht
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="${topic.title} — LifePera"/>
 <meta name="twitter:description" content="${topic.title} — Read the full guide on LifePera."/>
-<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"${topic.title}","author":{"@type":"Person","name":"Zulker Nine"},"publisher":{"@type":"Organization","name":"LifePera","url":"https://lifepera.com"},"datePublished":"${dateStr}","description":"${topic.title}"}
@@ -398,6 +397,7 @@ ${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p
 <div class="footer-disc">Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.</div>
 <div class="footer-bot"><span>&copy; 2026 LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
 </footer>
+<script src="/cookie-consent.js"></script>
 </body></html>`;
 
   fs.writeFileSync(filename, html);
