@@ -349,7 +349,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="post-cat">${topic.cat}</div>
 <h1>${topic.title}</h1>
 <div class="meta"><span>Zulker Nine</span><span>·</span><span>${niceDate}</span></div>
-<div class="ad-slot" style="display:none">Reserved for AdSense</div>
+<div class="ad-slot" style="display:none"></div>
 <div class="body">${content}</div>
 ${editorialTrustNote(topic.cat)}
 

@@ -97,7 +97,7 @@ for (const [file, config] of Object.entries(TOOL_CATEGORIES)) {
   // Also update footer "Popular Tools" to include category-relevant tools
   const footerTools = config.related.slice(0, 3).map(r =>
     `<li><a href="${r.replace(/\.html$/, '')}">${TOOL_NAMES[r] || r}</a></li>`
-  ).join('\n<li><a href="tool-underpaid">Am I Underpaid?</a></li>\n');
+  ).join('\n');
 
   html = html.replace(
     /<h4>Popular Tools<\/h4>\s*<ul>[\s\S]*?<\/ul>/,
