@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/><meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<meta content="Does your zodiac sign actually match your personality? Take this dual test that compares your astrological profile against a scientific Big Five personality assessment. See where the stars align and where they definitely do not." name="description"/>
+<meta content="Use a zodiac element as a reflection prompt. This page does not administer a Big Five assessment or measure statistical overlap." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://lifepera.com/tool-zodiac" rel="canonical"/>
 <meta content="Zodiac vs Science Personality Test — LifePera" property="og:title"/>
-<meta content="Compare your astrological sign reading against a Big Five personality test." property="og:description"/>
+<meta content="Use a zodiac element as a reflection prompt. This page does not administer a Big Five assessment or measure statistical overlap." property="og:description"/>
 <meta content="https://lifepera.com/tool-zodiac" property="og:url"/>
 <meta content="website" property="og:type"/>
 <meta content="https://lifepera.com/og-image.svg" property="og:image"/>
@@ -106,7 +106,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </style>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": "https://lifepera.com/og-image.svg", "sameAs": ["https://github.com/Md-Zulker-Nine/lifepera"], "founder": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about"}, "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": "contact@lifepera.com", "availableLanguage": "English"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Zodiac vs Science Personality Test", "applicationCategory": "MedicalApplication", "operatingSystem": "Web Browser", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, "description": "Does your zodiac sign actually match your personality? Take this dual test that compares your astrological profile against a scientific Big Five personality assessment. See where the stars align and where they definitely do not.", "author": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about", "sameAs": ["https://github.com/Md-Zulker-Nine"], "description": "Founder of LifePera. Builds free, privacy-first decision tools for career, finance, travel, relationships, psychology, and culture."}, "publisher": {"@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": {"@type": "ImageObject", "url": "https://lifepera.com/og-image.svg", "width": 512, "height": 512}}, "featureList": ["Free forever - no signup required", "Privacy-first - all calculations run in your browser", "Data-backed - sourced from authoritative sources", "Globally inclusive - works for users worldwide"], "permissions": "No personal data collected", "disclaimer": "Educational and informational purposes only. Does not constitute professional financial, legal, medical, or career advice. Consult qualified professionals for important decisions."}</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": "https://lifepera.com/og-image.svg", "sameAs": ["https://github.com/Md-Zulker-Nine/lifepera"], "founder": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about"}, "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": "contact@lifepera.com", "availableLanguage": "English"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zodiac vs Science Personality Test","applicationCategory":"EducationalApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"description":"Use a zodiac element as a reflection prompt. This page does not administer a Big Five assessment or measure statistical overlap.","author":{"@type":"Person","name":"Zulker Nine","url":"https://lifepera.com/about","sameAs":["https://github.com/Md-Zulker-Nine"],"description":"Founder of LifePera. Builds free, privacy-first decision tools for career, finance, travel, relationships, psychology, and culture."},"publisher":{"@type":"Organization","name":"LifePera","url":"https://lifepera.com","logo":{"@type":"ImageObject","url":"https://lifepera.com/og-image.svg","width":512,"height":512}},"featureList":["Free to use - no signup required","Runs in your browser"],"permissions":"No personal data collected","disclaimer":"Educational and informational purposes only. Does not constitute professional financial, legal, medical, or career advice. Consult qualified professionals for important decisions."}</script></head>
 <body>
 <header>
 <div class="nav-container">
@@ -127,7 +127,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="tool-header">
 <div class="breadcrumb"><a href="/">Home</a> "º <a href="tools">Tools</a> "º Zodiac vs Science</div>
 <h1 class="tool-title">Zodiac vs Science Personality Test</h1>
-<p class="tool-subtitle">Take both a zodiac reading and a Big Five science personality test to compare their overlap.</p>
+<p class="tool-subtitle">Select a zodiac element for a reflection prompt. This is not a personality test or a scientific comparison.</p>
 </div>
 <div class="tool-canvas" id="app-container">
 <label class="tool-label">Select Your Zodiac Element</label>
@@ -137,7 +137,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <option value="air">Gemini, Libra, Aquarius (Air Element)</option>
 <option value="water">Cancer, Scorpio, Pisces (Water Element)</option>
 </select>
-<button class="tool-btn" onclick="runTool()">Calculate Overlap Score</button>
+<button class="tool-btn" onclick="runTool()">Show reflection prompt</button>
 <div class="tool-result-box" id="resultBox">
 <h3 id="resultHeadline" style="color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 0.5rem;">Calculating...</h3>
 <p id="resultText" style="color: var(--text-main); font-weight: 500; margin-bottom: 1.5rem;">Please wait.</p>
@@ -149,7 +149,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="banner-country" id="bannerCountry"></div>
 <div class="banner-hook" id="bannerHook"> Official Result</div>
 <div class="banner-result" id="bannerResult">Result Tier</div>
-<div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
+<div class="banner-subtext" id="bannerSubtext">Based on the selections entered on this page.</div>
 <div class="banner-watermark">Try this tool at lifepera.com</div>
 <div class="banner-url" id="bannerUrl">lifepera.com</div>
 </div>
@@ -168,14 +168,19 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </div>
 </div>
 <div class="tool-guide">
-<h2>Astrology Meets Psychological Science</h2>
-<p>We compare Western Sun-sign astrological profiles against empirical Big Five personality dimensions — openness, conscientiousness, extraversion, agreeableness, and neuroticism. While there is no scientific evidence that your birth month determines your personality, millions of people find meaning and insight in astrological frameworks. The tool lets you see both perspectives side by side.</p>
-<h2>The Forer Effect</h2>
-<p>Psychology explains why vague, positive astrological statements feel remarkably personal. Known as the Forer Effect (or Barnum Effect), people tend to accept broad personality descriptions as uniquely applicable to themselves. Statements like "you have a need for others to like you" or "you can be very self-critical" are general enough to fit almost anyone but specific enough to feel personal.</p>
-<h2>Why Astrology Persists</h2>
-<p>Even without scientific backing, astrology persists because it provides a framework for self-reflection, a sense of cosmic meaning, and a shared language for talking about personality. For many, it is less about prediction and more about introspection — a tool for thinking about who you are and how you relate to others, which has real psychological value regardless of the mechanism.</p>
-<h2>Using Both Lenses</h2>
-<p>You do not have to choose between astrology and psychology. The Big Five gives you a scientifically validated picture of your personality traits. Astrology gives you symbolic archetypes and narrative. Used together, they offer complementary perspectives — one rooted in data, the other in storytelling — and both can help you understand yourself a little better.</p>
+<h2>A symbolic prompt is not an assessment</h2>
+<p>This page groups sun signs into four traditional astrological elements. The grouping is a feature of the astrological framework; selecting it does not measure personality traits or show that birth timing causes them.</p>
+<h2>What a Big Five assessment involves</h2>
+<p>The Big Five describes five broad personality dimensions: openness, conscientiousness, extraversion, agreeableness, and negative emotionality (often called neuroticism). A single zodiac selection cannot assess these dimensions. This page does not administer a questionnaire or calculate a score.</p>
+<h2>Reflect without treating a label as a fact</h2>
+<p>If astrology is meaningful to you, use its language as a prompt to think about your own experiences. Decide which descriptions fit based on specific examples, and leave room for traits that do not fit. Do not treat an archetype as a diagnosis or prediction.</p>
+<h2>Keep evidence and symbolism distinct</h2>
+<p>A scientific comparison would need defined measures, suitable data, and a transparent method. No such comparison is performed here, so this tool makes no claim about overlap between zodiac signs and personality psychology.</p>
+<section data-editorial-section="additional-guidance">
+<h2>Astrology does not provide a scientific personality score</h2>
+<p>No percentage or overlap is calculated here. Astrology can be meaningful as a cultural or personal tradition, but it is not a substitute for evidence-based psychological assessment.</p>
+<p>If you enjoy the symbolism, use it as a reflection prompt and decide for yourself whether a description resonates. Avoid treating the result as a diagnosis, prediction, or objective measure of compatibility. For questions about mental health or personality assessment, consult an appropriately qualified professional.</p>
+</section>
 </div>
 </main>
 <aside class="sidebar">
@@ -191,7 +196,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="blog-widget">
 <h4>Related Articles</h4>
 <ul>
-<li><a href="/blog/post-2026-08-17-the-death-of-third-places-why-you-feel-so-lonely-and-how-to-">The Death of Third Places: Why You Feel So Lonely (And How to Reclaim Community)</a></li>
+<li><a href="/blog/post-2026-08-17-the-death-of-third-places-why-you-feel-so-lonely-and-how-to-">What Are Third Places, and How Can They Support Community?</a></li>
 <li><a href="/blog/post-2026-08-12-how-different-cultures-view-aging-and-what-we-can-learn">How Different Cultures View Aging and What We Can Learn</a></li>
 <li><a href="/blog/post-2026-08-11-cultural-faux-pas-to-avoid-in-the-middle-east">Cultural Faux Pas to Avoid in the Middle East</a></li>
 </ul>
@@ -202,8 +207,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-inner">
 <div class="footer-brand">
 <a class="logo" href="https://lifepera.com" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
-<p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
+<p>Free browser-based tools for real life decisions. No signup required.</p>
+<span class="trust"> Free tools | Privacy-conscious | No signup</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -249,20 +254,28 @@ function loadHtml2Canvas(callback) {
   function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
-    document.getElementById('resultHeadline').innerHTML = headline;
-    document.getElementById('resultText').innerHTML = details;
-    document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Zodiac vs Science Personality Test");
-    document.getElementById('bannerCountry').innerHTML = countryName || '';
-    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-zodiac";
-    document.getElementById('bannerSubtext').innerHTML = details;
+    document.getElementById('resultHeadline').textContent = headline;
+    document.getElementById('resultText').textContent = details;
+    document.getElementById('bannerResult').textContent = badge;
+    document.getElementById('bannerHook').textContent = " " + (cardTitle || "Zodiac vs Science Personality Test");
+    document.getElementById('bannerCountry').textContent = countryName || '';
+    document.getElementById('bannerUrl').textContent = "lifepera.com/tool-zodiac";
+    document.getElementById('bannerSubtext').textContent = details;
     currentShareText = "I just tested Zodiac vs Science Personality Test on LifePera: " + badge + "! Try yours here:";
   }
 
   
     function runTool() {
-      const z = document.getElementById('zodiac').value;
-      showResult("Astrology vs Science Overlap: 68% ", "Your astrological elemental profile shows a 68% statistical alignment with Big Five extraversion and openness traits!", "68% Overlap Score ", "Astrology & Science Match");
+      const element = document.getElementById('zodiac').value;
+      const prompts = {
+        fire: "What goal or activity gives you energy, and what evidence from your recent choices supports that?",
+        earth: "What routines or practical priorities matter to you, and when do you prefer flexibility instead?",
+        air: "Which conversations or ideas hold your attention, and how do you make space for other viewpoints?",
+        water: "What helps you notice and express your feelings, and what boundaries support you?",
+      };
+      const prompt = prompts[element];
+      if (!prompt) return;
+      showResult("A reflection prompt, not a score", prompt, "No personality score", "Zodiac reflection");
     }
     
 

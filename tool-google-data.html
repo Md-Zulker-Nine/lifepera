@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/><meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<meta content="Estimate your digital data footprint size and get actionable steps to reduce it." name="description"/>
+<meta content="Review whether Location History is enabled and find practical next steps for checking your Google privacy settings. This page cannot inspect account data." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://lifepera.com/tool-google-data" rel="canonical"/>
 <meta content="How Much Does Google Know About You? — LifePera" property="og:title"/>
-<meta content="Estimate your digital data footprint size and get actionable steps to reduce it." property="og:description"/>
+<meta content="Review whether Location History is enabled and find practical next steps for checking your Google privacy settings. This page cannot inspect account data." property="og:description"/>
 <meta content="https://lifepera.com/tool-google-data" property="og:url"/>
 <meta content="website" property="og:type"/>
 <meta content="https://lifepera.com/og-image.svg" property="og:image"/>
@@ -106,7 +106,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </style>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": "https://lifepera.com/og-image.svg", "sameAs": ["https://github.com/Md-Zulker-Nine/lifepera"], "founder": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about"}, "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": "contact@lifepera.com", "availableLanguage": "English"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "How Much Does Google Know About You?", "applicationCategory": "MedicalApplication", "operatingSystem": "Web Browser", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, "description": "Estimate your digital data footprint size and get actionable steps to reduce it.", "author": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about", "sameAs": ["https://github.com/Md-Zulker-Nine"], "description": "Founder of LifePera. Builds free, privacy-first decision tools for career, finance, travel, relationships, psychology, and culture."}, "publisher": {"@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": {"@type": "ImageObject", "url": "https://lifepera.com/og-image.svg", "width": 512, "height": 512}}, "featureList": ["Free forever - no signup required", "Privacy-first - all calculations run in your browser", "Data-backed - sourced from authoritative sources", "Globally inclusive - works for users worldwide"], "permissions": "No personal data collected", "disclaimer": "Educational and informational purposes only. Does not constitute professional financial, legal, medical, or career advice. Consult qualified professionals for important decisions."}</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": "https://lifepera.com/og-image.svg", "sameAs": ["https://github.com/Md-Zulker-Nine/lifepera"], "founder": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about"}, "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": "contact@lifepera.com", "availableLanguage": "English"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"How Much Does Google Know About You?","applicationCategory":"EducationalApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"description":"Review whether Location History is enabled and find practical next steps for checking your Google privacy settings. This page cannot inspect account data.","author":{"@type":"Person","name":"Zulker Nine","url":"https://lifepera.com/about","sameAs":["https://github.com/Md-Zulker-Nine"],"description":"Founder of LifePera. Builds free, privacy-first decision tools for career, finance, travel, relationships, psychology, and culture."},"publisher":{"@type":"Organization","name":"LifePera","url":"https://lifepera.com","logo":{"@type":"ImageObject","url":"https://lifepera.com/og-image.svg","width":512,"height":512}},"featureList":["Free to use - no signup required","Runs in your browser"],"permissions":"No personal data collected","disclaimer":"Educational and informational purposes only. Does not constitute professional financial, legal, medical, or career advice. Consult qualified professionals for important decisions."}</script></head>
 <body>
 <header>
 <div class="nav-container">
@@ -127,15 +127,16 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="tool-header">
 <div class="breadcrumb"><a href="/">Home</a> "º <a href="tools">Tools</a> "º Google Data Profile</div>
 <h1 class="tool-title">How Much Does Google Know About You?</h1>
-<p class="tool-subtitle">Answer questions about your digital habits to estimate your Google data profile size.</p>
+<p class="tool-subtitle">Use your Location History setting as a prompt for reviewing account controls. This page cannot access your account or estimate stored data.</p>
 </div>
 <div class="tool-canvas" id="app-container">
 <label class="tool-label">Do you keep Google Maps Location History enabled?</label>
-<select class="tool-select" id="gLoc">
-<option value="high">Yes - Always On (Tracks everywhere you go)</option>
-<option value="low">No - Paused or Disabled</option>
+<select class="tool-select" id="gLoc" required>
+<option disabled selected value="">Select the setting you want to review</option>
+<option value="high">Location History is enabled</option>
+<option value="low">Location History is paused or disabled</option>
 </select>
-<button class="tool-btn" onclick="runTool()">Estimate Google Data Size</button>
+<button class="tool-btn" onclick="runTool()">Show privacy review steps</button>
 <div class="tool-result-box" id="resultBox">
 <h3 id="resultHeadline" style="color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 0.5rem;">Calculating...</h3>
 <p id="resultText" style="color: var(--text-main); font-weight: 500; margin-bottom: 1.5rem;">Please wait.</p>
@@ -147,7 +148,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="banner-country" id="bannerCountry"></div>
 <div class="banner-hook" id="bannerHook"> Official Result</div>
 <div class="banner-result" id="bannerResult">Result Tier</div>
-<div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
+<div class="banner-subtext" id="bannerSubtext">Based on the selections entered on this page.</div>
 <div class="banner-watermark">Try this tool at lifepera.com</div>
 <div class="banner-url" id="bannerUrl">lifepera.com</div>
 </div>
@@ -166,14 +167,19 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </div>
 </div>
 <div class="tool-guide">
-<h2>Your Digital Footprint Explained</h2>
-<p>Google builds behavioral ad profiles based on location history, search logs, Chrome sync, and YouTube watch patterns. Most people do not realize just how much data is being collected — every search, every click, every route you navigate is stored and analyzed to build a detailed picture of who you are, what you care about, and what you are likely to buy.</p>
-<h2>Privacy Controls</h2>
-<p>Enabling Auto-Delete (3 months) and turning off Location History significantly reduces tracking. You can also review your Google Takeout data to see exactly what has been collected, and use the My Activity dashboard to delete specific items or entire date ranges. Taking even 15 minutes to review these settings can dramatically shrink your digital footprint.</p>
-<h2>What Google Knows About You</h2>
-<p>Your estimated age, gender, income bracket, interests, relationship status, places you visit regularly, what you watch, what you read, and even how long you look at certain types of content. This data is used to categorize you into marketing segments and serve targeted ads — but it can also be accessed by law enforcement or used in ways you did not consent to.</p>
-<h2>Taking Back Control</h2>
-<p>Start with Ad Settings to see your assigned interests and turn off ad personalization. Then review Location History, Web &amp; App Activity, and YouTube History. Set them all to auto-delete every 3 months. The goal is not to disappear from the internet — it is to make sure you are the one deciding what gets collected and for how long.</p>
+<h2>Account settings vary by service</h2>
+<p>Google account activity controls cover different services and data types. What is saved depends on which products you use and the settings applied to your account; a single Location History choice does not reveal a total amount or complete profile.</p>
+<h2>Review the controls directly</h2>
+<p>When signed in, review Google's current activity and privacy controls for Location History, Web &amp; App Activity, YouTube History, and ad personalization. Check the scope and effect of each setting before changing it; availability and names can vary by account and region.</p>
+<h2>Download and deletion are separate choices</h2>
+<p>Account download tools and activity controls serve different purposes. Review the data categories and date range before exporting or deleting anything, and store downloaded files carefully. This page does not request account access or process an export.</p>
+<h2>Use the selection as a reminder</h2>
+<p>The setting you select below changes only the guidance shown here. It does not connect to Google, verify your account configuration, measure tracking, or calculate a data footprint.</p>
+<section data-editorial-section="additional-guidance">
+<h2>Check account controls instead of trusting a size estimate</h2>
+<p>The result is a preset illustration, not an audit of your Google account or a measured amount of data. Stored information depends on the services you use, your settings, retention choices, and account history; this page cannot access or inspect any of that.</p>
+<p>To review actual account activity, open Google's privacy controls while signed in and inspect activity, location, and ad-personalization settings. Download or delete data only after reviewing what each control changes. Do not share passwords or account exports with this tool; it does not need them.</p>
+</section>
 </div>
 </main>
 <aside class="sidebar">
@@ -189,8 +195,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="blog-widget">
 <h4>Related Articles</h4>
 <ul>
-<li><a href="/blog/post-2026-08-20-the-convenience-trap-how-frictionless-living-is-quietly-drai">The Convenience Trap: How Frictionless Living Is Quietly Draining Your Wallet (And How to Reclaim Control)</a></li>
-<li><a href="/blog/post-2026-08-18-the-single-tax-how-living-alone-costs-you-thousands-and-how-">The Single Tax: How Living Alone Costs You Thousands (And How to Thrive on One Income)</a></li>
+<li><a href="/blog/post-2026-08-20-the-convenience-trap-how-frictionless-living-is-quietly-drai">How Convenience Spending Affects a Monthly Budget</a></li>
+<li><a href="/blog/post-2026-08-18-the-single-tax-how-living-alone-costs-you-thousands-and-how-">How to Budget for the Costs of Living Alone</a></li>
 <li><a href="/blog/post-2026-08-15-loud-budgeting-how-to-set-financial-boundaries-without-ruini">Loud Budgeting: How to Set Financial Boundaries Without Ruining Your Social Life</a></li>
 </ul>
 </div>
@@ -200,8 +206,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-inner">
 <div class="footer-brand">
 <a class="logo" href="https://lifepera.com" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
-<p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
+<p>Free browser-based tools for real life decisions. No signup required.</p>
+<span class="trust"> Free tools | Privacy-conscious | No signup</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -247,23 +253,29 @@ function loadHtml2Canvas(callback) {
   function showResult(headline, details, badge, cardTitle, countryName) {
     document.getElementById('resultBox').style.display = 'block';
     document.getElementById('bannerWrapper').style.display = 'flex';
-    document.getElementById('resultHeadline').innerHTML = headline;
-    document.getElementById('resultText').innerHTML = details;
-    document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "How Much Does Google Know About You?");
-    document.getElementById('bannerSubtext').innerHTML = details;
-    document.getElementById('bannerCountry').innerHTML = countryName || '';
-    document.getElementById('bannerUrl').innerHTML = "lifepera.com/tool-google-data";
+    document.getElementById('resultHeadline').textContent = headline;
+    document.getElementById('resultText').textContent = details;
+    document.getElementById('bannerResult').textContent = badge;
+    document.getElementById('bannerHook').textContent = " " + (cardTitle || "How Much Does Google Know About You?");
+    document.getElementById('bannerSubtext').textContent = details;
+    document.getElementById('bannerCountry').textContent = countryName || '';
+    document.getElementById('bannerUrl').textContent = "lifepera.com/tool-google-data";
     currentShareText = "I just tested How Much Does Google Know About You? on LifePera: " + badge + "! Try yours here:";
   }
 
   
     function runTool() {
       const loc = document.getElementById('gLoc').value;
-      let size = "4.5 GB", badge = "Extensive Ad Profile ";
-      if (loc === 'high') { size = "12.8 GB"; badge = "Deep Behavioral Profile "; }
-
-      showResult("Estimated Profile Size: " + size, `Google holds approximately ${size} of location data, search queries, and interest tags associated with your account.`, badge, "Profile Size: " + size);
+      if (!loc) {
+        showResult("Select a Location History setting", "Choose the setting you want to review. This page cannot confirm the setting in your account.", "Selection required", "Privacy review steps");
+        return;
+      }
+      const enabled = loc === 'high';
+      const status = enabled ? "You selected that Location History is enabled." : "You selected that Location History is paused or disabled.";
+      const nextStep = enabled
+        ? "If you do not want this activity saved, review the Location History control in your Google Account and check which devices or services it covers."
+        : "Review the Google Account activity controls for other services too; this selection does not confirm their status.";
+      showResult("Review your Google privacy settings", `${status} ${nextStep} This page cannot see your account or estimate a data amount.`, "Account not checked", "Privacy review steps");
     }
     
 

@@ -1,15 +1,7 @@
 const fs = require('fs');
 
 function editorialTrustNote(category) {
-  const cat = (category || '').toLowerCase();
-  if (cat.includes('finance')) return '';
-  if (cat.includes('travel') || cat.includes('safety') || cat.includes('passport')) {
-    return `<div class="editorial-trust-note"><strong>Sources &amp; update note:</strong> This travel guide is for general planning, not a guarantee of conditions or entry. We use official government and public-health guidance where available; verify current advisories and destination rules before acting. <strong>Last reviewed:</strong> September 2026. <a href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/" rel="noopener noreferrer" target="_blank">U.S. travel advisories</a> · <a href="https://wwwnc.cdc.gov/travel" rel="noopener noreferrer" target="_blank">CDC Travelers' Health</a></div>`;
-  }
-  if (cat.includes('psychology') || cat.includes('relationship') || cat.includes('wellbeing')) {
-    return `<div class="editorial-trust-note"><strong>Sources &amp; update note:</strong> This article translates general psychology and relationship concepts into practical reflection prompts; it is not diagnosis, therapy, or individualized advice. We prefer established research and public-health sources, and revise wording when guidance changes. <strong>Last reviewed:</strong> September 2026. <a href="https://www.apa.org/" rel="noopener noreferrer" target="_blank">American Psychological Association</a> · <a href="https://www.cdc.gov/intimate-partner-violence/about/index.html" rel="noopener noreferrer" target="_blank">CDC relationship-safety resources</a></div>`;
-  }
-  return '';
+  return `<div class="editorial-trust-note"><strong>Editorial note:</strong> This article is published by LifePera. Older articles have not all been individually reviewed; see the <a href="/about#editorial">editorial policy</a> for details.</div>`;
 }
 const path = require('path');
 
