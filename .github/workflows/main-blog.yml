@@ -1,40 +1,57 @@
-name: Auto Blog Post Generator
+name: Generate editorial blog draft
 
 on:
   schedule:
-    - cron: '0 6 * * *'    # 6 AM UTC
+    - cron: '0 6 * * *'
   workflow_dispatch:
+    inputs:
+      title:
+        description: Topic for a draft (not a publishing request)
+        required: true
+        type: string
+      category:
+        description: Editorial category
+        required: false
+        type: string
+      keywords:
+        description: Reader questions or specific angles to cover
+        required: false
+        type: string
+
+permissions:
+  contents: read
 
 jobs:
-  generate-post:
+  generate-draft:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Generate blog post with Gemini
+      - name: Select scheduled editorial topic
+        id: topic
+        if: github.event_name == 'schedule'
+        run: node scripts/select-blog-topic.js
+
+      - name: Generate unpublished draft
+        if: github.event_name != 'schedule' || steps.topic.outputs.run == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BLOG_TOPIC: ${{ github.event_name == 'schedule' && steps.topic.outputs.title || inputs.title }}
+          BLOG_CATEGORY: ${{ github.event_name == 'schedule' && steps.topic.outputs.category || inputs.category }}
+          BLOG_KEYWORDS: ${{ github.event_name == 'schedule' && steps.topic.outputs.keywords || inputs.keywords }}
         run: node scripts/generate-blog-post.js
 
-      - name: Regenerate dynamic sitemap
-        if: always()
-        run: node scripts/generate-sitemap.js
-
-      - name: Commit and push new blog post
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "LifePera Auto Blog"
-          git add .
-          git diff --staged --quiet || git commit -m "Auto blog post: $(date +'%Y-%m-%d %H:%M')"
-          git push
+      - name: Upload draft for editorial review
+        if: github.event_name != 'schedule' || steps.topic.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-blog-draft
+          path: drafts/*.html
+          if-no-files-found: error
+          retention-days: 14

@@ -1,440 +1,185 @@
 const fs = require('fs');
+const path = require('path');
+
 const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) { console.error('GEMINI_API_KEY missing'); process.exit(1); }
+if (!apiKey) throw new Error('GEMINI_API_KEY is required.');
 
-const TOPICS = [
-  { title: "10 Cultural Mistakes Tourists Make in Thailand", cat: "Culture · Travel", emoji: "🇹🇭", keywords: "thailand culture travel mistakes tourists" },
-  { title: "How to Know if You're Being Underpaid in 2026", cat: "Career · Finance", emoji: "💰", keywords: "underpaid salary negotiation career" },
-  { title: "What Your Attachment Style Says About Your Communication", cat: "Relationships · Psychology", emoji: "🧠", keywords: "attachment style relationships communication" },
-  { title: "Visa-Free Countries You Probably Didn't Know About", cat: "Travel · Passport", emoji: "✈️", keywords: "visa free travel passport countries" },
-  { title: "7 Signs You're in a Toxic Workplace (And What to Do)", cat: "Career · Wellbeing", emoji: "⚠️", keywords: "toxic workplace signs career mental health" },
-  { title: "The Psychology Behind Why Relationships Repeat Patterns", cat: "Psychology · Relationships", emoji: "🔄", keywords: "relationship patterns psychology attachment" },
-  { title: "How Rich Are You Really? A Global Perspective on Income", cat: "Finance · Global", emoji: "📊", keywords: "global income wealth comparison finance" },
-  { title: "Lucky Numbers Around the World: What Different Cultures Believe", cat: "Culture · Numerology", emoji: "🔢", keywords: "lucky numbers culture numerology worldwide" },
-  { title: "Email Mistakes That Make You Sound Passive-Aggressive", cat: "Communication · Career", emoji: "✉️", keywords: "email tone passive aggressive professional" },
-  { title: "The Most Powerful Passports in the World Right Now", cat: "Travel · Global", emoji: "🛂", keywords: "powerful passports visa free travel 2026" },
-  { title: "Should You Quit Your Job? 10 Questions to Ask Yourself", cat: "Career · Decision", emoji: "🚪", keywords: "quit job career decision change work" },
-  { title: "What Gaslighting Really Looks Like in Relationships", cat: "Relationships · Psychology", emoji: "👁️", keywords: "gaslighting relationships toxic patterns" },
-  { title: "Best Time to Visit Japan: Month by Month Guide", cat: "Travel · Japan", emoji: "🇯🇵", keywords: "best time visit japan travel guide seasons" },
-  { title: "How Your Name Sounds in Different Languages", cat: "Culture · Language", emoji: "🔤", keywords: "name meaning cultures languages global" },
-  { title: "Understanding the 4 Attachment Styles and How They Affect You", cat: "Psychology · Relationships", emoji: "🔗", keywords: "4 attachment styles secure anxious avoidant" },
-  { title: "Freelance vs Full-Time: Which Actually Pays More in 2026?", cat: "Career · Finance", emoji: "💻", keywords: "freelance vs full time salary comparison 2026" },
-  { title: "Can You Drink the Tap Water? A Guide for 50 Countries", cat: "Travel · Safety", emoji: "🚰", keywords: "tap water safety countries travel guide" },
-  { title: "Why Your Emotional Intelligence Matters More Than Your IQ", cat: "Psychology · Self-Growth", emoji: "❤️", keywords: "emotional intelligence EQ IQ psychology" },
-  { title: "Cultural Faux Pas to Avoid in the Middle East", cat: "Culture · Travel", emoji: "🧭", keywords: "middle east culture travel mistakes etiquette" },
-  { title: "How to Identify Your Core Values and Use Them to Make Better Decisions", cat: "Psychology · Self-Discovery", emoji: "✨", keywords: "core values identify decision making life" },
-  { title: "The Science Behind Why Breakups Hurt So Much", cat: "Relationships · Psychology", emoji: "💔", keywords: "breakup science psychology attachment healing" },
-  { title: "10 Signs You Have an Anxious Attachment Style", cat: "Relationships · Psychology", emoji: "📌", keywords: "anxious attachment style signs relationships" },
-  { title: "What Breadcrumbing Looks Like (And Why It Keeps Happening)", cat: "Relationships · Dating", emoji: "🍞", keywords: "breadcrumbing dating relationships signs" },
-  { title: "How Different Cultures View Aging and What We Can Learn", cat: "Culture · Lifestyle", emoji: "⏳", keywords: "aging cultures perspective life stages global" },
-  { title: "Travel Budget Reality Check: What Things Actually Cost", cat: "Travel · Finance", emoji: "💵", keywords: "travel budget real costs destinations finance" },
-  { title: "Digital Nomad Burnout: When Freedom Becomes Loneliness", cat: "Travel · Lifestyle", emoji: "🧳", keywords: "digital nomad burnout remote work loneliness" },
-  { title: "Why Sharing Your True Self Feels Terrifying (And How to Overcome It)", cat: "Psychology · Relationships", emoji: "🧠", keywords: "vulnerability fear sharing emotions psychology" },
-  { title: "Career Cushioning: Why Everyone Is Quietly Building a Backup Plan", cat: "Career · Wellbeing", emoji: "💼", keywords: "career cushioning backup plan job security" },
-  { title: "The Hidden Epidemic of Financial Infidelity in Relationships", cat: "Finance · Relationships", emoji: "💳", keywords: "financial infidelity hidden money relationships" },
-  { title: "How to Take a Mini-Retirement Without Going Broke", cat: "Career · Finance", emoji: "🌴", keywords: "mini retirement mid career break finance planning" },
-  { title: "Why Making More Money Isn't Making You Richer (And How to Fix It)", cat: "Finance · Lifestyle", emoji: "💸", keywords: "lifestyle creep income inflation spending habits" },
-  { title: "High-Functioning Anxiety: The Silent Epidemic Among High Achievers", cat: "Psychology · Wellbeing", emoji: "⚡", keywords: "high functioning anxiety burnout performance masking" }
-];
+const title = (process.env.BLOG_TOPIC || '').trim();
+const category = (process.env.BLOG_CATEGORY || '').trim() || 'General';
+const keywords = (process.env.BLOG_KEYWORDS || '').trim();
+if (!title) throw new Error('BLOG_TOPIC is required; generated posts are editorial drafts only.');
 
-const MODELS = ['gemini-3.6-flash', 'gemini-3.5-flash-lite'];
-const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-const MIN_WORDS = 800;
-const MAX_ATTEMPTS = 3;
+const models = ['gemini-3.6-flash', 'gemini-3.5-flash-lite'];
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-// Keep the fallback icon renderable even if a Windows/legacy encoding step corrupts emoji.
-function safePostIcon(icon) {
-  return /[\u00c2\u00c3\u00e2\u00f0\u0178\uFFFD]/.test(icon || '') ? '&#8226;' : icon;
+function validateTitle(value) {
+  if (value.length < 12 || value.length > 100) {
+    throw new Error('Choose a specific, readable title between 12 and 100 characters.');
+  }
+  if (/\bstealth[- ]draining\b|\bthe\s+.+?\s+trap\s*:|\bthe\s+.+?\s+epidemic\s*:|\band how to reclaim\b/i.test(value)) {
+    throw new Error('This title matches a repeatedly used headline formula. Use a specific reader question or task instead.');
+  }
 }
 
-const TOOL_MAP = [
-  { keywords: ['toxic workplace','boss','colleague','office'], tool: 'tool-toxic-workplace.html', name: 'Toxic Workplace Checklist' },
-  { keywords: ['toxic','gaslight','manipulate','red flag','abus'], tool: 'tool-toxic-relationship.html', name: 'Toxic Relationship Checker' },
-  { keywords: ['travel budget','cost','price','afford'], tool: 'tool-travel-budget.html', name: 'Travel Budget Planner' },
-  { keywords: ['solo travel','safety','alone','backpack'], tool: 'tool-solo-safety.html', name: 'Solo Travel Safety Score' },
-  { keywords: ['tap water','drink','water','safety','destination'], tool: 'tool-tap-water.html', name: 'Tap Water Safety Checker' },
-  { keywords: ['emotional intelligence','eq','iq','empathy'], tool: 'tool-eq.html', name: 'Emotional Intelligence Quiz' },
-  { keywords: ['core values','values','decision','purpose'], tool: 'tool-core-values.html', name: 'Core Values Identifier' },
-  { keywords: ['cognitive','bias','thinking','decision'], tool: 'tool-cognitive-bias.html', name: 'Cognitive Bias Decoder' },
-  { keywords: ['culture map','cross-cultural','global','international'], tool: 'tool-culture-map.html', name: 'Culture Map Quiz' },
-  { keywords: ['age culture','aging','elder','youth'], tool: 'tool-age-cultures.html', name: 'Age Across Cultures Quiz' },
-  { keywords: ['comm clash','conflict','miscommunic','argue'], tool: 'tool-comm-clash.html', name: 'Communication Clash Detector' },
-  { keywords: ['name peak','peak','viral','trend'], tool: 'tool-name-peak.html', name: 'Name Peak Popularity' },
-  { keywords: ['rare birthday','birthday','date','birth'], tool: 'tool-rare-birthday.html', name: 'Rare Birthday Finder' },
-  { keywords: ['country match','match','where live','relocate'], tool: 'tool-country-match.html', name: 'Country Match Finder' },
-  { keywords: ['era born','historical','era','time'], tool: 'tool-era-born.html', name: 'Which Era Were You Born In?' },
-  { keywords: ['language kit','learn','polyglot','alphabet'], tool: 'tool-language-kit.html', name: 'Language Learning Kit' },
-  { keywords: ['name','meaning','language','culture'], tool: 'tool-name-meaning.html', name: 'Name Meaning Explorer' },
-  { keywords: ['underpaid','salary','pay','income','earn','wage'], tool: 'tool-underpaid.html', name: 'Am I Underpaid? Analyzer' },
-  { keywords: ['job','quit','career','burnout'], tool: 'tool-quit-job.html', name: 'Should I Quit My Job?' },
-  { keywords: ['attachment','relationship','anxious','avoidant','partner'], tool: 'tool-attachment.html', name: 'Attachment Style Quiz' },
-  { keywords: ['visa','passport','travel','country','countries'], tool: 'tool-visa.html', name: 'Visa-Free Travel Checker' },
-  { keywords: ['rich','wealth','income','money','global','afford'], tool: 'tool-how-rich.html', name: 'How Rich Am I? Comparator' },
-  { keywords: ['breakup','heartbreak','healing','loss','grief'], tool: 'tool-breakup.html', name: 'Breakup Recovery Guide' },
-  { keywords: ['email','tone','passive','aggressive','communication'], tool: 'tool-email-tone.html', name: 'Email Tone Analyzer' },
-  { keywords: ['breadcrumb','dating','texting','ghost'], tool: 'tool-breadcrumbing.html', name: 'Breadcrumbing Detector' },
-  { keywords: ['lucky','number','numerology','belief'], tool: 'tool-lucky.html', name: 'Lucky Number Generator' },
-  { keywords: ['japan','visit','travel','season','best time'], tool: 'tool-best-visit.html', name: 'Best Time to Visit Japan' },
-  { keywords: ['freelance','full-time','self-employ','gig'], tool: 'tool-freelance.html', name: 'Freelance vs Full-Time Calculator' },
-  { keywords: ['zodiac','horoscope','astrology','birth'], tool: 'tool-zodiac.html', name: 'Zodiac Personality Decoder' },
-  { keywords: ['introvert','extrovert','personality','social'], tool: 'tool-introvert.html', name: 'Introvert/Extrovert Scale' },
-  { keywords: ['friend','friendship','social','connection'], tool: 'tool-friendship.html', name: 'Friendship Compatibility Quiz' },
-  { keywords: ['cultural','faux pas','etiquette','mistake'], tool: 'tool-cultural.html', name: 'Cultural Faux Pas Guide' },
-  { keywords: ['generation','gen z','millennial','boomer'], tool: 'tool-generation.html', name: 'Generation Personality Quiz' },
-  { keywords: ['text','texting','reply','message'], tool: 'tool-texting.html', name: 'Texting Style Analyzer' },
-  { keywords: ['detox','digital','screen','phone'], tool: 'tool-detox.html', name: 'Digital Detox Planner' },
-  { keywords: ['google','data','privacy','track'], tool: 'tool-google-data.html', name: 'Google Data Privacy Check' },
-];
-
-function editorialTrustNote(category) {
-  const cat = (category || '').toLowerCase();
-  if (cat.includes('finance')) return '';
-  if (cat.includes('travel') || cat.includes('safety') || cat.includes('passport')) {
-    return `<div class="editorial-trust-note"><strong>Sources &amp; update note:</strong> This travel guide is for general planning, not a guarantee of conditions or entry. We use official government and public-health guidance where available; verify current advisories and destination rules before acting. <strong>Last reviewed:</strong> September 2026. <a href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/" rel="noopener noreferrer" target="_blank">U.S. travel advisories</a> · <a href="https://wwwnc.cdc.gov/travel" rel="noopener noreferrer" target="_blank">CDC Travelers' Health</a></div>`;
-  }
-  if (cat.includes('psychology') || cat.includes('relationship') || cat.includes('wellbeing')) {
-    return `<div class="editorial-trust-note"><strong>Sources &amp; update note:</strong> This article translates general psychology and relationship concepts into practical reflection prompts; it is not diagnosis, therapy, or individualized advice. We prefer established research and public-health sources, and revise wording when guidance changes. <strong>Last reviewed:</strong> September 2026. <a href="https://www.apa.org/" rel="noopener noreferrer" target="_blank">American Psychological Association</a> · <a href="https://www.cdc.gov/intimate-partner-violence/about/index.html" rel="noopener noreferrer" target="_blank">CDC relationship-safety resources</a></div>`;
-  }
-  return '';
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  })[character]);
 }
 
 function wordCount(html) {
-  return (html.replace(/<[^>]+>/g, '').match(/\S+/g) || []).length;
+  return (html.replace(/<[^>]+>/g, ' ').match(/\S+/g) || []).length;
 }
 
-function findRelatedTools(topic) {
-  const text = (topic.title + ' ' + topic.keywords + ' ' + topic.cat).toLowerCase();
-  const matches = [];
-  for (const entry of TOOL_MAP) {
-    if (entry.keywords.some(kw => text.includes(kw))) {
-      matches.push(entry);
-      if (matches.length >= 2) break;
-    }
+function validateBody(html) {
+  const tags = html.match(/<\/?[^>]+>/g) || [];
+  const allowedTags = new Set(['<h2>', '</h2>', '<p>', '</p>', '<ul>', '</ul>', '<li>', '</li>', '<strong>', '</strong>', '<em>', '</em>']);
+  if (tags.some(tag => !allowedTags.has(tag.trim().toLowerCase()))) {
+    throw new Error('The draft contains unsupported HTML; refusing to save it.');
   }
-  if (matches.length < 2) {
-    const fallback = [
-      { tool: 'tool-how-rich.html', name: 'How Rich Am I?' },
-      { tool: 'tool-visa.html', name: 'Visa-Free Travel Checker' },
-      { tool: 'tool-attachment.html', name: 'Attachment Style Quiz' },
-    ];
-    for (const fb of fallback) {
-      if (!matches.find(m => m.tool === fb.tool)) matches.push(fb);
-      if (matches.length >= 2) break;
-    }
+
+  const headings = [...html.matchAll(/<h2>([\s\S]*?)<\/h2>/gi)]
+    .map(match => match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase());
+  const uniqueHeadings = new Set(headings);
+  const words = wordCount(html);
+  if (uniqueHeadings.size < 4 || words < 700) {
+    throw new Error(`Draft quality gate failed: ${words} words and ${uniqueHeadings.size} distinct section headings (need at least 700 words and 4 distinct headings).`);
   }
-  return matches;
+  if (headings.some(heading => /^(?:introduction|overview|conclusion|final thoughts|summary)$/i.test(heading))) {
+    throw new Error('Draft quality gate failed: replace generic section headings with headings specific to the reader’s question.');
+  }
 }
 
-async function callGemini(payload) {
-  for (const model of MODELS) {
+function getGroundedSources(candidate) {
+  const chunks = candidate.groundingMetadata?.groundingChunks || [];
+  const unique = new Map();
+  for (const chunk of chunks) {
+    const web = chunk.web;
+    if (!web?.uri) continue;
+    let url;
+    try {
+      url = new URL(web.uri);
+    } catch {
+      continue;
+    }
+    if (url.protocol !== 'https:') continue;
+    unique.set(url.href, { title: web.title || url.hostname, url: url.href });
+  }
+  return [...unique.values()];
+}
+
+async function callGemini(prompt) {
+  let lastError;
+  for (const model of models) {
     for (let attempt = 1; attempt <= 3; attempt++) {
       try {
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${apiKey}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { temperature: 0.5, maxOutputTokens: 8192 },
+            tools: [{ googleSearch: {} }],
+          }),
         });
-        const data = await res.json();
-        const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (res.ok && text) return text;
-        if ((res.status === 429 || (data.error?.message||'').includes('quota')) && attempt < 3) {
+        const data = await response.json();
+        const candidate = data.candidates?.[0];
+        const text = candidate?.content?.parts?.map(part => part.text || '').join('').trim();
+        if (response.ok && text) {
+          return { text, sources: getGroundedSources(candidate) };
+        }
+
+        lastError = new Error(data.error?.message || `Gemini request failed with HTTP ${response.status}.`);
+        if ((response.status === 429 || /quota/i.test(lastError.message)) && attempt < 3) {
           await sleep(20000);
           continue;
         }
         break;
-      } catch(e) { break; }
+      } catch (error) {
+        lastError = error;
+        if (attempt < 3) await sleep(5000);
+      }
     }
   }
-  throw new Error('All models failed to generate content');
+  throw new Error(`Content draft generation failed: ${lastError?.message || 'all configured models failed.'}`);
+}
+
+function renderSources(sources) {
+  return sources.map(source =>
+    `<li><a href="${escapeHtml(source.url)}" rel="noopener noreferrer" target="_blank">${escapeHtml(source.title)}</a></li>`
+  ).join('\n');
 }
 
 async function run() {
-  const indexFile = 'blog-index.json';
-  let posts = [];
-  if (fs.existsSync(indexFile)) {
-    try { posts = JSON.parse(fs.readFileSync(indexFile, 'utf8')); } catch(e) {}
+  validateTitle(title);
+  const prompt = `Prepare an editorial draft for the LifePera blog.
+
+Topic: ${title}
+Category: ${category}
+Keywords or reader questions: ${keywords || 'Choose a useful, specific reader question related to the topic.'}
+
+This is a draft for a human editor, not publish-ready copy. Provide original, practical help rather than generic filler: define the reader's problem, give a concrete decision process or checklist, explain limits and meaningful exceptions, and make clear what the reader can do next. Use only factual claims supported by the web search sources available to you. Do not invent statistics, studies, quotes, citations, firsthand experience, credentials, or claims that an editor has reviewed the article. Avoid diagnosis or individualized financial, legal, health, or immigration advice. If reliable evidence is unavailable, say what remains uncertain.
+
+Avoid repetitive headline and article formulas such as “The [X] Trap: Why ... (And How to Reclaim ...)”, “The [X] Epidemic”, “stealth-draining”, and generic lists of “signs” that do not add a useful method. Prefer the exact reader question, task, or decision in plain language. Vary section structure to fit the topic; do not reuse stock headings or repeat the title as the opening.
+
+Write 700-1100 useful words with at least four distinct, descriptive section headings tied to this topic. Use only these HTML tags: <h2>, <p>, <ul>, <li>, <strong>, <em>. Do not include a title, author byline, source list, markdown fences, or any other HTML in the body.`;
+
+  const generated = await callGemini(prompt);
+  validateBody(generated.text);
+  if (generated.sources.length < 3) {
+    throw new Error(`Draft quality gate failed: search grounding returned ${generated.sources.length} distinct HTTPS sources; at least 3 are required.`);
   }
 
-  const publishedTitles = new Set(posts.map(p => p.title));
-  let topic;
-  let content;
-
-  const nextTopic = TOPICS.find(t => !publishedTitles.has(t.title));
-
-  if (nextTopic) {
-    topic = nextTopic;
-    console.log(`Publishing from manual list: "${topic.title}"`);
-
-    for (let wcAttempt = 1; wcAttempt <= MAX_ATTEMPTS; wcAttempt++) {
-      const wcHint = wcAttempt > 1
-        ? `\n\nCRITICAL: Your previous response was only ${wordCount(content || '')} words. You MUST write AT LEAST 1000 words of substantive, detailed content. Every section must have multiple paragraphs with concrete examples and practical advice. Do NOT write fewer than 1000 words.`
-        : '';
-      const prompt = `Write a comprehensive, in-depth blog post for LifePera (lifepera.com).
-
-Title: "${topic.title}"
-Category: ${topic.cat}
-Keywords: ${topic.keywords}
-
-- AT LEAST 1000 words (aim for 1200-1400), conversational tone
-- Detailed explanations, multiple H2 subheadings, and bullet points where helpful
-- Hook intro, deep practical insights, and end with a clear CTA to LifePera tools
-- Global audience, high quality, no fluff
-- Only use these HTML tags in the body: <h2>, <p>, <ul><li>, <strong>
-- Do not include html, head, body, or CSS tags in this response.${wcHint}`;
-
-      content = await callGemini({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.7, maxOutputTokens: 8192 }
-      });
-
-      const wc = wordCount(content);
-      console.log(`Attempt ${wcAttempt}: ${wc} words`);
-      if (wc >= MIN_WORDS) break;
-      if (wcAttempt < MAX_ATTEMPTS) await sleep(5000);
-    }
-
-    if (wordCount(content) < 600) {
-      console.log(`SKIPPED: Content too thin (${wordCount(content)} words) after ${MAX_ATTEMPTS} attempts.`);
-      return;
-    }
-  } else {
-    console.log('Manual list complete. Switching to Google Trending mode...');
-    const existingTitles = posts.map(p => p.title).join('\n- ');
-
-    for (let wcAttempt = 1; wcAttempt <= MAX_ATTEMPTS; wcAttempt++) {
-      const wcHint = wcAttempt > 1
-        ? `\n\nCRITICAL: Your previous body content was only ${wordCount(content || '')} words. You MUST write AT LEAST 1000 words of substantive, detailed content in the body. Every section must have multiple paragraphs. Do NOT write fewer than 1000 words.`
-        : '';
-      const prompt = `You are the lead content creator and SEO expert for LifePera (lifepera.com), a website offering free tools for real-life decisions in Career, Finance, Travel, Relationships, Psychology, and Culture.
-
-Task:
-1. Identify a current trending topic, common modern dilemma, or high-interest search angle relevant to LifePera's audience.
-2. Ensure the topic is completely different from these already published titles:
-- ${existingTitles || 'None yet'}
-
-Output Format:
-You must output your response strictly starting with a JSON block on the very first line containing the topic metadata, followed by the HTML body content.
-
-Line 1 (JSON metadata only): 
-{"title": "Your Generated Title Here", "cat": "Category Name", "emoji": "🎯", "keywords": "comma separated SEO keywords"}
-
-Lines 2 onwards: The full blog post content (AT LEAST 1000 words, conversational tone, practical takeaways, multiple H2 subheadings, hook intro, ending with a CTA reference to LifePera tools). 
-Constraints for body content: Only use tags <h2>, <p>, <ul><li>, <strong>. No html, head, body, or CSS tags in the body content.${wcHint}`;
-
-      const rawOutput = await callGemini({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.8, maxOutputTokens: 8192 },
-        tools: [{ googleSearch: {} }]
-      });
-
-      const firstLineEnd = rawOutput.indexOf('\n');
-      if (firstLineEnd === -1) throw new Error('Invalid response format from Gemini');
-
-      let topicData;
-      try {
-        topicData = JSON.parse(rawOutput.substring(0, firstLineEnd).trim());
-      } catch(e) {
-        const jsonMatch = rawOutput.match(/\{[\s\S]*?\}/);
-        if (!jsonMatch) throw new Error('Could not parse topic JSON from Gemini response');
-        topicData = JSON.parse(jsonMatch[0]);
-      }
-
-      topic = topicData;
-      content = rawOutput.substring(firstLineEnd).trim();
-
-      const wc = wordCount(content);
-      console.log(`Attempt ${wcAttempt}: ${wc} words (trending topic)`);
-      if (wc >= MIN_WORDS) break;
-      if (wcAttempt < MAX_ATTEMPTS) await sleep(5000);
-    }
-
-    if (wordCount(content) < 600) {
-      console.log(`SKIPPED: Trending content too thin (${wordCount(content)} words) after ${MAX_ATTEMPTS} attempts.`);
-      return;
-    }
-  }
-
-  const now = new Date();
-  const dateStr = now.toISOString().split('T')[0];
-  const niceDate = now.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
-  const slug = topic.title.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,'-').substring(0,60);
-
-  if (!fs.existsSync('blog')) fs.mkdirSync('blog');
-  const filename = `blog/post-${dateStr}-${slug}.html`;
-  const publicPostUrl = `https://lifepera.com/${filename.replace(/\.html$/, '')}`;
-
-  if (fs.existsSync(filename)) {
-    console.log('Post file already exists: ' + filename);
-    return;
-  }
-
-  const html = `<!DOCTYPE html>
+  const safeTitle = escapeHtml(title);
+  const safeCategory = escapeHtml(category);
+  const sourcesHtml = renderSources(generated.sources);
+  const draft = `<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="${topic.title} — LifePera Blog. ${topic.keywords}."/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="${publicPostUrl}"/>
-<meta property="og:title" content="${topic.title} — LifePera"/>
-<meta property="og:description" content="${topic.title} — Read the full guide on LifePera — free tools for real life decisions."/>
-<meta property="og:url" content="${publicPostUrl}"/>
-<meta property="og:type" content="article"/>
-<meta property="og:site_name" content="LifePera"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="${topic.title} — LifePera"/>
-<meta name="twitter:description" content="${topic.title} — Read the full guide on LifePera."/>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"${topic.title}","author":{"@type":"Person","name":"Zulker Nine","url":"https://lifepera.com/about"},"publisher":{"@type":"Organization","name":"LifePera","url":"https://lifepera.com"},"datePublished":"${dateStr}","description":"${topic.title}","mainEntityOfPage":{"@type":"WebPage","@id":"${publicPostUrl}"}}
-</script>
-<title>${topic.title} — LifePera</title>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#f8f9fa;--surface:#fff;--text:#202124;--muted:#5f6368;--blue:#1a73e8;--border:#dadce0;--radius:12px;--max-w:1200px}
-body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
-a{color:var(--blue);text-decoration:none}
-header{background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000}
-.nav{max-width:var(--max-w);margin:0 auto;padding:0 1.5rem;height:72px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
-.logo span{color:var(--blue)}
-.badge{background:#e8f0fe;color:var(--blue);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
-.nav-links{display:flex;gap:2rem;font-weight:600;font-size:.92rem;align-items:center}
-.nav-links a{color:var(--muted)}.nav-links a:hover{color:var(--blue)}
-main{max-width:860px;margin:2rem auto;padding:0 1.5rem}
-.post-cat{font-size:.82rem;font-weight:600;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem;letter-spacing:.5px}
-h1{font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem;letter-spacing:-.5px}
-.meta{font-size:.88rem;color:var(--muted);padding-bottom:1.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem}
-.ad-slot{background:#f1f3f4;border:1px dashed #bdc1c6;text-align:center;padding:1.8rem;color:var(--muted);font-size:.85rem;border-radius:var(--radius);margin-bottom:2rem}
-.body{font-size:1.05rem;line-height:1.8}
-.body p{margin-bottom:1.3rem;color:var(--text)}
-.body h2{font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
-.body strong{font-weight:700}
-.body ul{margin:1rem 0 1.5rem 1.5rem}
-.body li{margin-bottom:.5rem;line-height:1.7}
-.editorial-trust-note{background:#f1f3f4;border-left:4px solid var(--blue);padding:1rem 1.2rem;margin:2rem 0;font-size:.92rem;color:var(--muted);line-height:1.6}.editorial-trust-note a{font-weight:600}
-.cta{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2rem 0;text-align:center}
-.cta h3{margin-bottom:.5rem;font-size:1.2rem}
-.cta p{font-size:.95rem;color:var(--muted);margin-bottom:1rem}
-.cta-btn{display:inline-block;background:var(--blue);color:#fff!important;padding:10px 24px;border-radius:6px;font-weight:600;font-size:.9rem}
-.cta-btn:hover{background:#1557b0}
-.related-tools{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2.5rem 0}
-.related-tools h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
-.related-tools ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
-.related-tools a{display:flex;align-items:center;gap:.5rem;padding:8px 12px;background:var(--bg);border-radius:8px;font-weight:500;font-size:.95rem;transition:background .15s}
-.related-tools a:hover{background:#e8f0fe}
-.maylike{margin:2.5rem 0}.maylike h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem}.maylike-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.maylike-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;text-decoration:none;color:var(--text);transition:border-color .15s,box-shadow .15s}.maylike-card:hover{border-color:var(--blue);box-shadow:0 2px 8px rgba(26,115,232,.1)}.maylike-card .mc-cat{font-size:.72rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}.maylike-card .mc-title{font-size:.9rem;font-weight:600;line-height:1.4;color:var(--text)}@media(max-width:700px){.maylike-grid{grid-template-columns:1fr}}
-footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
-.footer-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
-.footer-brand .logo{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;color:#fff;margin-bottom:1rem}
-.footer-brand p{font-size:.88rem;color:#9ca3af;line-height:1.6;max-width:320px;margin-bottom:1.5rem}
-.trust{display:inline-flex;align-items:center;gap:8px;background:#1f2937;border:1px solid #374151;padding:6px 12px;border-radius:6px;font-size:.78rem;color:#d1d5db;font-weight:500}
-.f-col h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1.2rem;letter-spacing:.5px}
-.f-col ul{list-style:none}.f-col li{margin-bottom:.7rem}
-.f-col a{color:#9ca3af;font-size:.88rem}.f-col a:hover{color:#fff}
-.footer-bot{max-width:var(--max-w);margin:3rem auto 0;padding-top:2rem;border-top:1px solid #1f2937;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#9ca3af}
-.footer-disc{max-width:var(--max-w);margin:1.5rem auto 0;font-size:.76rem;color:#9ca3af;line-height:1.5;text-align:center}
-@media(max-width:900px){.footer-inner{grid-template-columns:1fr}.footer-bot{flex-direction:column;gap:1rem;text-align:center}h1{font-size:1.8rem}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Draft: ${safeTitle} — LifePera</title>
+  <style>
+    body{font:16px/1.7 system-ui,sans-serif;color:#202124;max-width:820px;margin:2rem auto;padding:0 1rem}
+    .status{padding:1rem;background:#fff4ce;border:1px solid #e5c75c;border-radius:8px}
+    .status h1{font-size:1.3rem;margin:0 0 .5rem}
+    main{margin-top:2rem}h2{margin-top:2rem}li{margin:.5rem 0}
+  </style>
 </head>
 <body>
-<header>
-<div class="nav">
-<a href="/" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
-<div class="nav-links">
-<a href="/tools">Tools</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a>
-</div>
-</div>
-</header>
-<main>
-<div class="post-cat">${topic.cat}</div>
-<h1>${topic.title}</h1>
-<div class="meta"><span>Zulker Nine</span><span>·</span><span>${niceDate}</span></div>
-<div class="ad-slot" style="display:none"></div>
-<div class="body">${content}</div>
-${editorialTrustNote(topic.cat)}
+  <aside class="status">
+    <h1>EDITORIAL DRAFT — NOT PUBLISHED</h1>
+    <p>AI-assisted draft for ${safeCategory}. No author, review date, canonical URL, or article structured data is assigned.</p>
+    <p>Before publication, verify every factual claim against the sources below, add useful original detail, check links and currentness, and obtain editor approval. Search results are leads, not proof that a claim is correct.</p>
+  </aside>
+  <main>
+    <h1>${safeTitle}</h1>
+    <div class="article-body">${generated.text}</div>
+    <section aria-labelledby="sources-heading">
+      <h2 id="sources-heading">Search sources for editorial verification</h2>
+      <p>These pages were returned by search grounding for this draft. They have not been independently checked or mapped to individual claims.</p>
+      <ul>${sourcesHtml}</ul>
+    </section>
+  </main>
+</body>
+</html>`;
 
-<div class="author-bio" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin:2rem 0;display:flex;gap:1.5rem;align-items:flex-start">
-  <img src="/assets/author-zulker-nine.webp" alt="Zulker Nine" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0">
-  <div class="author-info">
-    <h3 style="margin-bottom:.3rem;font-size:1.1rem">Zulker Nine</h3>
-    <p style="color:var(--blue);font-weight:500;font-size:.85rem;margin-bottom:.8rem">Founder & Creator, LifePera</p>
-    <p style="font-size:.95rem;color:var(--muted);line-height:1.6">Zulker builds data-driven decision tools for real life. He has authored 60+ deep-dive guides on career strategy, workplace psychology, financial literacy, and cross-cultural dynamics. His work focuses on translating academic research and institutional data into practical, privacy-first calculators that anyone can use for free. No signup, no tracking — just clear answers to hard questions.</p>
-    <a href="/about" style="font-size:.85rem;font-weight:600;color:var(--blue)">Read full bio →</a>
-  </div>
-</div>
-
-<div class="cta">
-<h3>Try Our Free Tools</h3>
-<p>36 free tools covering travel, relationships, career, culture, psychology and finance. No signup required.</p>
-<a class="cta-btn" href="/tools">Explore All Free Tools &rarr;</a>
-</div>
-<div class="related-tools">
-<h3>Tools Related to This Article</h3>
-<ul>
-${findRelatedTools(topic).map(t => `<li><a href="/${t.tool}">${t.name} →</a></li>`).join('\n')}
-</ul>
-</div>
-<div class="maylike">
-<h3>You may also like</h3>
-<div class="maylike-grid">
-${posts.filter(p => p.title !== topic.title).slice(0, 3).map(p => `<a href="/${p.file.replace(/\.html$/, '')}" class="maylike-card"><div class="mc-cat">${p.cat || ''}</div><div class="mc-title">${p.title}</div></a>`).join('\n')}
-</div>
-</div>
-</div>
-</main>
-<footer>
-<div class="footer-inner">
-<div class="footer-brand">
-<a href="/" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
-<p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust">100% Free · Privacy Protected · Data-Backed</span>
-</div>
-<div class="f-col">
-<h4>Tools</h4>
-<ul>
-<li><a href="/tool-how-rich">Global Wealth Comparator</a></li>
-<li><a href="/tool-visa">Visa-Free Travel Checker</a></li>
-<li><a href="/tool-attachment">Attachment Style Quiz</a></li>
-</ul>
-</div>
-<div class="f-col">
-<h4>Company</h4>
-<ul>
-<li><a href="/about">About Us</a></li>
-<li><a href="/blog">Editorial Blog</a></li>
-<li><a href="/contact">Contact & Support</a></li>
-</ul>
-</div>
-<div class="f-col">
-<h4>Legal</h4>
-<ul>
-<li><a href="/privacy">Privacy Policy</a></li>
-<li><a href="/terms">Terms of Service</a></li>
-<li><a href="/sitemap.xml">Sitemap</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-disc">Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.</div>
-<div class="footer-bot"><span>&copy; 2026 LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
-</footer>
-<script src="/cookie-consent.js"></script>
-</body></html>`;
-
-  fs.writeFileSync(filename, html);
-  console.log('Successfully generated post: ' + filename);
-
-  posts = posts.filter(p => p.file !== filename && p.title !== topic.title);
-  posts.unshift({ title: topic.title, cat: topic.cat, emoji: safePostIcon(topic.emoji), date: niceDate, file: filename });
-  fs.writeFileSync(indexFile, JSON.stringify(posts, null, 2));
-  console.log('Updated blog-index.json successfully.');
-
-  // Keep sitemap.xml in sync with the new post (dynamic sitemap)
-  try {
-    require('./generate-sitemap.js');
-    console.log('sitemap.xml regenerated with new post.');
-  } catch (e) {
-    console.error('WARN: sitemap regeneration failed:', e.message);
-  }
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70) || 'blog-draft';
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const outputDirectory = path.resolve(process.env.DRAFT_OUTPUT_DIR || path.join(__dirname, '..', 'drafts'));
+  fs.mkdirSync(outputDirectory, { recursive: true });
+  const filename = path.join(outputDirectory, `${timestamp}-${slug}.html`);
+  fs.writeFileSync(filename, draft, 'utf8');
+  console.log(`Saved unpublished editorial draft: ${filename}`);
+  console.log(`Quality checks passed: ${wordCount(generated.text)} words, ${(generated.text.match(/<h2>/gi) || []).length} headings, ${generated.sources.length} grounded sources.`);
 }
 
-run().catch(err => { console.error(err.message); process.exit(1); });
+run().catch(error => {
+  console.error(error.message);
+  process.exit(1);
+});

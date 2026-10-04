@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/><meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<meta content="Can you drink the tap water where you are going? Look up any destination to get a clear yes-or-no answer with safety ratings. Includes tips on filtered water options, bottled water costs, and what to avoid in high-risk areas." name="description"/>
+<meta content="A country-level tap-water reference for selected destinations. It is not a city-level or real-time safety check; verify current guidance with local health authorities or utilities." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://lifepera.com/tool-tap-water" rel="canonical"/>
 <meta content="Can I Drink the Tap Water? — LifePera" property="og:title"/>
-<meta content="Check tap water safety for 500+ global destinations instantly." property="og:description"/>
+<meta content="A country-level reference only; check current local water-safety guidance before use." property="og:description"/>
 <meta content="https://lifepera.com/tool-tap-water" property="og:url"/>
 <meta content="website" property="og:type"/>
 <meta content="https://lifepera.com/og-image.svg" property="og:image"/>
@@ -106,7 +106,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 </style>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": "https://lifepera.com/og-image.svg", "sameAs": ["https://github.com/Md-Zulker-Nine/lifepera"], "founder": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about"}, "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": "contact@lifepera.com", "availableLanguage": "English"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Can I Drink the Tap Water?", "applicationCategory": "TravelApplication", "operatingSystem": "Web Browser", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, "description": "Can you drink the tap water where you are going? Look up any destination to get a clear yes-or-no answer with safety ratings. Includes tips on filtered water options, bottled water costs, and what to avoid in high-risk areas.", "author": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about", "sameAs": ["https://github.com/Md-Zulker-Nine"], "description": "Founder of LifePera. Builds free, privacy-first decision tools for career, finance, travel, relationships, psychology, and culture."}, "publisher": {"@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": {"@type": "ImageObject", "url": "https://lifepera.com/og-image.svg", "width": 512, "height": 512}}, "featureList": ["Free forever - no signup required", "Privacy-first - all calculations run in your browser", "Data-backed - sourced from authoritative sources", "Globally inclusive - works for users worldwide"], "permissions": "No personal data collected", "disclaimer": "Educational and informational purposes only. Does not constitute professional financial, legal, medical, or career advice. Consult qualified professionals for important decisions."}</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LifePera", "url": "https://lifepera.com", "logo": "https://lifepera.com/og-image.svg", "sameAs": ["https://github.com/Md-Zulker-Nine/lifepera"], "founder": {"@type": "Person", "name": "Zulker Nine", "url": "https://lifepera.com/about"}, "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": "contact@lifepera.com", "availableLanguage": "English"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Can I Drink the Tap Water?","applicationCategory":"TravelApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"description":"A country-level tap-water reference for selected destinations. It is not a city-level or real-time safety check.","author":{"@type":"Person","name":"Zulker Nine","url":"https://lifepera.com/about","sameAs":["https://github.com/Md-Zulker-Nine"],"description":"Founder of LifePera. Builds free, privacy-first decision tools for career, finance, travel, relationships, psychology, and culture."},"publisher":{"@type":"Organization","name":"LifePera","url":"https://lifepera.com","logo":{"@type":"ImageObject","url":"https://lifepera.com/og-image.svg","width":512,"height":512}},"featureList":["Free to use - no signup required","Runs in your browser"],"permissions":"No personal data collected","disclaimer":"Educational and informational purposes only. Does not constitute professional financial, legal, medical, or career advice. Consult qualified professionals for important decisions."}</script></head>
 <body>
 <header>
 <div class="nav-container">
@@ -127,7 +127,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="tool-header">
 <div class="breadcrumb"><a href="/">Home</a> "º <a href="tools">Tools</a> "º Tap Water Safety</div>
 <h1 class="tool-title">Can I Drink the Tap Water?</h1>
-<p class="tool-subtitle">Look up any country to see whether the tap water is safe to drink or if you should stick to bottled.</p>
+<p class="tool-subtitle">See the stored country-level category for a selected destination. It is not a city-level or real-time safety check.</p>
 </div>
 <div class="tool-canvas" id="app-container">
 <label class="tool-label">Select Destination Country</label>
@@ -203,7 +203,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="banner-country" id="bannerCountry"></div>
 <div class="banner-hook" id="bannerHook"> Official Result</div>
 <div class="banner-result" id="bannerResult">Result Tier</div>
-<div class="banner-subtext" id="bannerSubtext">Calculated via LifePera Data Engine.</div>
+<div class="banner-subtext" id="bannerSubtext">Based on the selections entered on this page.</div>
 <div class="banner-watermark">Try this tool at lifepera.com</div>
 <div class="banner-url" id="bannerUrl">lifepera.com</div>
 </div>
@@ -230,9 +230,14 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <p>Infrastructure, water sources, climate, and regulatory standards all play a role. Country-level labels are only a starting point: a city, hotel, rural area, or current boil-water notice can change the practical advice. Check local public-health guidance for the exact destination and date.</p>
 <h2>Staying Healthy While Traveling</h2>
 <p>Travelers can experience stomach illness for many reasons, and a change in water is only one possibility. If you are unsure, use sealed, treated, or boiled water and follow local advisories. People who are pregnant, immunocompromised, or managing a medical condition should ask a clinician for destination-specific advice.</p>
-<h2>Sources, Methodology &amp; Update Note</h2>
-<p>This country-level guide is a quick educational reference, not a real-time water-quality test. It combines broad destination classifications with public-health travel guidance. For current conditions, check the <a href="https://wwwnc.cdc.gov/travel/yellowbook/2024/environmental-hazards-and-risks/water-disinfection-for-travelers" rel="noopener noreferrer" target="_blank">CDC Yellow Book guidance on water disinfection</a>, <a href="https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-hygiene/monitoring" rel="noopener noreferrer" target="_blank">WHO drinking-water monitoring resources</a>, and local utility or health-authority notices.</p>
-<p><strong>Last reviewed:</strong> September 2026. Conditions can change quickly, so verify local advisories before drinking tap water or using it for ice and brushing teeth.</p>
+<h2>Sources and limitations</h2>
+<p>The country categories are fixed in this page. Their underlying source and verification date are not recorded, and the categories do not account for municipality, building plumbing, or temporary advisories. For current conditions, check the <a href="https://wwwnc.cdc.gov/travel/yellowbook/2024/environmental-hazards-and-risks/water-disinfection-for-travelers" rel="noopener noreferrer" target="_blank">CDC Yellow Book guidance on water disinfection</a>, <a href="https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-hygiene/monitoring" rel="noopener noreferrer" target="_blank">WHO drinking-water monitoring resources</a>, and local utility or health-authority notices. Those general sources do not verify each label in this tool.</p>
+<p>This is not a real-time water-quality test or a safety guarantee. When uncertain, follow current local public-health advice.</p>
+<section data-editorial-section="additional-guidance">
+<h2>Country labels cannot answer every local water question</h2>
+<p>Water systems and advisories can vary by city, building, season, and infrastructure. A broad country category cannot confirm that a particular tap is safe today, nor account for a traveler?s health or water-treatment needs.</p>
+<p>Ask your accommodation or local public-health authority about current advisories, and follow posted boil-water instructions. If an official advisory is unclear, use sealed or properly treated water until you can confirm what is safe for your location.</p>
+</section>
 </div>
 </main>
 <aside class="sidebar">
@@ -259,8 +264,8 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <div class="footer-inner">
 <div class="footer-brand">
 <a class="logo" href="https://lifepera.com" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
-<p>Free premium tools for real life decisions. Data-backed, privacy-focused, no signup required.</p>
-<span class="trust"> 100% Free • Privacy Protected • Data-Backed</span>
+<p>Free browser-based tools for real life decisions. No signup required.</p>
+<span class="trust"> Free tools | Privacy-conscious | No signup</span>
 </div>
 <div class="f-col">
 <h4>Popular Tools</h4>
@@ -323,9 +328,9 @@ function loadHtml2Canvas(callback) {
       const cName = document.getElementById('countryInput').selectedOptions[0].text;
 
       if (val.startsWith("safe")) {
-        showResult("Tap Water Usually Meets Local Standards ", "This destination is commonly rated as lower risk, but conditions can vary by municipality, building plumbing, and current advisories. Check local guidance before drinking.", "Lower-Risk Status ", "Tap Water Guidance", cName);
+        showResult("Lower-risk category in this tool ", "This stored country-level label is not a safety guarantee. Its source and verification date are not recorded; check current local health or utility advisories.", "Check local advice ", "Country-level reference", cName);
       } else {
-        showResult("DO NOT Drink Tap Water Unfiltered ", "Tap water in this destination may contain bacteria or heavy minerals. Use sealed bottled water, UV purifiers, or boil water before consumption.", "Use Bottled Water ", "Unsafe / Filter Needed", cName);
+        showResult("Higher-risk category in this tool ", "This stored country-level label is not a current warning for every location. Its source and verification date are not recorded; check local health or utility advisories for safe handling.", "Check local advice ", "Country-level reference", cName);
       }
     }
     

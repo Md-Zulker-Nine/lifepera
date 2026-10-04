@@ -1,12 +1,15 @@
 {
   "name": "lifepera-auto-blog",
   "version": "1.0.0",
-  "description": "Automated blog post generator using Gemini API and GitHub Actions",
-  "main": "generate.js",
+  "description": "Static LifePera website with unpublished AI-assisted blog draft generation",
+  "main": "scripts/generate-blog-post.js",
   "scripts": {
-    "start": "node generate.js",
+    "draft:blog": "node scripts/generate-blog-post.js",
+    "select:blog-topic": "node scripts/select-blog-topic.js",
     "check:consent": "node scripts/check-consent-coverage.js",
-    "check:js": "node --check cookie-consent.js && node --check scripts/check-consent-coverage.js && node --check scripts/generate-blog-post.js"
+    "check:js": "node --check cookie-consent.js && node --check scripts/check-consent-coverage.js && node --check scripts/generate-blog-post.js && node --check scripts/select-blog-topic.js && node --check scripts/build-blog-listing.js && node --check scripts/check-site-content.js",
+    "build:blog": "node scripts/build-blog-listing.js && node scripts/generate-sitemap.js",
+    "check:site": "node scripts/check-site-content.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0"

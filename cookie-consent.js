@@ -1,6 +1,7 @@
 (function () {
   var consentKey = 'lifeperaConsent';
   var analyticsId = 'G-SBT0X71YW2';
+  var adsClientId = 'ca-pub-5091974481484084';
   var storedConsent = localStorage.getItem(consentKey);
   var pageRoot = document.body || document.documentElement;
 
@@ -11,7 +12,7 @@
   var bar = document.createElement('div');
   bar.className = 'cookie-bar';
   bar.id = 'cookieBar';
-  bar.innerHTML = '<div class="cookie-inner"><p>LifePera uses essential cookies to keep the site working. We may use analytics or advertising cookies only with your consent. Review details in our <a class="cookie-privacy" href="/privacy.html">Privacy Policy</a>.</p><div class="cookie-actions"><button class="cookie-btn secondary" type="button" data-consent="essential">Only essential</button><button class="cookie-btn secondary" type="button" data-consent="reject">Reject optional</button><button class="cookie-btn" type="button" data-consent="all">Accept all</button></div></div>';
+  bar.innerHTML = '<div class="cookie-inner"><p>LifePera stores your privacy choice in your browser. Analytics and advertising scripts load only if you accept all. Review details in our <a class="cookie-privacy" href="/privacy.html">Privacy Policy</a>.</p><div class="cookie-actions"><button class="cookie-btn secondary" type="button" data-consent="essential">No optional scripts</button><button class="cookie-btn secondary" type="button" data-consent="reject">Reject optional</button><button class="cookie-btn" type="button" data-consent="all">Accept all</button></div></div>';
   pageRoot.appendChild(bar);
 
   var settings = document.createElement('button');
@@ -47,6 +48,16 @@
     document.head.appendChild(script);
   }
 
+  function loadAdvertising() {
+    if (document.querySelector('script[data-lifepera-ads]')) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + adsClientId;
+    script.crossOrigin = 'anonymous';
+    script.setAttribute('data-lifepera-ads', 'true');
+    document.head.appendChild(script);
+  }
+
   function showSettings() {
     bar.style.display = 'block';
     settings.style.display = 'none';
@@ -54,11 +65,17 @@
 
   window._lifeperaConsentChoice = function (choice) {
     var normalized = choice === 'all' ? 'all' : (choice === 'essential' ? 'essential' : 'reject');
+    var optionalScriptsLoaded = Boolean(document.querySelector('script[data-lifepera-analytics], script[data-lifepera-ads]'));
     localStorage.setItem(consentKey, normalized);
     if (normalized === 'all') {
       loadAnalytics();
+      loadAdvertising();
     } else {
       removeAnalyticsCookies();
+      if (optionalScriptsLoaded) {
+        window.location.reload();
+        return;
+      }
     }
     bar.style.display = 'none';
     settings.style.display = 'block';
@@ -73,6 +90,7 @@
 
   if (storedConsent === 'all') {
     loadAnalytics();
+    loadAdvertising();
     bar.style.display = 'none';
   } else if (storedConsent) {
     bar.style.display = 'none';
