@@ -19,8 +19,13 @@ function today() {
   return new Date().toISOString().split('T')[0];
 }
 
-// Derive lastmod from post filename (blog/post-YYYY-MM-DD-slug.html); fallback to today.
+// Prefer an explicitly recorded editorial modification date; older posts fall back to their filename date.
 function lastModFromFile(file) {
+  if (fs.existsSync(file)) {
+    const html = fs.readFileSync(file, 'utf8');
+    const modified = html.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})"/);
+    if (modified) return modified[1];
+  }
   const m = file.match(/(\d{4}-\d{2}-\d{2})/);
   return m ? m[1] : today();
 }
