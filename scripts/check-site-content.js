@@ -83,6 +83,11 @@ for (const post of posts) {
   if (!sitemap.includes(`https://lifepera.com/${publicPath}`)) {
     failures.push(`Published post is missing from sitemap.xml: ${post.file}`);
   }
+  const page = fs.readFileSync(path.join(root, post.file), 'utf8');
+  const modified = page.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})"/);
+  if (modified && !sitemap.includes(`<loc>https://lifepera.com/${publicPath}</loc><lastmod>${modified[1]}</lastmod>`)) {
+    failures.push(`${post.file}: sitemap lastmod must match the article's dateModified.`);
+  }
 }
 
 function checkCanonical(relative, expected) {
@@ -207,6 +212,32 @@ if (!/daysSinceAnchor\s*%\s*3\s*===\s*0/.test(topicSelector)) {
         (!expectedTitle && lines.some(line => line.startsWith('title=')))) {
       failures.push(`Three-day topic selector returned the wrong schedule result for ${date}.`);
     }
+  }
+}
+const editorialChecks = [
+  {
+    file: 'blog/post-2026-08-10-can-you-drink-the-tap-water-a-guide-for-50-countries.html',
+    forbidden: ['The 50-Country Tap Water Safety Matrix', 'Safe to Drink Directly from the Tap'],
+    required: ['https://wwwnc.cdc.gov/travel/page/food-water-safety', 'https://wwwnc.cdc.gov/travel/page/water-disinfection'],
+  },
+  {
+    file: 'blog/post-2026-08-05-how-to-know-if-youre-being-underpaid-in-2026.html',
+    forbidden: ['20% to 40%', '75th percentile', 'between $95,000 and $110,000'],
+    required: ['https://www.bls.gov/oes/'],
+  },
+  {
+    file: 'blog/post-2026-10-04-the-tipping-fatigue-trap-how-guilttipping-is-stealthdraining.html',
+    forbidden: ['$1,500 and $2,500', 'software systems capitalize on'],
+    required: ['not a diagnosis or measured trend', 'not a claim about what people generally spend'],
+  },
+];
+for (const check of editorialChecks) {
+  const content = fs.readFileSync(path.join(root, check.file), 'utf8');
+  for (const phrase of check.forbidden) {
+    if (content.includes(phrase)) failures.push(`${check.file}: unsupported audited claim remains: "${phrase}".`);
+  }
+  for (const phrase of check.required) {
+    if (!content.includes(phrase)) failures.push(`${check.file}: missing grounding or qualification: "${phrase}".`);
   }
 }
 const generator = fs.readFileSync(path.join(root, 'scripts', 'generate-blog-post.js'), 'utf8');
