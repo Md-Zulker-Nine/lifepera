@@ -48,12 +48,6 @@
     "icon": ""
   },
   {
-    "file": "tool-country-match.html",
-    "title": "What Country Matches Your Personality?",
-    "desc": "Values, lifestyle, and preferences quiz reveals your top 3 countries where you",
-    "icon": ""
-  },
-  {
     "file": "tool-cultural.html",
     "title": "Cultural Faux Pas Checker",
     "desc": "Check cultural faux pas before you travel. Avoid offensive gestures, tipping mistakes, and social errors in 60+ countries.",
@@ -165,12 +159,6 @@
     "file": "tool-solo-safety.html",
     "title": "Solo Travel Safety Index",
     "desc": "Enter your destination and gender to get a safety rating, insider tips from travelers, and a personalized safety checklist. Free tool on LifePera — no signup required.",
-    "icon": ""
-  },
-  {
-    "file": "tool-tap-water.html",
-    "title": "Can I Drink the Tap Water?",
-    "desc": "See a stored country-level category for selected destinations. This is not a city-level or real-time safety check; verify current local guidance.",
     "icon": ""
   },
   {

@@ -131,6 +131,22 @@ for (const post of posts) {
 }
 
 const tools = JSON.parse(fs.readFileSync(path.join(root, 'all_tools.json'), 'utf8'));
+if (tools.length !== 34) failures.push(`Expected 34 active tools after retiring unsupported tools; found ${tools.length}.`);
+for (const file of htmlFiles) {
+  const content = fs.readFileSync(file, 'utf8');
+  if (/tool-(?:tap-water|country-match)(?:\.html)?/i.test(content)) {
+    failures.push(`${path.relative(root, file)}: links to a retired tool remain.`);
+  }
+}
+for (const route of ['/tool-tap-water', '/tool-tap-water.html', '/tool-country-match', '/tool-country-match.html']) {
+  if (!new RegExp(`^${route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+/tools\\s+301$`, 'm')
+    .test(fs.readFileSync(path.join(root, '_redirects'), 'utf8'))) {
+    failures.push(`Retired tool route must redirect to /tools: ${route}`);
+  }
+  if (sitemap.includes(`https://lifepera.com/${route.replace(/\.html$/, '')}`)) {
+    failures.push(`Retired tool route must be removed from sitemap.xml: ${route}`);
+  }
+}
 let guidanceCount = 0;
 for (const tool of tools) {
   if (!tool.file || !fs.existsSync(path.join(root, tool.file))) {
@@ -165,6 +181,14 @@ for (const route of ['', 'tools', 'blog', 'about', 'contact', 'privacy', 'terms'
     failures.push(`Core page is missing from sitemap.xml: /${route}`);
   }
   checkCanonical(route ? `${route}.html` : 'index.html', `https://lifepera.com/${route}`);
+}
+for (const file of ['tool-tap-water.html', 'tool-country-match.html']) {
+  if (fs.existsSync(path.join(root, file))) failures.push(`Retired tool page must not be published: ${file}`);
+}
+for (const [file, expected] of [['index.html', 34], ['tools.html', 34]]) {
+  const content = fs.readFileSync(path.join(root, file), 'utf8');
+  const cardCount = [...content.matchAll(/<a class="card"/g)].length;
+  if (cardCount !== expected) failures.push(`${file}: expected ${expected} active tool cards; found ${cardCount}.`);
 }
 
 const blogHtml = fs.readFileSync(path.join(root, 'blog.html'), 'utf8');

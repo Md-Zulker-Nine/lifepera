@@ -4,3 +4,7 @@ https://www.lifepera.com/* https://lifepera.com/:splat 301
 
 # Legacy single-post template -> editorial blog index
 /blog-post.html /blog.html 301
+/tool-tap-water /tools 301
+/tool-tap-water.html /tools 301
+/tool-country-match /tools 301
+/tool-country-match.html /tools 301
