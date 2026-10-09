@@ -187,18 +187,68 @@ Write 700-1100 useful words with at least four distinct, descriptive section hea
 <script type="application/ld+json">${safeArticleData}</script>
 <title>${safeTitle} — LifePera</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f8f9fa;color:#202124;font:16px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:#1a73e8;text-decoration:none}.nav{background:#fff;border-bottom:1px solid #dadce0;padding:1rem max(1rem,calc((100% - 1100px)/2));font-weight:700}.nav span{color:#1a73e8}main{max-width:820px;margin:2.5rem auto;padding:0 1.25rem}.category{color:#1a73e8;font-size:.85rem;font-weight:700;text-transform:uppercase}h1{font-size:clamp(2rem,6vw,2.8rem);line-height:1.2}.meta{color:#5f6368;border-bottom:1px solid #dadce0;padding-bottom:1rem}.body{font-size:1.05rem}.body p{margin:1.2rem 0}.body h2{margin-top:2.2rem;line-height:1.3}.body li{margin:.5rem 0}.sources,.policy{margin-top:2rem;padding:1rem 1.2rem;background:#eef2f7;border-radius:8px}.sources h2{font-size:1.15rem}.sources li{overflow-wrap:anywhere}footer{margin-top:4rem;background:#111827;color:#d1d5db;padding:2rem;text-align:center}footer a{color:#fff}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f8f9fa;--surface:#fff;--text:#202124;--muted:#5f6368;--blue:#1a73e8;--border:#dadce0;--radius:12px;--max-w:1200px}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+header{background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000}
+.nav{max-width:var(--max-w);margin:0 auto;padding:0 1.5rem;height:72px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--blue)}
+.badge{background:#e8f0fe;color:var(--blue);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
+.nav-links{display:flex;gap:2rem;font-weight:600;font-size:.92rem;align-items:center}
+.nav-links a{color:var(--muted)}.nav-links a:hover{color:var(--blue)}
+main{max-width:860px;margin:2rem auto;padding:0 1.5rem}
+.post-cat{font-size:.82rem;font-weight:600;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem;letter-spacing:.5px}
+h1{font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem;letter-spacing:-.5px}
+.meta{font-size:.88rem;color:var(--muted);padding-bottom:1.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem}
+.body{font-size:1.05rem;line-height:1.8}
+.body p{margin-bottom:1.3rem;color:var(--text)}
+.body h2{font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.body strong{font-weight:700}.body ul{margin:1rem 0 1.5rem 1.5rem}.body li{margin-bottom:.5rem;line-height:1.7}
+.editorial-note{background:#f1f3f4;border-left:4px solid var(--blue);padding:1rem 1.2rem;margin:2rem 0;font-size:.92rem;color:var(--muted);line-height:1.6}.editorial-note a{font-weight:600}
+.sources{margin:1.5rem 0;color:var(--muted);font-size:.9rem}.sources summary{cursor:pointer;font-weight:600;color:var(--blue)}.sources p{margin:.75rem 0}.sources ul{padding-left:1.5rem}.sources li{margin:.4rem 0;overflow-wrap:anywhere}
+footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand .logo{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;color:#fff;margin-bottom:1rem}
+.footer-brand p{font-size:.88rem;color:#9ca3af;line-height:1.6;max-width:320px;margin-bottom:1.5rem}
+.trust{display:inline-flex;align-items:center;gap:8px;background:#1f2937;border:1px solid #374151;padding:6px 12px;border-radius:6px;font-size:.78rem;color:#d1d5db;font-weight:500}
+.f-col h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1.2rem;letter-spacing:.5px}
+.f-col ul{list-style:none}.f-col li{margin-bottom:.7rem}.f-col a{color:#9ca3af;font-size:.88rem}.f-col a:hover{color:#fff}
+.footer-bot{max-width:var(--max-w);margin:3rem auto 0;padding-top:2rem;border-top:1px solid #1f2937;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#9ca3af}
+.footer-disc{max-width:var(--max-w);margin:1.5rem auto 0;font-size:.76rem;color:#9ca3af;line-height:1.5;text-align:center}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr}.footer-bot{flex-direction:column;gap:1rem;text-align:center}h1{font-size:1.8rem}}
+@media(max-width:700px){.nav-links{gap:.8rem;font-size:.82rem}.logo{font-size:1.3rem}main{padding:0 1rem}}
 </style>
 </head>
 <body>
-<header class="nav"><a href="/" style="color:#202124">Life<span>Pera</span></a> <a href="/blog" style="float:right">Blog</a></header>
+<header>
+<div class="nav">
+<a href="/" class="logo">Life<span>Pera</span><span class="badge">Pro</span></a>
+<div class="nav-links"><a href="/tools">Tools</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+</div>
+</header>
 <main>
-<div class="category">${safeCategory}</div>
+<div class="post-cat">${safeCategory}</div>
 <h1>${safeTitle}</h1>
 <div class="meta">By LifePera · ${displayDate}</div>
 <article class="body">${body}</article>
 </main>
-<footer><a href="/blog">LifePera Blog</a> · <a href="/about#editorial">Editorial policy</a></footer>
+<footer>
+<div class="footer-inner">
+<div class="footer-brand">
+<a href="/" class="logo" style="color:#fff">Life<span style="color:#1a73e8">Pera</span></a>
+<p>Free browser-based tools for real life decisions. No signup required.</p>
+<span class="trust">Free tools | Privacy-conscious | No signup</span>
+</div>
+<div class="f-col"><h4>Popular Tools</h4><ul><li><a href="/tool-how-rich">"How Rich Am I?" Comparator</a></li><li><a href="/tool-visa">Visa-Free Travel Checker</a></li><li><a href="/tool-quit-job">Should I Quit My Job?</a></li><li><a href="/tool-underpaid">Am I Underpaid? Analyzer</a></li><li><a href="/tool-attachment">Attachment Style Quiz</a></li></ul></div>
+<div class="f-col"><h4>Company &amp; Trust</h4><ul><li><a href="/about">About Us</a></li><li><a href="/about#editorial">Editorial Policy</a></li><li><a href="/blog">Editorial Blog</a></li><li><a href="/contact">Contact &amp; Support</a></li></ul></div>
+<div class="f-col"><h4>Legal &amp; Standards</h4><ul><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></div>
+</div>
+<div class="footer-disc">Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.</div>
+<div class="footer-bot"><span>&copy; ${new Date().getUTCFullYear()} LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
+</footer>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>`;
 

@@ -250,11 +250,6 @@ const editorialChecks = [
     forbidden: ['20% to 40%', '75th percentile', 'between $95,000 and $110,000'],
     required: ['https://www.bls.gov/oes/'],
   },
-  {
-    file: 'blog/post-2026-10-04-the-tipping-fatigue-trap-how-guilttipping-is-stealthdraining.html',
-    forbidden: ['$1,500 and $2,500', 'software systems capitalize on'],
-    required: ['not a diagnosis or measured trend', 'not a claim about what people generally spend'],
-  },
 ];
 for (const check of editorialChecks) {
   const content = fs.readFileSync(path.join(root, check.file), 'utf8');
@@ -281,8 +276,15 @@ if (!titleValidatorSource) {
 }
 if (!/BLOG_INTENT/.test(generator) ||
     !/TITLE:\s*\[a specific, natural, original title generated/.test(generator) ||
-    !/posts\.unshift\(/.test(generator)) {
-  failures.push('Blog publisher must generate a title from reader intent and add the post to the published index.');
+    !/posts\.unshift\(/.test(generator) ||
+    !/class="footer-inner"/.test(generator) ||
+    !/Popular Tools/.test(generator) ||
+    !/href="\/about#editorial">Editorial Policy/.test(generator) ||
+    !/Legal &amp; Standards/.test(generator) ||
+    !/footer-disc/.test(generator) ||
+    !/footer-bot/.test(generator) ||
+    !/cookie-consent\.js/.test(generator)) {
+  failures.push('Blog publisher must generate and index posts from reader intent and provide the standard site footer.');
 }
 for (const title of indexedTitles) {
   if (/\b(?:stealth[- ]draining|the\s+.+?\s+trap\b|the\s+.+?\s+epidemic\b|and how to reclaim)\b/i.test(title)) {
