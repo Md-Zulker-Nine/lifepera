@@ -281,8 +281,12 @@ if (!titleValidatorSource) {
 }
 if (!/BLOG_INTENT/.test(generator) ||
     !/TITLE:\s*\[a specific, natural, original title generated/.test(generator) ||
-    !/posts\.unshift\(/.test(generator)) {
-  failures.push('Blog publisher must generate a title from reader intent and add the post to the published index.');
+    !/posts\.unshift\(/.test(generator) ||
+    !/<details class="sources">/.test(generator) ||
+    !/class="footer-inner"/.test(generator) ||
+    !/cookie-consent\.js/.test(generator) ||
+    !/published automatically without prior human review/.test(generator)) {
+  failures.push('Blog publisher must generate and index posts from reader intent, provide the standard site footer, and disclose publication and sources.');
 }
 for (const title of indexedTitles) {
   if (/\b(?:stealth[- ]draining|the\s+.+?\s+trap\b|the\s+.+?\s+epidemic\b|and how to reclaim)\b/i.test(title)) {
