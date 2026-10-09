@@ -233,8 +233,6 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <h1>${safeTitle}</h1>
 <div class="meta">By LifePera · ${displayDate}</div>
 <article class="body">${body}</article>
-<section class="editorial-note"><strong>Editorial note:</strong> This article was generated with AI and published automatically without prior human review. See our <a href="/about#editorial">editorial policy</a>. Verify time-sensitive information with an official source.</section>
-<details class="sources"><summary>Research sources</summary><p>These search-grounded sources informed article generation. Links and claims have not been independently reviewed before publication.</p><ul>${renderSources(generated.sources)}</ul></details>
 </main>
 <footer>
 <div class="footer-inner">
