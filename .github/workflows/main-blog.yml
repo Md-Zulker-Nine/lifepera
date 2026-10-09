@@ -1,12 +1,12 @@
-name: Generate editorial blog draft
+name: Publish generated blog post
 
 on:
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch:
     inputs:
-      title:
-        description: Topic for a draft (not a publishing request)
+      intent:
+        description: Reader need or topic brief for a published article
         required: true
         type: string
       category:
@@ -19,11 +19,14 @@ on:
         type: string
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  generate-draft:
+  publish-post:
     runs-on: ubuntu-latest
+    concurrency:
+      group: blog-publishing
+      cancel-in-progress: false
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -33,25 +36,32 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Select scheduled editorial topic
+      - name: Select scheduled reader intent
         id: topic
         if: github.event_name == 'schedule'
         run: node scripts/select-blog-topic.js
 
-      - name: Generate unpublished draft
+      - name: Generate and publish post
         if: github.event_name != 'schedule' || steps.topic.outputs.run == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          BLOG_TOPIC: ${{ github.event_name == 'schedule' && steps.topic.outputs.title || inputs.title }}
+          BLOG_INTENT: ${{ github.event_name == 'schedule' && steps.topic.outputs.intent || inputs.intent }}
           BLOG_CATEGORY: ${{ github.event_name == 'schedule' && steps.topic.outputs.category || inputs.category }}
           BLOG_KEYWORDS: ${{ github.event_name == 'schedule' && steps.topic.outputs.keywords || inputs.keywords }}
         run: node scripts/generate-blog-post.js
 
-      - name: Upload draft for editorial review
+      - name: Update blog listing and sitemap
         if: github.event_name != 'schedule' || steps.topic.outputs.run == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: editorial-blog-draft
-          path: drafts/*.html
-          if-no-files-found: error
-          retention-days: 14
+        run: |
+          node scripts/build-blog-listing.js
+          node scripts/generate-sitemap.js
+
+      - name: Publish website changes
+        if: github.event_name != 'schedule' || steps.topic.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog blog-index.json blog.html sitemap.xml
+          git diff --cached --quiet && { echo "No generated website changes to publish."; exit 1; }
+          git commit -m "Publish scheduled blog post"
+          git push
