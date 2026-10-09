@@ -241,9 +241,9 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <p>Free browser-based tools for real life decisions. No signup required.</p>
 <span class="trust">Free tools | Privacy-conscious | No signup</span>
 </div>
-<div class="f-col"><h4>Tools</h4><ul><li><a href="/tool-how-rich">Global Wealth Comparator</a></li><li><a href="/tool-visa">Visa-Free Travel Checker</a></li><li><a href="/tool-attachment">Attachment Style Quiz</a></li></ul></div>
-<div class="f-col"><h4>Company</h4><ul><li><a href="/about">About Us</a></li><li><a href="/blog">Editorial Blog</a></li><li><a href="/contact">Contact &amp; Support</a></li></ul></div>
-<div class="f-col"><h4>Legal</h4><ul><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></div>
+<div class="f-col"><h4>Popular Tools</h4><ul><li><a href="/tool-how-rich">"How Rich Am I?" Comparator</a></li><li><a href="/tool-visa">Visa-Free Travel Checker</a></li><li><a href="/tool-quit-job">Should I Quit My Job?</a></li><li><a href="/tool-underpaid">Am I Underpaid? Analyzer</a></li><li><a href="/tool-attachment">Attachment Style Quiz</a></li></ul></div>
+<div class="f-col"><h4>Company &amp; Trust</h4><ul><li><a href="/about">About Us</a></li><li><a href="/about#editorial">Editorial Policy</a></li><li><a href="/blog">Editorial Blog</a></li><li><a href="/contact">Contact &amp; Support</a></li></ul></div>
+<div class="f-col"><h4>Legal &amp; Standards</h4><ul><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul></div>
 </div>
 <div class="footer-disc">Disclaimer: LifePera tools and calculators are provided for informational and educational purposes only. They do not constitute formal financial, legal, medical, or career advice.</div>
 <div class="footer-bot"><span>&copy; ${new Date().getUTCFullYear()} LifePera. All rights reserved.</span><span>Built for curious minds worldwide.</span></div>
