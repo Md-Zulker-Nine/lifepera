@@ -197,8 +197,6 @@ Write 700-1100 useful words with at least four distinct, descriptive section hea
 <h1>${safeTitle}</h1>
 <div class="meta">By LifePera · ${displayDate}</div>
 <article class="body">${body}</article>
-<section class="sources"><h2>Sources</h2><p>Search-grounded sources used during article generation. Links and claims have not been independently reviewed before publication.</p><ul>${renderSources(generated.sources)}</ul></section>
-<aside class="policy">This article was generated with AI and published automatically without prior human review. See our <a href="/about#editorial">editorial policy</a>. Verify time-sensitive information with an official source.</aside>
 </main>
 <footer><a href="/blog">LifePera Blog</a> · <a href="/about#editorial">Editorial policy</a></footer>
 </body>
