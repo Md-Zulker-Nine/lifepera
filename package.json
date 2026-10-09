@@ -1,10 +1,10 @@
 {
   "name": "lifepera-auto-blog",
   "version": "1.0.0",
-  "description": "Static LifePera website with unpublished AI-assisted blog draft generation",
+  "description": "Static LifePera website with automatically published AI-generated blog posts",
   "main": "scripts/generate-blog-post.js",
   "scripts": {
-    "draft:blog": "node scripts/generate-blog-post.js",
+    "publish:blog": "node scripts/generate-blog-post.js",
     "select:blog-topic": "node scripts/select-blog-topic.js",
     "check:consent": "node scripts/check-consent-coverage.js",
     "check:js": "node --check cookie-consent.js && node --check scripts/check-consent-coverage.js && node --check scripts/generate-blog-post.js && node --check scripts/select-blog-topic.js && node --check scripts/build-blog-listing.js && node --check scripts/check-site-content.js",

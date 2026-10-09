@@ -212,19 +212,20 @@ if (!/^\s{2}workflow_dispatch:/m.test(workflow) ||
     !/^\s{2}schedule:\s*$/m.test(workflow) ||
     !/cron:\s*['"]0 6 \* \* \*['"]/.test(workflow) ||
     !/steps\.topic\.outputs\.run\s*==\s*'true'/.test(workflow) ||
-    /git\s+(?:add|commit|push)\b/.test(workflow) ||
-    /contents:\s*write/.test(workflow)) {
-  failures.push('Blog workflow must create drafts only, use its cadence gate, and never push content.');
+    !/contents:\s*write/.test(workflow) ||
+    !/inputs\.intent/.test(workflow) ||
+    !/git\s+push\b/.test(workflow)) {
+  failures.push('Blog workflow must publish generated posts every 48 hours and accept a reader intent.');
 }
 const topicSelector = fs.readFileSync(path.join(root, 'scripts', 'select-blog-topic.js'), 'utf8');
-if (!/daysSinceAnchor\s*%\s*3\s*===\s*0/.test(topicSelector)) {
-  failures.push('Scheduled blog drafts must be gated to one run every three days.');
+if (!/daysSinceAnchor\s*%\s*2\s*===\s*0/.test(topicSelector)) {
+  failures.push('Scheduled blog posts must be published every 48 hours.');
 } else {
   for (const [date, expectedRun, expectedTitle] of [
     ['2026-10-04', 'true', 'How to compare total compensation across job offers'],
     ['2026-10-05', 'false', ''],
-    ['2026-10-06', 'false', ''],
-    ['2026-10-07', 'true', 'How to check a rental listing before paying a deposit'],
+    ['2026-10-06', 'true', 'How to check a rental listing before paying a deposit'],
+    ['2026-10-07', 'false', ''],
   ]) {
     const output = execFileSync(process.execPath, [path.join(root, 'scripts', 'select-blog-topic.js')], {
       encoding: 'utf8',
@@ -232,9 +233,9 @@ if (!/daysSinceAnchor\s*%\s*3\s*===\s*0/.test(topicSelector)) {
     });
     const lines = output.split(/\r?\n/);
     if (!lines.includes(`run=${expectedRun}`) ||
-        (expectedTitle && !lines.includes(`title=${expectedTitle}`)) ||
-        (!expectedTitle && lines.some(line => line.startsWith('title=')))) {
-      failures.push(`Three-day topic selector returned the wrong schedule result for ${date}.`);
+        (expectedTitle && !lines.includes(`intent=${expectedTitle}`)) ||
+        (!expectedTitle && lines.some(line => line.startsWith('intent=')))) {
+      failures.push(`48-hour intent selector returned the wrong schedule result for ${date}.`);
     }
   }
 }
@@ -267,7 +268,7 @@ for (const check of editorialChecks) {
 const generator = fs.readFileSync(path.join(root, 'scripts', 'generate-blog-post.js'), 'utf8');
 const titleValidatorSource = generator.match(/function validateTitle\(value\) \{[\s\S]*?\n\}/);
 if (!titleValidatorSource) {
-  failures.push('Blog draft generator is missing its title quality gate.');
+  failures.push('Blog post generator is missing its title quality gate.');
 } else {
   const validateTitle = vm.runInNewContext(`${titleValidatorSource[0]}; validateTitle;`);
   validateTitle('How to compare total compensation across job offers');
@@ -275,8 +276,13 @@ if (!titleValidatorSource) {
     validateTitle('The tipping trap: why requests keep draining your budget');
     failures.push('Blog title quality gate allowed a repeated headline formula.');
   } catch (error) {
-    if (!/repeatedly used headline formula/.test(error.message)) throw error;
+    if (!/repetitive headline formula/.test(error.message)) throw error;
   }
+}
+if (!/BLOG_INTENT/.test(generator) ||
+    !/TITLE:\s*\[a specific, natural, original title generated/.test(generator) ||
+    !/posts\.unshift\(/.test(generator)) {
+  failures.push('Blog publisher must generate a title from reader intent and add the post to the published index.');
 }
 for (const title of indexedTitles) {
   if (/\b(?:stealth[- ]draining|the\s+.+?\s+trap\b|the\s+.+?\s+epidemic\b|and how to reclaim)\b/i.test(title)) {

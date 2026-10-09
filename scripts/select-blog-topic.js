@@ -100,12 +100,12 @@ const today = dateOverride
   ? Math.floor(Date.parse(`${dateOverride}T00:00:00Z`) / millisecondsPerDay)
   : Math.floor(Date.now() / millisecondsPerDay);
 const daysSinceAnchor = today - anchorDay;
-const shouldRun = daysSinceAnchor >= 0 && daysSinceAnchor % 3 === 0;
+const shouldRun = daysSinceAnchor >= 0 && daysSinceAnchor % 2 === 0;
 
 const outputs = [`run=${shouldRun}`];
 if (shouldRun) {
-  const topic = topics[Math.floor(daysSinceAnchor / 3) % topics.length];
-  outputs.push(`title=${topic.title}`, `category=${topic.category}`, `keywords=${topic.keywords}`);
+  const topic = topics[Math.floor(daysSinceAnchor / 2) % topics.length];
+  outputs.push(`intent=${topic.title}`, `category=${topic.category}`, `keywords=${topic.keywords}`);
 }
 
 const output = `${outputs.join('\n')}\n`;
