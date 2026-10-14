@@ -191,6 +191,29 @@ Write 700-1100 useful words with at least four distinct, descriptive section hea
   };
   const safeArticleData = JSON.stringify(articleData).replace(/</g, '\\u003c');
   const safeOrgData = JSON.stringify(orgData).replace(/</g, '\\u003c');
+
+  // Build FAQ from the article's own H2 sections (relevant Q&As for AI Overviews)
+  const h2Matches = [...body.matchAll(/<h2>([^<]+)<\/h2>/g)].map(m => m[1].trim());
+  const faqEntities = [];
+  for (const h of h2Matches) {
+    const escaped = h.replace(/"/g, '\\"');
+    const after = body.split(`<h2>${escaped}</h2>`)[1] || '';
+    const pMatch = after.match(/<p>([\s\S]*?)<\/p>/);
+    const answer = pMatch ? pMatch[1].replace(/<[^>]+>/g, '').trim() : '';
+    if (answer.length > 40) {
+      faqEntities.push({ name: `${h}?`, acceptedAnswer: { '@type': 'Answer', text: answer } });
+    }
+    if (faqEntities.length >= 4) break;
+  }
+  const faqSchema = faqEntities.length >= 2
+    ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqEntities }
+    : null;
+  const safeFaqData = faqSchema ? JSON.stringify(faqSchema).replace(/</g, '\\u003c') : '';
+  const faqHtml = faqEntities.length >= 2
+    ? `<h2>Frequently Asked Questions</h2><div class="faq-section">${faqEntities.map(e =>
+        `<div class="faq-item"><h3 class="faq-q">${e.name}</h3><p class="faq-a">${e.acceptedAnswer.text}</p></div>`
+      ).join('')}</div>`
+    : '';
   const page = `<!doctype html>
 <html lang="en">
 <head>
@@ -201,6 +224,7 @@ Write 700-1100 useful words with at least four distinct, descriptive section hea
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="${safeTitle} — LifePera"/><meta name="twitter:description" content="${description}"/>
 <script type="application/ld+json">${safeArticleData}</script>
 <script type="application/ld+json">${safeOrgData}</script>
+${safeFaqData ? `<script type="application/ld+json">${safeFaqData}</script>` : ''}
 <title>${safeTitle} — LifePera</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -228,6 +252,10 @@ h1{font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem;letter-s
 .author-role{display:block;font-size:.8rem;color:var(--blue);font-weight:600;margin:.2rem 0 .4rem}
 .author-info p{font-size:.88rem;color:var(--muted);margin:0 0 .5rem}
 .author-info a{font-size:.85rem;font-weight:600}
+.faq-section{margin:1.5rem 0}
+.faq-item{margin-bottom:1.2rem}
+.faq-q{font-size:1.05rem;font-weight:700;margin:0 0 .4rem;color:var(--text)}
+.faq-a{font-size:.95rem;color:var(--muted);margin:0;line-height:1.7}
 .editorial-note{background:#f1f3f4;border-left:4px solid var(--blue);padding:1rem 1.2rem;margin:2rem 0;font-size:.92rem;color:var(--muted);line-height:1.6}.editorial-note a{font-weight:600}
 .sources{margin:1.5rem 0;color:var(--muted);font-size:.9rem}.sources summary{cursor:pointer;font-weight:600;color:var(--blue)}.sources p{margin:.75rem 0}.sources ul{padding-left:1.5rem}.sources li{margin:.4rem 0;overflow-wrap:anywhere}
 footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
@@ -255,6 +283,7 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <h1>${safeTitle}</h1>
 <div class="meta">By Zulker Nine · ${displayDate}</div>
 <article class="body">${body}</article>
+${faqHtml}
 <div class="author-bio">
 <img src="/assets/author-zulker-nine.webp" alt="Zulker Nine" class="author-avatar">
 <div class="author-info">
