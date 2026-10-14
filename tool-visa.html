@@ -295,7 +295,7 @@ function loadHtml2Canvas(callback) {
   s.onload = callback;
   document.head.appendChild(s);
 }
-  let currentShareTitle = "Visa-Free Travel Checker - LifePera";
+  let currentShareTitle = "Passport Mobility Snapshot - LifePera";
   let currentShareText = "";
 
   function showResult(headline, details, badge, cardTitle, countryName) {
@@ -306,9 +306,9 @@ function loadHtml2Canvas(callback) {
     document.getElementById('resultHeadline').innerHTML = headline;
     document.getElementById('resultText').innerHTML = details;
     document.getElementById('bannerResult').innerHTML = badge;
-    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Visa-Free Travel Checker");
+    document.getElementById('bannerHook').innerHTML = " " + (cardTitle || "Passport Mobility Snapshot");
     document.getElementById('bannerSubtext').innerHTML = details;
-    currentShareText = "I just tested Visa-Free Travel Checker on LifePera: " + badge + "! Try yours here:";
+    currentShareText = "I just tested Passport Mobility Snapshot on LifePera: " + badge + "! Try yours here:";
   }
 
   
