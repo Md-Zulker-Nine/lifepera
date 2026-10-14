@@ -168,14 +168,29 @@ Write 700-1100 useful words with at least four distinct, descriptive section hea
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
-    author: { '@type': 'Organization', name: 'LifePera', url: 'https://lifepera.com/about#editorial' },
+    author: {
+      '@type': 'Person',
+      name: 'Zulker Nine',
+      url: 'https://lifepera.com/about.html',
+      sameAs: ['https://github.com/Md-Zulker-Nine'],
+    },
     publisher: { '@type': 'Organization', name: 'LifePera', url: 'https://lifepera.com' },
     datePublished: date,
     dateModified: date,
     description: plainDescription,
     mainEntityOfPage: { '@type': 'WebPage', '@id': publicUrl },
   };
+  const orgData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'LifePera',
+    url: 'https://lifepera.com',
+    logo: 'https://lifepera.com/og-image.svg',
+    sameAs: ['https://github.com/Md-Zulker-Nine/lifepera'],
+    founder: { '@type': 'Person', name: 'Zulker Nine', url: 'https://lifepera.com/about.html' },
+  };
   const safeArticleData = JSON.stringify(articleData).replace(/</g, '\\u003c');
+  const safeOrgData = JSON.stringify(orgData).replace(/</g, '\\u003c');
   const page = `<!doctype html>
 <html lang="en">
 <head>
@@ -185,6 +200,7 @@ Write 700-1100 useful words with at least four distinct, descriptive section hea
 <meta property="og:title" content="${safeTitle} — LifePera"/><meta property="og:description" content="${description}"/><meta property="og:url" content="${publicUrl}"/><meta property="og:type" content="article"/>
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="${safeTitle} — LifePera"/><meta name="twitter:description" content="${description}"/>
 <script type="application/ld+json">${safeArticleData}</script>
+<script type="application/ld+json">${safeOrgData}</script>
 <title>${safeTitle} — LifePera</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -206,6 +222,12 @@ h1{font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem;letter-s
 .body p{margin-bottom:1.3rem;color:var(--text)}
 .body h2{font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
 .body strong{font-weight:700}.body ul{margin:1rem 0 1.5rem 1.5rem}.body li{margin-bottom:.5rem;line-height:1.7}
+.author-bio{display:flex;gap:1rem;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin:2rem 0}
+.author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.author-info strong{font-size:1rem}
+.author-role{display:block;font-size:.8rem;color:var(--blue);font-weight:600;margin:.2rem 0 .4rem}
+.author-info p{font-size:.88rem;color:var(--muted);margin:0 0 .5rem}
+.author-info a{font-size:.85rem;font-weight:600}
 .editorial-note{background:#f1f3f4;border-left:4px solid var(--blue);padding:1rem 1.2rem;margin:2rem 0;font-size:.92rem;color:var(--muted);line-height:1.6}.editorial-note a{font-weight:600}
 .sources{margin:1.5rem 0;color:var(--muted);font-size:.9rem}.sources summary{cursor:pointer;font-weight:600;color:var(--blue)}.sources p{margin:.75rem 0}.sources ul{padding-left:1.5rem}.sources li{margin:.4rem 0;overflow-wrap:anywhere}
 footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4rem 1.5rem 2rem;margin-top:4rem}
@@ -231,8 +253,17 @@ footer{background:#111827;color:#9ca3af;border-top:1px solid #1f2937;padding:4re
 <main>
 <div class="post-cat">${safeCategory}</div>
 <h1>${safeTitle}</h1>
-<div class="meta">By LifePera · ${displayDate}</div>
+<div class="meta">By Zulker Nine · ${displayDate}</div>
 <article class="body">${body}</article>
+<div class="author-bio">
+<img src="/assets/author-zulker-nine.webp" alt="Zulker Nine" class="author-avatar">
+<div class="author-info">
+<strong>Zulker Nine</strong>
+<span class="author-role">Founder &amp; Creator, LifePera</span>
+<p>Zulker builds free, privacy-first decision tools for real life. He reviews every tool, article, and data update published on LifePera.</p>
+<a href="/about">Read full bio →</a>
+</div>
+</div>
 </main>
 <footer>
 <div class="footer-inner">
